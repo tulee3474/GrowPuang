@@ -87,33 +87,94 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+          child: Container(
+            width: 375,
+            height: 667,
+            clipBehavior: Clip.antiAlias,
+            decoration: BoxDecoration(color: Colors.white),
+            child: Stack(
+              children: [
+                Positioned(
+                  left: 0,
+                  top: 0,
+                  child: Container(
+                    width: 375,
+                    height: 667,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('images/기본-배경.png'),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  left: 26,
+                  top: 179,
+                  child: Container(
+                    width: 318,
+                    height: 310,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("images/자산.png"),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  left: 8,
+                  top: 31,
+                  child: Container(
+                    width: 359,
+                    height: 132,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('images/영신관.png'),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  left: 84,
+                  top: 448,
+                  child: Container(
+                    width: 207,
+                    height: 52,
+                    child: Stack(
+                      children: [
+                        Positioned(
+                          left: 0,
+                          top: 5,
+                          child: Container(
+                            width: 207,
+                            height: 42,
+                            decoration: BoxDecoration(color: Color(0x00D9D9D9)),
+                          ),
+                        ),
+                        Positioned(
+                          left: 38,
+                          top: 0,
+                          child: Text(
+                            'Start >',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Color(0xFF143264),
+                              fontSize: 38.13,
+                              fontFamily: 'Inter',
+                              fontWeight: FontWeight.w900,
+                              height: 0.04,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
+          )
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
