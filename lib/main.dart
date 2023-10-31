@@ -201,17 +201,23 @@ class SecondPage extends StatelessWidget {
           ),
           // 언어 선택 버튼 추가
           Positioned(
-              left: 0.0, // 좌측 정렬
-              right: 0.0, // 우측 정렬
-              top: 470.h, // 조절하여 원하는 위치로 배치
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                children:[
+            left: 0.0, // 좌측 정렬
+            right: 0.0, // 우측 정렬
+            top: 470.h, // 조절하여 원하는 위치로 배치
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
                 GestureDetector(
                   onTap: () {
                     // 한국어 선택 버튼을 눌렀을 때
                     selectedLanguage = '한국어';
                     print('한국어 선택');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ThirdPage(), // ThirdPage로 이동
+                      ),
+                    );
                   },
                   child: Container(
                     width: 150.w, // 배경의 너비를 텍스트보다 크게 조절
@@ -244,15 +250,20 @@ class SecondPage extends StatelessWidget {
                     ),
                   ),
                 ),
-
                 SizedBox(width: 20.w), // 버튼 사이 간격
 
-// 영어 선택 버튼
+                // 영어 선택 버튼
                 GestureDetector(
                   onTap: () {
                     // 영어 선택 버튼을 눌렀을 때
                     selectedLanguage = '영어';
                     print('영어 선택');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ThirdPage(), // ThirdPage로 이동
+                      ),
+                    );
                   },
                   child: Container(
                     width: 150.w, // 배경의 너비를 텍스트보다 크게 조절
@@ -293,3 +304,29 @@ class SecondPage extends StatelessWidget {
     );
   }
 }
+
+
+class ThirdPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // ThirdPage에서 전역 변수에 따라 다른 언어 출력
+    String textToShow = selectedLanguage == '한국어' ? '안녕하세요' : 'Hello';
+
+    return Scaffold(
+      appBar: null,
+      body: Center(
+        child: Text(
+          textToShow,
+          style: TextStyle(
+            color: Color(0xFF143264),
+            fontSize: 35.sp,
+            fontFamily: 'YourFontFamily',
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
