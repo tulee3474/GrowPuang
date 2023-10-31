@@ -305,28 +305,171 @@ class SecondPage extends StatelessWidget {
   }
 }
 
-
 class ThirdPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // ThirdPage에서 전역 변수에 따라 다른 언어 출력
-    String textToShow = selectedLanguage == '한국어' ? '안녕하세요' : 'Hello';
-
     return Scaffold(
       appBar: null,
-      body: Center(
-        child: Text(
-          textToShow,
-          style: TextStyle(
-            color: Color(0xFF143264),
-            fontSize: 35.sp,
-            fontFamily: 'YourFontFamily',
-            fontWeight: FontWeight.bold,
+      body: Stack(
+        children: [
+          // 반응형 배경 이미지 설정
+          Container(
+            width: double.infinity,
+            height: double.infinity,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('images/기본-배경.png'),
+                fit: BoxFit.fill,
+              ),
+            ),
           ),
-        ),
+          // 영신관 이미지 (상단 중앙에 배치)
+          Align(
+            alignment: Alignment.topCenter,
+            child: GestureDetector(
+              onTap: () {
+                // 영신관 이미지를 누를 때 수행할 작업을 정의하세요.
+                print('영신관 이미지를 눌렀습니다.');
+                // 여기에서 다음 질문 또는 동작을 정의할 수 있습니다.
+              },
+              child: Container(
+                width: 350.w,
+                height: 150.h,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('images/영신관.png'),
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+            ),
+          ),
+
+          // 자산 이미지 크기 및 배치 수정
+          Positioned(
+            left: 0.w,
+            right: 0.w,
+            top: 100.h, // 더 위로 조정
+            child: Center(
+              child: Container(
+                width: 318.w, // 이미지 너비 조정
+                height: 350.h, // 이미지 높이 조정
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('images/자산.png'),
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          // "나는 어떤 일을 할 때" 텍스트
+          Center(
+            child: Padding(
+              padding: EdgeInsets.only(top: 150.h),
+              child: Text(
+                selectedLanguage == '한국어' ? '나는 어떤 일을 할 때' : 'When I am about to',
+                style: TextStyle(
+                  color: Color(0xFF143264),
+                  fontSize: 25.sp,
+                  fontFamily: 'YourFontFamily',
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+          // 버튼 1 - "이 일을 하지 않았을 때 잃게 될 것들을 떠올린다"
+          Positioned(
+            left: 50.w,
+            right: 50.w,
+            top: 460.h,
+            child: GestureDetector(
+              onTap: () {
+                // 버튼 1을 누를 때 수행할 작업을 정의하세요.
+                print('버튼 1을 눌렀습니다.');
+                // 여기에서 다음 질문 또는 동작을 정의할 수 있습니다.
+              },
+              child: Container(
+                width: double.infinity,
+                height: 80.h,
+                decoration: BoxDecoration(
+                  color: Color(0xFF143264),
+                  borderRadius: BorderRadius.circular(15.w),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0), // 좌우 여백 추가
+                    child: Text(
+                      selectedLanguage == '한국어'
+                          ? '이 일을 하지 않았을 때 잃게 될 것들을 떠올린다'
+                          : 'Think about what you might lose if you don’t do this',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20.sp,
+                        fontFamily: 'YourFontFamily',
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          // 버튼 2 - "이 일을 해냈을 때 얻게 될 보상을 떠올린다"
+          Positioned(
+            left: 50.w,
+            right: 50.w,
+            top: 560.h,
+            child: GestureDetector(
+              onTap: () {
+                // 버튼 2를 누를 때 수행할 작업을 정의하세요.
+                print('버튼 2를 눌렀습니다.');
+                // 여기에서 다음 질문 또는 동작을 정의할 수 있습니다.
+              },
+              child: Container(
+                width: double.infinity,
+                height: 80.h,
+                decoration: BoxDecoration(
+                  color: Color(0xFF143264),
+                  borderRadius: BorderRadius.circular(15.w),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0), // 좌우 여백 추가
+                    child: Text(
+                      selectedLanguage == '한국어'
+                          ? '이 일을 해냈을 때 얻게 될 보상을 떠올린다'
+                          : 'Think about what you will gain when you do this',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20.sp,
+                        fontFamily: 'YourFontFamily',
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
 }
-
-
