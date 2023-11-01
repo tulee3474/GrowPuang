@@ -33,6 +33,7 @@ doc/api/
 ### Dart Patch ###
 # dotenv environment variables file
 .env
+.env*
 
 ### Firebase ###
 .idea
@@ -42,6 +43,7 @@ doc/api/
 ### Firebase Patch ###
 .runtimeconfig.json
 .firebase/
+firebase.exe
 
 ### Flutter ###
 # Flutter/Dart/Pub related

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "515663394442",
+    "project_id": "growpuang",
+    "storage_bucket": "growpuang.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:515663394442:android:6b9b7867780ae06bc35f73",
+        "android_client_info": {
+          "package_name": "com.example.growpuang"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1Fl8vTV9l_r5tOMgR_zMH0Dvmzn1j410"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
