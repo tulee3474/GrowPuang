@@ -4,7 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:growpuang/controller/language_controller.dart';
 import 'package:growpuang/controller/personal_contoller.dart';
+import 'package:growpuang/controller/post_list_controller.dart';
+import 'package:growpuang/model/loading_dialog.dart';
 import 'package:growpuang/styles.dart';
+import 'package:growpuang/view/community_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -14,6 +17,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final languageController = Get.put(LanguageController());
   final personalController = Get.put(PersonalController());
+  final postListController = Get.put(PostListController());
 
   @override
   Widget build(BuildContext context) {
@@ -33,13 +37,11 @@ class _HomeScreenState extends State<HomeScreen> {
         //     }),
         // actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.add))],
       ),
-      body: SingleChildScrollView(
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
-            SizedBox(
-              width: 300.w,
-              height: 600.h,
-            ),
+            Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -114,12 +116,27 @@ class _HomeScreenState extends State<HomeScreen> {
                 Column(
                   children: [
                     IconButton(
-                      onPressed: () {
-                        print("커뮤니티");
+                      onPressed: () async {
+                        //기다리는 동안 로딩창 띄우기
+                        loadingDialog(context);
 
-                        //커뮤니티 들어가기 - 글 하나 쓸 때마다 +1점
-                        personalController.communityResult += 1;
-                        print(personalController.communityResult);
+                        //posts가 비어있을때(첫 호출때만 데이터 로딩)
+                        print(postListController.postList);
+                        if (postListController.postList.length == 0) {
+                          await postListController.readPostData();
+                        }
+
+                        //화면 이동 전, 로딩 다이어로그 pop!
+                        Navigator.of(context, rootNavigator: true).pop();
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CommunityScreen(),
+                          ),
+                        );
+
+                        print('커뮤니티 페이지로 넘어 갑니다');
                       },
                       icon: Image.asset(
                         'assets/사교지수.png',
@@ -178,6 +195,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
+
       //drawer: const Drawer(),
     );
   }

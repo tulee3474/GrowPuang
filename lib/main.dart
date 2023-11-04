@@ -4,6 +4,8 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:growpuang/controller/personal_contoller.dart';
+import 'package:growpuang/model/get_device_unique_id.dart';
 import 'package:growpuang/styles.dart';
 import 'package:growpuang/view/home_screen.dart';
 
@@ -19,6 +21,10 @@ Future<void> main() async {
     messagingSenderId: "515663394442",
     projectId: "GrowPuang",
   )); // Firebase 초기화
+
+  final personalController = Get.put(PersonalController());
+  personalController.userId = await getMobileId(); //모델 id 저장
+
   runApp(const MyApp());
 }
 
@@ -29,6 +35,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context); //스크린유틸 초기화
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
