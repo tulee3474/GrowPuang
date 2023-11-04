@@ -566,9 +566,9 @@ class FourthPage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => MBTIPage(
-                      question: '당신이 졸업시킬 푸앙이는',
-                      option1: '호기심 많은',
-                      option2: '푸앙이입니다',
+                      question: selectedLanguage == '한국어' ? '당신이 졸업시킬 푸앙이는': 'The Puang you will graduate from is',
+                      option1: selectedLanguage == '한국어' ? '호기심 많은' : 'curious',
+                      option2: selectedLanguage == '한국어' ? '푸앙이입니다' : 'puang',
                     ),
                   ),
                 );
@@ -710,13 +710,16 @@ class MBTIPage extends StatelessWidget {
             child: Center(
               child: Column(
                 children: [
-                  Text(
-                    question,
-                    style: TextStyle(
-                      color: Color(0xFF143264),
-                      fontSize: 25.sp,
-                      fontFamily: 'YourFontFamily',
-                      fontWeight: FontWeight.bold,
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    child: Text(
+                      question,
+                      style: TextStyle(
+                        color: Color(0xFF143264),
+                        fontSize: 25.sp,
+                        fontFamily: 'YourFontFamily',
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   SizedBox(height: 20.h), // 원하는 여백 크기로 조정
