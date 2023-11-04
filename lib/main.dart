@@ -569,6 +569,7 @@ class FourthPage extends StatelessWidget {
                       question: selectedLanguage == '한국어' ? '당신이 졸업시킬 푸앙이는': 'The Puang you will graduate from is',
                       option1: selectedLanguage == '한국어' ? '호기심 많은' : 'curious',
                       option2: selectedLanguage == '한국어' ? '푸앙이' : 'puang',
+                      pick_img : '호기심-푸앙.png',
                     ),
                   ),
                 );
@@ -761,6 +762,7 @@ class FifthPage extends StatelessWidget {
                       question: selectedLanguage == '한국어' ? '당신이 졸업시킬 푸앙이는': 'The Puang you will graduate from is',
                       option1: selectedLanguage == '한국어' ? '모범적인' : 'exemplary',
                       option2: selectedLanguage == '한국어' ? '푸앙이' : 'puang',
+                      pick_img: '모범-푸앙.png',
                     ),
                   ),
                 );
@@ -814,6 +816,7 @@ class FifthPage extends StatelessWidget {
                       question: selectedLanguage == '한국어' ? '당신이 졸업시킬 푸앙이는': 'The Puang you will graduate from is',
                       option1: selectedLanguage == '한국어' ? '너드한' : 'nerd',
                       option2: selectedLanguage == '한국어' ? '푸앙이' : 'puang',
+                      pick_img: '너드한-푸앙.png',
                     ),
                   ),
                 );
@@ -1145,6 +1148,7 @@ class SeventhPage extends StatelessWidget {
                       question: selectedLanguage == '한국어' ? '당신이 졸업시킬 푸앙이는': 'The Puang you will graduate from is',
                       option1: selectedLanguage == '한국어' ? '활발한' : 'active',
                       option2: selectedLanguage == '한국어' ? '푸앙이' : 'puang',
+                      pick_img: '활발한-푸앙.png',
                     ),
                   ),
                 );
@@ -1199,6 +1203,7 @@ class SeventhPage extends StatelessWidget {
                       question: selectedLanguage == '한국어' ? '당신이 졸업시킬 푸앙이는': 'The Puang you will graduate from is',
                       option1: selectedLanguage == '한국어' ? '주도적인' : 'leading',
                       option2: selectedLanguage == '한국어' ? '푸앙이' : 'puang',
+                      pick_img: '주도적인-푸앙.png',
                     ),
                   ),
                 );
@@ -1339,6 +1344,7 @@ class EighthPage extends StatelessWidget {
                       question: selectedLanguage == '한국어' ? '당신이 졸업시킬 푸앙이는': 'The Puang you will graduate from is',
                       option1: selectedLanguage == '한국어' ? '주도적인' : 'leading',
                       option2: selectedLanguage == '한국어' ? '푸앙이' : 'puang',
+                      pick_img: '주도적인-푸앙.png',
                     ),
                   ),
                 );
@@ -1393,6 +1399,7 @@ class EighthPage extends StatelessWidget {
                       question: selectedLanguage == '한국어' ? '당신이 졸업시킬 푸앙이는': 'The Puang you will graduate from is',
                       option1: selectedLanguage == '한국어' ? '지휘적인' : 'commanding',
                       option2: selectedLanguage == '한국어' ? '푸앙이' : 'puang',
+                      pick_img: '지적인-푸앙.png',
                     ),
                   ),
                 );
@@ -1441,9 +1448,11 @@ class MBTIPage extends StatelessWidget {
   final String question;
   final String option1;
   final String option2;
+  final String pick_img;
 
-  MBTIPage({Key? key, required this.question, required this.option1, required this.option2})
+  MBTIPage({Key? key, required this.question, required this.pick_img, required this.option1, required this.option2})
       : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
@@ -1462,6 +1471,7 @@ class MBTIPage extends StatelessWidget {
               ),
             ),
           ),
+
           // 영신관 이미지 (상단 중앙에 배치)
           Align(
             alignment: Alignment.topCenter,
@@ -1507,13 +1517,14 @@ class MBTIPage extends StatelessWidget {
                   Container(
                     width: 170.w, // 이미지 너비 조정
                     height: 220.h, // 이미지 높이 조정
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage('images/기본-푸앙.png'),
+                        image: AssetImage('images/$pick_img'),
                         fit: BoxFit.fill,
                       ),
                     ),
                   ),
+
                   SizedBox(height: 20.h),
                   Text(
                     option1 + ' ' + option2 + (selectedLanguage == '한국어' ? '입니다' : ''),
@@ -1531,7 +1542,7 @@ class MBTIPage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => MainPage(option1: option1, option2: option2,),
+                          builder: (context) => MainPage(option1: option1, option2: option2,pick_img:pick_img,),
                         ),
                       );
                     },
@@ -1571,9 +1582,10 @@ class MainPage extends StatelessWidget {
   double progressValue = 0.1; // 10% 예시
   final String option1;
   final String option2;
+  final String pick_img;
 
 
-  MainPage({Key? key, required this.option1, required this.option2})
+  MainPage({Key? key, required this.option1, required this.pick_img, required this.option2})
       : super(key: key);
 
   @override
@@ -1638,9 +1650,9 @@ class MainPage extends StatelessWidget {
                   Container(
                     width: 170.w, // 이미지 너비 조정
                     height: 220.h, // 이미지 높이 조정
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage('images/기본-푸앙.png'),
+                        image: AssetImage('images/$pick_img'),
                         fit: BoxFit.fill,
                       ),
                     ),

@@ -70,6 +70,12 @@ flutter:
     - images/사교지수.png
     - images/활동지수.png
     - images/도움말.png
+    - images/너드한-푸앙.png
+    - images/모범-푸앙.png
+    - images/지적인-푸앙.png
+    - images/주도적인-푸앙.png
+    - images/호기심-푸앙.png
+    - images/활발한-푸앙.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
