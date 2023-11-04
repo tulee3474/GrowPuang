@@ -65,6 +65,7 @@ flutter:
     - images/영신관.png
     - images/기본-배경.png
     - images/기본배경.png
+    - images/기본-푸앙.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
