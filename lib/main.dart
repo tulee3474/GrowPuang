@@ -153,14 +153,19 @@ class SecondPage extends StatelessWidget {
               ),
             ),
           ),
-          Center(
-            child: Container(
-              width: 318.w,
-              height: 350.h,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('images/자산.png'),
-                  fit: BoxFit.fill,
+          Positioned(
+            left: 0.w,
+            right: 0.w,
+            top: 100.h,
+            child: Center(
+              child: Container(
+                width: 318.w,
+                height: 350.h,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('images/자산.png'),
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
             ),
@@ -179,6 +184,20 @@ class SecondPage extends StatelessWidget {
                     image: AssetImage('images/영신관.png'),
                     fit: BoxFit.fill,
                   ),
+                ),
+              ),
+            ),
+          ),
+          Center(
+            child: Padding(
+              padding: EdgeInsets.only(top: 150.h),
+              child: Text(
+                selectedLanguage == '한국어' ? '어떤 언어로 진행하겠습니까?' : 'Which language would you like to proceed in?',
+                style: TextStyle(
+                  color: Color(0xFF143264),
+                  fontSize: 25.sp,
+                  fontFamily: 'YourFontFamily',
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
@@ -340,7 +359,7 @@ class ThirdPage extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.only(top: 150.h),
               child: Text(
-                selectedLanguage == '한국어' ? '어떤 언어로 진행하겠습니까?' : 'Which language would you like to proceed in?',
+                selectedLanguage == '한국어' ? '나는 어떤일을 할 때?' : 'When I do something?',
                 style: TextStyle(
                   color: Color(0xFF143264),
                   fontSize: 25.sp,
@@ -360,9 +379,9 @@ class ThirdPage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => FourthPage(
-                      question: selectedLanguage == '한국어' ? '내가 실수했을 때, 나는 어떻게 반응하나요?' : 'How do I react when I make a mistake?',
-                      option1: selectedLanguage == '한국어' ? '자신을 탓한다' : 'Blame myself',
-                      option2: selectedLanguage == '한국어' ? '다른 사람을 탓한다' : 'Blame others',
+                      question: selectedLanguage == '한국어' ? '내가 실패했을 때 두려운 것은?' : 'What do I fear when I fail?',
+                      option1: selectedLanguage == '한국어' ? '다른 사람의 평판' : 'someone else\'s reputation',
+                      option2: selectedLanguage == '한국어' ? '좌절감' : 'frustration',
                     ),
                   ),
                 );
@@ -386,7 +405,7 @@ class ThirdPage extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Text(
-                      selectedLanguage == '한국어' ? '자신을 탓한다' : 'Blame myself',
+                      selectedLanguage == '한국어' ? '이 일을 하지 않았을 때 잃게 될 것들을 떠올린다' : 'Think about what you will lose if you don\'t do this.',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20.sp,
@@ -409,9 +428,9 @@ class ThirdPage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => FourthPage(
-                      question: selectedLanguage == '한국어' ? '내가 실패했을 때 더 두려운 것은?' : 'What scares me the most when I fail?',
-                      option1: selectedLanguage == '한국어' ? '다른 사람의 평판' : 'Other people\'s judgment',
-                      option2: selectedLanguage == '한국어' ? '좌절감' : 'Frustration',
+                      question: selectedLanguage == '한국어' ? '내가 실패했을 때 두려운 것은?' : 'What do I fear when I fail?',
+                      option1: selectedLanguage == '한국어' ? '다른 사람의 평판' : 'someone else\'s reputation',
+                      option2: selectedLanguage == '한국어' ? '좌절감' : 'frustration',
                     ),
                   ),
                 );
@@ -435,7 +454,7 @@ class ThirdPage extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Text(
-                      selectedLanguage == '한국어' ? '다른 사람의 평판' : 'Other people\'s judgment',
+                      selectedLanguage == '한국어' ? '이 일을 해냈을 때 얻게 될 보상을 떠올린다' : 'Think about the reward you will receive when you accomplish this task.',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20.sp,
