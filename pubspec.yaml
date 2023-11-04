@@ -66,6 +66,10 @@ flutter:
     - images/기본-배경.png
     - images/기본배경.png
     - images/기본-푸앙.png
+    - images/지식지수.png
+    - images/사교지수.png
+    - images/활동지수.png
+    - images/도움말.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
