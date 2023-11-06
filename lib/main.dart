@@ -8,6 +8,8 @@ import 'package:growpuang/controller/personal_contoller.dart';
 import 'package:growpuang/model/get_device_unique_id.dart';
 import 'package:growpuang/styles.dart';
 import 'package:growpuang/view/home_screen.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:growpuang/homeScreen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized(); // 추가
@@ -42,6 +44,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: mainColor),
         useMaterial3: true,
+        pageTransitionsTheme: PageTransitionsTheme(
+          builders: {
+            for (var platform in TargetPlatform.values)
+              platform: NoTransitionsBuilder(),
+          },
+        ),
       ),
       home: const MyHomePage(),
     );
@@ -53,6 +61,21 @@ class MyHomePage extends StatefulWidget {
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class NoTransitionsBuilder extends PageTransitionsBuilder {
+  const NoTransitionsBuilder();
+
+  @override
+  Widget buildTransitions<T>(
+      PageRoute<T> route,
+      BuildContext context,
+      Animation<double> animation,
+      Animation<double> secondaryAnimation,
+      Widget child,
+      ) {
+    return child;
+  }
 }
 
 class _MyHomePageState extends State<MyHomePage> {

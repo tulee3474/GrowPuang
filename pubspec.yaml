@@ -54,12 +54,13 @@ dev_dependencies:
     flutter_test:
         sdk: flutter
 
-    # The "flutter_lints" package below contains a set of recommended lints to
-    # encourage good coding practices. The lint set provided by the package is
-    # activated in the `analysis_options.yaml` file located at the root of your
-    # package. See that file for information about deactivating specific lint
-    # rules and activating additional ones.
-    flutter_lints: ^2.0.0
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
+  flutter_lints: ^2.0.0
+  flutter_screenutil: ^5.9.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -76,8 +77,27 @@ flutter:
         - assets/
         - assets/config/.env
 
+
     # An image asset can refer to one or more resolution-specific "variants", see
     # https://flutter.dev/assets-and-images/#resolution-aware
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - images/자산.png
+    - images/영신관.png
+    - images/기본-배경.png
+    - images/기본배경.png
+    - images/기본-푸앙.png
+    - images/지식지수.png
+    - images/사교지수.png
+    - images/활동지수.png
+    - images/도움말.png
+    - images/너드한-푸앙.png
+    - images/모범-푸앙.png
+    - images/지적인-푸앙.png
+    - images/주도적인-푸앙.png
+    - images/호기심-푸앙.png
+    - images/활발한-푸앙.png
 
     # For details regarding adding assets from package dependencies, see
     # https://flutter.dev/assets-and-images/#from-packages
