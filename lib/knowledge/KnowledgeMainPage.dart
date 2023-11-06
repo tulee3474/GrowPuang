@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:growpuang/knowledge/firstQuizPage.dart';
+import 'package:growpuang/mainPage.dart';
+
+import '../view/home_screen.dart';
 
 class KnowledgeMainPage extends StatelessWidget {
 
@@ -231,29 +234,69 @@ class KnowledgeMainPage extends StatelessWidget {
             Positioned(
               left: 262.w,
               top: 416.h,
-              child: Text(
-                '수강하기 >',
-                textAlign: TextAlign.right,
-                style: TextStyle(
-                  color: Color(0xFF143264),
-                  fontSize: 13,
-                  fontFamily: 'Inter',
-                  fontWeight: FontWeight.w500,
-                  height: 0.11,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => firstQuizPage(),
+                    ),
+                  );
+                },
+                child: Align(
+                  alignment: Alignment.topCenter,
+                  child: Container(
+                    width: 60.w,
+                    decoration: const BoxDecoration(
+                      color: Colors.transparent,
+                      border: null,
+                    ),
+                    child: Text(
+                      '수강하기 >',
+                      textAlign: TextAlign.right,
+                      style: TextStyle(
+                        color: Color(0xFF143264),
+                        fontSize: 13,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w500,
+                        height: 0.11,
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ),
             Positioned(
               left: 53.w,
               top: 416.h,
-              child: Text(
-                '< 홈으로',
-                style: TextStyle(
-                  color: Color(0xFF143264),
-                  fontSize: 13,
-                  fontFamily: 'Inter',
-                  fontWeight: FontWeight.w500,
-                  height: 0.11,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => HomeScreen(),
+                    ),
+                  );
+                },
+                child: Align(
+                  alignment: Alignment.topCenter,
+                  child: Container(
+                    width: 60.w,
+                    decoration: const BoxDecoration(
+                      color: Colors.transparent,
+                      border: null,
+                    ),
+                    child: Text(
+                      '< 홈으로',
+                      style: TextStyle(
+                        color: Color(0xFF143264),
+                        fontSize: 13,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w500,
+                        height: 0.11,
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ),
