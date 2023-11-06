@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:growpuang/homeScreen.dart';
-import 'package:growpuang/mbtiPage.dart';
+import 'mbtiPage.dart';
 
-
-class EighthPage extends StatelessWidget {
+class SeventhPage extends StatelessWidget {
   final String question;
   final String option1;
   final String option2;
 
-  EighthPage({Key? key, required this.question, required this.option1, required this.option2})
+  SeventhPage({Key? key, required this.question, required this.option1, required this.option2})
       : super(key: key);
 
   @override
@@ -98,9 +97,9 @@ class EighthPage extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) => MBTIPage(
                       question: selectedLanguage == '한국어' ? '당신이 졸업시킬 푸앙이는': 'The Puang you will graduate from is',
-                      option1: selectedLanguage == '한국어' ? '주도적인' : 'leading',
+                      option1: selectedLanguage == '한국어' ? '활발한' : 'active',
                       option2: selectedLanguage == '한국어' ? '푸앙이' : 'puang',
-                      pick_img: '주도적인-푸앙.png',
+                      pick_img: '활발한-푸앙.png',
                     ),
                   ),
                 );
@@ -153,9 +152,9 @@ class EighthPage extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) => MBTIPage(
                       question: selectedLanguage == '한국어' ? '당신이 졸업시킬 푸앙이는': 'The Puang you will graduate from is',
-                      option1: selectedLanguage == '한국어' ? '지휘적인' : 'commanding',
+                      option1: selectedLanguage == '한국어' ? '주도적인' : 'leading',
                       option2: selectedLanguage == '한국어' ? '푸앙이' : 'puang',
-                      pick_img: '지적인-푸앙.png',
+                      pick_img: '주도적인-푸앙.png',
                     ),
                   ),
                 );

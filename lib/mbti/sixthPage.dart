@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:growpuang/homeScreen.dart';
-import 'package:growpuang/mbtiPage.dart';
+import 'seventhPage.dart';
+import 'eigthPage.dart';
 
-class SeventhPage extends StatelessWidget {
+
+class SixthPage extends StatelessWidget {
   final String question;
   final String option1;
   final String option2;
 
-  SeventhPage({Key? key, required this.question, required this.option1, required this.option2})
+  SixthPage({Key? key, required this.question, required this.option1, required this.option2})
       : super(key: key);
 
   @override
@@ -95,11 +97,10 @@ class SeventhPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => MBTIPage(
-                      question: selectedLanguage == '한국어' ? '당신이 졸업시킬 푸앙이는': 'The Puang you will graduate from is',
-                      option1: selectedLanguage == '한국어' ? '활발한' : 'active',
-                      option2: selectedLanguage == '한국어' ? '푸앙이' : 'puang',
-                      pick_img: '활발한-푸앙.png',
+                    builder: (context) => SeventhPage(
+                      question: selectedLanguage == '한국어' ? '더 멋지다고 생각되는 모습은?': 'Which look do you think is cooler?',
+                      option1: selectedLanguage == '한국어' ? '갑작스러운 사고를 완벽하게 수습하는 나' : 'I perfectly handle sudden accidents',
+                      option2: selectedLanguage == '한국어' ? '주어진 일을 완벽하게 마무리 하는 나' : 'I complete the given task perfectly',
                     ),
                   ),
                 );
@@ -150,11 +151,10 @@ class SeventhPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => MBTIPage(
-                      question: selectedLanguage == '한국어' ? '당신이 졸업시킬 푸앙이는': 'The Puang you will graduate from is',
-                      option1: selectedLanguage == '한국어' ? '주도적인' : 'leading',
-                      option2: selectedLanguage == '한국어' ? '푸앙이' : 'puang',
-                      pick_img: '주도적인-푸앙.png',
+                    builder: (context) => EighthPage(
+                      question: selectedLanguage == '한국어' ? '더 멋지다고 생각되는 모습은?': 'Which look do you think is cooler?',
+                      option1: selectedLanguage == '한국어' ? '갑작스러운 사고를 완벽하게 수습하는 나' : 'I perfectly handle sudden accidents',
+                      option2: selectedLanguage == '한국어' ? '주어진 일을 완벽하게 마무리 하는 나' : 'I complete the given task perfectly',
                     ),
                   ),
                 );
