@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:growpuang/homeScreen.dart';
+import 'package:growpuang/mbti/FirstPage.dart';
 import 'package:growpuang/mainPage.dart';
+
+import '../view/home_screen.dart';
 
 class MBTIPage extends StatelessWidget {
   final String question;
@@ -101,7 +103,7 @@ class MBTIPage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => MainPage(option1: option1, option2: option2,pick_img:pick_img,),
+                          builder: (context) => HomeScreen(option1: option1, option2: option2,pick_img:pick_img,),
                         ),
                       );
                     },

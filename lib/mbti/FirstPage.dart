@@ -5,8 +5,8 @@ import 'package:growpuang/mbti/secondPage.dart';
 
 String selectedLanguage = '한국어';
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+class FirstPage extends StatelessWidget {
+  const FirstPage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
