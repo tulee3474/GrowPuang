@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:growpuang/homeScreen.dart';
+import 'package:growpuang/knowledgeQuiz/KnowledgeQuizMainPage.dart';
 
 
 class MainPage extends StatelessWidget {
@@ -152,6 +153,12 @@ class MainPage extends StatelessWidget {
                 InkWell(
                   onTap: () {
                     // 이미지 버튼 1을 탭했을 때 수행할 작업을 정의
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => KnowledgeQuizMainPage(),
+                      ),
+                    );
                   },
                   child: Container(
                     width: 80.w,
