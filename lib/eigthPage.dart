@@ -3,12 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:growpuang/homeScreen.dart';
 import 'package:growpuang/mbtiPage.dart';
 
-class FifthPage extends StatelessWidget {
+
+class EighthPage extends StatelessWidget {
   final String question;
   final String option1;
   final String option2;
 
-  FifthPage({Key? key, required this.question, required this.option1, required this.option2})
+  EighthPage({Key? key, required this.question, required this.option1, required this.option2})
       : super(key: key);
 
   @override
@@ -97,9 +98,9 @@ class FifthPage extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) => MBTIPage(
                       question: selectedLanguage == '한국어' ? '당신이 졸업시킬 푸앙이는': 'The Puang you will graduate from is',
-                      option1: selectedLanguage == '한국어' ? '모범적인' : 'exemplary',
+                      option1: selectedLanguage == '한국어' ? '주도적인' : 'leading',
                       option2: selectedLanguage == '한국어' ? '푸앙이' : 'puang',
-                      pick_img: '모범-푸앙.png',
+                      pick_img: '주도적인-푸앙.png',
                     ),
                   ),
                 );
@@ -145,15 +146,16 @@ class FifthPage extends StatelessWidget {
               onTap: () {
                 // Option 2 버튼을 눌렀을 때 수행할 작업을 정의하세요.
                 print('Option 2를 선택했습니다.');
+
                 // 여기에서 다음 질문 또는 동작을 정의할 수 있습니다.
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => MBTIPage(
                       question: selectedLanguage == '한국어' ? '당신이 졸업시킬 푸앙이는': 'The Puang you will graduate from is',
-                      option1: selectedLanguage == '한국어' ? '너드한' : 'nerd',
+                      option1: selectedLanguage == '한국어' ? '지휘적인' : 'commanding',
                       option2: selectedLanguage == '한국어' ? '푸앙이' : 'puang',
-                      pick_img: '너드한-푸앙.png',
+                      pick_img: '지적인-푸앙.png',
                     ),
                   ),
                 );
