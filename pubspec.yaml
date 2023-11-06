@@ -46,6 +46,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  flutter_screenutil: ^5.9.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -59,8 +60,22 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - images/자산.png
+    - images/영신관.png
+    - images/기본-배경.png
+    - images/기본배경.png
+    - images/기본-푸앙.png
+    - images/지식지수.png
+    - images/사교지수.png
+    - images/활동지수.png
+    - images/도움말.png
+    - images/너드한-푸앙.png
+    - images/모범-푸앙.png
+    - images/지적인-푸앙.png
+    - images/주도적인-푸앙.png
+    - images/호기심-푸앙.png
+    - images/활발한-푸앙.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
