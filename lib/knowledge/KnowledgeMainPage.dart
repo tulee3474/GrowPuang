@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class KnowledgeQuizMainPage extends StatelessWidget {
+class KnowledgeMainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

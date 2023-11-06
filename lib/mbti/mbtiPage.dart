@@ -103,7 +103,7 @@ class MBTIPage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => HomeScreen(option1: option1, option2: option2,pick_img:pick_img,),
+                          builder: (context) => MainPage(option1: option1, option2: option2,pick_img:pick_img,),
                         ),
                       );
                     },
