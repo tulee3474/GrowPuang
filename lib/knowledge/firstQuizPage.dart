@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:growpuang/knowledge/KnowledgeMainPage.dart';
-import 'package:growpuang/view/appBar.dart';
-
+import 'package:growpuang/view/widget/appBar.dart';
+import 'package:growpuang/view/widget/navigateBar.dart';
 import '../view/home_screen.dart';
-import '../view/navigateBar.dart';
+
 
 String selectedLanguage = '한국어';
 
