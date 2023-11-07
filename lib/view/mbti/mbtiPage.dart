@@ -3,10 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:growpuang/controller/language_controller.dart';
 import 'package:growpuang/controller/personal_contoller.dart';
-import 'package:growpuang/mbti/FirstPage.dart';
 import 'package:growpuang/mainPage.dart';
 
-import '../view/home_screen.dart';
 
 class MBTIPage extends StatelessWidget {
   final languageController = Get.put(LanguageController());

@@ -1,27 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:growpuang/mbti/FirstPage.dart';
-import 'mbtiPage.dart';
+import 'fourthPage.dart';
+import 'sixthPage.dart';
 
-class FifthPage extends StatelessWidget {
-  final String question;
-  final String option1;
-  final String option2;
-
-  FifthPage(
-      {Key? key,
-      required this.question,
-      required this.option1,
-      required this.option2})
-      : super(key: key);
-
+class ThirdPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: null,
       body: Stack(
         children: [
-          // 반응형 배경 이미지 설정
           Container(
             width: double.infinity,
             height: double.infinity,
@@ -32,14 +20,11 @@ class FifthPage extends StatelessWidget {
               ),
             ),
           ),
-          // 영신관 이미지 (상단 중앙에 배치)
           Align(
             alignment: Alignment.topCenter,
             child: GestureDetector(
               onTap: () {
-                // 영신관 이미지를 누를 때 수행할 작업을 정의하세요.
                 print('영신관 이미지를 눌렀습니다.');
-                // 여기에서 다음 질문 또는 동작을 정의할 수 있습니다.
               },
               child: Container(
                 width: 550.w,
@@ -53,11 +38,10 @@ class FifthPage extends StatelessWidget {
               ),
             ),
           ),
-          // 자산 이미지 크기 및 배치 수정
           Positioned(
             left: 0.w,
             right: 0.w,
-            top: 150.h,//
+            top: 150.h,
             child: Center(
               child: Container(
                 width: 410.w,
@@ -71,12 +55,13 @@ class FifthPage extends StatelessWidget {
               ),
             ),
           ),
-          // 질문 텍스트
           Center(
             child: Padding(
               padding: EdgeInsets.only(top: 130.h),
               child: Text(
-                question,
+                selectedLanguage == '한국어'
+                    ? '나는 어떤일을 할 때?'
+                    : 'When I do something?',
                 style: TextStyle(
                   color: Color(0xFF143264),
                   fontSize: 40.sp,
@@ -86,26 +71,24 @@ class FifthPage extends StatelessWidget {
               ),
             ),
           ),
-          // 버튼 1 - Option 1
           Positioned(
             left: 50.w,
             right: 50.w,
             top: 570.h,
             child: GestureDetector(
               onTap: () {
-                // Option 1 버튼을 눌렀을 때 수행할 작업을 정의하세요.
-                print('Option 1을 선택했습니다.');
-                // 여기에서 다음 질문 또는 동작을 정의할 수 있습니다.
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => MBTIPage(
+                    builder: (context) => FourthPage(
                       question: selectedLanguage == '한국어'
-                          ? '당신이 졸업시킬 푸앙이는'
-                          : 'The Puang you will graduate from is',
-                      option1: selectedLanguage == '한국어' ? '모범적인' : 'exemplary',
-                      option2: selectedLanguage == '한국어' ? '푸앙이' : 'puang',
-                      pick_img: '모범-푸앙.png',
+                          ? '내가 실패했을 때 두려운 것은?'
+                          : 'What do I fear when I fail?',
+                      option1: selectedLanguage == '한국어'
+                          ? '다른 사람의 평판'
+                          : 'someone else\'s reputation',
+                      option2:
+                          selectedLanguage == '한국어' ? '좌절감' : 'frustration',
                     ),
                   ),
                 );
@@ -129,7 +112,9 @@ class FifthPage extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Text(
-                      option1,
+                      selectedLanguage == '한국어'
+                          ? '이 일을 하지 않았을 때 잃게 될 것들을 떠올린다'
+                          : 'Think about what you will lose if you don\'t do this.',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 40.sp,
@@ -142,26 +127,24 @@ class FifthPage extends StatelessWidget {
               ),
             ),
           ),
-          // 버튼 2 - Option 2
           Positioned(
             left: 50.w,
             right: 50.w,
             top: 740.h,
             child: GestureDetector(
               onTap: () {
-                // Option 2 버튼을 눌렀을 때 수행할 작업을 정의하세요.
-                print('Option 2를 선택했습니다.');
-                // 여기에서 다음 질문 또는 동작을 정의할 수 있습니다.
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => MBTIPage(
+                    builder: (context) => SixthPage(
                       question: selectedLanguage == '한국어'
-                          ? '당신이 졸업시킬 푸앙이는'
-                          : 'The Puang you will graduate from is',
-                      option1: selectedLanguage == '한국어' ? '너드한' : 'nerd',
-                      option2: selectedLanguage == '한국어' ? '푸앙이' : 'puang',
-                      pick_img: '너드한-푸앙.png',
+                          ? '내가 실패했을 때 두려운 것은?'
+                          : 'What do I fear when I fail?',
+                      option2: selectedLanguage == '한국어'
+                          ? '다른 사람의 평판'
+                          : 'someone else\'s reputation',
+                      option1:
+                          selectedLanguage == '한국어' ? '좌절감' : 'frustration',
                     ),
                   ),
                 );
@@ -185,7 +168,9 @@ class FifthPage extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Text(
-                      option2,
+                      selectedLanguage == '한국어'
+                          ? '이 일을 해냈을 때 얻게 될 보상을 떠올린다'
+                          : 'Think about the reward you will receive when you accomplish this task.',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 40.sp,

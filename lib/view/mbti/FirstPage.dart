@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:growpuang/mbti/secondPage.dart';
+
+import 'secondPage.dart';
+
 
 String selectedLanguage = '한국어';
 

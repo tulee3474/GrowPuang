@@ -7,9 +7,8 @@ import 'package:get/get.dart';
 import 'package:growpuang/controller/personal_contoller.dart';
 import 'package:growpuang/model/get_device_unique_id.dart';
 import 'package:growpuang/styles.dart';
-import 'package:growpuang/view/home_screen.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:growpuang/mbti/FirstPage.dart';
+import 'package:growpuang/view/mbti/FirstPage.dart';
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized(); // 추가

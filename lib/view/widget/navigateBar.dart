@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:growpuang/knowledge/KnowledgeMainPage.dart';
+import 'package:growpuang/view/knowledge/KnowledgeMainPage.dart';
+
 
 String selectedLanguage = '한국어';
 

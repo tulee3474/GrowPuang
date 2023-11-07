@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:growpuang/knowledge/firstQuizPage.dart';
-import 'package:growpuang/mainPage.dart';
+import 'package:growpuang/view/home_screen.dart';
+import 'package:growpuang/view/knowledge/firstQuizPage.dart';
 
-import '../view/home_screen.dart';
 
 class KnowledgeMainPage extends StatelessWidget {
   @override

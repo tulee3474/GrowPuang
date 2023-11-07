@@ -3,10 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:growpuang/controller/personal_contoller.dart';
 import 'package:growpuang/controller/post_list_controller.dart';
-import 'package:growpuang/mbti/FirstPage.dart';
-import 'package:growpuang/knowledge/KnowledgeMainPage.dart';
 import 'package:growpuang/model/loading_dialog.dart';
 import 'package:growpuang/view/community_screen.dart';
+import 'package:growpuang/view/knowledge/KnowledgeMainPage.dart';
 
 class MainPage extends StatelessWidget {
 
