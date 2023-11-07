@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:growpuang/mbti/FirstPage.dart';
-import 'fifthPage.dart';
-import 'mbtiPage.dart';
+import 'package:growpuang/view/widget/appBar.dart';
+import 'package:growpuang/view/widget/mbti_diamond.dart';
+import 'seventhPage.dart';
+import 'eigthPage.dart';
+import 'package:get/get.dart';
+import 'package:growpuang/controller/language_controller.dart';
 
-class FourthPage extends StatelessWidget {
+class SixthPage extends StatelessWidget {
+  final languageController = Get.put(LanguageController());
+
   final String question;
   final String option1;
   final String option2;
 
-  FourthPage(
+  SixthPage(
       {Key? key,
       required this.question,
       required this.option1,
@@ -22,56 +27,8 @@ class FourthPage extends StatelessWidget {
       appBar: null,
       body: Stack(
         children: [
-          // 반응형 배경 이미지 설정
-          Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/기본-배경.png'),
-                fit: BoxFit.fill,
-              ),
-            ),
-          ),
-          // 영신관 이미지 (상단 중앙에 배치)
-          Align(
-            alignment: Alignment.topCenter,
-            child: GestureDetector(
-              onTap: () {
-                // 영신관 이미지를 누를 때 수행할 작업을 정의하세요.
-                print('영신관 이미지를 눌렀습니다.');
-                // 여기에서 다음 질문 또는 동작을 정의할 수 있습니다.
-              },
-              child: Container(
-                width: 550.w,
-                height: 200.h,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/영신관.png'),
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-            ),
-          ),
-          // 자산 이미지 크기 및 배치 수정
-          Positioned(
-            left: 0.w,
-            right: 0.w,
-            top: 150.h,// 더 위로 조정
-            child: Center(
-              child: Container(
-                width: 410.w,
-                height: 390.h,// 이미지 높이 조정
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/자산.png'),
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-            ),
-          ),
+          appBar(),
+          mbti_diamond(),
           // 질문 텍스트
           Center(
             child: Padding(
@@ -100,13 +57,16 @@ class FourthPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => MBTIPage(
-                      question: selectedLanguage == '한국어'
-                          ? '당신이 졸업시킬 푸앙이는'
-                          : 'The Puang you will graduate from is',
-                      option1: selectedLanguage == '한국어' ? '호기심 많은' : 'curious',
-                      option2: selectedLanguage == '한국어' ? '푸앙이' : 'puang',
-                      pick_img: '호기심-푸앙.png',
+                    builder: (context) => SeventhPage(
+                      question: languageController.language == '한국어'
+                          ? '더 멋지다고 생각되는 모습은?'
+                          : 'Which look do you think is cooler?',
+                      option1: languageController.language == '한국어'
+                          ? '갑작스러운 사고를 완벽하게 수습하는 나'
+                          : 'I perfectly handle sudden accidents',
+                      option2: languageController.language == '한국어'
+                          ? '주어진 일을 완벽하게 마무리 하는 나'
+                          : 'I complete the given task perfectly',
                     ),
                   ),
                 );
@@ -157,12 +117,16 @@ class FourthPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => FifthPage(
-                      question: selectedLanguage == '한국어'
-                          ? '음악을 들을 때 중요한 것은?'
-                          : 'What is important when listening to music?',
-                      option1: selectedLanguage == '한국어' ? '멜로디' : 'melody',
-                      option2: selectedLanguage == '한국어' ? '가사' : 'lyrics',
+                    builder: (context) => EighthPage(
+                      question: languageController.language == '한국어'
+                          ? '더 멋지다고 생각되는 모습은?'
+                          : 'Which look do you think is cooler?',
+                      option1: languageController.language == '한국어'
+                          ? '갑작스러운 사고를 완벽하게 수습하는 나'
+                          : 'I perfectly handle sudden accidents',
+                      option2: languageController.language == '한국어'
+                          ? '주어진 일을 완벽하게 마무리 하는 나'
+                          : 'I complete the given task perfectly',
                     ),
                   ),
                 );

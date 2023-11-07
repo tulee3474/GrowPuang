@@ -6,7 +6,6 @@ import 'package:growpuang/controller/language_controller.dart';
 import 'package:growpuang/controller/personal_contoller.dart';
 import 'package:growpuang/controller/post_list_controller.dart';
 import 'package:growpuang/model/loading_dialog.dart';
-import 'package:growpuang/styles.dart';
 import 'package:growpuang/view/community_screen.dart';
 
 class HomeScreen extends StatefulWidget {
