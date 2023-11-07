@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
+import '../../controller/language_controller.dart';
 import 'thirdPage.dart';
 
 
 class SecondPage extends StatelessWidget {
+  final languageController = Get.put(LanguageController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +58,7 @@ class SecondPage extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.only(top: 400.h),
               child: Text(
-                selectedLanguage == '한국어'
+                languageController.language == '한국어'
                     ? '어떤 언어로 진행하겠습니까?'
                     : 'Which language would you like to proceed in?',
                 style: TextStyle(
@@ -76,7 +79,7 @@ class SecondPage extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    selectedLanguage = '한국어';
+                    languageController.language = '한국어';
                     print('한국어 선택');
                     Navigator.push(
                       context,
@@ -119,7 +122,7 @@ class SecondPage extends StatelessWidget {
                 SizedBox(width: 40.w),
                 GestureDetector(
                   onTap: () {
-                    selectedLanguage = '영어';
+                    languageController.language = '영어';
                     print('영어 선택');
                     Navigator.push(
                       context,

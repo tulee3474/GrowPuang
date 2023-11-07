@@ -4,9 +4,11 @@ import 'package:get/get.dart';
 import 'package:growpuang/controller/language_controller.dart';
 import 'package:growpuang/controller/personal_contoller.dart';
 import 'package:growpuang/mainPage.dart';
+import 'package:get/get.dart';
+import 'package:growpuang/controller/language_controller.dart';
 
 
-class MBTIPage extends StatelessWidget {
+class lastPage extends StatelessWidget {
   final languageController = Get.put(LanguageController());
   final personalController = Get.put(PersonalController());
   final String question;
@@ -14,7 +16,7 @@ class MBTIPage extends StatelessWidget {
   final String option2;
   final String pick_img;
 
-  MBTIPage(
+  lastPage(
       {Key? key,
       required this.question,
       required this.pick_img,
@@ -98,7 +100,7 @@ class MBTIPage extends StatelessWidget {
                     option1 +
                         ' ' +
                         option2 +
-                        (selectedLanguage == '한국어' ? '입니다' : ''),
+                        (languageController.language == '한국어' ? '입니다' : ''),
                     style: TextStyle(
                       color: Color(0xFF143264),
                       fontSize: 40.sp,
@@ -113,7 +115,7 @@ class MBTIPage extends StatelessWidget {
                       personalController.option1 = option1;
                       personalController.option2 = option2;
                       personalController.pick_img = pick_img;
-                      languageController.language = selectedLanguage;
+                      languageController.language = languageController.language;
 
                       // 현재 화면을 스택에서 제거
                       Navigator.of(context).pop();

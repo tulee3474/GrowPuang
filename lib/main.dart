@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import 'package:growpuang/controller/personal_contoller.dart';
 import 'package:growpuang/model/get_device_unique_id.dart';
 import 'package:growpuang/styles.dart';
-import 'package:growpuang/view/mbti/FirstPage.dart';
+import 'package:growpuang/view/mbti/firstPage.dart';
 
 
 Future<void> main() async {
@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
             },
           ),
         ),
-        home: const FirstPage(title: 'Flutter Demo Home Page'),
+        home: const firstPage(title: 'Flutter Demo Home Page'),
         //getPages: pageRoutingController.makeNewTravelPageList,
       ),
     );

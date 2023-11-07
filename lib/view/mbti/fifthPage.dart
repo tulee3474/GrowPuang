@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'mbtiPage.dart';
+import 'package:get/get.dart';
+import 'package:growpuang/controller/language_controller.dart';
+import 'lastPage.dart';
 
 class FifthPage extends StatelessWidget {
+  final languageController = Get.put(LanguageController());
+
   final String question;
   final String option1;
   final String option2;
@@ -98,12 +102,12 @@ class FifthPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => MBTIPage(
-                      question: selectedLanguage == '한국어'
+                    builder: (context) => lastPage(
+                      question: languageController.language == '한국어'
                           ? '당신이 졸업시킬 푸앙이는'
                           : 'The Puang you will graduate from is',
-                      option1: selectedLanguage == '한국어' ? '모범적인' : 'exemplary',
-                      option2: selectedLanguage == '한국어' ? '푸앙이' : 'puang',
+                      option1: languageController.language == '한국어' ? '모범적인' : 'exemplary',
+                      option2: languageController.language == '한국어' ? '푸앙이' : 'puang',
                       pick_img: '모범-푸앙.png',
                     ),
                   ),
@@ -154,12 +158,12 @@ class FifthPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => MBTIPage(
-                      question: selectedLanguage == '한국어'
+                    builder: (context) => lastPage(
+                      question: languageController.language == '한국어'
                           ? '당신이 졸업시킬 푸앙이는'
                           : 'The Puang you will graduate from is',
-                      option1: selectedLanguage == '한국어' ? '너드한' : 'nerd',
-                      option2: selectedLanguage == '한국어' ? '푸앙이' : 'puang',
+                      option1: languageController.language == '한국어' ? '너드한' : 'nerd',
+                      option2: languageController.language == '한국어' ? '푸앙이' : 'puang',
                       pick_img: '너드한-푸앙.png',
                     ),
                   ),

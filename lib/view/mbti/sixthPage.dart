@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'seventhPage.dart';
 import 'eigthPage.dart';
+import 'package:get/get.dart';
+import 'package:growpuang/controller/language_controller.dart';
 
 class SixthPage extends StatelessWidget {
+  final languageController = Get.put(LanguageController());
+
   final String question;
   final String option1;
   final String option2;
@@ -100,13 +104,13 @@ class SixthPage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => SeventhPage(
-                      question: selectedLanguage == '한국어'
+                      question: languageController.language == '한국어'
                           ? '더 멋지다고 생각되는 모습은?'
                           : 'Which look do you think is cooler?',
-                      option1: selectedLanguage == '한국어'
+                      option1: languageController.language == '한국어'
                           ? '갑작스러운 사고를 완벽하게 수습하는 나'
                           : 'I perfectly handle sudden accidents',
-                      option2: selectedLanguage == '한국어'
+                      option2: languageController.language == '한국어'
                           ? '주어진 일을 완벽하게 마무리 하는 나'
                           : 'I complete the given task perfectly',
                     ),
@@ -160,13 +164,13 @@ class SixthPage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => EighthPage(
-                      question: selectedLanguage == '한국어'
+                      question: languageController.language == '한국어'
                           ? '더 멋지다고 생각되는 모습은?'
                           : 'Which look do you think is cooler?',
-                      option1: selectedLanguage == '한국어'
+                      option1: languageController.language == '한국어'
                           ? '갑작스러운 사고를 완벽하게 수습하는 나'
                           : 'I perfectly handle sudden accidents',
-                      option2: selectedLanguage == '한국어'
+                      option2: languageController.language == '한국어'
                           ? '주어진 일을 완벽하게 마무리 하는 나'
                           : 'I complete the given task perfectly',
                     ),

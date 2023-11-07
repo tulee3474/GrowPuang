@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
-String selectedLanguage = '한국어';
-
 class appBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

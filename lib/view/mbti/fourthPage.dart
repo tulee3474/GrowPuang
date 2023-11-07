@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:growpuang/controller/language_controller.dart';
 import 'fifthPage.dart';
-import 'mbtiPage.dart';
+import 'lastPage.dart';
 
 class FourthPage extends StatelessWidget {
+  final languageController = Get.put(LanguageController());
+
   final String question;
   final String option1;
   final String option2;
@@ -99,12 +103,12 @@ class FourthPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => MBTIPage(
-                      question: selectedLanguage == '한국어'
+                    builder: (context) => lastPage(
+                      question: languageController.language == '한국어'
                           ? '당신이 졸업시킬 푸앙이는'
                           : 'The Puang you will graduate from is',
-                      option1: selectedLanguage == '한국어' ? '호기심 많은' : 'curious',
-                      option2: selectedLanguage == '한국어' ? '푸앙이' : 'puang',
+                      option1: languageController.language == '한국어' ? '호기심 많은' : 'curious',
+                      option2: languageController.language == '한국어' ? '푸앙이' : 'puang',
                       pick_img: '호기심-푸앙.png',
                     ),
                   ),
@@ -157,11 +161,11 @@ class FourthPage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => FifthPage(
-                      question: selectedLanguage == '한국어'
+                      question: languageController.language == '한국어'
                           ? '음악을 들을 때 중요한 것은?'
                           : 'What is important when listening to music?',
-                      option1: selectedLanguage == '한국어' ? '멜로디' : 'melody',
-                      option2: selectedLanguage == '한국어' ? '가사' : 'lyrics',
+                      option1: languageController.language == '한국어' ? '멜로디' : 'melody',
+                      option2: languageController.language == '한국어' ? '가사' : 'lyrics',
                     ),
                   ),
                 );

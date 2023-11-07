@@ -6,8 +6,8 @@ import 'secondPage.dart';
 
 String selectedLanguage = '한국어';
 
-class FirstPage extends StatelessWidget {
-  const FirstPage({Key? key, required this.title}) : super(key: key);
+class firstPage extends StatelessWidget {
+  const firstPage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 

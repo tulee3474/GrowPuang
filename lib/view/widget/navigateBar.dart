@@ -3,8 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:growpuang/view/knowledge/KnowledgeMainPage.dart';
 
 
-String selectedLanguage = '한국어';
-
 class navigateBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

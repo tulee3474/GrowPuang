@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'fourthPage.dart';
 import 'sixthPage.dart';
+import 'package:get/get.dart';
+import 'package:growpuang/controller/language_controller.dart';
 
 class ThirdPage extends StatelessWidget {
+  final languageController = Get.put(LanguageController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +63,7 @@ class ThirdPage extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.only(top: 130.h),
               child: Text(
-                selectedLanguage == '한국어'
+                languageController.language == '한국어'
                     ? '나는 어떤일을 할 때?'
                     : 'When I do something?',
                 style: TextStyle(
@@ -81,14 +85,14 @@ class ThirdPage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => FourthPage(
-                      question: selectedLanguage == '한국어'
+                      question: languageController.language == '한국어'
                           ? '내가 실패했을 때 두려운 것은?'
                           : 'What do I fear when I fail?',
-                      option1: selectedLanguage == '한국어'
+                      option1: languageController.language == '한국어'
                           ? '다른 사람의 평판'
                           : 'someone else\'s reputation',
                       option2:
-                          selectedLanguage == '한국어' ? '좌절감' : 'frustration',
+                      languageController.language == '한국어' ? '좌절감' : 'frustration',
                     ),
                   ),
                 );
@@ -112,7 +116,7 @@ class ThirdPage extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Text(
-                      selectedLanguage == '한국어'
+                      languageController.language == '한국어'
                           ? '이 일을 하지 않았을 때 잃게 될 것들을 떠올린다'
                           : 'Think about what you will lose if you don\'t do this.',
                       style: TextStyle(
@@ -137,14 +141,14 @@ class ThirdPage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => SixthPage(
-                      question: selectedLanguage == '한국어'
+                      question: languageController.language == '한국어'
                           ? '내가 실패했을 때 두려운 것은?'
                           : 'What do I fear when I fail?',
-                      option2: selectedLanguage == '한국어'
+                      option2: languageController.language == '한국어'
                           ? '다른 사람의 평판'
                           : 'someone else\'s reputation',
                       option1:
-                          selectedLanguage == '한국어' ? '좌절감' : 'frustration',
+                      languageController.language == '한국어' ? '좌절감' : 'frustration',
                     ),
                   ),
                 );
@@ -168,7 +172,7 @@ class ThirdPage extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Text(
-                      selectedLanguage == '한국어'
+                      languageController.language == '한국어'
                           ? '이 일을 해냈을 때 얻게 될 보상을 떠올린다'
                           : 'Think about the reward you will receive when you accomplish this task.',
                       style: TextStyle(

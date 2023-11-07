@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:growpuang/controller/language_controller.dart';
 import 'package:growpuang/controller/personal_contoller.dart';
 import 'package:growpuang/controller/post_list_controller.dart';
 import 'package:growpuang/model/loading_dialog.dart';
@@ -8,7 +9,7 @@ import 'package:growpuang/view/community_screen.dart';
 import 'package:growpuang/view/knowledge/KnowledgeMainPage.dart';
 
 class MainPage extends StatelessWidget {
-
+  final languageController = Get.put(LanguageController());
   final postListController = Get.put(PostListController());
   final personalController = Get.put(PersonalController());
   MainPage({
@@ -112,7 +113,7 @@ class MainPage extends StatelessWidget {
               child: Row(
                 children: [
                   Text(
-                    selectedLanguage == '한국어' ? '체력' : 'HP',
+                    languageController.language == '한국어' ? '체력' : 'HP',
                     style: TextStyle(
                       color: Color(0xFF143264),
                       fontSize: 40.sp,
