@@ -28,8 +28,8 @@ class ThirdPage extends StatelessWidget {
                 print('영신관 이미지를 눌렀습니다.');
               },
               child: Container(
-                width: 350.w,
-                height: 150.h,
+                width: 550.w,
+                height: 200.h,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage('assets/images/영신관.png'),
@@ -42,11 +42,11 @@ class ThirdPage extends StatelessWidget {
           Positioned(
             left: 0.w,
             right: 0.w,
-            top: 100.h,
+            top: 150.h,
             child: Center(
               child: Container(
-                width: 318.w,
-                height: 350.h,
+                width: 410.w,
+                height: 390.h,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage('assets/images/자산.png'),
@@ -58,14 +58,14 @@ class ThirdPage extends StatelessWidget {
           ),
           Center(
             child: Padding(
-              padding: EdgeInsets.only(top: 150.h),
+              padding: EdgeInsets.only(top: 130.h),
               child: Text(
                 selectedLanguage == '한국어'
                     ? '나는 어떤일을 할 때?'
                     : 'When I do something?',
                 style: TextStyle(
                   color: Color(0xFF143264),
-                  fontSize: 25.sp,
+                  fontSize: 40.sp,
                   fontFamily: 'YourFontFamily',
                   fontWeight: FontWeight.bold,
                 ),
@@ -75,7 +75,7 @@ class ThirdPage extends StatelessWidget {
           Positioned(
             left: 50.w,
             right: 50.w,
-            top: 460.h,
+            top: 570.h,
             child: GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -96,7 +96,7 @@ class ThirdPage extends StatelessWidget {
               },
               child: Container(
                 width: double.infinity,
-                height: 80.h,
+                height: 130.h,
                 decoration: BoxDecoration(
                   color: Color(0xFF143264),
                   borderRadius: BorderRadius.circular(15),
@@ -118,7 +118,7 @@ class ThirdPage extends StatelessWidget {
                           : 'Think about what you will lose if you don\'t do this.',
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 20.sp,
+                        fontSize: 40.sp,
                         fontFamily: 'YourFontFamily',
                         fontWeight: FontWeight.bold,
                       ),
@@ -131,7 +131,7 @@ class ThirdPage extends StatelessWidget {
           Positioned(
             left: 50.w,
             right: 50.w,
-            top: 560.h,
+            top: 740.h,
             child: GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -152,7 +152,7 @@ class ThirdPage extends StatelessWidget {
               },
               child: Container(
                 width: double.infinity,
-                height: 80.h,
+                height: 130.h,
                 decoration: BoxDecoration(
                   color: Color(0xFF143264),
                   borderRadius: BorderRadius.circular(15),
@@ -174,7 +174,7 @@ class ThirdPage extends StatelessWidget {
                           : 'Think about the reward you will receive when you accomplish this task.',
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 20.sp,
+                        fontSize: 40.sp,
                         fontFamily: 'YourFontFamily',
                         fontWeight: FontWeight.bold,
                       ),

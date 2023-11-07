@@ -27,8 +27,8 @@ class FirstPage extends StatelessWidget {
           ),
           Center(
             child: Container(
-              width: 318.w,
-              height: 350.h,
+              width: 510.w,
+              height: 490.h,
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/images/자산.png'),
@@ -44,8 +44,8 @@ class FirstPage extends StatelessWidget {
             child: Align(
               alignment: Alignment.topCenter,
               child: Container(
-                width: 350.w,
-                height: 150.h,
+                width: 550.w,
+                height: 200.h,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage('assets/images/영신관.png'),
@@ -56,8 +56,8 @@ class FirstPage extends StatelessWidget {
             ),
           ),
           Positioned(
-            left: 84.w,
-            top: 470.h,
+            left: 192.w,
+            top: 640.h,
             child: GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -80,7 +80,7 @@ class FirstPage extends StatelessWidget {
                       'Start >',
                       style: TextStyle(
                         color: Color(0xFF143264),
-                        fontSize: 35.sp,
+                        fontSize: 55.sp,
                         fontFamily: 'YourFontFamily',
                         fontWeight: FontWeight.bold,
                       ),

@@ -43,8 +43,8 @@ class SixthPage extends StatelessWidget {
                 // 여기에서 다음 질문 또는 동작을 정의할 수 있습니다.
               },
               child: Container(
-                width: 350.w,
-                height: 150.h,
+                width: 550.w,
+                height: 200.h,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage('assets/images/영신관.png'),
@@ -58,11 +58,11 @@ class SixthPage extends StatelessWidget {
           Positioned(
             left: 0.w,
             right: 0.w,
-            top: 100.h, // 더 위로 조정
+            top: 150.h,// // 더 위로 조정
             child: Center(
               child: Container(
-                width: 318.w, // 이미지 너비 조정
-                height: 350.h, // 이미지 높이 조정
+                width: 410.w,
+                height: 390.h,// 이미지 높이 조정
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage('assets/images/자산.png'),
@@ -75,12 +75,12 @@ class SixthPage extends StatelessWidget {
           // 질문 텍스트
           Center(
             child: Padding(
-              padding: EdgeInsets.only(top: 150.h),
+              padding: EdgeInsets.only(top: 130.h),
               child: Text(
                 question,
                 style: TextStyle(
                   color: Color(0xFF143264),
-                  fontSize: 25.sp,
+                  fontSize: 40.sp,
                   fontFamily: 'YourFontFamily',
                   fontWeight: FontWeight.bold,
                 ),
@@ -91,7 +91,7 @@ class SixthPage extends StatelessWidget {
           Positioned(
             left: 50.w,
             right: 50.w,
-            top: 460.h,
+            top: 570.h,
             child: GestureDetector(
               onTap: () {
                 // Option 1 버튼을 눌렀을 때 수행할 작업을 정의하세요.
@@ -116,7 +116,7 @@ class SixthPage extends StatelessWidget {
               },
               child: Container(
                 width: double.infinity,
-                height: 80.h,
+                height: 130.h,
                 decoration: BoxDecoration(
                   color: Color(0xFF143264),
                   borderRadius: BorderRadius.circular(15),
@@ -136,7 +136,7 @@ class SixthPage extends StatelessWidget {
                       option1,
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 20.sp,
+                        fontSize: 40.sp,
                         fontFamily: 'YourFontFamily',
                         fontWeight: FontWeight.bold,
                       ),
@@ -150,7 +150,7 @@ class SixthPage extends StatelessWidget {
           Positioned(
             left: 50.w,
             right: 50.w,
-            top: 560.h,
+            top: 740.h,
             child: GestureDetector(
               onTap: () {
                 // Option 2 버튼을 눌렀을 때 수행할 작업을 정의하세요.
@@ -176,7 +176,7 @@ class SixthPage extends StatelessWidget {
               },
               child: Container(
                 width: double.infinity,
-                height: 80.h,
+                height: 130.h,
                 decoration: BoxDecoration(
                   color: Color(0xFF143264),
                   borderRadius: BorderRadius.circular(15),
@@ -196,7 +196,7 @@ class SixthPage extends StatelessWidget {
                       option2,
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 20.sp,
+                        fontSize: 40.sp,
                         fontFamily: 'YourFontFamily',
                         fontWeight: FontWeight.bold,
                       ),

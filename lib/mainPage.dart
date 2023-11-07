@@ -9,6 +9,7 @@ import 'package:growpuang/model/loading_dialog.dart';
 import 'package:growpuang/view/community_screen.dart';
 
 class MainPage extends StatelessWidget {
+
   final postListController = Get.put(PostListController());
   final personalController = Get.put(PersonalController());
   MainPage({
@@ -42,8 +43,8 @@ class MainPage extends StatelessWidget {
                 // 여기에서 다음 질문 또는 동작을 정의할 수 있습니다.
               },
               child: Container(
-                width: 350.w,
-                height: 150.h,
+                width: 550.w,
+                height: 200.h,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage('assets/images/영신관.png'),
@@ -57,7 +58,7 @@ class MainPage extends StatelessWidget {
           Positioned(
             left: 0.w,
             right: 0.w,
-            top: 200.h, // 원하는 위치로 조정
+            top: 250.h, // 원하는 위치로 조정
             child: Center(
               child: Column(
                 children: [
@@ -69,7 +70,7 @@ class MainPage extends StatelessWidget {
                           personalController.option2,
                       style: TextStyle(
                         color: Color(0xFF143264),
-                        fontSize: 25.sp,
+                        fontSize: 40.sp,
                         fontFamily: 'YourFontFamily',
                         fontWeight: FontWeight.bold,
                       ),
@@ -77,8 +78,8 @@ class MainPage extends StatelessWidget {
                   ),
                   SizedBox(height: 20.h), // 원하는 여백 크기로 조정
                   Container(
-                    width: 170.w, // 이미지 너비 조정
-                    height: 220.h, // 이미지 높이 조정
+                    width: 230.w, // 이미지 너비 조정
+                    height: 280.h, // 이미지 높이 조정
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage(
@@ -87,17 +88,17 @@ class MainPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 20.h),
+                  SizedBox(height: 30.h),
                   Text(
                     '',
                     style: TextStyle(
                       color: Color(0xFF143264),
-                      fontSize: 25.sp,
+                      fontSize: 40.sp,
                       fontFamily: 'YourFontFamily',
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 10.h),
+                  SizedBox(height: 20.h),
                 ],
               ),
             ),
@@ -106,7 +107,7 @@ class MainPage extends StatelessWidget {
           Positioned(
             left: 20.w,
             right: 20.w,
-            top: 500.h, // 기본-푸앙이 밑에 원하는 위치로 조정
+            top: 650.h, // 기본-푸앙이 밑에 원하는 위치로 조정
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.0.w), // 좌우 여백을 조정
               child: Row(
@@ -115,18 +116,18 @@ class MainPage extends StatelessWidget {
                     selectedLanguage == '한국어' ? '체력' : 'HP',
                     style: TextStyle(
                       color: Color(0xFF143264),
-                      fontSize: 16.sp,
+                      fontSize: 40.sp,
                       fontFamily: 'YourFontFamily',
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(width: 10.w), // 원하는 여백 크기로 조정
+                  SizedBox(width: 30.w), // 원하는 여백 크기로 조정
                   Expanded(
                     child: ClipRRect(
                       borderRadius:
-                          BorderRadius.circular(10.0), // 원하는 라운드값으로 조절
+                          BorderRadius.circular(30.0), // 원하는 라운드값으로 조절
                       child: LinearProgressIndicator(
-                        minHeight: 20.0,
+                        minHeight: 30.0,
                         value: personalController
                             .progressValue, // 게이지 바의 값 (0.0에서 1.0 사이)
                         valueColor: AlwaysStoppedAnimation<Color>(
@@ -134,12 +135,12 @@ class MainPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(width: 10.w), // 원하는 여백 크기로 조정
+                  SizedBox(width: 30.w), // 원하는 여백 크기로 조정
                   Text(
                     '1/10', // 원하는 비율로 변경
                     style: TextStyle(
                       color: Color(0xFF143264),
-                      fontSize: 16.sp,
+                      fontSize: 40.sp,
                       fontFamily: 'YourFontFamily',
                       fontWeight: FontWeight.bold,
                     ),
@@ -168,8 +169,8 @@ class MainPage extends StatelessWidget {
                     );
                   },
                   child: Container(
-                    width: 80.w,
-                    height: 80.h,
+                    width: 130.w,
+                    height: 130.h,
                     decoration: const BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage('assets/images/지식지수.png'),
@@ -184,8 +185,8 @@ class MainPage extends StatelessWidget {
                     // 이미지 버튼 2를 탭했을 때 수행할 작업을 정의
                   },
                   child: Container(
-                    width: 80.w,
-                    height: 80.h,
+                    width: 100.w,
+                    height: 100.h,
                     decoration: const BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage('assets/images/활동지수.png'),
@@ -219,8 +220,8 @@ class MainPage extends StatelessWidget {
                     print('커뮤니티 페이지로 넘어 갑니다');
                   },
                   child: Container(
-                    width: 80.w,
-                    height: 80.h,
+                    width: 130.w,
+                    height: 130.h,
                     decoration: const BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage('assets/images/사교지수.png'),
@@ -235,8 +236,8 @@ class MainPage extends StatelessWidget {
                     // 이미지 버튼 4를 탭했을 때 수행할 작업을 정의
                   },
                   child: Container(
-                    width: 80.w, //이미지는 나중에 크기 수정하면 됨
-                    height: 80.h,
+                    width: 100.w,
+                    height: 100.h,
                     decoration: const BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage('assets/images/도움말.png'),
