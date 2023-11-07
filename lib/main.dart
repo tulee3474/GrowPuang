@@ -37,60 +37,38 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context); //스크린유틸 초기화
-
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: mainColor),
-        useMaterial3: true,
-        pageTransitionsTheme: PageTransitionsTheme(
-          builders: {
-            for (var platform in TargetPlatform.values)
-              platform: NoTransitionsBuilder(),
-          },
-        ),
-      ),
-      home: const FirstPage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    //final pageRoutingController = Get.put(PageRoutingController());
     return ScreenUtilInit(
-      designSize: Size(360, 800),
+      designSize: Size(570, 907),
       builder: (BuildContext context, child) => GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: lightColorTheme,
-        home: HomeScreen(),
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: mainColor),
+          useMaterial3: true,
+          pageTransitionsTheme: PageTransitionsTheme(
+            builders: {
+              for (var platform in TargetPlatform.values)
+                platform: NoTransitionsBuilder(),
+            },
+          ),
+        ),
+        home: const FirstPage(title: 'Flutter Demo Home Page'),
         //getPages: pageRoutingController.makeNewTravelPageList,
       ),
     );
   }
 }
 
-
 class NoTransitionsBuilder extends PageTransitionsBuilder {
   const NoTransitionsBuilder();
 
   @override
   Widget buildTransitions<T>(
-      PageRoute<T> route,
-      BuildContext context,
-      Animation<double> animation,
-      Animation<double> secondaryAnimation,
-      Widget child,
-      ) {
+    PageRoute<T> route,
+    BuildContext context,
+    Animation<double> animation,
+    Animation<double> secondaryAnimation,
+    Widget child,
+  ) {
     return child;
   }
 }

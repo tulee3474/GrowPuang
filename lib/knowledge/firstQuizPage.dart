@@ -5,7 +5,6 @@ import 'package:growpuang/view/widget/appBar.dart';
 import 'package:growpuang/view/widget/navigateBar.dart';
 import '../view/home_screen.dart';
 
-
 String selectedLanguage = '한국어';
 
 class firstQuizPage extends StatelessWidget {
@@ -34,7 +33,8 @@ class firstQuizPage extends StatelessWidget {
                     height: 237.h,
                     decoration: ShapeDecoration(
                       color: Color(0xFFC9EB9B),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(3)),
                     ),
                   ),
                 ],
@@ -57,7 +57,8 @@ class firstQuizPage extends StatelessWidget {
                     height: 30.h,
                     decoration: ShapeDecoration(
                       color: Colors.white,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(3)),
                     ),
                   ),
                 ],
@@ -80,7 +81,8 @@ class firstQuizPage extends StatelessWidget {
                     height: 30.h,
                     decoration: ShapeDecoration(
                       color: Colors.white,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(3)),
                     ),
                   ),
                 ],
@@ -104,7 +106,8 @@ class firstQuizPage extends StatelessWidget {
                     height: 237,
                     decoration: ShapeDecoration(
                       color: Color(0xFFC9EB9B),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(3)),
                     ),
                   ),
                 ],
@@ -135,7 +138,8 @@ class firstQuizPage extends StatelessWidget {
                             height: 30,
                             decoration: ShapeDecoration(
                               color: Colors.white,
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(3)),
                             ),
                           ),
                         ],
@@ -188,7 +192,8 @@ class firstQuizPage extends StatelessWidget {
                             height: 30,
                             decoration: ShapeDecoration(
                               color: Colors.white,
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(3)),
                             ),
                           ),
                         ],
@@ -233,7 +238,8 @@ class firstQuizPage extends StatelessWidget {
                       height: 30,
                       decoration: ShapeDecoration(
                         color: Color(0xFF143264),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(3)),
                       ),
                     ),
                   ),
@@ -434,4 +440,3 @@ class firstQuizPage extends StatelessWidget {
     );
   }
 }
-

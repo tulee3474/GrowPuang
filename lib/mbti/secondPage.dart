@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:growpuang/mbti/FirstPage.dart';
 import 'package:growpuang/mbti/thirdPage.dart';
 
-
 class SecondPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -16,7 +15,7 @@ class SecondPage extends StatelessWidget {
             height: double.infinity,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('images/기본-배경.png'),
+                image: AssetImage('assets/images/기본-배경.png'),
                 fit: BoxFit.fill,
               ),
             ),
@@ -31,7 +30,7 @@ class SecondPage extends StatelessWidget {
                 height: 350.h,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('images/자산.png'),
+                    image: AssetImage('assets/images/자산.png'),
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -49,7 +48,7 @@ class SecondPage extends StatelessWidget {
                 height: 150.h,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('images/영신관.png'),
+                    image: AssetImage('assets/images/영신관.png'),
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -60,7 +59,9 @@ class SecondPage extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.only(top: 150.h),
               child: Text(
-                selectedLanguage == '한국어' ? '어떤 언어로 진행하겠습니까?' : 'Which language would you like to proceed in?',
+                selectedLanguage == '한국어'
+                    ? '어떤 언어로 진행하겠습니까?'
+                    : 'Which language would you like to proceed in?',
                 style: TextStyle(
                   color: Color(0xFF143264),
                   fontSize: 25.sp,

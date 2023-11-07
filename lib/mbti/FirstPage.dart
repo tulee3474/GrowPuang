@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:growpuang/mbti/secondPage.dart';
 
-
 String selectedLanguage = '한국어';
 
 class FirstPage extends StatelessWidget {
@@ -21,7 +20,7 @@ class FirstPage extends StatelessWidget {
             height: double.infinity,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('images/기본-배경.png'),
+                image: AssetImage('assets/images/기본-배경.png'),
                 fit: BoxFit.fill,
               ),
             ),
@@ -32,7 +31,7 @@ class FirstPage extends StatelessWidget {
               height: 350.h,
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('images/자산.png'),
+                  image: AssetImage('assets/images/자산.png'),
                   fit: BoxFit.fill,
                 ),
               ),
@@ -49,7 +48,7 @@ class FirstPage extends StatelessWidget {
                 height: 150.h,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('images/영신관.png'),
+                    image: AssetImage('assets/images/영신관.png'),
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -96,11 +95,3 @@ class FirstPage extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-
