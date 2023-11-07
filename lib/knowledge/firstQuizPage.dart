@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:growpuang/knowledge/KnowledgeMainPage.dart';
-
+import 'package:growpuang/view/widget/appBar.dart';
+import 'package:growpuang/view/widget/navigateBar.dart';
 import '../view/home_screen.dart';
+
 
 String selectedLanguage = '한국어';
 
@@ -14,34 +16,7 @@ class firstQuizPage extends StatelessWidget {
       appBar: null,
       body: Stack(
         children: [
-          Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('images/기본-배경.png'),
-                fit: BoxFit.fill,
-              ),
-            ),
-          ),
-          GestureDetector(
-            onTap: () {
-              print('영신관 이미지를 눌렀습니다.');
-            },
-            child: Align(
-              alignment: Alignment.topCenter,
-              child: Container(
-                width: 350.w,
-                height: 150.h,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('images/영신관.png'),
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-            ),
-          ),
+          appBar(),
           Positioned(
             left: 30.w,
             top: 211.h,
@@ -453,87 +428,7 @@ class firstQuizPage extends StatelessWidget {
               ),
             ),
           ),
-          Positioned(
-            left: 20.w,
-            right: 20.w,
-            bottom: 20.h,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                // 이미지 버튼 1
-                InkWell(
-                  onTap: () {
-                    // 이미지 버튼 1을 탭했을 때 수행할 작업을 정의
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => KnowledgeMainPage(),
-                      ),
-                    );
-                  },
-                  child: Container(
-                    width: 80.w,
-                    height: 80.h,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('images/지식지수.png'),
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  ),
-                ),
-                // 이미지 버튼 2 (기존 UI 유지)
-                InkWell(
-                  onTap: () {
-                    // 이미지 버튼 2를 탭했을 때 수행할 작업을 정의
-                  },
-                  child: Container(
-                    width: 80.w,
-                    height: 80.h,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('images/활동지수.png'),
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  ),
-                ),
-                // 이미지 버튼 3 (기존 UI 유지)
-                InkWell(
-                  onTap: () {
-                    // 이미지 버튼 3을 탭했을 때 수행할 작업을 정의
-                  },
-                  child: Container(
-                    width: 80.w,
-                    height: 80.h,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('images/사교지수.png'),
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  ),
-                ),
-                // 이미지 버튼 4 (기존 UI 유지)
-                InkWell(
-                  onTap: () {
-                    // 이미지 버튼 4를 탭했을 때 수행할 작업을 정의
-                  },
-                  child: Container(
-                    width: 80.w,//이미지는 나중에 크기 수정하면 됨
-                    height: 80.h,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('images/도움말.png'),
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-
+          navigateBar(),
         ],
       ),
     );
