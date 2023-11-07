@@ -20,19 +20,14 @@ class SecondPage extends StatelessWidget {
               ),
             ),
           ),
-          Positioned(
-            left: 0.w,
-            right: 0.w,
-            top: 100.h,
-            child: Center(
-              child: Container(
-                width: 318.w,
-                height: 350.h,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/자산.png'),
-                    fit: BoxFit.fill,
-                  ),
+          Center(
+            child: Container(
+              width: 510.w,
+              height: 490.h,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/자산.png'),
+                  fit: BoxFit.fill,
                 ),
               ),
             ),
@@ -44,8 +39,8 @@ class SecondPage extends StatelessWidget {
             child: Align(
               alignment: Alignment.topCenter,
               child: Container(
-                width: 350.w,
-                height: 150.h,
+                width: 550.w,
+                height: 200.h,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage('assets/images/영신관.png'),
@@ -57,14 +52,14 @@ class SecondPage extends StatelessWidget {
           ),
           Center(
             child: Padding(
-              padding: EdgeInsets.only(top: 150.h),
+              padding: EdgeInsets.only(top: 400.h),
               child: Text(
                 selectedLanguage == '한국어'
                     ? '어떤 언어로 진행하겠습니까?'
                     : 'Which language would you like to proceed in?',
                 style: TextStyle(
                   color: Color(0xFF143264),
-                  fontSize: 25.sp,
+                  fontSize: 40.sp,
                   fontFamily: 'YourFontFamily',
                   fontWeight: FontWeight.bold,
                 ),
@@ -74,7 +69,7 @@ class SecondPage extends StatelessWidget {
           Positioned(
             left: 0.0,
             right: 0.0,
-            top: 470.h,
+            top: 700.h,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -90,8 +85,8 @@ class SecondPage extends StatelessWidget {
                     );
                   },
                   child: Container(
-                    width: 150.w,
-                    height: 70.h,
+                    width: 200.w,
+                    height: 90.h,
                     decoration: BoxDecoration(
                       color: Color(0xFF143264),
                       borderRadius: BorderRadius.circular(15.w),
@@ -111,7 +106,7 @@ class SecondPage extends StatelessWidget {
                           '한국어',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 35.sp,
+                            fontSize: 50.sp,
                             fontFamily: 'YourFontFamily',
                             fontWeight: FontWeight.bold,
                           ),
@@ -120,7 +115,7 @@ class SecondPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(width: 20.w),
+                SizedBox(width: 40.w),
                 GestureDetector(
                   onTap: () {
                     selectedLanguage = '영어';
@@ -133,8 +128,8 @@ class SecondPage extends StatelessWidget {
                     );
                   },
                   child: Container(
-                    width: 150.w,
-                    height: 70.h,
+                    width: 200.w,
+                    height: 90.h,
                     decoration: BoxDecoration(
                       color: Color(0xFF143264),
                       borderRadius: BorderRadius.circular(15.w),
@@ -154,7 +149,7 @@ class SecondPage extends StatelessWidget {
                           'English',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 35.sp,
+                            fontSize: 50.sp,
                             fontFamily: 'YourFontFamily',
                             fontWeight: FontWeight.bold,
                           ),

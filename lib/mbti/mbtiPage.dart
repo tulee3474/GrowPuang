@@ -52,8 +52,8 @@ class MBTIPage extends StatelessWidget {
                 // 여기에서 다음 질문 또는 동작을 정의할 수 있습니다.
               },
               child: Container(
-                width: 350.w,
-                height: 150.h,
+                width: 550.w,
+                height: 200.h,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage('assets/images/영신관.png'),
@@ -67,7 +67,7 @@ class MBTIPage extends StatelessWidget {
           Positioned(
             left: 0.w,
             right: 0.w,
-            top: 200.h, // 원하는 위치로 조정
+            top: 250.h, // 원하는 위치로 조정
             child: Center(
               child: Column(
                 children: [
@@ -77,16 +77,16 @@ class MBTIPage extends StatelessWidget {
                       question,
                       style: TextStyle(
                         color: Color(0xFF143264),
-                        fontSize: 25.sp,
+                        fontSize: 40.sp,
                         fontFamily: 'YourFontFamily',
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                  SizedBox(height: 20.h), // 원하는 여백 크기로 조정
+                  SizedBox(height: 40.h), // 원하는 여백 크기로 조정
                   Container(
-                    width: 170.w, // 이미지 너비 조정
-                    height: 220.h, // 이미지 높이 조정
+                    width: 240.w, // 이미지 너비 조정
+                    height: 300.h, // 이미지 높이 조정
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage('assets/images/$pick_img'),
@@ -95,7 +95,7 @@ class MBTIPage extends StatelessWidget {
                     ),
                   ),
 
-                  SizedBox(height: 20.h),
+                  SizedBox(height: 40.h),
                   Text(
                     option1 +
                         ' ' +
@@ -103,12 +103,12 @@ class MBTIPage extends StatelessWidget {
                         (selectedLanguage == '한국어' ? '입니다' : ''),
                     style: TextStyle(
                       color: Color(0xFF143264),
-                      fontSize: 25.sp,
+                      fontSize: 40.sp,
                       fontFamily: 'YourFontFamily',
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 10.h),
+                  SizedBox(height: 20.h),
                   GestureDetector(
                     onTap: () {
                       //여기서 controller에 할당하게 수정
@@ -141,7 +141,7 @@ class MBTIPage extends StatelessWidget {
                             'Next >',
                             style: TextStyle(
                               color: Color(0xFF143264),
-                              fontSize: 30.sp,
+                              fontSize: 50.sp,
                               fontFamily: 'YourFontFamily',
                               fontWeight: FontWeight.bold,
                             ),
