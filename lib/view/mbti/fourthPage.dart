@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:growpuang/controller/language_controller.dart';
 import 'package:growpuang/view/widget/appBar.dart';
+import 'package:growpuang/view/widget/mbti_diamond.dart';
 import 'fifthPage.dart';
 import 'lastPage.dart';
 
@@ -27,24 +28,7 @@ class FourthPage extends StatelessWidget {
       body: Stack(
         children: [
           appBar(),
-          // 자산 이미지 크기 및 배치 수정
-          Positioned(
-            left: 0.w,
-            right: 0.w,
-            top: 150.h,// 더 위로 조정
-            child: Center(
-              child: Container(
-                width: 410.w,
-                height: 390.h,// 이미지 높이 조정
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/자산.png'),
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-            ),
-          ),
+          mbti_diamond(),
           // 질문 텍스트
           Center(
             child: Padding(

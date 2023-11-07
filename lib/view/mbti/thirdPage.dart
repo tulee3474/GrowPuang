@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:growpuang/view/widget/appBar.dart';
+import 'package:growpuang/view/widget/mbti_diamond.dart';
 import 'fourthPage.dart';
 import 'sixthPage.dart';
 import 'package:get/get.dart';
@@ -16,23 +17,7 @@ class ThirdPage extends StatelessWidget {
       body: Stack(
         children: [
           appBar(),
-          Positioned(
-            left: 0.w,
-            right: 0.w,
-            top: 150.h,
-            child: Center(
-              child: Container(
-                width: 410.w,
-                height: 390.h,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/자산.png'),
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-            ),
-          ),
+          mbti_diamond(),
           Center(
             child: Padding(
               padding: EdgeInsets.only(top: 130.h),
