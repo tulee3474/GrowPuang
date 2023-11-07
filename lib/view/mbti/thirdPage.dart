@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:growpuang/view/widget/appBar.dart';
 import 'fourthPage.dart';
 import 'sixthPage.dart';
 import 'package:get/get.dart';
@@ -14,34 +15,7 @@ class ThirdPage extends StatelessWidget {
       appBar: null,
       body: Stack(
         children: [
-          Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/기본-배경.png'),
-                fit: BoxFit.fill,
-              ),
-            ),
-          ),
-          Align(
-            alignment: Alignment.topCenter,
-            child: GestureDetector(
-              onTap: () {
-                print('영신관 이미지를 눌렀습니다.');
-              },
-              child: Container(
-                width: 550.w,
-                height: 200.h,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/영신관.png'),
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-            ),
-          ),
+          appBar(),
           Positioned(
             left: 0.w,
             right: 0.w,

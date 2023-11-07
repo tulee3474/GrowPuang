@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:growpuang/view/widget/appBar.dart';
 
 import 'secondPage.dart';
 
@@ -17,46 +18,7 @@ class firstPage extends StatelessWidget {
       appBar: null,
       body: Stack(
         children: [
-          Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/기본-배경.png'),
-                fit: BoxFit.fill,
-              ),
-            ),
-          ),
-          Center(
-            child: Container(
-              width: 510.w,
-              height: 490.h,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/자산.png'),
-                  fit: BoxFit.fill,
-                ),
-              ),
-            ),
-          ),
-          GestureDetector(
-            onTap: () {
-              print('영신관 이미지를 눌렀습니다.');
-            },
-            child: Align(
-              alignment: Alignment.topCenter,
-              child: Container(
-                width: 550.w,
-                height: 200.h,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/영신관.png'),
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-            ),
-          ),
+          appBar(),
           Positioned(
             left: 192.w,
             top: 640.h,
