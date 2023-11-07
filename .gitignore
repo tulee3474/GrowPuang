@@ -96,6 +96,10 @@ lib/generated_plugin_registrant.dart
 **/ios/Flutter/flutter_export_environment.sh
 **/ios/ServiceDefinitions.json
 **/ios/Runner/GeneratedPluginRegistrant.*
+**/ios/Flutter/*.xcconfig
+**/ios/Podfile
+**ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png
+
 
 # Exceptions to above rules.
 !**/ios/**/default.mode1v3
@@ -103,5 +107,23 @@ lib/generated_plugin_registrant.dart
 !**/ios/**/default.pbxuser
 !**/ios/**/default.perspectivev3
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+
+# Ignore DS_Store
+.DS_Store
+._.DS_Store
+**/.DS_Store
+**/._.DS_Store
+
+# Visual Studio Code related
+.classpath
+.project
+.settings/
+.vscode/
+
+# macOS
+**/macos/Flutter/GeneratedPluginRegistrant.swift
+**/macos/Flutter/*.xcconfig
+**/macos/Podfile
+**/macos/Runner/Assets.xcassets/AppIcon.appiconset/*.png
 
 # End of https://www.toptal.com/developers/gitignore/api/flutter,dart,firebase
