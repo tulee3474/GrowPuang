@@ -17,7 +17,7 @@ class ThirdPage extends StatelessWidget {
       body: Stack(
         children: [
           appBar(),
-          mbti_diamond(),
+          mbti_diamond.goUp(),
           Center(
             child: Padding(
               padding: EdgeInsets.only(top: 130.h),
