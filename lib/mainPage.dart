@@ -9,6 +9,7 @@ import 'package:growpuang/model/loading_dialog.dart';
 import 'package:growpuang/view/community_screen.dart';
 
 class MainPage extends StatelessWidget {
+
   final postListController = Get.put(PostListController());
   final personalController = Get.put(PersonalController());
   MainPage({

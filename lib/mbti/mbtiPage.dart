@@ -117,16 +117,17 @@ class MBTIPage extends StatelessWidget {
                       personalController.pick_img = pick_img;
                       languageController.language = selectedLanguage;
 
-                      Navigator.push(
-                        context,
+                      // 현재 화면을 스택에서 제거
+                      Navigator.of(context).pop();
+
+                      Navigator.of(context).pushAndRemoveUntil(
                         MaterialPageRoute(
-                          builder: (context) => MainPage(
-                              // option1: option1,
-                              // option2: option2,
-                              // pick_img: pick_img,
-                              ),
+                          builder: (context) => MainPage(),
+                          //NewScreen()은 새로운 시작화면입니다. 여기에 원하는 화면 위젯을 넣으세요.
                         ),
+                            (Route<dynamic> route) => false,
                       );
+
                     },
                     child: Align(
                       alignment: Alignment.topCenter,
