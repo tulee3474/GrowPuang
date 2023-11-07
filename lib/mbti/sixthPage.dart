@@ -4,13 +4,16 @@ import 'package:growpuang/mbti/FirstPage.dart';
 import 'seventhPage.dart';
 import 'eigthPage.dart';
 
-
 class SixthPage extends StatelessWidget {
   final String question;
   final String option1;
   final String option2;
 
-  SixthPage({Key? key, required this.question, required this.option1, required this.option2})
+  SixthPage(
+      {Key? key,
+      required this.question,
+      required this.option1,
+      required this.option2})
       : super(key: key);
 
   @override
@@ -25,7 +28,7 @@ class SixthPage extends StatelessWidget {
             height: double.infinity,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('images/기본-배경.png'),
+                image: AssetImage('assets/images/기본-배경.png'),
                 fit: BoxFit.fill,
               ),
             ),
@@ -44,7 +47,7 @@ class SixthPage extends StatelessWidget {
                 height: 150.h,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('images/영신관.png'),
+                    image: AssetImage('assets/images/영신관.png'),
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -62,7 +65,7 @@ class SixthPage extends StatelessWidget {
                 height: 350.h, // 이미지 높이 조정
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('images/자산.png'),
+                    image: AssetImage('assets/images/자산.png'),
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -98,9 +101,15 @@ class SixthPage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => SeventhPage(
-                      question: selectedLanguage == '한국어' ? '더 멋지다고 생각되는 모습은?': 'Which look do you think is cooler?',
-                      option1: selectedLanguage == '한국어' ? '갑작스러운 사고를 완벽하게 수습하는 나' : 'I perfectly handle sudden accidents',
-                      option2: selectedLanguage == '한국어' ? '주어진 일을 완벽하게 마무리 하는 나' : 'I complete the given task perfectly',
+                      question: selectedLanguage == '한국어'
+                          ? '더 멋지다고 생각되는 모습은?'
+                          : 'Which look do you think is cooler?',
+                      option1: selectedLanguage == '한국어'
+                          ? '갑작스러운 사고를 완벽하게 수습하는 나'
+                          : 'I perfectly handle sudden accidents',
+                      option2: selectedLanguage == '한국어'
+                          ? '주어진 일을 완벽하게 마무리 하는 나'
+                          : 'I complete the given task perfectly',
                     ),
                   ),
                 );
@@ -152,9 +161,15 @@ class SixthPage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => EighthPage(
-                      question: selectedLanguage == '한국어' ? '더 멋지다고 생각되는 모습은?': 'Which look do you think is cooler?',
-                      option1: selectedLanguage == '한국어' ? '갑작스러운 사고를 완벽하게 수습하는 나' : 'I perfectly handle sudden accidents',
-                      option2: selectedLanguage == '한국어' ? '주어진 일을 완벽하게 마무리 하는 나' : 'I complete the given task perfectly',
+                      question: selectedLanguage == '한국어'
+                          ? '더 멋지다고 생각되는 모습은?'
+                          : 'Which look do you think is cooler?',
+                      option1: selectedLanguage == '한국어'
+                          ? '갑작스러운 사고를 완벽하게 수습하는 나'
+                          : 'I perfectly handle sudden accidents',
+                      option2: selectedLanguage == '한국어'
+                          ? '주어진 일을 완벽하게 마무리 하는 나'
+                          : 'I complete the given task perfectly',
                     ),
                   ),
                 );

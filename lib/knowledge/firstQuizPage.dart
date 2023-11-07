@@ -19,7 +19,7 @@ class firstQuizPage extends StatelessWidget {
             height: double.infinity,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('images/기본-배경.png'),
+                image: AssetImage('assets/images/기본-배경.png'),
                 fit: BoxFit.fill,
               ),
             ),
@@ -35,7 +35,7 @@ class firstQuizPage extends StatelessWidget {
                 height: 150.h,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('images/영신관.png'),
+                    image: AssetImage('assets/images/영신관.png'),
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -59,7 +59,8 @@ class firstQuizPage extends StatelessWidget {
                     height: 237.h,
                     decoration: ShapeDecoration(
                       color: Color(0xFFC9EB9B),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(3)),
                     ),
                   ),
                 ],
@@ -82,7 +83,8 @@ class firstQuizPage extends StatelessWidget {
                     height: 30.h,
                     decoration: ShapeDecoration(
                       color: Colors.white,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(3)),
                     ),
                   ),
                 ],
@@ -105,7 +107,8 @@ class firstQuizPage extends StatelessWidget {
                     height: 30.h,
                     decoration: ShapeDecoration(
                       color: Colors.white,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(3)),
                     ),
                   ),
                 ],
@@ -129,7 +132,8 @@ class firstQuizPage extends StatelessWidget {
                     height: 237,
                     decoration: ShapeDecoration(
                       color: Color(0xFFC9EB9B),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(3)),
                     ),
                   ),
                 ],
@@ -160,7 +164,8 @@ class firstQuizPage extends StatelessWidget {
                             height: 30,
                             decoration: ShapeDecoration(
                               color: Colors.white,
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(3)),
                             ),
                           ),
                         ],
@@ -213,7 +218,8 @@ class firstQuizPage extends StatelessWidget {
                             height: 30,
                             decoration: ShapeDecoration(
                               color: Colors.white,
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(3)),
                             ),
                           ),
                         ],
@@ -258,7 +264,8 @@ class firstQuizPage extends StatelessWidget {
                       height: 30,
                       decoration: ShapeDecoration(
                         color: Color(0xFF143264),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(3)),
                       ),
                     ),
                   ),
@@ -476,7 +483,7 @@ class firstQuizPage extends StatelessWidget {
                     height: 80.h,
                     decoration: const BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage('images/지식지수.png'),
+                        image: AssetImage('assets/images/지식지수.png'),
                         fit: BoxFit.contain,
                       ),
                     ),
@@ -492,7 +499,7 @@ class firstQuizPage extends StatelessWidget {
                     height: 80.h,
                     decoration: const BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage('images/활동지수.png'),
+                        image: AssetImage('assets/images/활동지수.png'),
                         fit: BoxFit.contain,
                       ),
                     ),
@@ -508,7 +515,7 @@ class firstQuizPage extends StatelessWidget {
                     height: 80.h,
                     decoration: const BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage('images/사교지수.png'),
+                        image: AssetImage('assets/images/사교지수.png'),
                         fit: BoxFit.contain,
                       ),
                     ),
@@ -520,11 +527,11 @@ class firstQuizPage extends StatelessWidget {
                     // 이미지 버튼 4를 탭했을 때 수행할 작업을 정의
                   },
                   child: Container(
-                    width: 80.w,//이미지는 나중에 크기 수정하면 됨
+                    width: 80.w, //이미지는 나중에 크기 수정하면 됨
                     height: 80.h,
                     decoration: const BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage('images/도움말.png'),
+                        image: AssetImage('assets/images/도움말.png'),
                         fit: BoxFit.contain,
                       ),
                     ),
@@ -533,10 +540,8 @@ class firstQuizPage extends StatelessWidget {
               ],
             ),
           ),
-
         ],
       ),
     );
   }
 }
-

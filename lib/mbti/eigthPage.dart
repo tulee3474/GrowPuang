@@ -3,13 +3,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:growpuang/mbti/FirstPage.dart';
 import 'mbtiPage.dart';
 
-
 class EighthPage extends StatelessWidget {
   final String question;
   final String option1;
   final String option2;
 
-  EighthPage({Key? key, required this.question, required this.option1, required this.option2})
+  EighthPage(
+      {Key? key,
+      required this.question,
+      required this.option1,
+      required this.option2})
       : super(key: key);
 
   @override
@@ -24,7 +27,7 @@ class EighthPage extends StatelessWidget {
             height: double.infinity,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('images/기본-배경.png'),
+                image: AssetImage('assets/images/기본-배경.png'),
                 fit: BoxFit.fill,
               ),
             ),
@@ -43,7 +46,7 @@ class EighthPage extends StatelessWidget {
                 height: 150.h,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('images/영신관.png'),
+                    image: AssetImage('assets/images/영신관.png'),
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -61,7 +64,7 @@ class EighthPage extends StatelessWidget {
                 height: 350.h, // 이미지 높이 조정
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('images/자산.png'),
+                    image: AssetImage('assets/images/자산.png'),
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -97,7 +100,9 @@ class EighthPage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => MBTIPage(
-                      question: selectedLanguage == '한국어' ? '당신이 졸업시킬 푸앙이는': 'The Puang you will graduate from is',
+                      question: selectedLanguage == '한국어'
+                          ? '당신이 졸업시킬 푸앙이는'
+                          : 'The Puang you will graduate from is',
                       option1: selectedLanguage == '한국어' ? '주도적인' : 'leading',
                       option2: selectedLanguage == '한국어' ? '푸앙이' : 'puang',
                       pick_img: '주도적인-푸앙.png',
@@ -152,8 +157,11 @@ class EighthPage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => MBTIPage(
-                      question: selectedLanguage == '한국어' ? '당신이 졸업시킬 푸앙이는': 'The Puang you will graduate from is',
-                      option1: selectedLanguage == '한국어' ? '지휘적인' : 'commanding',
+                      question: selectedLanguage == '한국어'
+                          ? '당신이 졸업시킬 푸앙이는'
+                          : 'The Puang you will graduate from is',
+                      option1:
+                          selectedLanguage == '한국어' ? '지휘적인' : 'commanding',
                       option2: selectedLanguage == '한국어' ? '푸앙이' : 'puang',
                       pick_img: '지적인-푸앙.png',
                     ),

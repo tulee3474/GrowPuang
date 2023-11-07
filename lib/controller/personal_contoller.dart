@@ -3,9 +3,11 @@ import 'package:get/get.dart';
 class PersonalController extends GetxController {
   RxString _userId = ''.obs; //user Id 저장
 
-  RxString _mbti = '모범적인'.obs; //mbti 결과 저장
+  RxString _option1 = '모범적인'.obs; //mbti 결과 저장
+  RxString _option2 = '푸앙이'.obs; //mbti 결과 저장
+  RxString _pick_img = '이미지'.obs; //mbti 결과 저장
 
-  RxInt _HP = 100.obs; //HP
+  RxDouble _progressValue = 0.1.obs; //HP
 
   RxList<bool> _knowledgeQuizResultList = <bool>[].obs; //전공 퀴즈 결과 저장
   RxList<bool> _activityResultList = <bool>[].obs; //참여 활동 결과 저장
@@ -17,16 +19,28 @@ class PersonalController extends GetxController {
     _userId.value = value;
   }
 
-  String get mbti => _mbti.value;
+  String get option1 => _option1.value;
 
-  set mbti(String value) {
-    _mbti.value = value;
+  set option1(String value) {
+    _option1.value = value;
   }
 
-  int get hp => _HP.value;
+  String get option2 => _option2.value;
 
-  set hp(int value) {
-    _HP.value = value;
+  set option2(String value) {
+    _option2.value = value;
+  }
+
+  String get pick_img => _pick_img.value;
+
+  set pick_img(String value) {
+    _pick_img.value = value;
+  }
+
+  double get progressValue => _progressValue.value;
+
+  set progressValue(double value) {
+    _progressValue.value = value;
   }
 
   List<bool> get knowledgeQuizResultList => _knowledgeQuizResultList;
