@@ -19,6 +19,18 @@ class firstPage extends StatelessWidget {
       body: Stack(
         children: [
           appBar(),
+          Center(
+            child: Container(
+              width: 510.w,
+              height: 490.h,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/자산.png'),
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),
+          ),
           Positioned(
             left: 192.w,
             top: 640.h,
