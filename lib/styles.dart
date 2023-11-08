@@ -34,21 +34,8 @@ const hintTextColor = Color(0xFFB0B0B0);
 const transparentHintTextColor = Color(0x2FB0B0B0);
 //const feedbackStarColor = Color(0xFFFFD400);
 
-//이태운 추가 - Event의 category에 따라 color를 다르게 가져가기 위한 배열(0~9)
-//타임테이블 색상 수정을 여기서 하는 것임!!
-//0: 파베 데이터셋 관광지, 1: 식당 추천 + 추천받은 식당, 2: 이동, 3: 카페 추천, 4: 숙소 추천, 5: 필수 여행지
-List<Color> categoryColorList = [
-  primary1,
-  primary2,
-  Colors.grey,
-  primary5,
-  primary6,
-  primary4,
-  primary3,
-  primary7,
-  primary8,
-  mainColor
-];
+//커뮤니티용 색상들
+const CommunityAppBarColor = Color(0xFF5A7C33);
 
 TextTheme lightTextTheme = const TextTheme(
   headlineMedium: TextStyle(

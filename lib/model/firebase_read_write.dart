@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:growpuang/class/post.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:growpuang/controller/personal_contoller.dart';
 
 //Write하는 부분
 
@@ -112,6 +113,10 @@ class ReadController extends GetxController {
 
   //Community
   Future<List> fb_read_all_post() async {
+    //커뮤니티 게시글 확인을 위함
+    final personalController = Get.put(PersonalController());
+    personalController.communityResult = 0;
+
     List<Post> data = [];
 
     List<int> postNumList = await fb_read_post_list() as List<int>;
@@ -119,6 +124,9 @@ class ReadController extends GetxController {
     for (int i = 0; i < postNumList.length; i++) {
       Post read_data = await fb_read_one_post(postNumList[i]);
       data.add(read_data);
+      if (read_data.postWriter == personalController.userId) {
+        personalController.communityResult += 1;
+      }
     }
 
     return data;

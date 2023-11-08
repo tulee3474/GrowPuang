@@ -1,6 +1,7 @@
 import 'package:growpuang/controller/post_controller.dart';
 import 'package:growpuang/controller/post_list_controller.dart';
 import 'package:growpuang/controller/personal_contoller.dart';
+import 'package:growpuang/mainPage.dart';
 import 'package:growpuang/model/firebase_read_write.dart';
 import 'package:flutter/material.dart';
 import 'package:growpuang/styles.dart';
@@ -700,7 +701,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                 Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => HomeScreen()),
+                                      builder: (context) => MainPage()),
                                 );
                                 Navigator.push(
                                   context,
@@ -820,7 +821,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                 Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => HomeScreen()),
+                                      builder: (context) => MainPage()),
                                 );
                                 Navigator.push(
                                   context,

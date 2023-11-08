@@ -22,4 +22,15 @@ class LanguageController extends GetxController {
   String get community => _language.value == '한국어' ? '사교 공간' : 'Community';
 
   String get helpDialog => _language.value == '한국어' ? '도움말' : 'Help';
+
+  String get loadingMessage =>
+      _language.value == '한국어' ? "정보를 로딩 중..." : 'Loading...';
+
+  //커뮤니티
+  String get communityAppBarText =>
+      _language.value == '한국어' ? '자소서 커뮤니티' : 'Resume Community';
+
+  String communityAppBarSubText(int n) => _language.value == '한국어'
+      ? '작성한 게시글 : $n개                     졸업 요건 : 게시글 1개'
+      : 'Posts you created : $n              Requirements: 1 Post';
 }
