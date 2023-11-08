@@ -35,7 +35,7 @@ const transparentHintTextColor = Color(0x2FB0B0B0);
 //const feedbackStarColor = Color(0xFFFFD400);
 
 //커뮤니티용 색상들
-const CommunityAppBarColor = Color(0xFF5A7C33);
+const communityMainColor = Color(0xFF5A7C33);
 
 TextTheme lightTextTheme = const TextTheme(
   headlineMedium: TextStyle(
