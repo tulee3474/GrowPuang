@@ -6,7 +6,7 @@ import 'package:material_color_generator/material_color_generator.dart';
 
 const mainColor = Color(0xFFABD9FF);
 const transparentMainColor = Color(0x4DABD9FF);
-const primary1 = Color(0xFFC3F8FF);
+const primary1 = Color(0xFFCAEB9C);
 const primary2 = Color(0xFFFFF6BF);
 const primary3 = Color(0xFFFFEBAD);
 const primary4 = Color(0xFFF48484);
@@ -24,7 +24,7 @@ const primaryBold5 = Color(0xFFffdddd);
 const primaryBold6 = Color(0xFFcceed4);
 const primaryBold7 = Color(0xFFcceeee);
 const primaryBold8 = Color(0xFFccccee);
-const mainBackgroundColor = Color(0xFFF5FAFD);
+const mainBackgroundColor = Color(0xFFFFFFFF);
 const buttonBackgroundColor = Color(0xFFFFFFFF);
 const greyDisabledButtonBackgroundColor = Color(0xFFe9e9e9);
 const buttonBorderColor = Color(0xFFD9D9D9);
@@ -73,3 +73,18 @@ ThemeData lightColorTheme = ThemeData(
     ),
   ),
 );
+
+List<Color> buttonColorList = [
+  mainBackgroundColor,
+  mainBackgroundColor,
+  mainBackgroundColor,
+  mainBackgroundColor,
+];
+
+void switchButtonColor(int index, int type) {
+  if (type == 1) {
+    buttonColorList[index] = primary1;
+  } else if (type == 0) {
+    buttonColorList[index] = mainBackgroundColor;
+  }
+}

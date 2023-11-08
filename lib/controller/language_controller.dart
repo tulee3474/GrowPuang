@@ -44,4 +44,7 @@ class LanguageController extends GetxController {
 
   String get postSortOpt3 =>
       _language.value == '한국어' ? '위기극복사례' : 'Case of overcoming crisis';
+
+  String get communityNewPostAppBarText =>
+      _language.value == '한국어' ? '글쓰기' : 'Writting New Post';
 }
