@@ -9,6 +9,7 @@ class PostListController extends GetxController {
   RxList<Post> _postList = <Post>[].obs;
 
   RxString _selectedSort = "전체글".obs;
+  RxInt _selectedSortNum = 0.obs;
   RxList<String> _sortList = <String>[].obs;
 
   Future readPostData() async {
@@ -27,6 +28,12 @@ class PostListController extends GetxController {
 
   set selectedSort(String value) {
     _selectedSort.value = value;
+  }
+
+  int get selectedSortNum => _selectedSortNum.value;
+
+  set selectedSortNum(int value) {
+    _selectedSortNum.value = value;
   }
 
   List<String> get sortList => _sortList;

@@ -3,6 +3,7 @@ import 'dart:ffi';
 import 'package:growpuang/controller/language_controller.dart';
 import 'package:growpuang/controller/post_list_controller.dart';
 import 'package:growpuang/controller/personal_contoller.dart';
+import 'package:growpuang/mainPage.dart';
 import 'package:growpuang/model/firebase_read_write.dart';
 import 'package:flutter/material.dart';
 import 'package:growpuang/class/post.dart';
@@ -342,6 +343,14 @@ class _NewPostPageState extends State<NewPostPage> {
                             print(
                                 '커뮤니티 점수 : ${personalController.communityResult}');
 
+                            //새로고침을 위하여 기존 화면 스택을 날리고 다시 시작함
+                            Navigator.pushNamedAndRemoveUntil(
+                                context, '/', (_) => false);
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MainPage()),
+                            );
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
