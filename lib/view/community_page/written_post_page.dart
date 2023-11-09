@@ -13,7 +13,7 @@ import 'package:growpuang/view/community_screen.dart';
 import 'package:growpuang/view/home_screen.dart';
 
 class WrittenPostPage extends StatefulWidget {
-  Post post = Post('', 0, '', [], [], [], 0, '');
+  Post post = Post('', 0, '', [], [], [], 0, '', 1);
   int index = 0;
 
   WrittenPostPage(this.post, this.index);

@@ -5,7 +5,6 @@ import 'package:growpuang/view/knowledge/firstQuizPage.dart';
 import 'package:growpuang/view/widget/appBar.dart';
 import 'package:growpuang/view/widget/navigateBar.dart';
 
-
 class KnowledgeMainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -100,7 +99,7 @@ class KnowledgeMainPage extends StatelessWidget {
                 style: TextStyle(
                   color: Color(0xFF143264),
                   fontSize: 14,
-                  fontFamily: 'Inter',
+                  fontFamily: 'YourFontFamily',
                   fontWeight: FontWeight.w900,
                   height: 0.10,
                 ),
@@ -148,7 +147,7 @@ class KnowledgeMainPage extends StatelessWidget {
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 13,
-                        fontFamily: 'Inter',
+                        fontFamily: 'YourFontFamily',
                         fontWeight: FontWeight.w900,
                         height: 0.11.h,
                       ),
@@ -199,7 +198,7 @@ class KnowledgeMainPage extends StatelessWidget {
                       style: TextStyle(
                         color: Color(0xFF143264),
                         fontSize: 13,
-                        fontFamily: 'Inter',
+                        fontFamily: 'YourFontFamily',
                         fontWeight: FontWeight.w900,
                         height: 0.11,
                       ),
@@ -235,7 +234,7 @@ class KnowledgeMainPage extends StatelessWidget {
                     style: TextStyle(
                       color: Color(0xFF143264),
                       fontSize: 13,
-                      fontFamily: 'Inter',
+                      fontFamily: 'YourFontFamily',
                       fontWeight: FontWeight.w500,
                       height: 0.11,
                     ),
@@ -269,7 +268,7 @@ class KnowledgeMainPage extends StatelessWidget {
                     style: TextStyle(
                       color: Color(0xFF143264),
                       fontSize: 13,
-                      fontFamily: 'Inter',
+                      fontFamily: 'YourFontFamily',
                       fontWeight: FontWeight.w500,
                       height: 0.11,
                     ),
@@ -323,7 +322,7 @@ class KnowledgeMainPage extends StatelessWidget {
                       style: TextStyle(
                         color: Color(0x7F143264),
                         fontSize: 13,
-                        fontFamily: 'Inter',
+                        fontFamily: 'YourFontFamily',
                         fontWeight: FontWeight.w900,
                         height: 0.11,
                       ),
@@ -374,7 +373,7 @@ class KnowledgeMainPage extends StatelessWidget {
                       style: TextStyle(
                         color: Color(0xFF143264),
                         fontSize: 13,
-                        fontFamily: 'Inter',
+                        fontFamily: 'YourFontFamily',
                         fontWeight: FontWeight.w900,
                         height: 0.11,
                       ),
@@ -393,7 +392,7 @@ class KnowledgeMainPage extends StatelessWidget {
               style: TextStyle(
                 color: Color(0xFF143264),
                 fontSize: 13,
-                fontFamily: 'Inter',
+                fontFamily: 'YourFontFamily',
                 fontWeight: FontWeight.w900,
                 height: 0.11,
               ),
@@ -408,7 +407,7 @@ class KnowledgeMainPage extends StatelessWidget {
               style: TextStyle(
                 color: Color(0xFF143264),
                 fontSize: 13,
-                fontFamily: 'Inter',
+                fontFamily: 'YourFontFamily',
                 fontWeight: FontWeight.w900,
                 height: 0.11,
               ),
@@ -431,7 +430,7 @@ class KnowledgeMainPage extends StatelessWidget {
                       style: TextStyle(
                         color: Color(0xFF143264),
                         fontSize: 13,
-                        fontFamily: 'Inter',
+                        fontFamily: 'YourFontFamily',
                         fontWeight: FontWeight.w900,
                         height: 0.11,
                       ),
@@ -445,7 +444,7 @@ class KnowledgeMainPage extends StatelessWidget {
                       style: TextStyle(
                         color: Color(0xFF143264),
                         fontSize: 13,
-                        fontFamily: 'Inter',
+                        fontFamily: 'YourFontFamily',
                         fontWeight: FontWeight.w500,
                         height: 0.11,
                       ),

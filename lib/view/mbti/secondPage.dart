@@ -7,7 +7,6 @@ import 'package:growpuang/view/widget/mbti_diamond.dart';
 import '../../controller/language_controller.dart';
 import 'thirdPage.dart';
 
-
 class SecondPage extends StatelessWidget {
   final languageController = Get.put(LanguageController());
   @override

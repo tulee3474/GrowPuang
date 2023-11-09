@@ -58,7 +58,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                           languageController.communityAppBarText,
                           style: TextStyle(
                               fontSize: 28.sp,
-                              fontFamily: 'YourFontFamily',
+                              fontFamily: 'Inter',
                               fontWeight: FontWeight.bold,
                               color: whiteTextColor),
                         ),
@@ -70,7 +70,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                               personalController.communityResult),
                           style: TextStyle(
                               fontSize: 20.sp,
-                              fontFamily: 'YourFontFamily',
+                              fontFamily: 'Inter',
                               color: whiteTextColor),
                         ),
                       ),
@@ -107,7 +107,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                                       value,
                                       style: TextStyle(
                                           fontSize: 25.sp,
-                                          fontFamily: 'YourFontFamily',
+                                          fontFamily: 'Inter',
                                           color: communityMainColor),
                                     ),
                                   );

@@ -36,6 +36,7 @@ const transparentHintTextColor = Color(0x2FB0B0B0);
 
 //커뮤니티용 색상들
 const communityMainColor = Color(0xFF5A7C33);
+const communityTextColor = Color(0xFFB2D87D);
 
 TextTheme lightTextTheme = const TextTheme(
   headlineMedium: TextStyle(
@@ -80,11 +81,25 @@ List<Color> buttonColorList = [
   mainBackgroundColor,
   mainBackgroundColor,
 ];
+List<Color> buttonTextColorList = [
+  communityTextColor,
+  communityTextColor,
+  communityTextColor,
+  communityTextColor,
+];
 
 void switchButtonColor(int index, int type) {
   if (type == 1) {
     buttonColorList[index] = primary1;
   } else if (type == 0) {
     buttonColorList[index] = mainBackgroundColor;
+  }
+}
+
+void switchButtonTextColor(int index, int type) {
+  if (type == 1) {
+    buttonTextColorList[index] = communityMainColor;
+  } else if (type == 0) {
+    buttonTextColorList[index] = communityTextColor;
   }
 }
