@@ -54,8 +54,8 @@ class lastPage extends StatelessWidget {
                   ),
                   SizedBox(height: 40.h), // 원하는 여백 크기로 조정
                   Container(
-                    width: 240.w, // 이미지 너비 조정
-                    height: 300.h, // 이미지 높이 조정
+                    width: 300.w, // 이미지 너비 조정
+                    height: 280.h,// 이미지 높이 조정
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage('assets/images/$pick_img'),
