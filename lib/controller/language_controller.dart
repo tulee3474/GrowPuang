@@ -36,6 +36,9 @@ class LanguageController extends GetxController {
 
   String get postSortOpt0 => _language.value == '한국어' ? '전체글' : 'All Posts';
 
+  String get anonymousAuthor =>
+      _language.value == '한국어' ? '익명의 글쓴이' : 'Anonymous Author';
+
   String get postSortOpt1 =>
       _language.value == '한국어' ? '지원 동기' : 'Reason for application';
 
@@ -66,4 +69,27 @@ class LanguageController extends GetxController {
 
   String get communityNewPostRegister =>
       _language.value == '한국어' ? '등록' : 'Register';
+
+  String get communityWrittenPostRefresh =>
+      _language.value == '한국어' ? '새로고침' : 'Refresh';
+
+  String get communityWrittenPostReport =>
+      _language.value == '한국어' ? '신고' : 'Report';
+
+  String get communityWrittenPostEdit =>
+      _language.value == '한국어' ? '수정' : 'Edit';
+
+  String get communityWrittenPostDelete =>
+      _language.value == '한국어' ? '삭제' : 'Delete';
+
+  String get communityAlreadyLikedMessage => _language.value == '한국어'
+      ? '이미 좋아요를 누르셨습니다!'
+      : 'You have already recommended this post!';
+
+  String get reportCompletedMessage =>
+      _language.value == '한국어' ? '신고가 완료되었습니다.' : 'Report has been completed.';
+
+  String get incompleteFieldsMessage => _language.value == '한국어'
+      ? '아직 작성하지 못한 항목이 있습니다.'
+      : 'There are still unwritten items.';
 }

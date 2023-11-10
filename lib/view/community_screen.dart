@@ -161,7 +161,18 @@ class _CommunityScreenState extends State<CommunityScreen> {
                             //화면 이동 전, 로딩 다이어로그 pop!
                             Navigator.of(context, rootNavigator: true).pop();
 
-                            CommunityScreen();
+                            //새로고침을 위하여 기존 화면 스택을 날리고 다시 시작함
+                            Navigator.pushNamedAndRemoveUntil(
+                                context, '/', (_) => false);
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MainPage()),
+                            );
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => CommunityScreen()));
                           },
                           child: Icon(Icons.refresh_rounded),
                         ),
@@ -265,6 +276,8 @@ class _CommunityScreenState extends State<CommunityScreen> {
                                           ],
                                         ),
                                         Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
                                           children: [
                                             Row(
                                               children: [
@@ -292,17 +305,24 @@ class _CommunityScreenState extends State<CommunityScreen> {
                                                 Text(
                                                   '${postListController.postList[i].recommendList.length}',
                                                   style: TextStyle(
-                                                    fontWeight: FontWeight.w500,
-                                                    fontSize: 22.sp,
+                                                    fontWeight: FontWeight.w400,
+                                                    fontSize: 26.sp,
                                                   ),
                                                 ),
                                               ],
                                             ),
-                                            SizedBox(
-                                              height: 10.h,
+                                            Container(
+                                              child: Text(
+                                                languageController
+                                                    .anonymousAuthor,
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.w300,
+                                                  fontSize: 16.sp,
+                                                ),
+                                              ),
                                             ),
                                           ],
-                                        )
+                                        ),
                                       ],
                                     ),
                                   ),

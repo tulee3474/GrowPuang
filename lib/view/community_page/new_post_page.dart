@@ -312,49 +312,85 @@ class _NewPostPageState extends State<NewPostPage> {
                             backgroundColor: communityMainColor,
                           ),
                           onPressed: () {
-                            setState(() {
-                              postListController.postList.add(Post(
-                                  postTitleController.text +
-                                      ' | ' +
-                                      postTitleController2.text,
-                                  postListController.postList.last.postNum + 1,
-                                  personalController.userId,
-                                  [],
-                                  [],
-                                  [],
-                                  0,
-                                  postContentController.text,
-                                  _sortOpt));
-                              fb_add_post(
-                                  postTitleController.text +
-                                      ' | ' +
-                                      postTitleController2.text,
-                                  postListController
-                                      .postList.last.postNum, //이미 넣었으니깐.
-                                  personalController.userId,
-                                  postContentController.text,
-                                  _sortOpt); // 게시글 추가 - 게시글 제목, 게시글 넘버, 작성자, 게시글 내용
-                            });
+                            if (postTitleController.text == "" ||
+                                postTitleController2.text == "" ||
+                                postContentController.text == "") {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  Future.delayed(
+                                    Duration(seconds: 1),
+                                    () {
+                                      Navigator.of(context, rootNavigator: true)
+                                          .pop();
+                                    },
+                                  );
+                                  return AlertDialog(
+                                    content: SizedBox(
+                                      width: 400.w,
+                                      height: 120.h,
+                                      child: Center(
+                                        child: Text(
+                                          languageController
+                                              .incompleteFieldsMessage,
+                                          style: TextStyle(
+                                              color: mainTextColor,
+                                              letterSpacing: 2.0,
+                                              fontFamily: 'Inter',
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 20.sp),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+                            } else {
+                              setState(() {
+                                postListController.postList.add(Post(
+                                    postTitleController.text +
+                                        ' | ' +
+                                        postTitleController2.text,
+                                    postListController.postList.last.postNum +
+                                        1,
+                                    personalController.userId,
+                                    [],
+                                    [],
+                                    [],
+                                    0,
+                                    postContentController.text,
+                                    _sortOpt));
+                                fb_add_post(
+                                    postTitleController.text +
+                                        ' | ' +
+                                        postTitleController2.text,
+                                    postListController
+                                        .postList.last.postNum, //이미 넣었으니깐.
+                                    personalController.userId,
+                                    postContentController.text,
+                                    _sortOpt); // 게시글 추가 - 게시글 제목, 게시글 넘버, 작성자, 게시글 내용
+                              });
 
-                            //여기서 DB에 저장
+                              //여기서 DB에 저장
 
-                            //커뮤니티 들어가기 - 글 하나 쓸 때마다 +1점
-                            personalController.communityResult += 1;
-                            print(
-                                '커뮤니티 점수 : ${personalController.communityResult}');
+                              //커뮤니티 들어가기 - 글 하나 쓸 때마다 +1점
+                              personalController.communityResult += 1;
+                              print(
+                                  '커뮤니티 점수 : ${personalController.communityResult}');
 
-                            //새로고침을 위하여 기존 화면 스택을 날리고 다시 시작함
-                            Navigator.pushNamedAndRemoveUntil(
-                                context, '/', (_) => false);
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => MainPage()),
-                            );
-                            Navigator.push(
+                              //새로고침을 위하여 기존 화면 스택을 날리고 다시 시작함
+                              Navigator.pushNamedAndRemoveUntil(
+                                  context, '/', (_) => false);
+                              Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => CommunityScreen()));
+                                    builder: (context) => MainPage()),
+                              );
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CommunityScreen()));
+                            }
                           },
                         ),
                       ),

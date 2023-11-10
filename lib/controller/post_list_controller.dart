@@ -18,6 +18,12 @@ class PostListController extends GetxController {
     _postList.value = await read.fb_read_all_post() as List<Post>; // List<Post>
   }
 
+  Future readOnePostData(int index, int targetPostNum) async {
+    var read = ReadController();
+
+    _postList[index] = await read.fb_read_one_post(targetPostNum) as Post;
+  }
+
   List<Post> get postList => _postList;
 
   set postList(List<Post> value) {
