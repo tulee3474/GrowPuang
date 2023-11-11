@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:flutter/services.dart';
 import 'package:growpuang/controller/language_controller.dart';
 import 'package:growpuang/controller/post_list_controller.dart';
 import 'package:growpuang/controller/personal_contoller.dart';
@@ -189,20 +190,23 @@ class _NewPostPageState extends State<NewPostPage> {
                               child: TextField(
                                 controller: postTitleController,
                                 maxLines: 1,
+                                maxLength: languageController.language == "한국어"
+                                    ? 10
+                                    : 15,
                                 decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  filled: true,
-                                  fillColor: mainBackgroundColor,
-                                  labelText: languageController
-                                      .communityNewPostCompanyExample,
-                                  floatingLabelBehavior:
-                                      FloatingLabelBehavior.never,
-                                  labelStyle: TextStyle(
-                                    fontSize: 16.sp,
-                                    fontFamily: 'Inter',
-                                    color: communityTextColor,
-                                  ),
-                                ),
+                                    border: InputBorder.none,
+                                    filled: true,
+                                    fillColor: mainBackgroundColor,
+                                    labelText: languageController
+                                        .communityNewPostCompanyExample,
+                                    floatingLabelBehavior:
+                                        FloatingLabelBehavior.never,
+                                    labelStyle: TextStyle(
+                                      fontSize: 16.sp,
+                                      fontFamily: 'Inter',
+                                      color: communityTextColor,
+                                    ),
+                                    counterText: ""),
                               ),
                             ),
                           ),
@@ -235,20 +239,23 @@ class _NewPostPageState extends State<NewPostPage> {
                               child: TextField(
                                 controller: postTitleController2,
                                 maxLines: 1,
+                                maxLength: languageController.language == "한국어"
+                                    ? 10
+                                    : 15,
                                 decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  filled: true,
-                                  fillColor: mainBackgroundColor,
-                                  labelText: languageController
-                                      .communityNewPostJobTitleExample,
-                                  floatingLabelBehavior:
-                                      FloatingLabelBehavior.never,
-                                  labelStyle: TextStyle(
-                                    fontSize: 16.sp,
-                                    fontFamily: 'Inter',
-                                    color: communityTextColor,
-                                  ),
-                                ),
+                                    border: InputBorder.none,
+                                    filled: true,
+                                    fillColor: mainBackgroundColor,
+                                    labelText: languageController
+                                        .communityNewPostJobTitleExample,
+                                    floatingLabelBehavior:
+                                        FloatingLabelBehavior.never,
+                                    labelStyle: TextStyle(
+                                      fontSize: 16.sp,
+                                      fontFamily: 'Inter',
+                                      color: communityTextColor,
+                                    ),
+                                    counterText: ""),
                               ),
                             ),
                           ),
@@ -262,8 +269,9 @@ class _NewPostPageState extends State<NewPostPage> {
                         ),
                         child: TextField(
                           controller: postContentController,
+                          textAlignVertical: TextAlignVertical(y: -1.0),
                           maxLines: 6,
-                          maxLength: 500,
+                          maxLength: 200,
                           decoration: InputDecoration(
                             // contentPadding: EdgeInsets.zero, // 좌상단에 위치하도록 설정
 
@@ -335,7 +343,7 @@ class _NewPostPageState extends State<NewPostPage> {
                                               .incompleteFieldsMessage,
                                           style: TextStyle(
                                               color: mainTextColor,
-                                              letterSpacing: 2.0,
+                                              letterSpacing: 1.w,
                                               fontFamily: 'Inter',
                                               fontWeight: FontWeight.w500,
                                               fontSize: 20.sp),

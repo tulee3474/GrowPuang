@@ -208,7 +208,8 @@ class _CommunityScreenState extends State<CommunityScreen> {
                                       ),
                                     ),
                                     Container(
-                                      margin: EdgeInsets.fromLTRB(28, 0, 28, 0),
+                                      margin:
+                                          EdgeInsets.fromLTRB(28.w, 0, 28.w, 0),
                                       decoration: const BoxDecoration(
                                         border: Border(
                                           bottom: BorderSide(
@@ -283,7 +284,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                                               children: [
                                                 Container(
                                                   margin: EdgeInsets.fromLTRB(
-                                                      0, 0, 2, 0),
+                                                      0, 0, 2.w, 0),
                                                   height: 32.h,
                                                   child: Icon(Icons
                                                       .chat_bubble_outline),
@@ -297,7 +298,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                                                 ),
                                                 Container(
                                                   margin: EdgeInsets.fromLTRB(
-                                                      8, 0, 2, 0),
+                                                      8.w, 0, 2.w, 0),
                                                   height: 32.h,
                                                   child: Icon(Icons
                                                       .thumb_up_alt_outlined),

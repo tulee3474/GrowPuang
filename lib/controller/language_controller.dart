@@ -39,6 +39,8 @@ class LanguageController extends GetxController {
   String get anonymousAuthor =>
       _language.value == '한국어' ? '익명의 글쓴이' : 'Anonymous Author';
 
+  String get anonymous => _language.value == '한국어' ? '익명' : 'Anonymous';
+
   String get postSortOpt1 =>
       _language.value == '한국어' ? '지원 동기' : 'Reason for application';
 
@@ -82,9 +84,15 @@ class LanguageController extends GetxController {
   String get communityWrittenPostDelete =>
       _language.value == '한국어' ? '삭제' : 'Delete';
 
+  String get communityCommentRegistration =>
+      _language.value == '한국어' ? '등록' : 'Registration';
+
   String get communityAlreadyLikedMessage => _language.value == '한국어'
       ? '이미 좋아요를 누르셨습니다!'
       : 'You have already recommended this post!';
+
+  String get commentPlaceholder =>
+      _language.value == '한국어' ? '댓글을 남겨보세요' : 'Type your comment';
 
   String get reportCompletedMessage =>
       _language.value == '한국어' ? '신고가 완료되었습니다.' : 'Report has been completed.';
@@ -92,4 +100,32 @@ class LanguageController extends GetxController {
   String get incompleteFieldsMessage => _language.value == '한국어'
       ? '아직 작성하지 못한 항목이 있습니다.'
       : 'There are still unwritten items.';
+
+  String get postReport => _language.value == '한국어' ? '게시글 신고' : 'Report Post';
+
+  String get reportReasonPlaceholder => _language.value == '한국어'
+      ? '신고 사유를 적어주세요.(최대 3줄)'
+      : 'Please write the reason for reporting (up to 3 lines)';
+
+  String get postEdit => _language.value == '한국어' ? '게시글 수정' : 'Edit Post';
+
+  String get postEditContentPlaceholder => _language.value == '한국어'
+      ? '게시글 내용을 적어주세요.'
+      : 'Please write the content of the post.';
+
+  String get postEditCompletedMessage =>
+      _language.value == '한국어' ? '수정 완료' : 'Edit Completed';
+
+  String get postDelete => _language.value == '한국어' ? '게시글 삭제' : 'Delete Post';
+
+  String get postDeleteConfirmation => _language.value == '한국어'
+      ? '정말 삭제하시겠습니까??'
+      : 'Are you sure you want to delete?';
+
+  String get postTitleLabel => _language.value == '한국어' ? '제목 : ' : 'Title: ';
+
+  String get cancel => _language.value == '한국어' ? '취소' : 'Cancel';
+
+  String get commentDelete =>
+      _language.value == '한국어' ? '댓글 삭제' : 'Delete Comment';
 }

@@ -73,545 +73,613 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: SizedBox(
-        width: 100.w,
-        child: FittedBox(
-          fit: BoxFit.fill,
-          child: FloatingActionButton(
-            backgroundColor: communityMainColor,
-            child: Icon(
-              Icons.thumb_up_alt_outlined,
-              color: whiteTextColor,
-            ),
-            elevation: 5,
-            onPressed: () {
-              if (postController.post.recommendList
-                  .contains(personalController.userId as String)) {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    Future.delayed(
-                      Duration(seconds: 1),
-                      () {
-                        Navigator.of(context, rootNavigator: true).pop();
-                      },
-                    );
-                    return AlertDialog(
-                      content: SizedBox(
-                        width: 400.w,
-                        height: 120.h,
-                        child: Center(
-                          child: Text(
-                            languageController.communityAlreadyLikedMessage,
-                            style: TextStyle(
-                                color: mainTextColor,
-                                letterSpacing: 2.0,
-                                fontFamily: 'Inter',
-                                fontWeight: FontWeight.w500,
-                                fontSize: 22.sp),
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                );
-              } else {
-                setState(
-                  () {
-                    fb_add_recommend(
-                        postController.post.postNum,
-                        personalController.userId as String,
-                        postController.post
-                            .recommendNum); // 좋아요 추가 - 게시글 제목, 누른사람, 기존 좋아요 개수
-                    postController.post.recommendNum++;
-                    postController.post.recommendList
-                        .add(personalController.userId as String);
-                  },
-                );
-              }
-            },
-          ),
-        ),
-      ),
+      // floatingActionButton: SizedBox(
+      //   width: 100.w,
+      //   child: FittedBox(
+      //     fit: BoxFit.fill,
+      //     child: FloatingActionButton(
+      //       backgroundColor: communityMainColor,
+      //       child: Icon(
+      //         Icons.thumb_up_alt_outlined,
+      //         color: whiteTextColor,
+      //       ),
+      //       elevation: 5,
+      //       onPressed: () {
+      //         if (postController.post.recommendList
+      //             .contains(personalController.userId as String)) {
+      //           showDialog(
+      //             context: context,
+      //             builder: (BuildContext context) {
+      //               Future.delayed(
+      //                 Duration(seconds: 1),
+      //                 () {
+      //                   Navigator.of(context, rootNavigator: true).pop();
+      //                 },
+      //               );
+      //               return AlertDialog(
+      //                 content: SizedBox(
+      //                   width: 400.w,
+      //                   height: 120.h,
+      //                   child: Center(
+      //                     child: Text(
+      //                       languageController.communityAlreadyLikedMessage,
+      //                       style: TextStyle(
+      //                           color: mainTextColor,
+      //                           letterSpacing: 2.w,
+      //                           fontFamily: 'Inter',
+      //                           fontWeight: FontWeight.w500,
+      //                           fontSize: 22.sp),
+      //                     ),
+      //                   ),
+      //                 ),
+      //               );
+      //             },
+      //           );
+      //         } else {
+      //           setState(
+      //             () {
+      //               fb_add_recommend(
+      //                   postController.post.postNum,
+      //                   personalController.userId as String,
+      //                   postController.post
+      //                       .recommendNum); // 좋아요 추가 - 게시글 제목, 누른사람, 기존 좋아요 개수
+      //               postController.post.recommendNum++;
+      //               postController.post.recommendList
+      //                   .add(personalController.userId as String);
+      //             },
+      //           );
+      //         }
+      //       },
+      //     ),
+      //   ),
+      // ),
       body: Stack(
         children: [
           appBar(),
-          Column(
-            children: [
-              Container(
-                width: double.infinity,
-                color: communityMainColor,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 24.h,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
-                        child: Text(
-                          languageController.communityAppBarText,
-                          style: TextStyle(
-                              fontSize: 28.sp,
-                              fontFamily: 'Inter',
-                              fontWeight: FontWeight.bold,
-                              color: whiteTextColor),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
-                        child: Text(
-                          languageController.communityAppBarSubText(
-                              personalController.communityResult),
-                          style: TextStyle(
-                              fontSize: 20.sp,
-                              fontFamily: 'Inter',
-                              color: whiteTextColor),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Container(
-                color: mainBackgroundColor.withOpacity(0.95),
-                child: SizedBox(
+          SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            physics: AlwaysScrollableScrollPhysics(),
+            child: Column(
+              children: [
+                Container(
                   width: double.infinity,
-                  height: 50.h,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.menu,
-                              color: communityMainColor,
-                            ),
-                            SizedBox(
-                              width: 5.w,
-                            ),
-                            Text(
-                              postListController.selectedSort,
-                              style: TextStyle(
-                                  fontSize: 25.sp,
-                                  fontFamily: 'Inter',
-                                  color: communityMainColor),
-                            ),
-                          ],
+                  color: communityMainColor,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 24.h,
                         ),
-                      ),
-                      Container(
-                        child: TextButton(
-                          onPressed: () async {
-                            //기다리는 동안 로딩창 띄우기
-                            loadingDialog(context);
-
-                            await postListController.readOnePostData(
-                                postController.index,
-                                postController.post.postNum);
-
-                            print("새로고침");
-
-                            //화면 이동 전, 로딩 다이어로그 pop!
-                            Navigator.of(context, rootNavigator: true).pop();
-
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => WrittenPostPage(
-                                    postController.post, postController.index),
-                              ),
-                            );
-                          },
-                          child: Icon(Icons.refresh_rounded),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
+                          child: Text(
+                            languageController.communityAppBarText,
+                            style: TextStyle(
+                                fontSize: 28.sp,
+                                fontFamily: 'Inter',
+                                fontWeight: FontWeight.bold,
+                                color: whiteTextColor),
+                          ),
                         ),
-                      ),
-                    ],
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
+                          child: Text(
+                            languageController.communityAppBarSubText(
+                                personalController.communityResult),
+                            style: TextStyle(
+                                fontSize: 20.sp,
+                                fontFamily: 'Inter',
+                                color: whiteTextColor),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: Column(children: [
-                  Container(
+                Container(
+                  color: mainBackgroundColor.withOpacity(0.95),
+                  child: SizedBox(
                     width: double.infinity,
-                    color: mainBackgroundColor.withOpacity(0.97),
-                    child: Column(
+                    height: 50.h,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          width: double.infinity,
-                          height: 80.h,
-                          padding: const EdgeInsets.all(12.0),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Row(
-                                children: [
-                                  SizedBox(width: 20.w),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        postListController.sortList[
-                                            postController.post.sortOpt],
+                              Icon(
+                                Icons.menu,
+                                color: communityMainColor,
+                              ),
+                              SizedBox(
+                                width: 5.w,
+                              ),
+                              Text(
+                                postListController.selectedSort,
+                                style: TextStyle(
+                                    fontSize: 25.sp,
+                                    fontFamily: 'Inter',
+                                    color: communityMainColor),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          child: TextButton(
+                            onPressed: () async {
+                              //기다리는 동안 로딩창 띄우기
+                              loadingDialog(context);
+
+                              await postListController.readOnePostData(
+                                  postController.index,
+                                  postController.post.postNum);
+
+                              print("새로고침");
+
+                              //화면 이동 전, 로딩 다이어로그 pop!
+                              Navigator.of(context, rootNavigator: true).pop();
+
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => WrittenPostPage(
+                                      postController.post,
+                                      postController.index),
+                                ),
+                              );
+                            },
+                            child: Icon(Icons.refresh_rounded),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Column(
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      color: mainBackgroundColor.withOpacity(0.97),
+                      child: Column(
+                        children: [
+                          Container(
+                            width: double.infinity,
+                            height: 80.h,
+                            padding: const EdgeInsets.all(12.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    SizedBox(width: 20.w),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          postListController.sortList[
+                                              postController.post.sortOpt],
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 18.sp,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 4.h,
+                                        ),
+                                        Expanded(
+                                          child: Text(
+                                            '${postController.post.postTitle}',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              //letterSpacing: 2.w,
+                                              fontSize: 22.sp,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    SizedBox(
+                                      height: 28.h,
+                                    ),
+                                    Container(
+                                      margin:
+                                          EdgeInsets.fromLTRB(0, 0, 12.h, 0),
+                                      child: Text(
+                                        languageController.anonymousAuthor,
                                         style: TextStyle(
                                           fontWeight: FontWeight.w500,
                                           fontSize: 18.sp,
                                         ),
                                       ),
-                                      SizedBox(
-                                        height: 4.h,
-                                      ),
-                                      Expanded(
-                                        child: Text(
-                                          '${postController.post.postTitle}',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 22.sp,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  SizedBox(
-                                    height: 28.h,
-                                  ),
-                                  Container(
-                                    child: Text(
-                                      languageController.anonymousAuthor,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 12.h,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Flexible(
+                                child: Container(
+                                  padding: EdgeInsets.only(
+                                      left: 36.w), // 시작 위치를 오른쪽으로 옮김
+                                  child: SelectableText.rich(
+                                    TextSpan(
+                                      text: (postController.post.postContent),
                                       style: TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 20.sp,
+                                        color: mainTextColor,
+                                        letterSpacing: 1.w,
+                                        fontFamily: 'Inter',
+                                        fontSize: 22.sp,
                                       ),
                                     ),
                                   ),
-                                ],
+                                ),
                               ),
                             ],
                           ),
+                          SizedBox(
+                            height: 4.h,
+                          ),
+                          Container(
+                            width: double.infinity,
+                            height: 40.h,
+                            margin: EdgeInsets.fromLTRB(0, 0, 12.h, 0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Container(
+                                  child: TextButton(
+                                    child: Text(
+                                      languageController
+                                          .communityWrittenPostReport,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w300,
+                                        color: mainTextColor,
+                                        fontFamily: 'Inter',
+                                        fontSize: 16.sp,
+                                      ),
+                                    ),
+                                    onPressed: () => postReport(),
+                                  ),
+                                ),
+                                postController.post.postWriter ==
+                                        personalController.userId as String
+                                    ? Container(
+                                        child: TextButton(
+                                          child: Text(
+                                            languageController
+                                                .communityWrittenPostEdit,
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w300,
+                                              color: mainTextColor,
+                                              fontFamily: 'Inter',
+                                              fontSize: 16.sp,
+                                            ),
+                                          ),
+                                          onPressed: () => modifyContent(),
+                                        ),
+                                      )
+                                    : SizedBox(),
+                                postController.post.postWriter ==
+                                        personalController.userId as String
+                                    ? Container(
+                                        child: TextButton(
+                                          child: Text(
+                                            languageController
+                                                .communityWrittenPostDelete,
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w300,
+                                              color: mainTextColor,
+                                              fontFamily: 'Inter',
+                                              fontSize: 16.sp,
+                                            ),
+                                          ),
+                                          onPressed: () => deletePost(),
+                                        ),
+                                      )
+                                    : SizedBox(),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 12.h,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(8.w, 4.h, 8.w, 4.h),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: 20.w,
+                          ),
+                          Container(
+                            margin: EdgeInsets.fromLTRB(0, 0, 2.w, 0),
+                            height: 32.h,
+                            child: Icon(Icons.chat_bubble_outline),
+                          ),
+                          Text(
+                            '${postController.post.commentList.length}',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 26.sp,
+                            ),
+                          ),
+                          Container(
+                            width: 50.w,
+                            height: 32.h,
+                            margin: EdgeInsets.fromLTRB(0, 0, 0, 10.h),
+                            child: IconButton(
+                              icon: Icon(
+                                Icons.thumb_up_alt_outlined,
+                                color: mainTextColor,
+                              ),
+                              style: IconButton.styleFrom(
+                                backgroundColor: Colors
+                                    .transparent, // Make the button transparent
+                                elevation: 0, // Remove button shadow
+                              ),
+                              onPressed: () {
+                                if (postController.post.recommendList.contains(
+                                    personalController.userId as String)) {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      Future.delayed(
+                                        Duration(seconds: 1),
+                                        () {
+                                          Navigator.of(context,
+                                                  rootNavigator: true)
+                                              .pop();
+                                        },
+                                      );
+                                      return AlertDialog(
+                                        content: SizedBox(
+                                          width: 400.w,
+                                          height: 120.h,
+                                          child: Center(
+                                            child: Text(
+                                              languageController
+                                                  .communityAlreadyLikedMessage,
+                                              style: TextStyle(
+                                                  color: mainTextColor,
+                                                  letterSpacing: 1.w,
+                                                  fontFamily: 'Inter',
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 22.sp),
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  );
+                                } else {
+                                  setState(
+                                    () {
+                                      fb_add_recommend(
+                                          postController.post.postNum,
+                                          personalController.userId as String,
+                                          postController.post
+                                              .recommendNum); // 좋아요 추가 - 게시글 제목, 누른사람, 기존 좋아요 개수
+                                      postController.post.recommendNum++;
+                                      postController.post.recommendList.add(
+                                          personalController.userId as String);
+                                    },
+                                  );
+                                }
+                              },
+                            ),
+                          ),
+                          Text(
+                            '${postController.post.recommendList.length}',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 26.sp,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(
+                            color: communityMainColor.withOpacity(0.6),
+                            width: 1.2, // 선의 두께
+                          ),
                         ),
-                        SizedBox(
-                          height: 12.h,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Flexible(
-                              child: Container(
-                                padding: EdgeInsets.only(
-                                    left: 36.w), // 시작 위치를 오른쪽으로 옮김
-                                child: SelectableText.rich(
-                                  TextSpan(
-                                    text: (postController.post.postContent),
+                      ),
+                    ),
+                    Column(
+                      children: [
+                        Column(
+                          children: List.generate(
+                              postController.post.commentList.length, (i) {
+                            return Container(
+                              margin:
+                                  EdgeInsets.fromLTRB(28.w, 12.h, 20.w, 8.h),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "${languageController.anonymous} ${postController.countedCommentWriterList.indexOf(postController.post.commentWriterList[i]) + 1}",
+                                        style: TextStyle(
+                                          color: mainTextColor,
+                                          fontFamily: 'Inter',
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 18.sp,
+                                        ),
+                                      ),
+                                      if (postController
+                                              .post.commentWriterList[i] ==
+                                          personalController.userId as String)
+                                        Container(
+                                          height: 32.h,
+                                          child: TextButton(
+                                            onPressed: () => deleteComment(i),
+                                            child: Text(
+                                              languageController
+                                                  .communityWrittenPostDelete,
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                color: mainTextColor,
+                                                fontFamily: 'Inter',
+                                                fontSize: 16.sp,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                    ],
+                                  ),
+                                  Text(
+                                    postController.post.commentList[i],
                                     style: TextStyle(
                                       color: mainTextColor,
-                                      letterSpacing: 2.0,
+                                      letterSpacing: 1.w,
                                       fontFamily: 'Inter',
-                                      fontSize: 22.sp,
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 18.sp,
                                     ),
                                   ),
+                                ],
+                              ),
+                            );
+                          }),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Stack(
+                        children: [
+                          Container(
+                            height: 60.h,
+                            child: TextField(
+                              controller: commentController,
+                              decoration: InputDecoration(
+                                filled: true,
+                                fillColor: commmentBackGroundColor, // 배경 색상 설정
+                                hintText: languageController.commentPlaceholder,
+                                border: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: mainBackgroundColor),
+                                  borderRadius:
+                                      BorderRadius.circular(12.0), // 둥근 테두리 설정
                                 ),
                               ),
                             ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 4.h,
-                        ),
-                        Container(
-                          width: double.infinity,
-                          height: 40.h,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Container(
-                                child: TextButton(
-                                  child: Text(
-                                    languageController
-                                        .communityWrittenPostReport,
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w300,
-                                      color: mainTextColor,
-                                      fontFamily: 'Inter',
-                                      fontSize: 16.sp,
-                                    ),
-                                  ),
-                                  onPressed: () => postReport(),
+                          ),
+                          Positioned(
+                            right: 10.w,
+                            bottom: 6.h,
+                            child: TextButton(
+                              onPressed: () {
+                                if (commentController.text == '') {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      Future.delayed(
+                                        Duration(seconds: 1),
+                                        () {
+                                          Navigator.of(context,
+                                                  rootNavigator: true)
+                                              .pop();
+                                        },
+                                      );
+                                      return AlertDialog(
+                                        content: SizedBox(
+                                          width: 400.w,
+                                          height: 120.h,
+                                          child: Center(
+                                            child: Text(
+                                              languageController
+                                                  .incompleteFieldsMessage,
+                                              style: TextStyle(
+                                                  color: mainTextColor,
+                                                  letterSpacing: 1.w,
+                                                  fontFamily: 'Inter',
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 20.sp),
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  );
+                                } else {
+                                  setState(() {
+                                    postController.post.commentWriterList.add(
+                                        personalController.userId as String);
+                                    postController.post.commentList
+                                        .add(commentController.text);
+
+                                    fb_add_comment(
+                                        postController.post.postNum,
+                                        postController.post.commentList.last,
+                                        postController.post
+                                            .commentWriterList); // 댓글 추가 - 게시글 제목, 댓글 내용, 댓글 작성자 리스트
+
+                                    commentController.text = '';
+
+                                    //checkCountedCommentWriterList 업데이트
+                                    checkCountedCommentWriterList();
+                                  });
+                                }
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: commmentButtonolor,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.circular(12.0), // 둥근 테두리 설정
                                 ),
                               ),
-                              postController.post.postWriter ==
-                                      personalController.userId as String
-                                  ? Container(
-                                      child: TextButton(
-                                        child: Text(
-                                          languageController
-                                              .communityWrittenPostEdit,
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w300,
-                                            color: mainTextColor,
-                                            fontFamily: 'Inter',
-                                            fontSize: 16.sp,
-                                          ),
-                                        ),
-                                        onPressed: () => modifyContent(),
-                                      ),
-                                    )
-                                  : SizedBox(),
-                              postController.post.postWriter ==
-                                      personalController.userId as String
-                                  ? Container(
-                                      child: TextButton(
-                                        child: Text(
-                                          languageController
-                                              .communityWrittenPostDelete,
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w300,
-                                            color: mainTextColor,
-                                            fontFamily: 'Inter',
-                                            fontSize: 16.sp,
-                                          ),
-                                        ),
-                                        onPressed: () => deletePost(),
-                                      ),
-                                    )
-                                  : SizedBox(),
-                            ],
+                              child: Text(
+                                languageController.communityCommentRegistration,
+                                style: TextStyle(
+                                  color: mainTextColor,
+                                  letterSpacing: 1.w,
+                                  fontFamily: 'Inter',
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 18.sp,
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          height: 12.h,
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.fromLTRB(0, 0, 2, 0),
-                          height: 32.h,
-                          child: Icon(Icons.chat_bubble_outline),
-                        ),
-                        Text(
-                          '${postController.post.commentList.length}',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 26.sp,
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.fromLTRB(8, 0, 2, 0),
-                          height: 32.h,
-                          child: Icon(Icons.thumb_up_alt_outlined),
-                        ),
-                        Text(
-                          '${postController.post.recommendList.length}',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 26.sp,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(
-                          color: communityMainColor.withOpacity(0.6),
-                          width: 1.2, // 선의 두께
-                        ),
+                        ],
                       ),
                     ),
-                  ),
-                  Column(
-                    children: [
-                      // for (int i = 0;
-                      //     i < postController.post.commentList.length;
-                      //     i++)
-                      //   Column(
-                      //     children: [
-                      //       Row(
-                      //         mainAxisAlignment: MainAxisAlignment
-                      //             .spaceBetween, // "X" 버튼을 오른쪽으로 정렬
-
-                      //         crossAxisAlignment: CrossAxisAlignment.start,
-                      //         children: [
-                      //           Flexible(
-                      //             child: SelectableText.rich(
-                      //               TextSpan(
-                      //                 text:
-                      //                     ("익명 ${postController.countedCommentWriterList.indexOf(postController.post.commentWriterList[i]) + 1}"),
-                      //                 style: TextStyle(
-                      //                   color: mainTextColor,
-                      //                   letterSpacing: 2.0,
-                      //                   //height: 1.4,
-                      //                   fontFamily: 'Inter',
-                      //                   fontSize: 18.sp,
-                      //                 ),
-                      //               ),
-                      //             ),
-                      //           ),
-                      //           postController.post.commentWriterList[i] ==
-                      //                   personalController.userId as String
-                      //               ? Container(
-                      //                   child: TextButton(
-                      //                     child: Text(
-                      //                       languageController
-                      //                           .communityWrittenPostDelete,
-                      //                       style: TextStyle(
-                      //                         fontWeight: FontWeight.w500,
-                      //                         color: mainTextColor,
-                      //                         fontFamily: 'Inter',
-                      //                         fontSize: 14.sp,
-                      //                       ),
-                      //                     ),
-                      //                     onPressed: () => deleteComment(i),
-                      //                   ),
-                      //                 )
-                      //               : SizedBox(),
-                      //         ],
-                      //       ),
-                      //       Flexible(
-                      //         child: SelectableText.rich(
-                      //           TextSpan(
-                      //             text: postController.post.commentList[i],
-                      //             style: TextStyle(
-                      //               color: mainTextColor,
-                      //               letterSpacing: 2.0,
-                      //               //height: 1.4,
-                      //               fontFamily: 'Inter',
-                      //               fontSize: 18.sp,
-                      //             ),
-                      //           ),
-                      //         ),
-                      //       ),
-                      //     ],
-                      //   ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                    ],
-                  ),
-                ]),
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
-          // Padding(
-          //   padding: const EdgeInsets.all(20.0),
-          //   child: SingleChildScrollView(
-          //     scrollDirection: Axis.vertical,
-
-          //           Padding(
-          //             padding: const EdgeInsets.all(10.0),
-          //             child: Container(
-          //               width: 115.w,
-          //               height: 55.h,
-          //               child: ElevatedButton(
-          //                 child: Text(
-          //                   '댓글 작성',
-          //                   style: TextStyle(
-          //                     letterSpacing: 2.0,
-          //                     fontFamily: 'Neo',
-          //                     fontSize: 11.sp,
-          //                     fontWeight: FontWeight.bold,
-          //                   ),
-          //                 ),
-          //                 style: ButtonStyle(),
-          //                 onPressed: () {
-          //                   showDialog(
-          //                     context: context,
-          //                     barrierDismissible: true,
-          //                     builder: (BuildContext context) {
-          //                       return AlertDialog(
-          //                         content: SizedBox(
-          //                           width: 300.w,
-          //                           height: 200.h,
-          //                           child: SingleChildScrollView(
-          //                             scrollDirection: Axis.vertical,
-          //                             child: Column(
-          //                               children: [
-          //                                 SizedBox(
-          //                                   height: 20.h,
-          //                                 ),
-          //                                 TextField(
-          //                                   maxLines: 1,
-          //                                   maxLength: 100,
-          //                                   controller: commentController,
-          //                                   decoration: InputDecoration(
-          //                                       border: OutlineInputBorder(),
-          //                                       labelText: '댓글 내용'),
-          //                                 ),
-          //                                 SizedBox(
-          //                                   height: 20.h,
-          //                                 ),
-          //                                 Container(
-          //                                   width: 110.w,
-          //                                   height: 60.h,
-          //                                   child: ElevatedButton(
-          //                                     child: Text('댓글 작성',
-          //                                         style: TextStyle(
-          //                                           letterSpacing: 2.0,
-          //                                           fontFamily: 'Neo',
-          //                                           fontSize: 11.sp,
-          //                                           fontWeight: FontWeight.bold,
-          //                                         )),
-          //                                     style: ButtonStyle(),
-          //                                     onPressed: () {
-          //                                       setState(() {
-          //                                         postController
-          //                                             .post.commentWriterList
-          //                                             .add(personalController
-          //                                                 .userId as String);
-          //                                         postController.post.commentList
-          //                                             .add(
-          //                                                 commentController.text);
-
-          //                                         fb_add_comment(
-          //                                             postController.post.postNum,
-          //                                             postController
-          //                                                 .post.commentList.last,
-          //                                             postController.post
-          //                                                 .commentWriterList); // 댓글 추가 - 게시글 제목, 댓글 내용, 댓글 작성자 리스트
-
-          //                                         commentController.text = '';
-
-          //                                         //checkCountedCommentWriterList 업데이트
-          //                                         checkCountedCommentWriterList();
-          //                                       });
-          //                                       //팝업 창 꺼짐
-          //                                       Navigator.of(context,
-          //                                               rootNavigator: true)
-          //                                           .pop();
-          //                                     },
-          //                                   ),
-          //                                 ),
-          //                               ],
-          //                             ),
-          //                           ),
-          //                         ),
-          //                       );
-          //                     },
-          //                   );
-          //                 },
-          //               ),
-          //             ),
-          //           ),
-          //         ],
-          //       ),
-          //     ),
-          //   ),
         ],
       ),
     );
@@ -627,15 +695,15 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
             return AlertDialog(
               content: SizedBox(
                 height: 350.h,
-                width: 350.w,
+                width: 500.w,
                 child: Column(
                   children: [
                     SizedBox(height: 20.h),
-                    Text("게시글 신고",
+                    Text(languageController.postReport,
                         style: TextStyle(
                           fontFamily: "Neo",
                           fontWeight: FontWeight.bold,
-                          fontSize: 18.sp,
+                          fontSize: 22.sp,
                         )),
                     SizedBox(height: 20.h),
                     Expanded(
@@ -646,11 +714,11 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                           decoration: InputDecoration(
                             border: OutlineInputBorder(),
                             label: Text(
-                              '신고 사유를 적어주세요.(최대 3줄)',
+                              languageController.reportReasonPlaceholder,
                               style: TextStyle(
-                                fontFamily: "Neo",
+                                fontFamily: "Inter",
                                 //fontWeight: FontWeight.bold,
-                                fontSize: 15.sp,
+                                fontSize: 20.sp,
                               ),
                             ),
                           ),
@@ -700,7 +768,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                                 .reportCompletedMessage,
                                             style: TextStyle(
                                                 color: mainTextColor,
-                                                letterSpacing: 2.0,
+                                                letterSpacing: 1.w,
                                                 fontFamily: 'Inter',
                                                 fontWeight: FontWeight.w500,
                                                 fontSize: 22.sp),
@@ -714,9 +782,10 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                 reportController.text = "";
                               },
                               child: Text(
-                                "신고 완료",
+                                languageController.postReport,
                                 style: TextStyle(
-                                  fontFamily: "Neo",
+                                  fontFamily: "Inter",
+                                  fontSize: 20.sp,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -748,15 +817,15 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
             return AlertDialog(
               content: SizedBox(
                 height: 350.h,
-                width: 350.w,
+                width: 500.w,
                 child: Column(
                   children: [
                     SizedBox(height: 20),
-                    Text("게시글 수정",
+                    Text(languageController.postEdit,
                         style: TextStyle(
-                          fontFamily: "Neo",
+                          fontFamily: "Inter",
                           fontWeight: FontWeight.bold,
-                          fontSize: 18.sp,
+                          fontSize: 22.sp,
                         )),
                     SizedBox(height: 20.h),
                     Expanded(
@@ -764,16 +833,16 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                         height: 200.h,
                         child: TextField(
                           controller: contentController,
-                          maxLines: 7,
-                          maxLength: 500,
+                          maxLines: 6,
+                          maxLength: 200,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(),
                             label: Text(
-                              '게시글 내용을 적어주세요.',
+                              languageController.postEditContentPlaceholder,
                               style: TextStyle(
-                                fontFamily: "Neo",
+                                fontFamily: "Inter",
                                 //fontWeight: FontWeight.bold,
-                                fontSize: 15.sp,
+                                fontSize: 18.sp,
                               ),
                             ),
                           ),
@@ -816,11 +885,11 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                 // );
                               },
                               child: Text(
-                                "수정 완료",
+                                languageController.postEditCompletedMessage,
                                 style: TextStyle(
-                                  fontFamily: "Neo",
+                                  fontFamily: "Inter",
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 15.sp,
+                                  fontSize: 20.sp,
                                 ),
                               ),
                             ),
@@ -852,27 +921,29 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                 child: Column(
                   children: [
                     SizedBox(height: 20.h),
-                    Text("게시글 삭제",
+                    Text(languageController.postDelete,
                         style: TextStyle(
-                          fontFamily: "Neo",
+                          fontFamily: "Inter",
                           fontWeight: FontWeight.bold,
-                          fontSize: 18.sp,
+                          fontSize: 22.sp,
                         )),
                     SizedBox(height: 10.h),
-                    Text("정말 삭제하시겠습니까??",
+                    Text(languageController.postDeleteConfirmation,
                         style: TextStyle(
-                          fontFamily: "Neo",
+                          fontFamily: "Inter",
                           //fontWeight: FontWeight.bold,
-                          fontSize: 15.sp,
+                          fontSize: 18.sp,
                         )),
                     SizedBox(height: 20.h),
-                    Text('제목 : ' + postController.post.postTitle,
+                    Text(
+                        languageController.postTitleLabel +
+                            postController.post.postTitle,
                         style: TextStyle(
-                          fontFamily: "Neo",
+                          fontFamily: "Inter",
                           //fontWeight: FontWeight.bold,
-                          fontSize: 12.sp,
+                          fontSize: 18.sp,
                         )),
-                    SizedBox(height: 20.h),
+                    SizedBox(height: 40.h),
                     Row(
                       children: [
                         Expanded(
@@ -908,15 +979,18 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                 );
                               },
                               child: Text(
-                                "삭제",
+                                languageController.communityWrittenPostDelete,
                                 style: TextStyle(
-                                  fontFamily: "Neo",
+                                  fontFamily: "Inter",
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 15.sp,
+                                  fontSize: 20.sp,
                                 ),
                               ),
                             ),
                           ),
+                        ),
+                        SizedBox(
+                          width: 10.w,
                         ),
                         Expanded(
                           child: SizedBox(
@@ -928,11 +1002,11 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                     .pop();
                               },
                               child: Text(
-                                "취소",
+                                languageController.cancel,
                                 style: TextStyle(
-                                  fontFamily: "Neo",
+                                  fontFamily: "Inter",
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 15.sp,
+                                  fontSize: 20.sp,
                                 ),
                               ),
                             ),
@@ -959,23 +1033,23 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
           builder: (BuildContext context, StateSetter setState) {
             return AlertDialog(
               content: SizedBox(
-                height: 250.h,
+                height: 200.h,
                 width: 350.w,
                 child: Column(
                   children: [
                     SizedBox(height: 20.h),
-                    Text("댓글 삭제",
+                    Text(languageController.commentDelete,
                         style: TextStyle(
-                          fontFamily: "Neo",
+                          fontFamily: "Inter",
                           fontWeight: FontWeight.bold,
-                          fontSize: 18.sp,
+                          fontSize: 22.sp,
                         )),
                     SizedBox(height: 10.h),
-                    Text("정말 삭제하시겠습니까??",
+                    Text(languageController.postDeleteConfirmation,
                         style: TextStyle(
-                          fontFamily: "Neo",
+                          fontFamily: "Inter",
                           //fontWeight: FontWeight.bold,
-                          fontSize: 15.sp,
+                          fontSize: 18.sp,
                         )),
                     SizedBox(height: 20.h),
                     // Text(
@@ -1007,11 +1081,6 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
 
                                   //checkCountedCommentWriterList 업데이트
                                   checkCountedCommentWriterList();
-
-                                  //커뮤니티 점수 -1점
-                                  personalController.communityResult -= 1;
-                                  print(
-                                      '커뮤니티 점수 : ${personalController.communityResult}');
                                 });
 
                                 //이러면 showDialog가 pop될걸?
@@ -1041,15 +1110,18 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                 );
                               },
                               child: Text(
-                                "삭제",
+                                languageController.communityWrittenPostDelete,
                                 style: TextStyle(
-                                  fontFamily: "Neo",
+                                  fontFamily: "Inter",
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 15.sp,
+                                  fontSize: 20.sp,
                                 ),
                               ),
                             ),
                           ),
+                        ),
+                        SizedBox(
+                          width: 10.w,
                         ),
                         Expanded(
                           child: SizedBox(
@@ -1061,11 +1133,11 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                     .pop();
                               },
                               child: Text(
-                                "취소",
+                                languageController.cancel,
                                 style: TextStyle(
-                                  fontFamily: "Neo",
+                                  fontFamily: "Inter",
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 15.sp,
+                                  fontSize: 20.sp,
                                 ),
                               ),
                             ),

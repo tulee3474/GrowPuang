@@ -27,7 +27,6 @@ const primaryBold8 = Color(0xFFccccee);
 const mainBackgroundColor = Color(0xFFFFFFFF);
 const buttonBackgroundColor = Color(0xFFFFFFFF);
 const greyDisabledButtonBackgroundColor = Color(0xFFe9e9e9);
-const buttonBorderColor = Color(0xFFD9D9D9);
 const mainTextColor = Color(0xFF201A19);
 const whiteTextColor = Color(0xFFFDF4EA);
 const hintTextColor = Color(0xFFB0B0B0);
@@ -37,6 +36,8 @@ const transparentHintTextColor = Color(0x2FB0B0B0);
 //커뮤니티용 색상들
 const communityMainColor = Color(0xFF5A7C33);
 const communityTextColor = Color(0xFFB2D87D);
+const commmentBackGroundColor = Color(0xFFE5E5E5);
+const commmentButtonolor = Color(0xFFCFCFCF);
 
 TextTheme lightTextTheme = const TextTheme(
   headlineMedium: TextStyle(
