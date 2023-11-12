@@ -222,6 +222,20 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                               //화면 이동 전, 로딩 다이어로그 pop!
                               Navigator.of(context, rootNavigator: true).pop();
 
+                              //새로고침을 위하여 기존 화면 스택을 날리고 다시 시작함
+                              Navigator.pushNamedAndRemoveUntil(
+                                  context, '/', (_) => false);
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => MainPage()),
+                              );
+
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CommunityScreen()));
+
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
