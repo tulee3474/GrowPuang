@@ -94,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ];
                       },
                       icon: Image.asset(
-                        'assets/활동지수.png',
+                        'assets/활동_icon.png',
                         width: 70.w,
                         height: 70.h,
                         //fit: BoxFit.cover,
@@ -164,11 +164,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     IconButton(
                       onPressed: () {
                         print("도움말");
-
                         // TODO 다이어로그 띄워서 도움말 표시
                       },
                       icon: Image.asset(
-                        'assets/도움말.png',
+                        'assets/도움말_icon.png',
                         width: 50.w,
                         height: 50.h,
                         //fit: BoxFit.cover,

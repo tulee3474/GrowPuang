@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:growpuang/controller/personal_contoller.dart';
 import 'package:growpuang/model/get_device_unique_id.dart';
 import 'package:growpuang/styles.dart';
+import 'package:growpuang/view/home_screen.dart';
 import 'package:growpuang/view/mbti/firstPage.dart';
 
 
@@ -26,6 +27,7 @@ Future<void> main() async {
   final personalController = Get.put(PersonalController());
   personalController.userId = await getMobileId(); //모델 id 저장
 
+  //runApp(HomeScreen());
   runApp(const MyApp());
 }
 
