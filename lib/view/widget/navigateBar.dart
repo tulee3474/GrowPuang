@@ -7,6 +7,7 @@ import 'package:growpuang/controller/post_list_controller.dart';
 import 'package:growpuang/model/loading_dialog.dart';
 import 'package:growpuang/view/community_screen.dart';
 import 'package:growpuang/view/knowledge/KnowledgeMainPage.dart';
+import 'package:growpuang/view/knowledge/TestKnowledgeMain.dart';
 import 'package:growpuang/view/widget/navigateIcon.dart';
 
 class navigateBar extends StatelessWidget {
@@ -38,6 +39,7 @@ class navigateBar extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
+                        // builder: (context) => KnowledgeMainPage(),
                         builder: (context) => KnowledgeMainPage(),
                       ),
                     );

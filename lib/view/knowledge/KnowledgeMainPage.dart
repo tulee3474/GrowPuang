@@ -16,7 +16,7 @@ class KnowledgeMainPage extends StatelessWidget {
         children: [
           appBar(),
           Positioned(
-            left: 30.w,
+            left: 100.w,
             top: 211.h,
             child: Container(
               width: 311.w,

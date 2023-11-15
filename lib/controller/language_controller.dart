@@ -22,4 +22,6 @@ class LanguageController extends GetxController {
   String get community => _language.value == '한국어' ? '사교 공간' : 'Community';
 
   String get helpDialog => _language.value == '한국어' ? '도움말' : 'Help';
+
+  String get gradDialog => _language.value == '한국어' ? '졸업심사를  진행합니다' : 's graduation review';
 }
