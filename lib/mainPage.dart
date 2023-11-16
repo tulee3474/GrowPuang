@@ -53,7 +53,7 @@ class MainPage extends StatelessWidget {
                       image: DecorationImage(
                         image: AssetImage(
                             'assets/images/${personalController.pick_img}'),
-                        fit: BoxFit.fitWidth,
+                        fit: BoxFit.fitHeight,
                       ),
                     ),
                   ),

@@ -27,7 +27,7 @@ class EighthPage extends StatelessWidget {
       body: Stack(
         children: [
           appBar(),
-          mbti_diamond(),
+          mbti_diamond.goUp(),
           // 질문 텍스트
           Center(
             child: Padding(
