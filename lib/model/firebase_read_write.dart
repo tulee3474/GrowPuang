@@ -2,11 +2,12 @@ import 'dart:async';
 import 'package:growpuang/class/post.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:growpuang/controller/personal_contoller.dart';
 
 //Write하는 부분
 
 //Community
-void fb_add_post(postTitle, postNum, postWriter, postContent) {
+void fb_add_post(postTitle, postNum, postWriter, postContent, sortOpt) {
   //합쳐쓰기
   FirebaseFirestore.instance.collection("커뮤니티").doc('$postNum').set({
     'postTitle': postTitle,
@@ -17,6 +18,7 @@ void fb_add_post(postTitle, postNum, postWriter, postContent) {
     'recommendList': [], //첫 작성이니까
     'recommendNum': 0,
     'postContent': postContent,
+    'sortOpt': sortOpt,
   }, SetOptions(merge: true));
 
   //게시물 목록에 이름 작성
@@ -112,6 +114,10 @@ class ReadController extends GetxController {
 
   //Community
   Future<List> fb_read_all_post() async {
+    //커뮤니티 게시글 확인을 위함
+    final personalController = Get.put(PersonalController());
+    personalController.communityResult = 0;
+
     List<Post> data = [];
 
     List<int> postNumList = await fb_read_post_list() as List<int>;
@@ -119,6 +125,9 @@ class ReadController extends GetxController {
     for (int i = 0; i < postNumList.length; i++) {
       Post read_data = await fb_read_one_post(postNumList[i]);
       data.add(read_data);
+      if (read_data.postWriter == personalController.userId) {
+        personalController.communityResult += 1;
+      }
     }
 
     return data;
@@ -142,6 +151,7 @@ class ReadController extends GetxController {
     String postWriter = data.data()!['postWriter'] as String;
     int recommendNum = data.data()!['recommendNum'] as int;
     String postContent = data.data()!['postContent'] as String;
+    int sortOpt = data.data()!['sortOpt'] as int;
 
     //Error: Expected a value of type 'List<int>', but got one of type 'List<dynamic>'
     //위 에러 때문에 하나식 일일히 형변환함. 리스트를 통으로 형변환하면 에러
@@ -162,16 +172,8 @@ class ReadController extends GetxController {
       recommendList.add(recommendList2[i] as String);
     }
 
-    Post postData = Post(
-      postTitle,
-      postNum,
-      postWriter,
-      commentList,
-      commentWriterList,
-      recommendList,
-      recommendNum,
-      postContent,
-    );
+    Post postData = Post(postTitle, postNum, postWriter, commentList,
+        commentWriterList, recommendList, recommendNum, postContent, sortOpt);
 
     return postData;
   }
