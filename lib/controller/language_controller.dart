@@ -23,6 +23,9 @@ class LanguageController extends GetxController {
 
   String get helpDialog => _language.value == '한국어' ? '도움말' : 'Help';
 
+
+  String get gradDialog => _language.value == '한국어' ? '졸업심사를  진행합니다' : 's graduation review';
+
   String get loadingMessage =>
       _language.value == '한국어' ? "정보를 로딩 중..." : 'Loading...';
 
@@ -128,4 +131,5 @@ class LanguageController extends GetxController {
 
   String get commentDelete =>
       _language.value == '한국어' ? '댓글 삭제' : 'Delete Comment';
+
 }

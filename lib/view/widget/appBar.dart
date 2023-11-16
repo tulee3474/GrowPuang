@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'graduate_dialog.dart';
 
 class appBar extends StatelessWidget {
   @override
+
   Widget build(BuildContext context) {
     // TODO: implement build
     return Stack(
       alignment: Alignment.center,
       children: [
         // 반응형 배경 이미지 설정
-        Container(
-          width: double.infinity,
-          height: double.infinity,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/배경.png'),
-              fit: BoxFit.cover
-              ,
+        Positioned(
+          child: Container(
+            width: double.infinity,
+            height: double.infinity,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/배경.png'),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
         ),
@@ -27,6 +30,12 @@ class appBar extends StatelessWidget {
             alignment: Alignment.topCenter,
             child: GestureDetector(
               onTap: () {
+                showDialog(
+                    context: context,
+                    barrierDismissible: true, // 바깥 영역 터치시 닫을지 여부
+                    builder: (BuildContext context) {
+                      return GraduateDialog();
+                    });
                 // 영신관 이미지를 누를 때 수행할 작업을 정의하세요.
                 print('영신관 이미지를 눌렀습니다.');
                 // 여기에서 다음 질문 또는 동작을 정의할 수 있습니다.
