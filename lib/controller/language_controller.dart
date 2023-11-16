@@ -1,6 +1,10 @@
 import 'package:get/get.dart';
+import 'package:growpuang/controller/personal_contoller.dart';
 
 class LanguageController extends GetxController {
+
+  final personalController = Get.put(PersonalController());
+
   RxString _language = '한국어'.obs; // 한국어 or English
 
   String get language => _language.value;
@@ -17,14 +21,25 @@ class LanguageController extends GetxController {
   String get knowledgeQuiz =>
       _language.value == '한국어' ? '전공 퀴즈' : 'Knowledge Quiz';
 
-  String get activity => _language.value == '한국어' ? '참여 활동' : 'Activity';
+  String get ending => _language.value == '한국어' ? personalController.option1+" "+personalController.option2+"의 졸업을 축하합니다!" : 'Congratulation graduate of puang!';
 
+  String get drPuang => _language.value == '한국어' ? '박사푸앙' : 'Dr.Puang';
+  String get infraDevelopment => _language.value == '한국어' ? '인프라 개발자 푸앙' : 'Infra Developer Puang';
+
+  String get gradDialog => _language.value=='한국어'? personalController.option1+" "+personalController.option2+"의 졸업심사를 진행합니다." : "Examine graduation of " + personalController.option1+" "+personalController.option2 + "\'s graduation";
+  String get activity => _language.value == '한국어' ? '참여 활동' : 'Activity';
+  String get intellect => _language.value == '한국어' ? '지식지수' : 'Intellect';
   String get community => _language.value == '한국어' ? '사교 공간' : 'Community';
 
+  // 졸업 다이어로그
+  String get cv => _language.value == '한국어' ? "자기소개서 작성" : "Write CV";
+  String get done => _language.value == '한국어' ? "완료" : "Completion";
+  String get notDone => _language.value == '한국어' ? "미완료" : "Not Completion";
+  String get askGradu => _language.value == '한국어' ? '졸업 심사를 진행하시겠습니까?' : 'Proceed examine of graduation?';
+  String get answerNo => _language.value == '한국어' ? '아니오' : 'NO';
+  String get answerYes => _language.value == '한국어' ? '네' : 'YES';
+
   String get helpDialog => _language.value == '한국어' ? '도움말' : 'Help';
-
-
-  String get gradDialog => _language.value == '한국어' ? '졸업심사를  진행합니다' : 's graduation review';
 
   String get loadingMessage =>
       _language.value == '한국어' ? "정보를 로딩 중..." : 'Loading...';

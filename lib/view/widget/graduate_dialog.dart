@@ -4,33 +4,35 @@ import 'package:get/get.dart';
 
 import '../../controller/language_controller.dart';
 import '../../controller/personal_contoller.dart';
-
+import '../ending/graduated_puang.dart';
 
 class GraduateDialog extends StatelessWidget {
   GraduateDialog({super.key});
+
   final personalController = Get.put(PersonalController());
   final languageController = Get.put(LanguageController());
+
   @override
   Widget build(BuildContext context) {
     return Dialog(
       shape: const RoundedRectangleBorder(
-          borderRadius:
-          BorderRadius.all(Radius.circular(2.0))),
+          borderRadius: BorderRadius.all(Radius.circular(2.0))),
       alignment: Alignment.center,
       // insetPadding: EdgeInsets.fromLTRB(30.w, 100.h, 30.w, 200.h),
-      insetPadding: EdgeInsets.symmetric(horizontal : 30.w, vertical : 150.h),
+      insetPadding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 150.h),
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 50.w, vertical: 30.h),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              personalController.option1 + (languageController.language == '한국어' ? ' 푸앙이의\n' : ' puang\n')+ (languageController.gradDialog),
-              style: TextStyle(fontSize: 30.sp,fontWeight: FontWeight.w900),
+            Text(languageController.gradDialog,
+              style: TextStyle(fontSize: 30.sp, fontWeight: FontWeight.w900),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 20.h,),
+            SizedBox(
+              height: 20.h,
+            ),
             Row(
               children: [
                 Container(
@@ -49,7 +51,7 @@ class GraduateDialog extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("전공필수"),
+                    Text(languageController.intellect),
                     SizedBox(
                       height: 10.h,
                     ),
@@ -71,7 +73,9 @@ class GraduateDialog extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 20.h,),
+            SizedBox(
+              height: 20.h,
+            ),
             Row(
               children: [
                 Container(
@@ -90,7 +94,7 @@ class GraduateDialog extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("활동지수"),
+                    Text(languageController.activity),
                     SizedBox(
                       height: 10.h,
                     ),
@@ -112,7 +116,9 @@ class GraduateDialog extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 20.h,),
+            SizedBox(
+              height: 20.h,
+            ),
             Row(
               children: [
                 Container(
@@ -131,24 +137,42 @@ class GraduateDialog extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("자기소개서 작성"),
+                    Text(languageController.cv),
                     SizedBox(
                       height: 10.h,
                     ),
-                    Text("완료 or 미완료", style: TextStyle(fontSize:25.sp),)
+                    Text((personalController.communityResult > 0)
+                        ? languageController.done
+                        : languageController.notDone),
                     //게시글 >= 1 ? "완료' : "미완료"
                   ],
                 ),
               ],
             ),
-            SizedBox(height: 20.h,),
-            Text("졸업을 진행하시겠습니까?"),
-            SizedBox(height: 10.h,),
+            SizedBox(
+              height: 20.h,
+            ),
+            Text(languageController.askGradu, textAlign: TextAlign.center,),
+            SizedBox(
+              height: 10.h,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                TextButton(onPressed: (){}, child: Text("아니오"),),
-                TextButton(onPressed: (){}, child: Text("네"),),
+                TextButton(
+                  onPressed: () {},
+                  child: Text(languageController.answerNo),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                        builder: (context) => GraduatedPuang(),
+                    ),);
+                  },
+                  child: Text(languageController.answerYes),
+                ),
               ],
             )
           ],

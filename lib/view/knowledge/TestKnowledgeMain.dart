@@ -1,89 +1,165 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:growpuang/view/home_screen.dart';
-import 'package:growpuang/view/knowledge/firstQuizPage.dart';
+import 'package:get/get.dart';
 import 'package:growpuang/view/widget/appBar.dart';
 import 'package:growpuang/view/widget/navigateBar.dart';
+import '../../controller/language_controller.dart';
+import '../../controller/personal_contoller.dart';
 
-class TestKnowledgeMain extends StatefulWidget {
-  @override
-  State<TestKnowledgeMain> createState() => _TestKnowledgeMainState();
-}
+class TestKnowledgeMain extends StatelessWidget {
+  TestKnowledgeMain({super.key});
 
-class _TestKnowledgeMainState extends State<TestKnowledgeMain> {
-  Color _color = Colors.white;
+  final languageController = Get.put(LanguageController());
+  final personalController = Get.put(PersonalController());
 
-  void _changeButtonColor() {
-    setState(() {
-      // Change the button color to a new color when pressed
-      _color = _color == Colors.white ? Color(0xFF143264) : Colors.white;
-    });
-  }
-
-  int state = 0;
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: null,
       body: Stack(
         children: [
           appBar(),
-          Column(
-            children: [
-              Expanded(
-                flex: 2,
-                child: Container(),
-              ),
-              Expanded(
-                flex: 7,
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(20.w, 50.w, 20.h, 200.h),
-                  child: Container(
-                    decoration: const BoxDecoration(color: Colors.white),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text("수강할과목을 골라주세요"),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            InkWell(
-                              onTap: () {_changeButtonColor();},
-                              child: Container(
-                                child: Text(
-                                  "자료구조",
-                                ),
-                                color: _color,
-                              ),
+          Container(
+              margin: EdgeInsets.fromLTRB(20.w, 220.h, 20.w, 200.h),
+              color: Colors.white.withOpacity(0.5),
+              child: Column(
+                children: [
+                  Text("수강할 과목을 골라주세요", style: TextStyle(fontSize: 20),),
+                  SizedBox(height: 20.h,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      TextButton(
+                        onPressed: () {},
+                        child: Text("자료구조"),
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                          padding:
+                              MaterialStateProperty.all<EdgeInsetsGeometry>(
+                            EdgeInsets.symmetric(
+                                horizontal: 60.w, vertical: 10.h),
+                          ),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(0.0),
                             ),
-                            ElevatedButton(
-                              onPressed: () {
-                                setState(() {
-                                  // Change the button color to a new color when pressed
-                                  _color = _color == Colors.white ? Color(0xFF143264) : Colors.white;
-                                });
-                              },
-                              style: ElevatedButton.styleFrom(
-                                padding: EdgeInsets.symmetric(horizontal: 50.w),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(2),
-                                ),
-                                backgroundColor: _color,
-                                foregroundColor: Colors.white,
-                              ),
-                              child: const Text(
-                                "자료구조",
-                              ),
+                          ),
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {},
+                        child: Text("알고리즘"),
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                          padding:
+                          MaterialStateProperty.all<EdgeInsetsGeometry>(
+                            EdgeInsets.symmetric(
+                                horizontal: 60.w, vertical: 10.h),
+                          ),
+                          shape:
+                          MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(0.0),
                             ),
-                          ],
-                        )
-                      ],
-                    ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ),
+                  SizedBox(height: 20.h,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      TextButton(
+                        onPressed: () {},
+                        child: Text("자료구조"),
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                          padding:
+                              MaterialStateProperty.all<EdgeInsetsGeometry>(
+                            EdgeInsets.symmetric(
+                                horizontal: 60.w, vertical: 10.h),
+                          ),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(0.0),
+                            ),
+                          ),
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {},
+                        child: Text("알고리즘"),
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                          padding:
+                          MaterialStateProperty.all<EdgeInsetsGeometry>(
+                            EdgeInsets.symmetric(
+                                horizontal: 60.w, vertical: 10.h),
+                          ),
+                          shape:
+                          MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(0.0),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20.h,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      TextButton(
+                        onPressed: () {},
+                        child: Text("자료구조"),
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                          padding:
+                              MaterialStateProperty.all<EdgeInsetsGeometry>(
+                            EdgeInsets.symmetric(
+                                horizontal: 60.w, vertical: 10.h),
+                          ),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(0.0),
+                            ),
+                          ),
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {},
+                        child: Text("알고리즘"),
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                          padding:
+                          MaterialStateProperty.all<EdgeInsetsGeometry>(
+                            EdgeInsets.symmetric(
+                                horizontal: 60.w, vertical: 10.h),
+                          ),
+                          shape:
+                          MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(0.0),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextButton(onPressed: (){}, child: Text("< 홈으로"),),
+                    TextButton(onPressed: (){}, child: Text("수강하기 >"),),
+                  ],
+                )
+                ],
               ),
-            ],
           ),
           navigateBar(),
         ],

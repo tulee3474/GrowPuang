@@ -39,8 +39,8 @@ class navigateBar extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
+                        builder: (context) => TestKnowledgeMain(),
                         // builder: (context) => KnowledgeMainPage(),
-                        builder: (context) => KnowledgeMainPage(),
                       ),
                     );
                   },
