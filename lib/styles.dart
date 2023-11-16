@@ -6,7 +6,7 @@ import 'package:material_color_generator/material_color_generator.dart';
 
 const mainColor = Color(0xFFABD9FF);
 const transparentMainColor = Color(0x4DABD9FF);
-const primary1 = Color(0xFFC3F8FF);
+const primary1 = Color(0xFFCAEB9C);
 const primary2 = Color(0xFFFFF6BF);
 const primary3 = Color(0xFFFFEBAD);
 const primary4 = Color(0xFFF48484);
@@ -24,31 +24,20 @@ const primaryBold5 = Color(0xFFffdddd);
 const primaryBold6 = Color(0xFFcceed4);
 const primaryBold7 = Color(0xFFcceeee);
 const primaryBold8 = Color(0xFFccccee);
-const mainBackgroundColor = Color(0xFFF5FAFD);
+const mainBackgroundColor = Color(0xFFFFFFFF);
 const buttonBackgroundColor = Color(0xFFFFFFFF);
 const greyDisabledButtonBackgroundColor = Color(0xFFe9e9e9);
-const buttonBorderColor = Color(0xFFD9D9D9);
 const mainTextColor = Color(0xFF201A19);
 const whiteTextColor = Color(0xFFFDF4EA);
 const hintTextColor = Color(0xFFB0B0B0);
 const transparentHintTextColor = Color(0x2FB0B0B0);
 //const feedbackStarColor = Color(0xFFFFD400);
 
-//이태운 추가 - Event의 category에 따라 color를 다르게 가져가기 위한 배열(0~9)
-//타임테이블 색상 수정을 여기서 하는 것임!!
-//0: 파베 데이터셋 관광지, 1: 식당 추천 + 추천받은 식당, 2: 이동, 3: 카페 추천, 4: 숙소 추천, 5: 필수 여행지
-List<Color> categoryColorList = [
-  primary1,
-  primary2,
-  Colors.grey,
-  primary5,
-  primary6,
-  primary4,
-  primary3,
-  primary7,
-  primary8,
-  mainColor
-];
+//커뮤니티용 색상들
+const communityMainColor = Color(0xFF5A7C33);
+const communityTextColor = Color(0xFFB2D87D);
+const commmentBackGroundColor = Color(0xFFE5E5E5);
+const commmentButtonolor = Color(0xFFCFCFCF);
 
 TextTheme lightTextTheme = const TextTheme(
   headlineMedium: TextStyle(
@@ -86,3 +75,32 @@ ThemeData lightColorTheme = ThemeData(
     ),
   ),
 );
+
+List<Color> buttonColorList = [
+  mainBackgroundColor,
+  mainBackgroundColor,
+  mainBackgroundColor,
+  mainBackgroundColor,
+];
+List<Color> buttonTextColorList = [
+  communityTextColor,
+  communityTextColor,
+  communityTextColor,
+  communityTextColor,
+];
+
+void switchButtonColor(int index, int type) {
+  if (type == 1) {
+    buttonColorList[index] = primary1;
+  } else if (type == 0) {
+    buttonColorList[index] = mainBackgroundColor;
+  }
+}
+
+void switchButtonTextColor(int index, int type) {
+  if (type == 1) {
+    buttonTextColorList[index] = communityMainColor;
+  } else if (type == 0) {
+    buttonTextColorList[index] = communityTextColor;
+  }
+}

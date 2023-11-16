@@ -50,8 +50,9 @@ class ThirdPage extends StatelessWidget {
                       option1: languageController.language == '한국어'
                           ? '다른 사람의 평판'
                           : 'someone else\'s reputation',
-                      option2:
-                      languageController.language == '한국어' ? '좌절감' : 'frustration',
+                      option2: languageController.language == '한국어'
+                          ? '좌절감'
+                          : 'frustration',
                     ),
                   ),
                 );
@@ -106,8 +107,9 @@ class ThirdPage extends StatelessWidget {
                       option2: languageController.language == '한국어'
                           ? '다른 사람의 평판'
                           : 'someone else\'s reputation',
-                      option1:
-                      languageController.language == '한국어' ? '좌절감' : 'frustration',
+                      option1: languageController.language == '한국어'
+                          ? '좌절감'
+                          : 'frustration',
                     ),
                   ),
                 );

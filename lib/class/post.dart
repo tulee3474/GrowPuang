@@ -7,6 +7,7 @@ class Post {
   List<String> recommendList = []; // 좋아요 누른 사람 리스트
   int recommendNum = 0; // 좋아요 수
   String postContent = ''; //게시물 내용
+  int sortOpt = 1; //소트 방법 (게시물 카테고리) -> 1 or 2 or 3
 
   Post(
     this.postTitle,
@@ -17,6 +18,7 @@ class Post {
     this.recommendList,
     this.recommendNum,
     this.postContent,
+    this.sortOpt,
   );
 
   Map<String, dynamic> toJson() => {
@@ -28,5 +30,6 @@ class Post {
         'recommendList': recommendList,
         'recommendNum': recommendNum,
         'postContent': postContent,
+        'sortOpt': sortOpt,
       };
 }
