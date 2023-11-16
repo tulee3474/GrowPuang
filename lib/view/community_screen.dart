@@ -66,287 +66,294 @@ class _CommunityScreenState extends State<CommunityScreen> {
       body: Stack(
         children: [
           appBar(),
-          Column(
-            children: [
-              Container(
-                width: double.infinity,
-                color: communityMainColor,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 24.h,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
-                        child: Text(
-                          languageController.communityAppBarText,
-                          style: TextStyle(
-                              fontSize: 28.sp,
-                              fontFamily: 'Inter',
-                              fontWeight: FontWeight.bold,
-                              color: whiteTextColor),
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                  width: double.infinity,
+                  color: communityMainColor,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 24.h,
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
-                        child: Text(
-                          languageController.communityAppBarSubText(
-                              personalController.communityResult),
-                          style: TextStyle(
-                              fontSize: 20.sp,
-                              fontFamily: 'Inter',
-                              color: whiteTextColor),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
+                          child: Text(
+                            languageController.communityAppBarText,
+                            style: TextStyle(
+                                fontSize: 28.sp,
+                                fontFamily: 'Inter',
+                                fontWeight: FontWeight.bold,
+                                color: whiteTextColor),
+                          ),
                         ),
-                      ),
-                    ],
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
+                          child: Text(
+                            languageController.communityAppBarSubText(
+                                personalController.communityResult),
+                            style: TextStyle(
+                                fontSize: 20.sp,
+                                fontFamily: 'Inter',
+                                color: whiteTextColor),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                color: mainBackgroundColor.withOpacity(0.95),
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 50.h,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.menu,
-                              color: communityMainColor,
-                            ),
-                            SizedBox(
-                              width: 5.w,
-                            ),
-                            DropdownButton(
-                              icon: const SizedBox.shrink(),
-                              value: postListController.selectedSort,
-                              items: postListController.sortList.map((value) {
-                                return DropdownMenuItem(
-                                  value: value,
-                                  child: Text(
-                                    value,
-                                    style: TextStyle(
-                                        fontSize: 25.sp,
-                                        fontFamily: 'Inter',
-                                        color: communityMainColor),
-                                  ),
-                                );
-                              }).toList(),
-                              onChanged: (value) {
-                                setState(() {
-                                  postListController.selectedSort = value!;
-                                  sortOpt = postListController.sortList
-                                      .indexOf(value);
-                                });
-                              },
-                            ),
-                          ],
+                Container(
+                  color: mainBackgroundColor.withOpacity(0.95),
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: 50.h,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.menu,
+                                color: communityMainColor,
+                              ),
+                              SizedBox(
+                                width: 5.w,
+                              ),
+                              DropdownButton(
+                                icon: const SizedBox.shrink(),
+                                value: postListController.selectedSort,
+                                items: postListController.sortList.map((value) {
+                                  return DropdownMenuItem(
+                                    value: value,
+                                    child: Text(
+                                      value,
+                                      style: TextStyle(
+                                          fontSize: 25.sp,
+                                          fontFamily: 'Inter',
+                                          color: communityMainColor),
+                                    ),
+                                  );
+                                }).toList(),
+                                onChanged: (value) {
+                                  setState(() {
+                                    postListController.selectedSort = value!;
+                                    sortOpt = postListController.sortList
+                                        .indexOf(value);
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      Container(
-                        child: TextButton(
-                          onPressed: () async {
-                            //기다리는 동안 로딩창 띄우기
-                            loadingDialog(context);
+                        Container(
+                          child: TextButton(
+                            onPressed: () async {
+                              //기다리는 동안 로딩창 띄우기
+                              loadingDialog(context);
 
-                            await postListController.readPostData();
+                              await postListController.readPostData();
 
-                            //화면 이동 전, 로딩 다이어로그 pop!
-                            Navigator.of(context, rootNavigator: true).pop();
+                              //화면 이동 전, 로딩 다이어로그 pop!
+                              Navigator.of(context, rootNavigator: true).pop();
 
-                            //새로고침을 위하여 기존 화면 스택을 날리고 다시 시작함
-                            Navigator.pushNamedAndRemoveUntil(
-                                context, '/', (_) => false);
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => MainPage()),
-                            );
-                            Navigator.push(
+                              //새로고침을 위하여 기존 화면 스택을 날리고 다시 시작함
+                              Navigator.pushNamedAndRemoveUntil(
+                                  context, '/', (_) => false);
+                              Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => CommunityScreen()));
-                          },
-                          child: Icon(Icons.refresh_rounded),
+                                    builder: (context) => MainPage()),
+                              );
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CommunityScreen()));
+                            },
+                            child: Icon(Icons.refresh_rounded),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: Column(
-                  children: [
-                    //for문 + 삼항연산자로 글 종류에 따른 sort
-                    for (int i = postListController.postList.length - 1;
-                        i >= 0;
-                        i--)
-                      Column(
-                        children: [
-                          // 상단에 밑줄 추가 ( lineStartOptList, lineEndOptList 체크 )
-                          i >= lineStartOptList[sortOpt] &&
-                                  i < lineEndOptList[sortOpt]
-                              ? Stack(
-                                  children: [
-                                    Container(
+                SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Column(
+                    children: [
+                      //for문 + 삼항연산자로 글 종류에 따른 sort
+                      for (int i = postListController.postList.length - 1;
+                          i >= 0;
+                          i--)
+                        Column(
+                          children: [
+                            // 상단에 밑줄 추가 ( lineStartOptList, lineEndOptList 체크 )
+                            i >= lineStartOptList[sortOpt] &&
+                                    i < lineEndOptList[sortOpt]
+                                ? Stack(
+                                    children: [
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          border: Border(
+                                            bottom: BorderSide(
+                                              color: mainBackgroundColor
+                                                  .withOpacity(0.8),
+                                              width: 1.2, // 선의 두께
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        margin: EdgeInsets.fromLTRB(
+                                            28.w, 0, 28.w, 0),
+                                        decoration: const BoxDecoration(
+                                          border: Border(
+                                            bottom: BorderSide(
+                                              color:
+                                                  communityMainColor, // 원하는 색상으로 변경
+                                              width: 1.2, // 선의 두께
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                                : const SizedBox(),
+                            sortOpt == postListController.postList[i].sortOpt ||
+                                    sortOpt == 0
+                                ? GestureDetector(
+                                    child: Container(
+                                      width: double.infinity,
+                                      height: 80.h,
+                                      padding: const EdgeInsets.all(12.0),
                                       decoration: BoxDecoration(
-                                        border: Border(
-                                          bottom: BorderSide(
-                                            color: mainBackgroundColor
-                                                .withOpacity(0.8),
-                                            width: 1.2, // 선의 두께
-                                          ),
-                                        ),
+                                        color: mainBackgroundColor
+                                            .withOpacity(0.8),
+                                        borderRadius: BorderRadius.circular(0),
+                                        // border: Border(
+                                        //   bottom: BorderSide(
+                                        //       color: Colors.grey.withOpacity(0.3)),
+                                        // ),
                                       ),
-                                    ),
-                                    Container(
-                                      margin:
-                                          EdgeInsets.fromLTRB(28.w, 0, 28.w, 0),
-                                      decoration: const BoxDecoration(
-                                        border: Border(
-                                          bottom: BorderSide(
-                                            color:
-                                                communityMainColor, // 원하는 색상으로 변경
-                                            width: 1.2, // 선의 두께
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                )
-                              : const SizedBox(),
-                          sortOpt == postListController.postList[i].sortOpt ||
-                                  sortOpt == 0
-                              ? GestureDetector(
-                                  child: Container(
-                                    width: double.infinity,
-                                    height: 80.h,
-                                    padding: const EdgeInsets.all(12.0),
-                                    decoration: BoxDecoration(
-                                      color:
-                                          mainBackgroundColor.withOpacity(0.8),
-                                      borderRadius: BorderRadius.circular(0),
-                                      // border: Border(
-                                      //   bottom: BorderSide(
-                                      //       color: Colors.grey.withOpacity(0.3)),
-                                      // ),
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            SizedBox(width: 20.w),
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  postListController.sortList[
-                                                      postListController
-                                                          .postList[i].sortOpt],
-                                                  style: TextStyle(
-                                                    fontWeight: FontWeight.w500,
-                                                    fontSize: 18.sp,
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  height: 4.h,
-                                                ),
-                                                Expanded(
-                                                  child: Text(
-                                                    '${postListController.postList[i].postTitle}',
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              SizedBox(width: 20.w),
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    postListController.sortList[
+                                                        postListController
+                                                            .postList[i]
+                                                            .sortOpt],
                                                     style: TextStyle(
                                                       fontWeight:
                                                           FontWeight.w500,
-                                                      fontSize: 22.sp,
+                                                      fontSize: 18.sp,
                                                     ),
                                                   ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.end,
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Container(
-                                                  margin: EdgeInsets.fromLTRB(
-                                                      0, 0, 2.w, 0),
-                                                  height: 32.h,
-                                                  child: Icon(Icons
-                                                      .chat_bubble_outline),
-                                                ),
-                                                Text(
-                                                  '${postListController.postList[i].commentList.length}',
-                                                  style: TextStyle(
-                                                    fontWeight: FontWeight.w400,
-                                                    fontSize: 26.sp,
+                                                  SizedBox(
+                                                    height: 4.h,
                                                   ),
-                                                ),
-                                                Container(
-                                                  margin: EdgeInsets.fromLTRB(
-                                                      8.w, 0, 2.w, 0),
-                                                  height: 32.h,
-                                                  child: Icon(Icons
-                                                      .thumb_up_alt_outlined),
-                                                ),
-                                                Text(
-                                                  '${postListController.postList[i].recommendList.length}',
-                                                  style: TextStyle(
-                                                    fontWeight: FontWeight.w400,
-                                                    fontSize: 26.sp,
+                                                  Expanded(
+                                                    child: Text(
+                                                      '${postListController.postList[i].postTitle}',
+                                                      style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        fontSize: 22.sp,
+                                                      ),
+                                                    ),
                                                   ),
-                                                ),
-                                              ],
-                                            ),
-                                            Container(
-                                              child: Text(
-                                                languageController
-                                                    .anonymousAuthor,
-                                                style: TextStyle(
-                                                  fontWeight: FontWeight.w300,
-                                                  fontSize: 16.sp,
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.end,
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  Container(
+                                                    margin: EdgeInsets.fromLTRB(
+                                                        0, 0, 2.w, 0),
+                                                    height: 32.h,
+                                                    child: Icon(Icons
+                                                        .chat_bubble_outline),
+                                                  ),
+                                                  Text(
+                                                    '${postListController.postList[i].commentList.length}',
+                                                    style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      fontSize: 26.sp,
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    margin: EdgeInsets.fromLTRB(
+                                                        8.w, 0, 2.w, 0),
+                                                    height: 32.h,
+                                                    child: Icon(Icons
+                                                        .thumb_up_alt_outlined),
+                                                  ),
+                                                  Text(
+                                                    '${postListController.postList[i].recommendList.length}',
+                                                    style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      fontSize: 26.sp,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              Container(
+                                                child: Text(
+                                                  languageController
+                                                      .anonymousAuthor,
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.w300,
+                                                    fontSize: 16.sp,
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  onTap: () {
-                                    print(postListController.postList.length);
-                                    print(i);
-
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => WrittenPostPage(
-                                            postListController.postList[i], i),
+                                            ],
+                                          ),
+                                        ],
                                       ),
-                                    );
-                                  },
-                                )
-                              : const SizedBox(),
-                        ],
-                      ),
-                  ],
+                                    ),
+                                    onTap: () {
+                                      print(postListController.postList.length);
+                                      print(i);
+
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => WrittenPostPage(
+                                              postListController.postList[i],
+                                              i),
+                                        ),
+                                      );
+                                    },
+                                  )
+                                : const SizedBox(),
+                          ],
+                        ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),
