@@ -8,7 +8,6 @@ import 'package:get/get.dart';
 import 'package:growpuang/controller/language_controller.dart';
 import 'package:growpuang/view/widget/appBar.dart';
 
-
 class lastPage extends StatelessWidget {
   final languageController = Get.put(LanguageController());
   final personalController = Get.put(PersonalController());
@@ -59,7 +58,7 @@ class lastPage extends StatelessWidget {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage('assets/images/$pick_img'),
-                        fit: BoxFit.fill,
+                        fit: BoxFit.fitHeight,
                       ),
                     ),
                   ),
@@ -94,9 +93,8 @@ class lastPage extends StatelessWidget {
                           builder: (context) => MainPage(),
                           //NewScreen()은 새로운 시작화면입니다. 여기에 원하는 화면 위젯을 넣으세요.
                         ),
-                            (Route<dynamic> route) => false,
+                        (Route<dynamic> route) => false,
                       );
-
                     },
                     child: Align(
                       alignment: Alignment.topCenter,

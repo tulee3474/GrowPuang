@@ -70,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       languageController.knowledgeQuiz,
                       style: TextStyle(
                         color: Colors.black,
-                        letterSpacing: 2.0,
+                        letterSpacing: 2.w,
                         //fontFamily: 'Neo',
                         fontSize: 12.sp,
                         fontWeight: FontWeight.bold,
@@ -104,7 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       languageController.activity,
                       style: TextStyle(
                         color: Colors.black,
-                        letterSpacing: 2.0,
+                        letterSpacing: 2.w,
                         //fontFamily: 'Neo',
                         fontSize: 12.sp,
                         fontWeight: FontWeight.bold,
@@ -148,7 +148,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       languageController.community,
                       style: TextStyle(
                         color: Colors.black,
-                        letterSpacing: 2.0,
+                        letterSpacing: 2.w,
                         //fontFamily: 'Neo',
                         fontSize: 12.sp,
                         fontWeight: FontWeight.bold,
@@ -180,7 +180,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       languageController.helpDialog,
                       style: TextStyle(
                         color: Colors.black,
-                        letterSpacing: 2.0,
+                        letterSpacing: 2.w,
                         //fontFamily: 'Neo',
                         fontSize: 12.sp,
                         fontWeight: FontWeight.bold,

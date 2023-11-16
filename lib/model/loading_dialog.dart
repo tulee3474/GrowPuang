@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get.dart';
+import 'package:growpuang/controller/language_controller.dart';
 
 void loadingDialog(context) {
+  final languageController = Get.put(LanguageController());
+
   showDialog(
     context: context,
     barrierDismissible: false, // 바깥 영역 터치시 창닫기 x
@@ -17,11 +21,11 @@ void loadingDialog(context) {
               Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Text(
-                  "정보를 로딩 중...",
+                  languageController.loadingMessage,
                   style: TextStyle(
                       fontFamily: "Neo",
                       fontWeight: FontWeight.bold,
-                      fontSize: 15.sp),
+                      fontSize: 25.sp),
                 ),
               ),
               SizedBox(

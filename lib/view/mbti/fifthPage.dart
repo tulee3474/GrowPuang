@@ -27,7 +27,7 @@ class FifthPage extends StatelessWidget {
       body: Stack(
         children: [
           appBar(),
-          mbti_diamond(),
+          mbti_diamond.goUp(),
           // 질문 텍스트
           Center(
             child: Padding(
@@ -60,8 +60,12 @@ class FifthPage extends StatelessWidget {
                       question: languageController.language == '한국어'
                           ? '당신이 졸업시킬 푸앙이는'
                           : 'The Puang you will graduate from is',
-                      option1: languageController.language == '한국어' ? '모범적인' : 'exemplary',
-                      option2: languageController.language == '한국어' ? '푸앙이' : 'puang',
+                      option1: languageController.language == '한국어'
+                          ? '모범적인'
+                          : 'exemplary',
+                      option2: languageController.language == '한국어'
+                          ? '푸앙이'
+                          : 'puang',
                       pick_img: '모범-푸앙.png',
                     ),
                   ),
@@ -116,8 +120,11 @@ class FifthPage extends StatelessWidget {
                       question: languageController.language == '한국어'
                           ? '당신이 졸업시킬 푸앙이는'
                           : 'The Puang you will graduate from is',
-                      option1: languageController.language == '한국어' ? '너드한' : 'nerd',
-                      option2: languageController.language == '한국어' ? '푸앙이' : 'puang',
+                      option1:
+                          languageController.language == '한국어' ? '너드한' : 'nerd',
+                      option2: languageController.language == '한국어'
+                          ? '푸앙이'
+                          : 'puang',
                       pick_img: '너드한-푸앙.png',
                     ),
                   ),

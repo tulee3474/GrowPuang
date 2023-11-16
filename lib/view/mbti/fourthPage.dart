@@ -61,8 +61,12 @@ class FourthPage extends StatelessWidget {
                       question: languageController.language == '한국어'
                           ? '당신이 졸업시킬 푸앙이는'
                           : 'The Puang you will graduate from is',
-                      option1: languageController.language == '한국어' ? '호기심 많은' : 'curious',
-                      option2: languageController.language == '한국어' ? '푸앙이' : 'puang',
+                      option1: languageController.language == '한국어'
+                          ? '호기심 많은'
+                          : 'curious',
+                      option2: languageController.language == '한국어'
+                          ? '푸앙이'
+                          : 'puang',
                       pick_img: '호기심-푸앙.png',
                     ),
                   ),
@@ -118,8 +122,12 @@ class FourthPage extends StatelessWidget {
                       question: languageController.language == '한국어'
                           ? '음악을 들을 때 중요한 것은?'
                           : 'What is important when listening to music?',
-                      option1: languageController.language == '한국어' ? '멜로디' : 'melody',
-                      option2: languageController.language == '한국어' ? '가사' : 'lyrics',
+                      option1: languageController.language == '한국어'
+                          ? '멜로디'
+                          : 'melody',
+                      option2: languageController.language == '한국어'
+                          ? '가사'
+                          : 'lyrics',
                     ),
                   ),
                 );

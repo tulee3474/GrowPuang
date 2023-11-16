@@ -57,5 +57,3 @@ class appBar extends StatelessWidget {
     );
   }
 }
-
-

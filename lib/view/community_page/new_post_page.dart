@@ -1,7 +1,10 @@
 import 'dart:ffi';
 
+import 'package:flutter/services.dart';
+import 'package:growpuang/controller/language_controller.dart';
 import 'package:growpuang/controller/post_list_controller.dart';
 import 'package:growpuang/controller/personal_contoller.dart';
+import 'package:growpuang/mainPage.dart';
 import 'package:growpuang/model/firebase_read_write.dart';
 import 'package:flutter/material.dart';
 import 'package:growpuang/class/post.dart';
@@ -10,6 +13,7 @@ import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:growpuang/styles.dart';
 import 'package:growpuang/view/community_screen.dart';
+import 'package:growpuang/view/widget/appBar.dart';
 
 class NewPostPage extends StatefulWidget {
   NewPostPage();
@@ -21,191 +25,390 @@ class NewPostPage extends StatefulWidget {
 class _NewPostPageState extends State<NewPostPage> {
   final postListController = Get.put(PostListController());
   final personalController = Get.put(PersonalController());
+  final languageController = Get.put(LanguageController());
 
   TextEditingController postTitleController = TextEditingController();
+  TextEditingController postTitleController2 = TextEditingController();
   //TextEditingController postWriterController = TextEditingController();
   TextEditingController postContentController = TextEditingController();
 
-  // Post NewPostPage = Post('', 1, '', [], [], [], 0, '');
+  int _sortOpt = 1;
 
   @override
   initState() {
+    for (int b = 0; b < postListController.sortList.length; b++) {
+      if (b != 1) {
+        switchButtonColor(b, 0);
+        switchButtonTextColor(b, 0);
+      } else {
+        switchButtonColor(b, 1);
+        switchButtonTextColor(b, 1);
+      }
+    }
+
     super.initState();
     postTitleController = TextEditingController();
+    postTitleController2 = TextEditingController();
     postContentController = TextEditingController();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        centerTitle: true, // 앱바 가운데 정렬
-        // title: InkWell(
-        //   onTap: () {
-        //     Navigator.popUntil(context, (route) => route.isFirst);
-        //   },
-        //   child: SizedBox(
-        //     height: 48.h,
-        //     width: 80.w,
-        //     child: SizedBox(
-        //       height: 48.h,
-        //       width: 80.w,
-        //       child: Image.asset(IconsPath.logo, fit: BoxFit.contain),
-        //     ),
-        //   ),
-        // ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-            children: [
-              SizedBox(
-                height: 10.h,
-              ),
-              Container(
-                child: Text(
-                  "새로운 글 작성",
-                  style: TextStyle(
-                    color: Colors.black,
-                    letterSpacing: 2.0,
-                    fontFamily: 'Neo',
-                    fontSize: 18.sp,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
-                height: 7,
-                decoration: BoxDecoration(
-                  color: Color(0xffF4F4F4),
-                  border: Border(
-                    top: BorderSide(width: 1.0, color: primaryBold8),
-                  ),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.fromLTRB(20, 20, 20, 15),
-                decoration: BoxDecoration(
-                  color: mainBackgroundColor,
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(
-                    width: 1,
-                    color: Color.fromARGB(255, 245, 250, 253),
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: buttonBorderColor.withOpacity(0.1),
-                      spreadRadius: 2,
-                      blurRadius: 2,
-                      offset: Offset(3, 3), // changes position of shadow
-                    ),
-                  ],
-                ),
-                child: Column(
-                  children: [
-                    Text('여행 경험을 공유해보세요!',
-                        style: TextStyle(
-                          color: mainTextColor,
-                          letterSpacing: 2.0,
-                          fontFamily: 'Neo',
-                          fontSize: 15.sp,
-                          fontWeight: FontWeight.bold,
-                        )),
-                    SizedBox(height: 20.h),
-                    TextField(
-                      controller: postTitleController,
-                      maxLines: 1,
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        filled: true,
-                        fillColor: Color(0xffF4F4F4),
-                        labelText: '제목을 입력해주세요',
-                        labelStyle: TextStyle(
-                          fontFamily: "Neo",
-                          fontSize: 15.sp,
+      body: Stack(
+        children: [
+          appBar(),
+          SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              children: [
+                Container(
+                  width: double.infinity,
+                  color: communityMainColor,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 32.h,
                         ),
-                      ),
-                    ),
-                    SizedBox(height: 20.h),
-                    TextField(
-                      controller: postContentController,
-                      maxLines: 7,
-                      maxLength: 500,
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        filled: true,
-                        fillColor: Color(0xffF4F4F4),
-                        labelText: '내용을 입력해주세요.',
-                        labelStyle: TextStyle(
-                          fontFamily: "Neo",
-                          fontSize: 15.sp,
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10.h),
-                    Container(
-                      width: double.infinity,
-                      height: 40.h,
-                      child: ElevatedButton(
-                        child: Text(
-                          '게시글 저장',
-                          style: TextStyle(
-                            fontFamily: 'Neo',
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15.sp,
-                            color: Color.fromARGB(255, 102, 202, 252),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
+                          child: Text(
+                            languageController.communityNewPostAppBarText,
+                            style: TextStyle(
+                                fontSize: 28.sp,
+                                fontFamily: 'Inter',
+                                fontWeight: FontWeight.bold,
+                                color: whiteTextColor),
                           ),
                         ),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white,
-                          side: BorderSide(
-                              color: Color.fromARGB(255, 102, 202, 252),
-                              width: 2.w),
+                        SizedBox(
+                          height: 8.h,
                         ),
-                        onPressed: () {
-                          setState(() {
-                            postListController.postList.add(Post(
-                                postTitleController.text,
-                                postListController.postList.last.postNum + 1,
-                                personalController.userId,
-                                [],
-                                [],
-                                [],
-                                0,
-                                postContentController.text));
-                            fb_add_post(
-                                postTitleController.text,
-                                postListController
-                                    .postList.last.postNum, //이미 넣었으니깐.
-                                personalController.userId,
-                                postContentController
-                                    .text); // 게시글 추가 - 게시글 제목, 게시글 넘버, 작성자, 게시글 내용
-                          });
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  color: mainBackgroundColor,
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      Container(
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                width: 30.w,
+                              ),
+                              for (int i = 1;
+                                  i < postListController.sortList.length;
+                                  i++)
+                                Row(
+                                  children: [
+                                    TextButton(
+                                      // ignore: sort_child_properties_last
+                                      child: Text(
+                                        postListController.sortList[i],
+                                        style: TextStyle(
+                                          fontSize: 20.sp,
+                                          fontFamily: 'Inter',
+                                          //fontWeight: FontWeight.bold,
+                                          color: buttonTextColorList[i],
+                                        ),
+                                      ),
+                                      style: TextButton.styleFrom(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                          ),
+                                          backgroundColor: buttonColorList[i]),
+                                      onPressed: () {
+                                        setState(
+                                          () {
+                                            //버튼 색 변환
+                                            for (int b = 0;
+                                                b <
+                                                    postListController
+                                                        .sortList.length;
+                                                b++) {
+                                              if (b != i) {
+                                                switchButtonColor(b, 0);
+                                                switchButtonTextColor(b, 0);
+                                              } else {
+                                                switchButtonColor(b, 1);
+                                                switchButtonTextColor(b, 1);
+                                              }
+                                            }
 
-                          //여기서 DB에 저장
+                                            //_sortOpt 선택
+                                            _sortOpt = i;
+                                          },
+                                        );
+                                      },
+                                    ),
+                                    SizedBox(
+                                      width: 20.w,
+                                    )
+                                  ],
+                                ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 12.h),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SizedBox(width: 4.w),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              languageController.communityNewPostCompanyName,
+                              style: TextStyle(
+                                fontSize: 20.sp,
+                                fontFamily: 'Inter',
+                                color: communityMainColor,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 8, 20, 8),
+                            child: Container(
+                              width: 280.w,
+                              height: 40.h,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: communityTextColor, width: 1),
+                              ),
+                              child: TextField(
+                                controller: postTitleController,
+                                maxLines: 1,
+                                maxLength: languageController.language == "한국어"
+                                    ? 10
+                                    : 15,
+                                decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    filled: true,
+                                    fillColor: mainBackgroundColor,
+                                    labelText: languageController
+                                        .communityNewPostCompanyExample,
+                                    floatingLabelBehavior:
+                                        FloatingLabelBehavior.never,
+                                    labelStyle: TextStyle(
+                                      fontSize: 16.sp,
+                                      fontFamily: 'Inter',
+                                      color: communityTextColor,
+                                    ),
+                                    counterText: ""),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SizedBox(width: 4.w),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              languageController.communityNewPostJobTitle,
+                              style: TextStyle(
+                                fontSize: 20.sp,
+                                fontFamily: 'Inter',
+                                color: communityMainColor,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 8, 20, 8),
+                            child: Container(
+                              width: 280.w,
+                              height: 40.h,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: communityTextColor, width: 1),
+                              ),
+                              child: TextField(
+                                controller: postTitleController2,
+                                maxLines: 1,
+                                maxLength: languageController.language == "한국어"
+                                    ? 10
+                                    : 15,
+                                decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    filled: true,
+                                    fillColor: mainBackgroundColor,
+                                    labelText: languageController
+                                        .communityNewPostJobTitleExample,
+                                    floatingLabelBehavior:
+                                        FloatingLabelBehavior.never,
+                                    labelStyle: TextStyle(
+                                      fontSize: 16.sp,
+                                      fontFamily: 'Inter',
+                                      color: communityTextColor,
+                                    ),
+                                    counterText: ""),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        width: 520.w,
+                        decoration: BoxDecoration(
+                          border:
+                              Border.all(color: communityTextColor, width: 1),
+                        ),
+                        child: TextField(
+                          controller: postContentController,
+                          textAlignVertical: TextAlignVertical(y: -1.0),
+                          maxLines: 6,
+                          maxLength: 200,
+                          decoration: InputDecoration(
+                            // contentPadding: EdgeInsets.zero, // 좌상단에 위치하도록 설정
 
-                          //커뮤니티 들어가기 - 글 하나 쓸 때마다 +1점
-                          personalController.communityResult += 1;
-                          print(
-                              '커뮤니티 점수 : ${personalController.communityResult}');
+                            border: InputBorder.none,
+                            filled: true,
+                            fillColor: mainBackgroundColor,
+                            labelText:
+                                languageController.communityNewPostContent,
+                            labelStyle: TextStyle(
+                              fontSize: 20.sp,
+                              fontFamily: 'Inter',
+                              //fontWeight: FontWeight.bold,
+                              color: communityTextColor,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 32.h),
+                    ],
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(
+                      width: 1.w,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Container(
+                        width: 140.w,
+                        height: 40.h,
+                        child: TextButton(
+                          child: Text(
+                            languageController.communityNewPostRegister,
+                            style: TextStyle(
+                              fontFamily: 'Inter',
+                              fontSize: 20.sp,
+                              color: whiteTextColor,
+                            ),
+                          ),
+                          style: TextButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                            backgroundColor: communityMainColor,
+                          ),
+                          onPressed: () {
+                            if (postTitleController.text == "" ||
+                                postTitleController2.text == "" ||
+                                postContentController.text == "") {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  Future.delayed(
+                                    Duration(seconds: 1),
+                                    () {
+                                      Navigator.of(context, rootNavigator: true)
+                                          .pop();
+                                    },
+                                  );
+                                  return AlertDialog(
+                                    content: SizedBox(
+                                      width: 400.w,
+                                      height: 120.h,
+                                      child: Center(
+                                        child: Text(
+                                          languageController
+                                              .incompleteFieldsMessage,
+                                          style: TextStyle(
+                                              color: mainTextColor,
+                                              letterSpacing: 1.w,
+                                              fontFamily: 'Inter',
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 20.sp),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+                            } else {
+                              setState(() {
+                                postListController.postList.add(Post(
+                                    postTitleController.text +
+                                        ' | ' +
+                                        postTitleController2.text,
+                                    postListController.postList.last.postNum +
+                                        1,
+                                    personalController.userId,
+                                    [],
+                                    [],
+                                    [],
+                                    0,
+                                    postContentController.text,
+                                    _sortOpt));
+                                fb_add_post(
+                                    postTitleController.text +
+                                        ' | ' +
+                                        postTitleController2.text,
+                                    postListController
+                                        .postList.last.postNum, //이미 넣었으니깐.
+                                    personalController.userId,
+                                    postContentController.text,
+                                    _sortOpt); // 게시글 추가 - 게시글 제목, 게시글 넘버, 작성자, 게시글 내용
+                              });
 
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => CommunityScreen()));
-                        },
+                              //여기서 DB에 저장
+
+                              //커뮤니티 들어가기 - 글 하나 쓸 때마다 +1점
+                              personalController.communityResult += 1;
+                              print(
+                                  '커뮤니티 점수 : ${personalController.communityResult}');
+
+                              //새로고침을 위하여 기존 화면 스택을 날리고 다시 시작함
+                              Navigator.pushNamedAndRemoveUntil(
+                                  context, '/', (_) => false);
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => MainPage()),
+                              );
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CommunityScreen()));
+                            }
+                          },
+                        ),
                       ),
                     ),
                   ],
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

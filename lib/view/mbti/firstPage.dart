@@ -5,7 +5,6 @@ import 'package:growpuang/view/widget/mbti_diamond.dart';
 
 import 'secondPage.dart';
 
-
 String selectedLanguage = '한국어';
 
 class firstPage extends StatelessWidget {
