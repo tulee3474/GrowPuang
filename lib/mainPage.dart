@@ -39,7 +39,7 @@ class MainPage extends StatelessWidget {
                           personalController.option2,
                       style: TextStyle(
                         color: Color(0xFF143264),
-                        fontSize: 30.sp,
+                        fontSize: 40.sp,
                         fontFamily: 'YourFontFamily',
                         fontWeight: FontWeight.bold,
                       ),

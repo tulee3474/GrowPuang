@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:growpuang/view/widget/appBar.dart';
 import 'package:growpuang/view/widget/mbti_diamond.dart';
 
+import '../widget/first_appBar.dart';
 import 'secondPage.dart';
 
 String selectedLanguage = '한국어';
@@ -18,7 +19,7 @@ class firstPage extends StatelessWidget {
       appBar: null,
       body: Stack(
         children: [
-          appBar(),
+          firstappBar(),
           mbti_diamond(),
           Positioned(
             left: 192.w,

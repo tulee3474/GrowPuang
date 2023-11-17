@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:growpuang/view/widget/appBar.dart';
 import 'package:growpuang/view/widget/mbti_diamond.dart';
+import '../widget/first_appBar.dart';
 import 'lastPage.dart';
 import 'package:get/get.dart';
 import 'package:growpuang/controller/language_controller.dart';
@@ -26,7 +27,7 @@ class SeventhPage extends StatelessWidget {
       appBar: null,
       body: Stack(
         children: [
-          appBar(),
+          firstappBar(),
           mbti_diamond.goUp(),
           // 질문 텍스트
           Center(
@@ -40,6 +41,7 @@ class SeventhPage extends StatelessWidget {
                   fontFamily: 'YourFontFamily',
                   fontWeight: FontWeight.bold,
                 ),
+                textAlign: TextAlign.center,
               ),
             ),
           ),
@@ -93,10 +95,11 @@ class SeventhPage extends StatelessWidget {
                       option1,
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 40.sp,
+                        fontSize: 30.sp,
                         fontFamily: 'YourFontFamily',
                         fontWeight: FontWeight.bold,
                       ),
+                      textAlign: TextAlign.center,
                     ),
                   ),
                 ),
@@ -154,10 +157,11 @@ class SeventhPage extends StatelessWidget {
                       option2,
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 40.sp,
+                        fontSize: 30.sp,
                         fontFamily: 'YourFontFamily',
                         fontWeight: FontWeight.bold,
                       ),
+                      textAlign: TextAlign.center,
                     ),
                   ),
                 ),
