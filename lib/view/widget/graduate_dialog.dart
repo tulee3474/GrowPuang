@@ -4,21 +4,22 @@ import 'package:get/get.dart';
 
 import '../../controller/language_controller.dart';
 import '../../controller/personal_contoller.dart';
-
+import '../ending/graduated_puang.dart';
 
 class GraduateDialog extends StatelessWidget {
   GraduateDialog({super.key});
+
   final personalController = Get.put(PersonalController());
   final languageController = Get.put(LanguageController());
+
   @override
   Widget build(BuildContext context) {
     return Dialog(
       shape: const RoundedRectangleBorder(
-          borderRadius:
-          BorderRadius.all(Radius.circular(2.0))),
+          borderRadius: BorderRadius.all(Radius.circular(2.0))),
       alignment: Alignment.center,
       // insetPadding: EdgeInsets.fromLTRB(30.w, 100.h, 30.w, 200.h),
-      insetPadding: EdgeInsets.symmetric(horizontal : 30.w, vertical : 150.h),
+      insetPadding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 150.h),
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 50.w, vertical: 30.h),
         child: Column(
@@ -26,11 +27,13 @@ class GraduateDialog extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              personalController.option1 + (languageController.language == '한국어' ? ' 푸앙이의\n' : ' puang\n')+ (languageController.gradDialog),
-              style: TextStyle(fontSize: 30.sp,fontWeight: FontWeight.w900),
+              languageController.gradDialog,
+              style: TextStyle(fontSize: 30.sp, fontWeight: FontWeight.w900),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 20.h,),
+            SizedBox(
+              height: 20.h,
+            ),
             Row(
               children: [
                 Container(
@@ -44,34 +47,54 @@ class GraduateDialog extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  width: 20.w,
+                  width: 25.w,
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("전공필수"),
-                    SizedBox(
-                      height: 10.h,
+                    Text(
+                      languageController.intellect +
+                          " " +
+                          personalController.solveQuizList.length.toString() + "/6",
+                      style: TextStyle(fontSize: 25.sp,
+                      color: (personalController.solveQuizList.length < 6) ? Colors.red : Color(0xFF143264)),
                     ),
                     Row(
                       children: [
                         Container(
-                          child: Text("(전공필수 게이지바)"),
                           width: 200.w,
-                          height: 20.h,
-                          color: Colors.blue,
+                          child: ClipRRect(
+                            borderRadius:
+                                BorderRadius.circular(30.0), // 원하는 라운드값으로 조절
+                            child: LinearProgressIndicator(
+                              minHeight: 15.0.h,
+                              value: personalController.intellectScore / 30,
+                              // 게이지 바의 값 (0.0에서 1.0 사이)
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                Color(0xFF143264),
+                              ), // 게이지 바 색상
+                            ),
+                          ),
                         ),
-                        SizedBox(
-                          width: 10.w,
+                        SizedBox(width: 30.w), // 원하는 여백 크기로 조정
+                        Text(
+                          '${personalController.intellectScore}/30',
+                          // 원하는 비율로 변경
+                          style: TextStyle(
+                            color: Color(0xFF143264),
+                            fontSize: 25.sp,
+                            fontFamily: 'YourFontFamily',
+                          ),
                         ),
-                        Text("5/6")
                       ],
                     ),
                   ],
                 ),
               ],
             ),
-            SizedBox(height: 20.h,),
+            SizedBox(
+              height: 20.h,
+            ),
             Row(
               children: [
                 Container(
@@ -90,29 +113,47 @@ class GraduateDialog extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("활동지수"),
-                    SizedBox(
-                      height: 10.h,
+                    Text(
+                      languageController.activity,
+                      style: TextStyle(fontSize: 25.sp),
                     ),
                     Row(
                       children: [
                         Container(
-                          child: Text("(활동지수 게이지바)"),
                           width: 200.w,
-                          height: 20.h,
-                          color: Colors.blue,
+                          child: ClipRRect(
+                            borderRadius:
+                                BorderRadius.circular(30.0), // 원하는 라운드값으로 조절
+                            child: LinearProgressIndicator(
+                              minHeight: 15.0.h,
+                              value:
+                                  personalController.participateActList.length/6,
+                              // 게이지 바의 값 (0.0에서 1.0 사이)
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                Color(0xFF143264),
+                              ), // 게이지 바 색상
+                            ),
+                          ),
                         ),
-                        SizedBox(
-                          width: 10.w,
+                        SizedBox(width: 30.w), // 원하는 여백 크기로 조정
+                        Text(
+                          '${personalController.participateActList.length}/6',
+                          // 원하는 비율로 변경
+                          style: TextStyle(
+                            color: Color(0xFF143264),
+                            fontSize: 25.sp,
+                            fontFamily: 'YourFontFamily',
+                          ),
                         ),
-                        Text("5/6")
                       ],
                     ),
                   ],
                 ),
               ],
             ),
-            SizedBox(height: 20.h,),
+            SizedBox(
+              height: 20.h,
+            ),
             Row(
               children: [
                 Container(
@@ -131,29 +172,87 @@ class GraduateDialog extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("자기소개서 작성"),
-                    SizedBox(
-                      height: 10.h,
+                    Text(
+                      languageController.cv,
+                      style: TextStyle(fontSize: 25.sp),
                     ),
-                    Text("완료 or 미완료", style: TextStyle(fontSize:25.sp),)
+                    Row(
+                      children: [
+                        Icon(
+                          (personalController.communityResult > 0)
+                              ? Icons.check_circle_outline_rounded
+                              : Icons.not_interested_rounded,
+                          color: (personalController.communityResult > 0)
+                              ? Colors.green
+                              : Colors.red,
+                        ),
+                        SizedBox(
+                          width: 5.w,
+                        ),
+                        Text((personalController.communityResult > 0)
+                            ? languageController.done
+                            : languageController.notDone),
+                      ],
+                    ),
                     //게시글 >= 1 ? "완료' : "미완료"
                   ],
                 ),
               ],
             ),
-            SizedBox(height: 20.h,),
-            Text("졸업을 진행하시겠습니까?"),
-            SizedBox(height: 10.h,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                TextButton(onPressed: (){}, child: Text("아니오"),),
-                TextButton(onPressed: (){}, child: Text("네"),),
-              ],
-            )
+            SizedBox(
+              height: 20.h,
+            ),
+            Text(
+              languageController.askGradu,
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(
+              height: 10.h,
+            ),
+            Container(
+              child:
+                (personalController.solveQuizList.length<6) ? Text("전공과목을 미이수 하였습니다", style: TextStyle(fontSize: 25
+                    .sp, color: Colors.red,),)
+                    : (personalController.communityResult > 0 ) ?
+              goGradu() : goGradu()
+            ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class goGradu extends StatelessWidget {
+  goGradu({super.key});
+  final personalController = Get.put(PersonalController());
+  final languageController = Get.put(LanguageController());
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            TextButton(
+              onPressed: () {},
+              child: Text(languageController.answerNo),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => GraduatedPuang(),
+                  ),
+                );
+              },
+              child: Text(languageController.answerYes),
+            ),
+          ],
+        )
+      ],
     );
   }
 }

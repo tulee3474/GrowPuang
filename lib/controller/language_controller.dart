@@ -1,6 +1,10 @@
 import 'package:get/get.dart';
+import 'package:growpuang/controller/personal_contoller.dart';
 
 class LanguageController extends GetxController {
+
+  final personalController = Get.put(PersonalController());
+
   RxString _language = '한국어'.obs; // 한국어 or English
 
   String get language => _language.value;
@@ -17,14 +21,61 @@ class LanguageController extends GetxController {
   String get knowledgeQuiz =>
       _language.value == '한국어' ? '전공 퀴즈' : 'Knowledge Quiz';
 
-  String get activity => _language.value == '한국어' ? '참여 활동' : 'Activity';
+  String get ending => _language.value == '한국어' ? personalController.option1+" "+personalController.option2+"의 졸업을 축하합니다!" : 'Congratulation graduate of puang!';
 
+  String get drPuang => _language.value == '한국어' ? '박사푸앙' : 'Dr.Puang';
+  String get infraDevelopment => _language.value == '한국어' ? '인프라 개발자 푸앙' : 'Infra Developer Puang';
+
+  String get gradDialog => _language.value=='한국어'? personalController.option1+" "+personalController.option2+"의 활동 내역입니다" : "Examine graduation of " + personalController.option1+" "+personalController.option2 + "\'s graduation";
+  String get activity => _language.value == '한국어' ? '참여 활동' : 'Activity';
+  String get intellect => _language.value == '한국어' ? '지식지수' : 'Intellect';
   String get community => _language.value == '한국어' ? '사교 공간' : 'Community';
+
+  // 졸업 다이어로그
+  String get cv => _language.value == '한국어' ? "자기소개서 작성" : "Write CV";
+  String get done => _language.value == '한국어' ? "완료" : "Completion";
+  String get notDone => _language.value == '한국어' ? "미완료" : "Not Completion";
+  String get askGradu => _language.value == '한국어' ? '졸업 심사를 진행하시겠습니까?' : 'Proceed examine of graduation?';
+  String get answerNo => _language.value == '한국어' ? '아니오' : 'NO';
+  String get answerYes => _language.value == '한국어' ? '네' : 'YES';
 
   String get helpDialog => _language.value == '한국어' ? '도움말' : 'Help';
 
+  String get goHome => _language.value == '한국어' ? '홈으로' : 'Home';
+  String get takeSub => _language.value == '한국어' ? '수강하기 >' : 'take >';
+  String get submit => _language.value == '한국어' ? '제출하기 >' : 'submit >';
 
-  String get gradDialog => _language.value == '한국어' ? '졸업심사를  진행합니다' : 's graduation review';
+  //활동
+  List<String> get activityList => _language.value == '한국어' ? ['채용설명회','홈커밍데이','교내공모전','면접특강','학부연구생','인턴']:['Employment Briefing', 'Homecoming Day', 'In school Contest', 'Interview Special Lecture', 'Undergraduate Research Student', 'Intern'];
+  String get activityError => _language.value == '한국어' ? '활동을 선택해주세요' : 'choose activity';
+  String get takePart => _language.value == '한국어' ? '참여하기 >' : 'take >';
+  String get hpAfterAct => _language.value == '한국어' ? '활동 후 체력' : 'HP after act';
+
+
+  // 전공퀴즈
+  List<String> get quizList => _language.value == '한국어' ? ['자료구조','알고리즘','소프트웨어공학','운영체제','프로그래밍언어론','컴퓨터구조']:['Data structure','Algorithm','SW engineering','OS','Programming language theory','Computer structure'];
+  String get quizInfo => _language.value == "한국어"? "수강할 과목을 골라주세요" : "Choose a subject to take";
+  //퀴즈
+  String get dsQuiz  => _language.value == '한국어' ? '다음 중 사용자 정의 자료구조가 아닌 것은?' : 'Which of the following is not a custom data structure?';
+  List<String> get dsQuizList  => _language.value == '한국어' ? ['리스트','스택','구조체'] : ['List','stack','struct'];
+  String get algoQuiz  => _language.value == '한국어' ? '다음 중 맨 앞이나 맨 뒤부터 순서대로 하나하나 짚어보는 알고리즘은?' : 'which algorithm starts at one end and goes through each element of a list until the desired element is found?';
+  List<String> get algoQuizList  => _language.value == '한국어' ? ['선형탐색','이진탐색','해시탐색'] : ['Linear search','Binary search','Hash search'];
+  String get sweQuiz  => _language.value == '한국어' ? '컴퓨터 네트워크에서 IP 주소를 동적으로 할당하기 위한 프로토콜은?' : 'What is the protocol for dynamically allocating IP addresses in a computer network?';
+  List<String> get sweQuizList  => _language.value == '한국어' ? ['DNS','DHCP','HTTP'] : ['DNS','DHCP','HTTP'];
+  String get osQuiz  => _language.value == '한국어' ? '다중 프로그래밍 환경에서 CPU가 여러 프로세스를 번갈아가며 실행하는 방식은?' : 'In a multi-programming environment, how does the CPU run multiple processes alternately?';
+  List<String> get osQuizList  => _language.value == '한국어' ? ['멀티태스킹','멀티프로세싱','시분할 시스템'] : ['Multi Tasking','Multi Processing','Time-sharing'];
+  String get plQuiz  => _language.value == '한국어' ? '프로그래밍 언어의 주요 목적은?' : 'What is the primary purpose of a programming language?';
+  List<String> get plQuizList  => _language.value == '한국어' ? ['에세이 작성','그래프 제작','컴퓨터와 소통'] : ['To write essays','To create beautiful graphics','To communicate with computers'];
+  String get csQuiz  => _language.value == '한국어' ? 'CPU는 무엇의 약자인가?' : 'What does the acronym "CPU" stand for?';
+  List<String> get csQuizList  => _language.value == '한국어' ? ['Central Processing Unit','Computer Processing Unit','Central Programming Unit'] : ['Central Processing Unit','Computer Processing Unit','Central Programming Unit'];
+
+  String get correct => _language.value == '한국어' ? '정답입니다!' : 'Correct!';
+  String get incorrect => _language.value == '한국어' ? '오답입니다' : 'Incorrect';
+  String get nowScore => _language.value == '한국어' ? '현재 점수' : 'Total Score';
+  String get submitError => _language.value == '한국어' ? '과목을 선택해주세요' : 'choose subject';
+
+  //활동
+  String get actInfo  => _language.value == '한국어' ? '참여하고 싶은 활동을 골라주세요' : 'Choose an activity that you want to do';
 
   String get loadingMessage =>
       _language.value == '한국어' ? "정보를 로딩 중..." : 'Loading...';

@@ -84,14 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       onPressed: () {
                         print("참여 활동");
                         //참여활동 페이지 들어가서 세팅 - 페이지 안에서 직접 세팅하는 것이 맞을 것이라고 판단하였음
-                        personalController.activityResultList = [
-                          true,
-                          true,
-                          true,
-                          true,
-                          true,
-                          true,
-                        ];
+
                       },
                       icon: Image.asset(
                         'assets/활동_icon.png',

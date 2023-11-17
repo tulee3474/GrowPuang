@@ -6,9 +6,10 @@ import 'package:growpuang/controller/personal_contoller.dart';
 import 'package:growpuang/controller/post_list_controller.dart';
 import 'package:growpuang/model/loading_dialog.dart';
 import 'package:growpuang/view/community_screen.dart';
-import 'package:growpuang/view/knowledge/KnowledgeMainPage.dart';
-import 'package:growpuang/view/knowledge/TestKnowledgeMain.dart';
 import 'package:growpuang/view/widget/navigateIcon.dart';
+
+import '../activity/activity_page_main.dart';
+import '../knowledge/quiz_page_main.dart';
 
 class navigateBar extends StatelessWidget {
   final languageController = Get.put(LanguageController());
@@ -39,8 +40,8 @@ class navigateBar extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        // builder: (context) => KnowledgeMainPage(),
-                        builder: (context) => KnowledgeMainPage(),
+                        // builder: (context) => TestKnowledgeMain(),
+                        builder: (context) => QuizPageMain(),
                       ),
                     );
                   },
@@ -54,6 +55,13 @@ class navigateBar extends StatelessWidget {
                 InkWell(
                   onTap: () {
                     // 이미지 버튼 2를 탭했을 때 수행할 작업을 정의
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        // builder: (context) => TestKnowledgeMain(),
+                        builder: (context) => ActivityPageMain(),
+                      ),
+                    );
                   },
                   child: NavigateIcon(
                     iconImage: "활동_icon",
