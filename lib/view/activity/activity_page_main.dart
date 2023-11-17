@@ -170,10 +170,18 @@ class _ActivityPageMainState extends State<ActivityPageMain> {
                                 //선택한 활동이 없다면 안내 다이어로그를 띄웁니다
                                 showDialog(
                                     context: context,
-                                    barrierDismissible: true,
+                                    barrierDismissible: false,
                                     // 바깥 영역 터치시 닫을지 여부
                                     builder: (BuildContext context) {
-                                      return ActErrorDioalog();
+                                      Future.delayed(
+                                        Duration(seconds: 1),
+                                            () {
+                                          Navigator.of(context,
+                                              rootNavigator: true)
+                                              .pop();
+                                        },
+                                      );
+                                      return ActErrorDialog();
                                     });
                               } else {
                                 //참여한 활동리스트에 선택한 활동의 인덱스들을 넣습니다

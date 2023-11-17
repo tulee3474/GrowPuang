@@ -45,7 +45,7 @@ class GraduatedPuang extends StatelessWidget {
                     ),
                     Image.asset(
                       'assets/images/${endingPuang}.png',
-                      width: 250.w,
+                      width: 300.w,
                       // height: 70.h,
                       fit: BoxFit.fitWidth,
                     ),

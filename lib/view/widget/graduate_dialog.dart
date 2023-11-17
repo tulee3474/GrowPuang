@@ -28,7 +28,7 @@ class GraduateDialog extends StatelessWidget {
           children: [
             Text(
               languageController.gradDialog,
-              style: TextStyle(fontSize: 30.sp, fontWeight: FontWeight.w900),
+              style: TextStyle(fontSize: 30.sp, fontWeight: FontWeight.w700),
               textAlign: TextAlign.center,
             ),
             SizedBox(
@@ -245,7 +245,7 @@ class goGradu extends StatelessWidget {
                 String _endingPuang;
                 var _job = '';
                 if(personalController.participateActList.contains(4)){
-                  _endingPuang = "박사푸앙";
+                  _endingPuang = "박사 푸앙";
                   _job = languageController.drPuang;
                 } else if(personalController.intellectScore==30){
                   _endingPuang = "소프트웨어엔지니어 푸앙";
@@ -254,7 +254,7 @@ class goGradu extends StatelessWidget {
                   _endingPuang = "솔루션아키텍트 푸앙";
                   _job = languageController.saPuang;
                 } else{
-                  _endingPuang = "인프라엔지니어 푸앙";
+                  _endingPuang = "인프라개발자 푸앙";
                   _job = languageController.idPuang;
                 }
                 Navigator.push(

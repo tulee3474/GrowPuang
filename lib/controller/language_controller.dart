@@ -25,9 +25,9 @@ class LanguageController extends GetxController {
   String get infraDevelopment => _language.value == '한국어' ? '인프라 개발자 푸앙' : 'Infra Developer Puang';
 
   String get gradDialog => _language.value=='한국어'? personalController.option1+" "+personalController.option2+"의 활동 내역입니다" : "Examine graduation of " + personalController.option1+" "+personalController.option2 + "\'s graduation";
-  String get activity => _language.value == '한국어' ? '참여 활동' : 'Activity';
+  String get activity => _language.value == '한국어' ? '활동지수' : 'Activity';
   String get intellect => _language.value == '한국어' ? '지식지수' : 'Intellect';
-  String get community => _language.value == '한국어' ? '사교 공간' : 'Community';
+  String get community => _language.value == '한국어' ? '자소서 게시판' : 'CV board';
 
   // 졸업 다이어로그
   String get cv => _language.value == '한국어' ? "자기소개서 작성" : "Write CV";
@@ -64,9 +64,10 @@ class LanguageController extends GetxController {
   // 전공퀴즈
   List<String> get quizList => _language.value == '한국어' ? ['자료구조','알고리즘','소프트웨어공학','운영체제','프로그래밍언어론','컴퓨터구조']:['Data structure','Algorithm','SW engineering','OS','Programming language theory','Computer structure'];
   String get quizInfo => _language.value == "한국어"? "수강할 과목을 골라주세요" : "Choose a subject to take";
+  String get answerInfo => _language.value == "한국어"? "정답을 골라주세요" : "Choose answer";
   //퀴즈
   String get dsQuiz  => _language.value == '한국어' ? '다음 중 사용자 정의 자료구조가 아닌 것은?' : 'Which of the following is not a custom data structure?';
-  List<String> get dsQuizList  => _language.value == '한국어' ? ['리스트','스택','구조체'] : ['List','stack','struct'];
+  List<String> get dsQuizList  => _language.value == '한국어' ? ['리스트','스택','구조체'] : ['list','stack','structure'];
   String get algoQuiz  => _language.value == '한국어' ? '다음 중 맨 앞이나 맨 뒤부터 순서대로 하나하나 짚어보는 알고리즘은?' : 'which algorithm starts at one end and goes through each element of a list until the desired element is found?';
   List<String> get algoQuizList  => _language.value == '한국어' ? ['선형탐색','이진탐색','해시탐색'] : ['Linear search','Binary search','Hash search'];
   String get sweQuiz  => _language.value == '한국어' ? '컴퓨터 네트워크에서 IP 주소를 동적으로 할당하기 위한 프로토콜은?' : 'What is the protocol for dynamically allocating IP addresses in a computer network?';
@@ -192,4 +193,18 @@ class LanguageController extends GetxController {
   String get commentDelete =>
       _language.value == '한국어' ? '댓글 삭제' : 'Delete Comment';
 
+
+
+  //도움말
+  String get helpTitle => _language.value == '한국어' ? '푸앙이를 무사히 졸업시켜주세요!' : 'Make Puang graduate!';
+  String get totalInfo => _language.value == '한국어' ? '적절한 활동을 통해 푸앙이를 졸업시키는 게임입니다. 졸업요건을 모두 완료해야 졸업이 가능하며 수행 활동에 따라 진로가 결정됩니다.' : 'It\'s a game that get graduate Puang by doing activities. Graduation is possible only after completing all the graduation requirements, and the career path is determined according to the game play.';
+  String get forGradu => _language.value == '한국어' ? '졸업요건' : 'Graduation requirements';
+  String get requirements => _language.value == '한국어' ? '- 전공퀴즈 6개 모두 이수\n- 커뮤니티에 게시글 1개 이상 작성' : '- Complete all 6 major quizzes\n- Write at least one post in the community';
+  String get intellectDes => _language.value == '한국어' ? '모든 퀴즈를 풀어야하며, 정답을 맞추면 5점씩 지식지수가 증가합니다' : 'You have to solve all the quizzes. If you get the correct answer, your knowledge score increases by 5 points';
+  String get actDes => _language.value == '한국어' ? '원하는 활동에 참여할 수 있습니다. 활동에 참여 시 체력이 5씩 소진됩니다.' : 'You can participate in any activity you want. When you participate in the activity, your HP is exhausted by 5.';
+  String get cvDes => _language.value == '한국어' ? '자기 소개서를 공유하는 익명 커뮤니티입니다. 졸업을 위해서는 게시글을 반드시 한 개 이상 작성해야 합니다' : 'It\'s an anonymous community that shares a cover letter. You must fill out at least one to graduate';
+  String get young => _language.value == '한국어' ? '영신관' : 'The Youngshin Hall';
+  String get close => _language.value == '한국어' ? '닫기' : 'close';
+  String get youngDes => _language.value == '한국어' ? '푸앙이의 졸업요건을 확인하고 졸업여부를 결정해줍니다' : 'Check Puang\'s graduation requirements and decide whether to graduate or not';
 }
+

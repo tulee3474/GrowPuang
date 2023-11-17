@@ -193,12 +193,21 @@ class _QuizPageMainState extends State<QuizPageMain> {
                       ),
                       TextButton(
                         onPressed: () {
+                          //선택한 버튼이 없다면 알림을 출력합니다
                           if (selectedQuiz == null) {
                             showDialog(
                                 context: context,
                                 barrierDismissible: true, // 바깥 영역 터치시 닫을지 여부
                                 builder: (BuildContext context) {
-                                  return SubmitErrorDioalog();
+                                  Future.delayed(
+                                    Duration(seconds: 1),
+                                        () {
+                                      Navigator.of(context,
+                                          rootNavigator: true)
+                                          .pop();
+                                    },
+                                  );
+                                  return SubmitErrorDialog();
                                 });
                           } else {
                             _chooseQuiz();

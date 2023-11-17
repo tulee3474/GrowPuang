@@ -6,10 +6,9 @@ import 'package:get/get.dart';
 class NavigateIcon extends StatelessWidget {
   final languageController = Get.put(LanguageController());
   final String iconImage;
-  final String iconNameKo;
-  final String iconNameEng;
+  var iconName;
 
-  NavigateIcon({required this.iconImage, required this.iconNameKo,required this.iconNameEng});
+  NavigateIcon({required this.iconImage, required this.iconName});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -25,9 +24,7 @@ class NavigateIcon extends StatelessWidget {
           ),
         ),
         Text(
-          languageController.language == '한국어'
-              ? iconNameKo
-              : iconNameEng,
+          iconName,
           style: TextStyle(
             color: Color(0xFF143264),
             fontSize: 20.sp,

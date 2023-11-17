@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:growpuang/view/widget/appBar.dart';
 import 'package:get/get.dart';
+import 'package:growpuang/view/widget/navigateBar.dart';
 import '../../controller/language_controller.dart';
 import '../../controller/personal_contoller.dart';
 import '../widget/quiz_dialog.dart';
+import '../widget/quiz_error_dialog.dart';
 
 class QuizPageSwe extends StatefulWidget {
   final personalController = Get.put(PersonalController());
@@ -15,7 +17,7 @@ class QuizPageSwe extends StatefulWidget {
 }
 
 class _QuizPageSweState extends State<QuizPageSwe> {
-  String? selectedAnswer;
+  String? selectedAnswer = null;
   late int addScore;
   late List<Map<String, Object>> questions = [
     {
@@ -107,15 +109,32 @@ class _QuizPageSweState extends State<QuizPageSwe> {
                     children: [
                       TextButton(
                         onPressed: () {
-                          widget.personalController.solveQuizList.add(2);
-                          print('Selected Answer: $selectedAnswer');
-                          if(selectedAnswer == widget.languageController.sweQuizList[1]){
-                            addScore = 5;
-                            widget.personalController.intellectScore += addScore;
-                          }else{
-                            addScore = 0;
+                          if(selectedAnswer == null){
+                            showDialog(
+                                context: context,
+                                barrierDismissible: true, // 바깥 영역 터치시 닫을지 여부
+                                builder: (BuildContext context) {
+                                  Future.delayed(
+                                    Duration(seconds: 1),
+                                        () {
+                                      Navigator.of(context,
+                                          rootNavigator: true)
+                                          .pop();
+                                    },
+                                  );
+                                  return QuizErrorDialog();
+                                });
                           }
-                          _nextQuestion();
+                          else{
+                            widget.personalController.solveQuizList.add(2); //문제를 제출하는 순간 푼 문제 목록에 들어간다
+                            if(selectedAnswer == widget.languageController.sweQuizList[1]){
+                              addScore = 5;
+                              widget.personalController.intellectScore += addScore;
+                            }else{
+                              addScore = 0;
+                            }
+                            _nextQuestion();
+                          }
                         },
                         child: Text(
                           widget.languageController.submit,
@@ -132,6 +151,7 @@ class _QuizPageSweState extends State<QuizPageSwe> {
               ),
             ),
           ),
+          navigateBar(),
         ],
       ),
     );
