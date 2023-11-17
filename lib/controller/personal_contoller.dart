@@ -7,11 +7,15 @@ class PersonalController extends GetxController {
   RxString _option2 = '푸앙이'.obs; //mbti 결과 저장
   RxString _pick_img = '이미지'.obs; //mbti 결과 저장
 
-  RxDouble _progressValue = 0.1.obs; //HP
+  RxDouble _progressValue = 1.0.obs; //HP
+  RxDouble _intellectProgressValue = 0.0.obs; //intellect
 
   RxList<bool> _knowledgeQuizResultList = <bool>[].obs; //전공 퀴즈 결과 저장
+
   RxList<bool> _activityResultList = <bool>[].obs; //참여 활동 결과 저장
+  RxList<int> _solveQuizList = <int>[].obs; //전공 퀴즈 결과 저장
   RxInt _communityResult = 0.obs; //커뮤니티 활동 수
+  RxInt _intellectScore = 0.obs; //전공 퀴즈 점수
 
   String get userId => _userId.value;
 
@@ -42,11 +46,29 @@ class PersonalController extends GetxController {
   set progressValue(double value) {
     _progressValue.value = value;
   }
+  double get intellectProgressValue => _intellectProgressValue.value;
+
+  set intellectProgressValue(double value) {
+    _intellectProgressValue.value = value;
+  }
+
+
+  int get intellectScore => _intellectScore.value;
+
+  set intellectScore(int value) {
+    _intellectScore.value = value;
+  }
 
   List<bool> get knowledgeQuizResultList => _knowledgeQuizResultList;
 
   set knowledgeQuizResultList(List<bool> value) {
     _knowledgeQuizResultList = value.obs;
+  }
+
+  List<int> get solveQuizList => _solveQuizList;
+
+  set solveQuizList(List<int> value) {
+    _solveQuizList = value.obs;
   }
 
   List<bool> get activityResultList => _activityResultList;

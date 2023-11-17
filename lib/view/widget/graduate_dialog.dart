@@ -26,7 +26,8 @@ class GraduateDialog extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(languageController.gradDialog,
+            Text(
+              languageController.gradDialog,
               style: TextStyle(fontSize: 30.sp, fontWeight: FontWeight.w900),
               textAlign: TextAlign.center,
             ),
@@ -46,27 +47,45 @@ class GraduateDialog extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  width: 20.w,
+                  width: 25.w,
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(languageController.intellect),
-                    SizedBox(
-                      height: 10.h,
+                    Text(
+                      languageController.intellect +
+                          " " +
+                          personalController.solveQuizList.length.toString() + "/6",
+                      style: TextStyle(fontSize: 25.sp,
+                      color: (personalController.solveQuizList.length < 6) ? Colors.red : Color(0xFF143264)),
                     ),
                     Row(
                       children: [
                         Container(
-                          child: Text("(전공필수 게이지바)"),
                           width: 200.w,
-                          height: 20.h,
-                          color: Colors.blue,
+                          child: ClipRRect(
+                            borderRadius:
+                                BorderRadius.circular(30.0), // 원하는 라운드값으로 조절
+                            child: LinearProgressIndicator(
+                              minHeight: 15.0.h,
+                              value: personalController.intellectScore / 30,
+                              // 게이지 바의 값 (0.0에서 1.0 사이)
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                Color(0xFF143264),
+                              ), // 게이지 바 색상
+                            ),
+                          ),
                         ),
-                        SizedBox(
-                          width: 10.w,
+                        SizedBox(width: 30.w), // 원하는 여백 크기로 조정
+                        Text(
+                          '${personalController.intellectScore}/30',
+                          // 원하는 비율로 변경
+                          style: TextStyle(
+                            color: Color(0xFF143264),
+                            fontSize: 25.sp,
+                            fontFamily: 'YourFontFamily',
+                          ),
                         ),
-                        Text("5/6")
                       ],
                     ),
                   ],
@@ -94,22 +113,39 @@ class GraduateDialog extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(languageController.activity),
-                    SizedBox(
-                      height: 10.h,
+                    Text(
+                      languageController.activity,
+                      style: TextStyle(fontSize: 25.sp),
                     ),
                     Row(
                       children: [
                         Container(
-                          child: Text("(활동지수 게이지바)"),
                           width: 200.w,
-                          height: 20.h,
-                          color: Colors.blue,
+                          child: ClipRRect(
+                            borderRadius:
+                                BorderRadius.circular(30.0), // 원하는 라운드값으로 조절
+                            child: LinearProgressIndicator(
+                              minHeight: 15.0.h,
+                              value:
+                                  personalController.activityResultList.length /
+                                      6,
+                              // 게이지 바의 값 (0.0에서 1.0 사이)
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                Color(0xFF143264),
+                              ), // 게이지 바 색상
+                            ),
+                          ),
                         ),
-                        SizedBox(
-                          width: 10.w,
+                        SizedBox(width: 30.w), // 원하는 여백 크기로 조정
+                        Text(
+                          '${personalController.activityResultList.length}/6',
+                          // 원하는 비율로 변경
+                          style: TextStyle(
+                            color: Color(0xFF143264),
+                            fontSize: 25.sp,
+                            fontFamily: 'YourFontFamily',
+                          ),
                         ),
-                        Text("5/6")
                       ],
                     ),
                   ],
@@ -137,13 +173,28 @@ class GraduateDialog extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(languageController.cv),
-                    SizedBox(
-                      height: 10.h,
+                    Text(
+                      languageController.cv,
+                      style: TextStyle(fontSize: 25.sp),
                     ),
-                    Text((personalController.communityResult > 0)
-                        ? languageController.done
-                        : languageController.notDone),
+                    Row(
+                      children: [
+                        Icon(
+                          (personalController.communityResult > 0)
+                              ? Icons.check_circle_outline_rounded
+                              : Icons.not_interested_rounded,
+                          color: (personalController.communityResult > 0)
+                              ? Colors.green
+                              : Colors.red,
+                        ),
+                        SizedBox(
+                          width: 5.w,
+                        ),
+                        Text((personalController.communityResult > 0)
+                            ? languageController.done
+                            : languageController.notDone),
+                      ],
+                    ),
                     //게시글 >= 1 ? "완료' : "미완료"
                   ],
                 ),
@@ -152,32 +203,57 @@ class GraduateDialog extends StatelessWidget {
             SizedBox(
               height: 20.h,
             ),
-            Text(languageController.askGradu, textAlign: TextAlign.center,),
+            Text(
+              languageController.askGradu,
+              textAlign: TextAlign.center,
+            ),
             SizedBox(
               height: 10.h,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                TextButton(
-                  onPressed: () {},
-                  child: Text(languageController.answerNo),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                        builder: (context) => GraduatedPuang(),
-                    ),);
-                  },
-                  child: Text(languageController.answerYes),
-                ),
-              ],
-            )
+            Container(
+              child:
+                (personalController.solveQuizList.length<6) ? Text("전공과목을 미이수 하였습니다", style: TextStyle(fontSize: 25
+                    .sp, color: Colors.red,),)
+                    : (personalController.communityResult > 0 ) ?
+              goGradu() : goGradu()
+            ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class goGradu extends StatelessWidget {
+  goGradu({super.key});
+  final personalController = Get.put(PersonalController());
+  final languageController = Get.put(LanguageController());
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            TextButton(
+              onPressed: () {},
+              child: Text(languageController.answerNo),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => GraduatedPuang(),
+                  ),
+                );
+              },
+              child: Text(languageController.answerYes),
+            ),
+          ],
+        )
+      ],
     );
   }
 }

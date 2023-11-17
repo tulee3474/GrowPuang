@@ -6,9 +6,9 @@ import 'package:growpuang/controller/personal_contoller.dart';
 import 'package:growpuang/controller/post_list_controller.dart';
 import 'package:growpuang/model/loading_dialog.dart';
 import 'package:growpuang/view/community_screen.dart';
-import 'package:growpuang/view/knowledge/KnowledgeMainPage.dart';
-import 'package:growpuang/view/knowledge/TestKnowledgeMain.dart';
 import 'package:growpuang/view/widget/navigateIcon.dart';
+
+import '../knowledge/quiz_page_test.dart';
 
 class navigateBar extends StatelessWidget {
   final languageController = Get.put(LanguageController());
@@ -39,8 +39,8 @@ class navigateBar extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => TestKnowledgeMain(),
-                        // builder: (context) => KnowledgeMainPage(),
+                        // builder: (context) => TestKnowledgeMain(),
+                        builder: (context) => QuizPageTest(),
                       ),
                     );
                   },
