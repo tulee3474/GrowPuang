@@ -109,6 +109,10 @@ flutter:
                 weight: 800
               - asset: assets/fonts/Inter-Black.ttf
                 weight: 900
+        - family: YourFontFamily
+          fonts:
+            - asset: assets/fonts/YourFontFamily.ttf
+
     #
     # For details regarding fonts from package dependencies,
     # see https://flutter.dev/custom-fonts/#from-packages

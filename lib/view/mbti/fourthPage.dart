@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:growpuang/controller/language_controller.dart';
 import 'package:growpuang/view/widget/appBar.dart';
 import 'package:growpuang/view/widget/mbti_diamond.dart';
+import '../widget/first_appBar.dart';
 import 'fifthPage.dart';
 import 'lastPage.dart';
 
@@ -27,7 +28,7 @@ class FourthPage extends StatelessWidget {
       appBar: null,
       body: Stack(
         children: [
-          appBar(),
+          firstappBar(),
           mbti_diamond.goUp(),
           // 질문 텍스트
           Center(
@@ -41,6 +42,7 @@ class FourthPage extends StatelessWidget {
                   fontFamily: 'YourFontFamily',
                   fontWeight: FontWeight.bold,
                 ),
+                textAlign: TextAlign.center,
               ),
             ),
           ),
@@ -94,10 +96,11 @@ class FourthPage extends StatelessWidget {
                       option1,
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 40.sp,
+                        fontSize: 30.sp,
                         fontFamily: 'YourFontFamily',
                         fontWeight: FontWeight.bold,
                       ),
+                      textAlign: TextAlign.center,
                     ),
                   ),
                 ),
@@ -154,10 +157,11 @@ class FourthPage extends StatelessWidget {
                       option2,
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 40.sp,
+                        fontSize: 30.sp,
                         fontFamily: 'YourFontFamily',
                         fontWeight: FontWeight.bold,
                       ),
+                      textAlign: TextAlign.center,
                     ),
                   ),
                 ),

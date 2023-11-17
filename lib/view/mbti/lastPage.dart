@@ -8,6 +8,8 @@ import 'package:get/get.dart';
 import 'package:growpuang/controller/language_controller.dart';
 import 'package:growpuang/view/widget/appBar.dart';
 
+import '../widget/first_appBar.dart';
+
 class lastPage extends StatelessWidget {
   final languageController = Get.put(LanguageController());
   final personalController = Get.put(PersonalController());
@@ -30,7 +32,7 @@ class lastPage extends StatelessWidget {
       appBar: null,
       body: Stack(
         children: [
-          appBar(),
+          firstappBar(),
           // 자산 이미지 크기 및 배치 수정
           Positioned(
             left: 0.w,
@@ -49,7 +51,9 @@ class lastPage extends StatelessWidget {
                         fontFamily: 'YourFontFamily',
                         fontWeight: FontWeight.bold,
                       ),
+                      textAlign: TextAlign.center,
                     ),
+
                   ),
                   SizedBox(height: 40.h), // 원하는 여백 크기로 조정
                   Container(

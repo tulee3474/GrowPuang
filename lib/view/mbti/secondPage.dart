@@ -5,6 +5,7 @@ import 'package:growpuang/view/widget/appBar.dart';
 import 'package:growpuang/view/widget/mbti_diamond.dart';
 
 import '../../controller/language_controller.dart';
+import '../widget/first_appBar.dart';
 import 'thirdPage.dart';
 
 class SecondPage extends StatelessWidget {
@@ -15,7 +16,7 @@ class SecondPage extends StatelessWidget {
       appBar: null,
       body: Stack(
         children: [
-          appBar(),
+          firstappBar(),
           mbti_diamond(),
           Center(
             child: Padding(
