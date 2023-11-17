@@ -127,8 +127,7 @@ class GraduateDialog extends StatelessWidget {
                             child: LinearProgressIndicator(
                               minHeight: 15.0.h,
                               value:
-                                  personalController.activityResultList.length /
-                                      6,
+                                  personalController.participateActList.length/6,
                               // 게이지 바의 값 (0.0에서 1.0 사이)
                               valueColor: AlwaysStoppedAnimation<Color>(
                                 Color(0xFF143264),
@@ -138,7 +137,7 @@ class GraduateDialog extends StatelessWidget {
                         ),
                         SizedBox(width: 30.w), // 원하는 여백 크기로 조정
                         Text(
-                          '${personalController.activityResultList.length}/6',
+                          '${personalController.participateActList.length}/6',
                           // 원하는 비율로 변경
                           style: TextStyle(
                             color: Color(0xFF143264),

@@ -45,6 +45,13 @@ class LanguageController extends GetxController {
   String get takeSub => _language.value == '한국어' ? '수강하기 >' : 'take >';
   String get submit => _language.value == '한국어' ? '제출하기 >' : 'submit >';
 
+  //활동
+  List<String> get activityList => _language.value == '한국어' ? ['채용설명회','홈커밍데이','교내공모전','면접특강','학부연구생','인턴']:['Employment Briefing', 'Homecoming Day', 'In school Contest', 'Interview Special Lecture', 'Undergraduate Research Student', 'Intern'];
+  String get activityError => _language.value == '한국어' ? '활동을 선택해주세요' : 'choose activity';
+  String get takePart => _language.value == '한국어' ? '참여하기 >' : 'take >';
+  String get hpAfterAct => _language.value == '한국어' ? '활동 후 체력' : 'HP after act';
+
+
   // 전공퀴즈
   List<String> get quizList => _language.value == '한국어' ? ['자료구조','알고리즘','소프트웨어공학','운영체제','프로그래밍언어론','컴퓨터구조']:['Data structure','Algorithm','SW engineering','OS','Programming language theory','Computer structure'];
   String get quizInfo => _language.value == "한국어"? "수강할 과목을 골라주세요" : "Choose a subject to take";
@@ -62,12 +69,13 @@ class LanguageController extends GetxController {
   String get csQuiz  => _language.value == '한국어' ? 'CPU는 무엇의 약자인가?' : 'What does the acronym "CPU" stand for?';
   List<String> get csQuizList  => _language.value == '한국어' ? ['Central Processing Unit','Computer Processing Unit','Central Programming Unit'] : ['Central Processing Unit','Computer Processing Unit','Central Programming Unit'];
 
-
   String get correct => _language.value == '한국어' ? '정답입니다!' : 'Correct!';
   String get incorrect => _language.value == '한국어' ? '오답입니다' : 'Incorrect';
   String get nowScore => _language.value == '한국어' ? '현재 점수' : 'Total Score';
   String get submitError => _language.value == '한국어' ? '과목을 선택해주세요' : 'choose subject';
 
+  //활동
+  String get actInfo  => _language.value == '한국어' ? '참여하고 싶은 활동을 골라주세요' : 'Choose an activity that you want to do';
 
   String get loadingMessage =>
       _language.value == '한국어' ? "정보를 로딩 중..." : 'Loading...';

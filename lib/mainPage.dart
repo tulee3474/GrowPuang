@@ -85,7 +85,7 @@ class MainPage extends StatelessWidget {
                               child: LinearProgressIndicator(
                                 minHeight: 20.0.h,
                                 value: personalController
-                                    .progressValue*10, // 게이지 바의 값 (0.0에서 1.0 사이)
+                                    .hpScore/30, // 게이지 바의 값 (0.0에서 1.0 사이)
                                 valueColor: AlwaysStoppedAnimation<Color>(
                                     Color(0xFF143264)), // 게이지 바 색상
                               ),
@@ -93,7 +93,7 @@ class MainPage extends StatelessWidget {
                           ),
                           SizedBox(width: 30.w), // 원하는 여백 크기로 조정
                           Text(
-                            '${personalController.progressValue*100.toInt()}/10', // 원하는 비율로 변경
+                            '${personalController.hpScore} / 30', // 원하는 비율로 변경
                             style: TextStyle(
                               color: Color(0xFF143264),
                               fontSize: 25.sp,
