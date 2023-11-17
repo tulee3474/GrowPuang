@@ -68,9 +68,8 @@ class _ActivityPageMainState extends State<ActivityPageMain> {
                         languageController.actInfo,
                         style: TextStyle(
                           color: Color(0xFF143264),
-                          fontSize: 30.sp,
+                          fontSize: 25.sp,
                           fontFamily: 'YourFontFamily',
-                          fontWeight: FontWeight.bold,
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -132,7 +131,7 @@ class _ActivityPageMainState extends State<ActivityPageMain> {
                                       color: selectedStates[index]
                                           ? Colors.white
                                           : Color(0xFF143264),
-                                      fontSize: 20.sp,
+                                      fontSize: 18.sp,
                                       fontFamily: 'YourFontFamily',
                                     ),
                                     textAlign: TextAlign.center,

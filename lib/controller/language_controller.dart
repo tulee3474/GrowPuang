@@ -21,9 +21,7 @@ class LanguageController extends GetxController {
   String get knowledgeQuiz =>
       _language.value == '한국어' ? '전공 퀴즈' : 'Knowledge Quiz';
 
-  String get ending => _language.value == '한국어' ? personalController.option1+" "+personalController.option2+"의 졸업을 축하합니다!" : 'Congratulation graduate of puang!';
 
-  String get drPuang => _language.value == '한국어' ? '박사푸앙' : 'Dr.Puang';
   String get infraDevelopment => _language.value == '한국어' ? '인프라 개발자 푸앙' : 'Infra Developer Puang';
 
   String get gradDialog => _language.value=='한국어'? personalController.option1+" "+personalController.option2+"의 활동 내역입니다" : "Examine graduation of " + personalController.option1+" "+personalController.option2 + "\'s graduation";
@@ -36,20 +34,31 @@ class LanguageController extends GetxController {
   String get done => _language.value == '한국어' ? "완료" : "Completion";
   String get notDone => _language.value == '한국어' ? "미완료" : "Not Completion";
   String get askGradu => _language.value == '한국어' ? '졸업 심사를 진행하시겠습니까?' : 'Proceed examine of graduation?';
+  String get alertGradu => _language.value == '한국어' ? '전공과목을 미이수하였습니다' : 'Didn\'t take major course';
+  String get alert2Gradu => _language.value == '한국어' ? '자기소개서를 작성하지 않았습니다' : 'Didn\'t write CV ';
   String get answerNo => _language.value == '한국어' ? '아니오' : 'NO';
   String get answerYes => _language.value == '한국어' ? '네' : 'YES';
-
   String get helpDialog => _language.value == '한국어' ? '도움말' : 'Help';
 
   String get goHome => _language.value == '한국어' ? '홈으로' : 'Home';
   String get takeSub => _language.value == '한국어' ? '수강하기 >' : 'take >';
   String get submit => _language.value == '한국어' ? '제출하기 >' : 'submit >';
 
+  //엔딩화면
+  String get ending => _language.value == '한국어' ? personalController.option1+" "+personalController.option2+"의 졸업을 축하합니다!" : 'Congratulation graduate of '+personalController.option1+" "+personalController.option2;
+  String get drPuang => _language.value == '한국어' ? '박사 푸앙' : 'Dr.Puang';
+  String get swePuang => _language.value == '한국어' ? '소프트웨어엔지니어 푸앙' : 'Software Engineer Puang';
+  String get saPuang => _language.value == '한국어' ? '솔루션아키텍트 푸앙' : 'Solution Architect Puang';
+  String get idPuang => _language.value == '한국어' ? '인프라개발자 푸앙' : 'Infrastructure Engineer Puang';
+  String get restart => _language.value == '한국어' ? '다시하기' : 'Again';
+
   //활동
   List<String> get activityList => _language.value == '한국어' ? ['채용설명회','홈커밍데이','교내공모전','면접특강','학부연구생','인턴']:['Employment Briefing', 'Homecoming Day', 'In school Contest', 'Interview Special Lecture', 'Undergraduate Research Student', 'Intern'];
   String get activityError => _language.value == '한국어' ? '활동을 선택해주세요' : 'choose activity';
   String get takePart => _language.value == '한국어' ? '참여하기 >' : 'take >';
   String get hpAfterAct => _language.value == '한국어' ? '활동 후 체력' : 'HP after act';
+  String get completeAct => _language.value == '한국어' ? '활동에 참여하셨습니다' : 'Complete Activities';
+  String get restHP => _language.value == '한국어' ? '남은 체력 ' : 'the rest of HP ';
 
 
   // 전공퀴즈
