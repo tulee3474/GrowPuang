@@ -64,7 +64,8 @@ class _QuizPageAlgorState extends State<QuizPageAlgor> {
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
                       questions[_questionIndex]['questionText'] as String,
-                      style: TextStyle(fontSize: 18.0), textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 18.0, color: Color(0xFF143264), fontWeight: FontWeight.w900), textAlign: TextAlign.center,
+
                     ),
                   ),
                   ...List.generate(

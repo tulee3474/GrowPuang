@@ -24,7 +24,7 @@ class LanguageController extends GetxController {
 
   String get infraDevelopment => _language.value == '한국어' ? '인프라 개발자 푸앙' : 'Infra Developer Puang';
 
-  String get gradDialog => _language.value=='한국어'? personalController.option1+" "+personalController.option2+"의 활동 내역입니다" : "Examine graduation of " + personalController.option1+" "+personalController.option2 + "\'s graduation";
+  String get gradDialog => _language.value=='한국어'? personalController.option1+" "+personalController.option2+"의\n활동 내역입니다" : "Examine graduation of " + personalController.option1+" "+personalController.option2 + "\'s graduation";
   String get activity => _language.value == '한국어' ? '활동지수' : 'Activity';
   String get intellect => _language.value == '한국어' ? '지식지수' : 'Intellect';
   String get community => _language.value == '한국어' ? '자소서 게시판' : 'CV board';
