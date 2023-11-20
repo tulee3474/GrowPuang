@@ -54,7 +54,7 @@ class _QuizPageSweState extends State<QuizPageSwe> {
           Center(
             child: Container(
               width: 500.w,
-              height: 350.h,
+              height: 380.h,
               color: Colors.white.withOpacity(0.5),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,

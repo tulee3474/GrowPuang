@@ -76,7 +76,7 @@ class _QuizPageMainState extends State<QuizPageMain> {
           Center(
             child: Container(
               width: 500.w,
-              height: 350.h,
+              height: 380.h,
               // margin: EdgeInsets.fromLTRB(20.w, 280.h, 20.w, 250.h),
               padding: EdgeInsets.symmetric(horizontal: 20.w),
               color: Colors.white.withOpacity(0.5),

@@ -26,7 +26,7 @@ class navigateBar extends StatelessWidget {
         right: 38.w,
         bottom: 50.h,
         child: Image.asset(
-          'assets/images/받침대_1.png',
+          'assets/images/받침대.png',
           width: 500.w,
           // height: 70.h,
           fit: BoxFit.fitWidth,

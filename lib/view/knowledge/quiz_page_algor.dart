@@ -54,6 +54,7 @@ class _QuizPageAlgorState extends State<QuizPageAlgor> {
           Center(
             child: Container(
               width: 500.w,
+              height: 380.h,
               margin: EdgeInsets.symmetric(vertical: 250.h),
               color: Colors.white.withOpacity(0.5),
               child: Column(

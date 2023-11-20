@@ -66,11 +66,11 @@ class LanguageController extends GetxController {
   String get quizInfo => _language.value == "한국어"? "수강할 과목을 골라주세요" : "Choose a subject to take";
   String get answerInfo => _language.value == "한국어"? "정답을 골라주세요" : "Choose answer";
   //퀴즈
-  String get dsQuiz  => _language.value == '한국어' ? '다음 중 사용자 정의 자료구조가 아닌 것은?' : 'Which of the following is not a custom data structure?';
+  String get dsQuiz  => _language.value == '한국어' ? '다음 중 사용자 정의\n 자료구조가 아닌 것은?' : 'Which of the following is not a custom data structure?';
   List<String> get dsQuizList  => _language.value == '한국어' ? ['리스트','스택','구조체'] : ['list','stack','structure'];
-  String get algoQuiz  => _language.value == '한국어' ? '다음 중 맨 앞이나 맨 뒤부터 순서대로 하나하나 짚어보는 알고리즘은?' : 'which algorithm starts at one end and goes through each element of a list until the desired element is found?';
+  String get algoQuiz  => _language.value == '한국어' ? '다음 중 맨 앞이나 맨 뒤부터 순서대로\n하나하나 짚어보는 알고리즘은?' : 'which algorithm starts at one end and goes through each element of a list until the desired element is found?';
   List<String> get algoQuizList  => _language.value == '한국어' ? ['선형탐색','이진탐색','해시탐색'] : ['Linear search','Binary search','Hash search'];
-  String get sweQuiz  => _language.value == '한국어' ? '컴퓨터 네트워크에서 IP 주소를 동적으로 할당하기 위한 프로토콜은?' : 'What is the protocol for dynamically allocating IP addresses in a computer network?';
+  String get sweQuiz  => _language.value == '한국어' ? '컴퓨터 네트워크에서 IP 주소를\n동적으로 할당하기 위한 프로토콜은?' : 'What is the protocol for dynamically allocating IP addresses in a computer network?';
   List<String> get sweQuizList  => _language.value == '한국어' ? ['DNS','DHCP','HTTP'] : ['DNS','DHCP','HTTP'];
   String get osQuiz  => _language.value == '한국어' ? '다중 프로그래밍 환경에서 CPU가 여러 프로세스를 번갈아가며 실행하는 방식은?' : 'In a multi-programming environment, how does the CPU run multiple processes alternately?';
   List<String> get osQuizList  => _language.value == '한국어' ? ['멀티태스킹','멀티프로세싱','시분할 시스템'] : ['Multi Tasking','Multi Processing','Time-sharing'];
