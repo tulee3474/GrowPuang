@@ -45,7 +45,7 @@ class LanguageController extends GetxController {
   String get submit => _language.value == '한국어' ? '제출하기 >' : 'submit >';
 
   //엔딩화면
-  String get ending => _language.value == '한국어' ? personalController.option1+" "+personalController.option2+"의 졸업을 축하합니다!" : 'Congratulation graduate of '+personalController.option1+" "+personalController.option2;
+  String get ending => _language.value == '한국어' ? personalController.option1+" "+personalController.option2+"의\n 졸업을 축하합니다!" : 'Congratulation graduate of '+personalController.option1+" "+personalController.option2;
   String get drPuang => _language.value == '한국어' ? '박사 푸앙' : 'Dr.Puang';
   String get swePuang => _language.value == '한국어' ? '소프트웨어엔지니어 푸앙' : 'Software Engineer Puang';
   String get saPuang => _language.value == '한국어' ? '솔루션아키텍트 푸앙' : 'Solution Architect Puang';
@@ -76,7 +76,7 @@ class LanguageController extends GetxController {
   List<String> get osQuizList  => _language.value == '한국어' ? ['멀티태스킹','멀티프로세싱','시분할 시스템'] : ['Multi Tasking','Multi Processing','Time-sharing'];
   String get plQuiz  => _language.value == '한국어' ? '프로그래밍 언어의 주요 목적은?' : 'What is the primary purpose of a programming language?';
   List<String> get plQuizList  => _language.value == '한국어' ? ['에세이 작성','그래프 제작','컴퓨터와 소통'] : ['To write essays','To create beautiful graphics','To communicate with computers'];
-  String get csQuiz  => _language.value == '한국어' ? 'CPU는 무엇의 약자인가?' : 'What does the acronym "CPU" stand for?';
+  String get csQuiz  => _language.value == '한국어' ? 'CPU는 무엇의 약자인가?' : 'What does the acronym\n"CPU" stand for?';
   List<String> get csQuizList  => _language.value == '한국어' ? ['Central Processing Unit','Computer Processing Unit','Central Programming Unit'] : ['Central Processing Unit','Computer Processing Unit','Central Programming Unit'];
 
   String get correct => _language.value == '한국어' ? '정답입니다!' : 'Correct!';
@@ -85,7 +85,7 @@ class LanguageController extends GetxController {
   String get submitError => _language.value == '한국어' ? '과목을 선택해주세요' : 'choose subject';
 
   //활동
-  String get actInfo  => _language.value == '한국어' ? '참여하고 싶은 활동을 골라주세요' : 'Choose an activity that you want to do';
+  String get actInfo  => _language.value == '한국어' ? '참여하고 싶은 활동을 골라주세요' : 'Choose an activity\nthat you want to do';
 
   String get loadingMessage =>
       _language.value == '한국어' ? "정보를 로딩 중..." : 'Loading...';
@@ -197,7 +197,7 @@ class LanguageController extends GetxController {
 
   //도움말
   String get helpTitle => _language.value == '한국어' ? '푸앙이를 무사히 졸업시켜주세요!' : 'Make Puang graduate!';
-  String get totalInfo => _language.value == '한국어' ? '적절한 활동을 통해 푸앙이를 졸업시키는 게임입니다. 졸업요건을 모두 완료해야 졸업이 가능하며 수행 활동에 따라 진로가 결정됩니다.' : 'It\'s a game that get graduate Puang by doing activities. Graduation is possible only after completing all the graduation requirements, and the career path is determined according to the game play.';
+  String get totalInfo => _language.value == '한국어' ? '적절한 활동을 통해 푸앙이를 졸업시키는 게임입니다.\n졸업요건을 모두 완료해야 졸업이 가능하며 수행 활동에 따라 진로가 결정됩니다.' : 'It\'s a game that get graduate Puang by doing activities. Graduation is possible only after completing all the graduation requirements, and the career path is determined according to the game play.';
   String get forGradu => _language.value == '한국어' ? '졸업요건' : 'Graduation requirements';
   String get requirements => _language.value == '한국어' ? '- 전공퀴즈 6개 모두 이수\n- 커뮤니티에 게시글 1개 이상 작성' : '- Complete all 6 major quizzes\n- Write at least one post in the community';
   String get intellectDes => _language.value == '한국어' ? '모든 퀴즈를 풀어야하며, 정답을 맞추면 5점씩 지식지수가 증가합니다' : 'You have to solve all the quizzes. If you get the correct answer, your knowledge score increases by 5 points';

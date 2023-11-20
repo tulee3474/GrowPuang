@@ -29,12 +29,6 @@ class _HomeScreenState extends State<HomeScreen> {
             style: TextStyle(fontSize: 18),
           ),
         ),
-        // leading: IconButton(
-        //     icon: Icon(Icons.menu),
-        //     onPressed: () {
-        //       print('menu button is clicked');
-        //     }),
-        // actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.add))],
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
