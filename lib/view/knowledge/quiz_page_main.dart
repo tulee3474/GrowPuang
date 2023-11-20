@@ -246,7 +246,7 @@ class _QuizPageMainState extends State<QuizPageMain> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  languageController.intellect,
+                  "지식 점수",
                   style: TextStyle(
                     color: Color(0xFF143264),
                     fontSize: 25.sp,

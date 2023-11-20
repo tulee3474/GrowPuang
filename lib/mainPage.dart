@@ -77,7 +77,7 @@ class MainPage extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(width: 20.w), // 원하는 여백 크기로 조정
+                          SizedBox(width: 65.w), // 원하는 여백 크기로 조정
                           Expanded(
                             child: ClipRRect(
                               borderRadius:
@@ -94,6 +94,98 @@ class MainPage extends StatelessWidget {
                           SizedBox(width: 30.w), // 원하는 여백 크기로 조정
                           Text(
                             '${personalController.hpScore} / 30', // 원하는 비율로 변경
+                            style: TextStyle(
+                              color: Color(0xFF143264),
+                              fontSize: 25.sp,
+                              fontFamily: 'YourFontFamily',
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  // 게이지 바 (기본-푸앙이 밑에 배치)
+                  Positioned(
+                    left: 20.w,
+                    right: 20.w,
+                    top: 650.h, // 기본-푸앙이 밑에 원하는 위치로 조정
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 70.0.w),
+                      // 좌우 여백을 조정
+                      child: Row(
+                        children: [
+                          Text(
+                            languageController.intellect,
+                            style: TextStyle(
+                              color: Color(0xFF143264),
+                              fontSize: 25.sp,
+                              fontFamily: 'YourFontFamily',
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(width: 20.w), // 원하는 여백 크기로 조정
+                          Expanded(
+                            child: ClipRRect(
+                              borderRadius:
+                              BorderRadius.circular(30.0), // 원하는 라운드값으로 조절
+                              child: LinearProgressIndicator(
+                                minHeight: 20.0.h,
+                                value: personalController.solveQuizList.length/6, // 게이지 바의 값 (0.0에서 1.0 사이)
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                    Color(0xFF143264)), // 게이지 바 색상
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 30.w), // 원하는 여백 크기로 조정
+                          Text(
+                            '${personalController.solveQuizList.length} / 6', // 원하는 비율로 변경
+                            style: TextStyle(
+                              color: Color(0xFF143264),
+                              fontSize: 25.sp,
+                              fontFamily: 'YourFontFamily',
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  // 게이지 바 (기본-푸앙이 밑에 배치)
+                  Positioned(
+                    left: 20.w,
+                    right: 20.w,
+                    top: 650.h, // 기본-푸앙이 밑에 원하는 위치로 조정
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 70.0.w),
+                      // 좌우 여백을 조정
+                      child: Row(
+                        children: [
+                          Text(
+                            languageController.activity,
+                            style: TextStyle(
+                              color: Color(0xFF143264),
+                              fontSize: 25.sp,
+                              fontFamily: 'YourFontFamily',
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(width: 20.w), // 원하는 여백 크기로 조정
+                          Expanded(
+                            child: ClipRRect(
+                              borderRadius:
+                              BorderRadius.circular(30.0), // 원하는 라운드값으로 조절
+                              child: LinearProgressIndicator(
+                                minHeight: 20.0.h,
+                                value: personalController.participateActList.length/6, // 게이지 바의 값 (0.0에서 1.0 사이)
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                    Color(0xFF143264)), // 게이지 바 색상
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 30.w), // 원하는 여백 크기로 조정
+                          Text(
+                            '${personalController.participateActList.length} / 6', // 원하는 비율로 변경
                             style: TextStyle(
                               color: Color(0xFF143264),
                               fontSize: 25.sp,
