@@ -28,7 +28,6 @@ class PersonalController extends GetxController {
 
   RxList<bool> _knowledgeQuizResultList = <bool>[].obs; //전공 퀴즈 결과 저장
 
-  RxList<bool> _activityResultList = <bool>[].obs; //참여 활동 결과 저장
   RxList<int> _solveQuizList = <int>[].obs; //전공 퀴즈 결과 저장
   RxList<int> _participateActList = <int>[].obs; //전공 퀴즈 결과 저장
   RxInt _communityResult = 0.obs; //커뮤니티 활동 수

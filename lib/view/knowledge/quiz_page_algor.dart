@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:growpuang/view/widget/appBar.dart';
 import 'package:get/get.dart';
+import 'package:growpuang/view/widget/navigateBar.dart';
+import 'package:growpuang/view/widget/quiz_error_dialog.dart';
 import '../../controller/language_controller.dart';
 import '../../controller/personal_contoller.dart';
 import '../widget/quiz_dialog.dart';
@@ -107,14 +109,32 @@ class _QuizPageAlgorState extends State<QuizPageAlgor> {
                     children: [
                       TextButton(
                         onPressed: () {
-                          widget.personalController.solveQuizList.add(1); //문제를 제출하는 순간 푼 문제 목록에 들어간다
-                          if(selectedAnswer == widget.languageController.algoQuizList[0]){
-                            addScore = 5;
-                            widget.personalController.intellectScore += addScore;
-                          }else{
-                            addScore = 0;
+                          if(selectedAnswer == null){
+                            showDialog(
+                                context: context,
+                                barrierDismissible: true, // 바깥 영역 터치시 닫을지 여부
+                                builder: (BuildContext context) {
+                                  Future.delayed(
+                                    Duration(seconds: 1),
+                                        () {
+                                      Navigator.of(context,
+                                          rootNavigator: true)
+                                          .pop();
+                                    },
+                                  );
+                                  return QuizErrorDialog();
+                                });
                           }
-                          _nextQuestion();
+                          else{
+                            widget.personalController.solveQuizList.add(1); //문제를 제출하는 순간 푼 문제 목록에 들어간다
+                            if(selectedAnswer == widget.languageController.algoQuizList[0]){
+                              addScore = 5;
+                              widget.personalController.intellectScore += addScore;
+                            }else{
+                              addScore = 0;
+                            }
+                            _nextQuestion();
+                          }
                         },
                         child: Text(
                           widget.languageController.submit,
@@ -131,6 +151,7 @@ class _QuizPageAlgorState extends State<QuizPageAlgor> {
               ),
             ),
           ),
+          navigateBar(),
         ],
       ),
     );

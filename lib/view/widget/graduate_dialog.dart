@@ -28,7 +28,7 @@ class GraduateDialog extends StatelessWidget {
           children: [
             Text(
               languageController.gradDialog,
-              style: TextStyle(fontSize: 30.sp, fontWeight: FontWeight.w900),
+              style: TextStyle(fontSize: 30.sp, fontWeight: FontWeight.w700),
               textAlign: TextAlign.center,
             ),
             SizedBox(
@@ -211,10 +211,11 @@ class GraduateDialog extends StatelessWidget {
             ),
             Container(
               child:
-                (personalController.solveQuizList.length<6) ? Text("전공과목을 미이수 하였습니다", style: TextStyle(fontSize: 25
+                (personalController.solveQuizList.length<6) ? Text(languageController.alertGradu, style: TextStyle(fontSize: 25
                     .sp, color: Colors.red,),)
                     : (personalController.communityResult > 0 ) ?
-              goGradu() : goGradu()
+              goGradu() : Text(languageController.alert2Gradu, style: TextStyle(fontSize: 25
+                    .sp, color: Colors.red,),)
             ),
           ],
         ),
@@ -241,10 +242,25 @@ class goGradu extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
+                String _endingPuang;
+                var _job = '';
+                if(personalController.participateActList.contains(4)){
+                  _endingPuang = "박사 푸앙";
+                  _job = languageController.drPuang;
+                } else if(personalController.intellectScore==30){
+                  _endingPuang = "소프트웨어엔지니어 푸앙";
+                  _job = languageController.swePuang;
+                } else if(personalController.participateActList.length >=4){
+                  _endingPuang = "솔루션아키텍트 푸앙";
+                  _job = languageController.saPuang;
+                } else{
+                  _endingPuang = "인프라개발자 푸앙";
+                  _job = languageController.idPuang;
+                }
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => GraduatedPuang(),
+                    builder: (context) => GraduatedPuang(endingPuang: _endingPuang, job: _job,),
                   ),
                 );
               },
@@ -256,3 +272,4 @@ class goGradu extends StatelessWidget {
     );
   }
 }
+

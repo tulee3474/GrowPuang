@@ -19,14 +19,13 @@ import '../../mainPage.dart';
 class QuizPageMain extends StatefulWidget {
   QuizPageMain({super.key});
 
-  final personalController = Get.put(PersonalController());
-  final languageController = Get.put(LanguageController());
-
   @override
   State<QuizPageMain> createState() => _QuizPageMainState();
 }
 
 class _QuizPageMainState extends State<QuizPageMain> {
+  final personalController = Get.put(PersonalController());
+  final languageController = Get.put(LanguageController());
   String? selectedQuiz;
   List<Widget> whichQuizPage = [
     QuizPageDs(),
@@ -39,14 +38,14 @@ class _QuizPageMainState extends State<QuizPageMain> {
   late int addScore;
   late List<Map<String, Object>> lectures = [
     {
-      'questionText': widget.languageController.quizInfo,
+      'questionText': languageController.quizInfo,
       'answers': [
-        {'text': widget.languageController.quizList[0]},
-        {'text': widget.languageController.quizList[1]},
-        {'text': widget.languageController.quizList[2]},
-        {'text': widget.languageController.quizList[3]},
-        {'text': widget.languageController.quizList[4]},
-        {'text': widget.languageController.quizList[5]},
+        {'text': languageController.quizList[0]},
+        {'text': languageController.quizList[1]},
+        {'text': languageController.quizList[2]},
+        {'text': languageController.quizList[3]},
+        {'text': languageController.quizList[4]},
+        {'text': languageController.quizList[5]},
       ]
     },
     // 다른 퀴즈들 추가 가능
@@ -83,17 +82,19 @@ class _QuizPageMainState extends State<QuizPageMain> {
               color: Colors.white.withOpacity(0.5),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  // Text((selectedQuiz != null) ? selectedQuiz! : 'empty'),
-                  // Text(selectedIndex.toString()),
-                  TextButton(  //임시버튼. 누르면 전공 한번에 이수
-                    onPressed: (){
-                      widget.personalController.solveQuizList.addAll([0,1,2,3,4,5]);
+                children: [
+                  TextButton(
+                    //임시버튼. 누르면 전공 한번에 이수
+                    onPressed: () {
+                      personalController.solveQuizList = [0, 1, 2, 3, 4, 5];
                     },
                     child: Text(
                       lectures[_quizIndex]['questionText'] as String,
                       // questions[_questionIndex]['questionText'] as String,
-                      style: TextStyle(fontSize: 25.sp, color: Color(0xFF143264)),
+                      style: TextStyle(
+                        fontSize: 25.sp,
+                        color: Color(0xFF143264),
+                      ),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -111,8 +112,7 @@ class _QuizPageMainState extends State<QuizPageMain> {
                       (index) {
                         final answer = (lectures[_quizIndex]['answers']
                             as List<Map<String, Object>>)[index];
-                        if (widget.personalController.solveQuizList
-                            .contains(index)) {
+                        if (personalController.solveQuizList.contains(index)) {
                           return Container(
                             alignment: Alignment.center,
                             color: Colors.white.withOpacity(0.5),
@@ -121,7 +121,7 @@ class _QuizPageMainState extends State<QuizPageMain> {
                               child: Text(
                                 answer['text'] as String,
                                 style: TextStyle(
-                                  fontSize: 14.0,
+                                  fontSize: 18.sp,
                                   color: Colors.black26,
                                 ),
                                 textAlign: TextAlign.center,
@@ -155,10 +155,11 @@ class _QuizPageMainState extends State<QuizPageMain> {
                                 child: Text(
                                   answer['text'] as String,
                                   style: TextStyle(
-                                    fontSize: 14.0,
+                                    fontSize: 18.sp,
                                     color: selectedQuiz == answer['text']
                                         ? Colors.white
-                                        : Colors.black,
+                                        : Color(0xFF143264),
+                                    fontFamily: 'YourFontFamily',
                                   ),
                                   textAlign: TextAlign.center,
                                 ),
@@ -182,7 +183,7 @@ class _QuizPageMainState extends State<QuizPageMain> {
                           );
                         },
                         child: Text(
-                          "< " + widget.languageController.goHome,
+                          "< " + languageController.goHome,
                           style: TextStyle(
                             color: Color(0xFF143264),
                             fontSize: 20.sp,
@@ -192,20 +193,28 @@ class _QuizPageMainState extends State<QuizPageMain> {
                       ),
                       TextButton(
                         onPressed: () {
-                          // print('Selected Answer: $selectedAnswer');
+                          //선택한 버튼이 없다면 알림을 출력합니다
                           if (selectedQuiz == null) {
                             showDialog(
                                 context: context,
                                 barrierDismissible: true, // 바깥 영역 터치시 닫을지 여부
                                 builder: (BuildContext context) {
-                                  return SubmitErrorDioalog();
+                                  Future.delayed(
+                                    Duration(seconds: 1),
+                                        () {
+                                      Navigator.of(context,
+                                          rootNavigator: true)
+                                          .pop();
+                                    },
+                                  );
+                                  return SubmitErrorDialog();
                                 });
                           } else {
                             _chooseQuiz();
                           }
                         },
                         child: Text(
-                          widget.languageController.takeSub,
+                          languageController.takeSub,
                           style: TextStyle(
                             color: Color(0xFF143264),
                             fontSize: 20.sp,
@@ -215,10 +224,36 @@ class _QuizPageMainState extends State<QuizPageMain> {
                       ),
                     ],
                   ),
-                ],
+                  ],
               ),
             ),
           ),
+          //*******임시버튼************//
+          Positioned(
+            top: 700.h,
+            child: Row(
+              children: [
+                TextButton(
+                  onPressed: () {
+                    setState(() {
+                      personalController.intellectScore = 30;
+                    });
+                  },
+                  child: Text("30점되는 임시버튼"),
+                ),
+                TextButton(
+                  onPressed: () {
+                    setState(() {
+                      personalController.communityResult = 1;
+                    });
+                  },
+                  child: Text("자소서쓰는 임시버튼"),
+                ),
+              ],
+            ),
+          ),
+          //***************************************//
+
           navigateBar(),
         ],
       ),

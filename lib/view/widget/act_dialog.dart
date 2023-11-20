@@ -10,7 +10,8 @@ import '../ending/graduated_puang.dart';
 class ActDialog extends StatelessWidget {
   // int activities;
 
-  ActDialog({super.key,
+  ActDialog({
+    super.key,
     // required this.activities
   });
 
@@ -30,15 +31,24 @@ class ActDialog extends StatelessWidget {
         // insetPadding: EdgeInsets.fromLTRB(30.w, 100.h, 30.w, 200.h),
         insetPadding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 300.h),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              "활동에 참여하셨습니다\n 남은체력 ${personalController.hpScore}",
-              style: TextStyle(fontSize: 25.sp, color: Color(0xFF143264)),
+              languageController.completeAct,
+              style: TextStyle(
+                fontSize: 30.sp,
+                color: Color(0xFF143264),
+              ),
             ),
-           SizedBox(
-              height: 10.h,
+            // SizedBox(height: 10.h,),
+            Text(
+              languageController.restHP +
+              personalController.hpScore.toString(),
+              style: TextStyle(
+                fontSize: 25.sp,
+                color: Color(0xFF143264),
+              ),
             ),
             TextButton(
               onPressed: () {
@@ -46,7 +56,8 @@ class ActDialog extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => MainPage(),
-                  ),);
+                  ),
+                );
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
