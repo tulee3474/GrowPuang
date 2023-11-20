@@ -62,13 +62,13 @@ class SixthPage extends StatelessWidget {
                     builder: (context) => SeventhPage(
                       question: languageController.language == '한국어'
                           ? '더 멋지다고 생각되는 모습은?'
-                          : 'Which look do you think is cooler?',
+                          : 'Which look do you think\nis cooler?',
                       option1: languageController.language == '한국어'
-                          ? '갑작스러운 사고를 완벽하게 수습하는 나'
-                          : 'I perfectly handle sudden accidents',
+                          ? '갑작스러운 사고를\n완벽하게 수습하는 나'
+                          : 'I perfectly handle\nsudden accidents',
                       option2: languageController.language == '한국어'
-                          ? '주어진 일을 완벽하게 마무리 하는 나'
-                          : 'I complete the given task perfectly',
+                          ? '주어진 일을 완벽하게\n마무리 하는 나'
+                          : 'I complete the given\ntask perfectly',
                     ),
                   ),
                 );
@@ -123,13 +123,13 @@ class SixthPage extends StatelessWidget {
                     builder: (context) => EighthPage(
                       question: languageController.language == '한국어'
                           ? '더 멋지다고 생각되는 모습은?'
-                          : 'Which look do you think is cooler?',
+                          : 'Which look do you think\nis cooler?',
                       option1: languageController.language == '한국어'
-                          ? '갑작스러운 사고를 완벽하게 수습하는 나'
-                          : 'I perfectly handle sudden accidents',
+                          ? '갑작스러운 사고를 완벽하게\n 수습하는 나'
+                          : 'I perfectly handle\nsudden accidents',
                       option2: languageController.language == '한국어'
-                          ? '주어진 일을 완벽하게 마무리 하는 나'
-                          : 'I complete the given task perfectly',
+                          ? '주어진 일을 완벽하게\n마무리 하는 나'
+                          : 'I complete the given\ntask perfectly',
                     ),
                   ),
                 );

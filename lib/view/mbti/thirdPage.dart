@@ -79,7 +79,7 @@ class ThirdPage extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Text(
                       languageController.language == '한국어'
-                          ? '이 일을 하지 않았을 때 잃게 될 것들을 떠올린다'
+                          ? '이 일을 하지 않았을 때\n잃게 될 것들을 떠올린다'
                           : 'Think about what you will lose if you don\'t do this.',
                       style: TextStyle(
                         color: Colors.white,
@@ -137,7 +137,7 @@ class ThirdPage extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Text(
                       languageController.language == '한국어'
-                          ? '이 일을 해냈을 때 얻게 될 보상을 떠올린다'
+                          ? '이 일을 해냈을 때 얻게 될\n보상을 떠올린다'
                           : 'Think about the reward you will receive when you accomplish this task.',
                       style: TextStyle(
                         color: Colors.white,

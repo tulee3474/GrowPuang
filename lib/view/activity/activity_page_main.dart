@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:growpuang/styles.dart';
 import 'package:growpuang/view/widget/appBar.dart';
 import 'package:get/get.dart';
 import 'package:growpuang/view/widget/navigateBar.dart';
@@ -59,7 +60,7 @@ class _ActivityPageMainState extends State<ActivityPageMain> {
                   width: 500.w,
                   height: 350.h,
                   // margin: EdgeInsets.fromLTRB(20.w, 280.h, 20.w, 250.h),
-                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                  padding: EdgeInsets.symmetric(horizontal: 60.w),
                   color: Colors.white.withOpacity(0.5),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -70,6 +71,7 @@ class _ActivityPageMainState extends State<ActivityPageMain> {
                           color: Color(0xFF143264),
                           fontSize: 25.sp,
                           fontFamily: 'YourFontFamily',
+                          fontWeight: FontWeight.w900,
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -122,17 +124,18 @@ class _ActivityPageMainState extends State<ActivityPageMain> {
                                 alignment: Alignment.center,
                                 color: selectedStates[index]
                                     ? Color(0xFF143264)
-                                    : Colors.white,
+                                    : Color(0xFF6CBEE2),
                                 child: Container(
-                                  width: 150.w,
+                                  width: 160.w,
                                   child: Text(
                                     languageController.activityList[index],
                                     style: TextStyle(
                                       color: selectedStates[index]
                                           ? Colors.white
                                           : Color(0xFF143264),
-                                      fontSize: 18.sp,
+                                      fontSize: 20.sp,
                                       fontFamily: 'YourFontFamily',
+                                      fontWeight: FontWeight.w600,
                                     ),
                                     textAlign: TextAlign.center,
                                   ),
@@ -207,50 +210,52 @@ class _ActivityPageMainState extends State<ActivityPageMain> {
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: 10.h,
+
+              ],
+            ),
+          ),
+          //활동 후 체력
+          Positioned(
+            right: 60.w,
+            bottom: 200.h,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  languageController.hpAfterAct,
+                  style: TextStyle(
+                    color: Color(0xFF143264),
+                    fontSize: 25.sp,
+                    fontFamily: 'YourFontFamily',
+                  ),
                 ),
-                //활동 후 체력
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      languageController.hpAfterAct,
-                      style: TextStyle(
-                        color: Color(0xFF143264),
-                        fontSize: 25.sp,
-                        fontFamily: 'YourFontFamily',
-                      ),
+                SizedBox(
+                  width: 20.w,
+                ),
+                Container(
+                  width: 200.w,
+                  child: ClipRRect(
+                    borderRadius:
+                    BorderRadius.circular(30.0), // 원하는 라운드값으로 조절
+                    child: LinearProgressIndicator(
+                      minHeight: 20.0.h,
+                      value: changeHp / 30,
+                      // 게이지 바의 값 (0.0에서 1.0 사이)
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                        Color(0xFF143264),
+                      ), // 게이지 바 색상
                     ),
-                    SizedBox(
-                      width: 20.w,
-                    ),
-                    Container(
-                      width: 200.w,
-                      child: ClipRRect(
-                        borderRadius:
-                            BorderRadius.circular(30.0), // 원하는 라운드값으로 조절
-                        child: LinearProgressIndicator(
-                          minHeight: 20.0.h,
-                          value: changeHp / 30,
-                          // 게이지 바의 값 (0.0에서 1.0 사이)
-                          valueColor: AlwaysStoppedAnimation<Color>(
-                            Color(0xFF143264),
-                          ), // 게이지 바 색상
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: 30.w), // 원하는 여백 크기로 조정
-                    Text(
-                      '$changeHp/30',
-                      // 원하는 비율로 변경
-                      style: TextStyle(
-                        color: Color(0xFF143264),
-                        fontSize: 25.sp,
-                        fontFamily: 'YourFontFamily',
-                      ),
-                    ),
-                  ],
+                  ),
+                ),
+                SizedBox(width: 30.w), // 원하는 여백 크기로 조정
+                Text(
+                  '$changeHp/30',
+                  // 원하는 비율로 변경
+                  style: TextStyle(
+                    color: Color(0xFF143264),
+                    fontSize: 25.sp,
+                    fontFamily: 'YourFontFamily',
+                  ),
                 ),
               ],
             ),
