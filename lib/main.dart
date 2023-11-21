@@ -10,7 +10,6 @@ import 'package:growpuang/styles.dart';
 import 'package:growpuang/view/home_screen.dart';
 import 'package:growpuang/view/mbti/firstPage.dart';
 
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized(); // 추가
   await dotenv.load(fileName: 'assets/config/.env'); // 추가
