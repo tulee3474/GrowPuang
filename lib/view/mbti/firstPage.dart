@@ -46,7 +46,7 @@ class firstPage extends StatelessWidget {
                       'Start >',
                       style: TextStyle(
                         color: Color(0xFF143264),
-                        fontSize: 55.sp,
+                        fontSize: 40.sp,
                         fontFamily: 'YourFontFamily',
                         fontWeight: FontWeight.bold,
                       ),

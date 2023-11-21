@@ -19,7 +19,9 @@ class SecondPage extends StatelessWidget {
           firstappBar(),
           mbti_diamond(),
           Center(
+
             child: Padding(
+
               padding: EdgeInsets.only(top: 400.h),
               child: Text(
                 languageController.language == '한국어'
@@ -31,6 +33,7 @@ class SecondPage extends StatelessWidget {
                   fontFamily: 'YourFontFamily',
                   fontWeight: FontWeight.bold,
                 ),
+                textAlign: TextAlign.center,
               ),
             ),
           ),
@@ -74,7 +77,7 @@ class SecondPage extends StatelessWidget {
                           '한국어',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 50.sp,
+                            fontSize: 30.sp,
                             fontFamily: 'YourFontFamily',
                             fontWeight: FontWeight.bold,
                           ),
@@ -117,7 +120,7 @@ class SecondPage extends StatelessWidget {
                           'English',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 50.sp,
+                            fontSize: 30.sp,
                             fontFamily: 'YourFontFamily',
                             fontWeight: FontWeight.bold,
                           ),
