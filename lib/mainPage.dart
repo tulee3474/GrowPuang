@@ -66,7 +66,6 @@ class MainPage extends StatelessWidget {
                                 builder: (BuildContext context) {
                                   return GraduateDialog();
                                 });
-                            print('영신관 이미지를 눌렀습니다.');
                           },
                           child: Container(
                             width: 270.w,
@@ -90,7 +89,7 @@ class MainPage extends StatelessWidget {
                       children: [
                         buildTableRow( languageController.language == '한국어' ? '체력' : 'HP', personalController.hpScore, 30),
                         buildTableRow(
-                            languageController.intellect, personalController.solveQuizList.length, 6),
+                            languageController.intellect,  personalController.intellectScore, 30),
                         buildTableRow(
                             languageController.activity, personalController.participateActList.length, 6),
                       ],
