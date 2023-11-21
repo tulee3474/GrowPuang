@@ -53,7 +53,7 @@ class GraduateDialog extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      languageController.intellect +
+                      languageController.major +
                           " " +
                           personalController.solveQuizList.length.toString() + "/6",
                       style: TextStyle(fontSize: 20.sp,

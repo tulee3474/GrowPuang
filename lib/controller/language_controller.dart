@@ -35,6 +35,7 @@ class LanguageController extends GetxController {
           "\'s graduation";
   String get activity => _language.value == '한국어' ? '활동지수' : 'Activity';
   String get intellect => _language.value == '한국어' ? '지식지수' : 'Intellect';
+  String get major => _language.value == '한국어' ? '전공필수' : 'Major Req.';
   String get community => _language.value == '한국어' ? '자소서 게시판' : 'CV board';
   String get endMsg => _language.value == '한국어' ? '게임을 종료하시겠습니까?' : 'Do you want to exit?';
 
@@ -282,7 +283,7 @@ class LanguageController extends GetxController {
   String get helpTitle =>
       _language.value == '한국어' ? '푸앙이를 무사히 졸업시켜주세요!' : 'Make Puang graduate!';
   String get totalInfo => _language.value == '한국어'
-      ? '적절한 활동을 통해 푸앙이를 졸업시키는 게임입니다.\n졸업요건을 모두 완료해야 졸업이 가능하며 수행 활동에 따라 진로가 결정됩니다.'
+      ? '적절한 활동을 통해 푸앙이를 졸업시키는 게임입니다. 졸업요건을 모두 완료해야 졸업이 가능하며 수행 활동에 따라 진로가 결정됩니다.'
       : 'It\'s a game that get graduate Puang by doing activities. Graduation is possible only after completing all the graduation requirements, and the career path is determined according to the game play.';
   String get forGradu =>
       _language.value == '한국어' ? '졸업요건' : 'Graduation requirements';
