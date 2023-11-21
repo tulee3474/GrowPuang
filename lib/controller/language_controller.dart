@@ -36,6 +36,7 @@ class LanguageController extends GetxController {
   String get activity => _language.value == '한국어' ? '활동지수' : 'Activity';
   String get intellect => _language.value == '한국어' ? '지식지수' : 'Intellect';
   String get community => _language.value == '한국어' ? '자소서 게시판' : 'CV board';
+  String get endMsg => _language.value == '한국어' ? '게임을 종료하시겠습니까?' : 'Do you want to exit?';
 
   // 졸업 다이어로그
   String get cv => _language.value == '한국어' ? "자기소개서 작성" : "Write CV";
@@ -117,7 +118,7 @@ class LanguageController extends GetxController {
   List<String> get dsQuizList => _language.value == '한국어'
       ? ['리스트', '스택', '구조체']
       : ['list', 'stack', 'structure'];
-  String get algoQuiz => _language.value == '한국어'
+  String get algoQuiz => _language.value =='한국어'
       ? '다음 중 맨 앞이나 맨 뒤부터 순서대로\n하나하나 짚어보는 알고리즘은?'
       : 'which algorithm starts at one end and goes through each element of a list until the desired element is found?';
   List<String> get algoQuizList => _language.value == '한국어'
@@ -169,7 +170,7 @@ class LanguageController extends GetxController {
   //활동
   String get actInfo => _language.value == '한국어'
       ? '참여하고 싶은 활동을 골라주세요'
-      : 'Choose an activity\nthat you want to do';
+      : 'Choose an activity';
 
   String get loadingMessage =>
       _language.value == '한국어' ? "정보를 로딩 중..." : 'Loading...';

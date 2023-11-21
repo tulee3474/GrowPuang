@@ -64,7 +64,7 @@ class _QuizPageAlgorState extends State<QuizPageAlgor> {
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
                       questions[_questionIndex]['questionText'] as String,
-                      style: TextStyle(fontSize: 18.0, color: Color(0xFF143264), fontWeight: FontWeight.w900), textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 20.sp, color: Color(0xFF143264), fontWeight: FontWeight.w700), textAlign: TextAlign.center,
 
                     ),
                   ),
@@ -94,7 +94,7 @@ class _QuizPageAlgorState extends State<QuizPageAlgor> {
                               Text(
                                 answer['text'] as String,
                                 style: TextStyle(
-                                  fontSize: 18.0,
+                                  fontSize: 18.sp,
                                   color: selectedAnswer == answer['text']
                                       ? Colors.white
                                       : Colors.black,

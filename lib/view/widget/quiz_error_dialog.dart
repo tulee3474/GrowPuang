@@ -19,9 +19,25 @@ class QuizErrorDialog extends StatelessWidget {
         width: 400.w,
         height: 70.h,
         child: Center(
-          child: Text(
-            languageController.answerInfo,
-            style: TextStyle(fontSize: 25.sp, color: Color(0xFF143264)),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(
+                Icons.warning_amber_rounded,
+                color: Colors.red,
+              ),
+              SizedBox(
+                width: 5.w,
+              ),
+              Text(
+                languageController.answerInfo,
+                style: TextStyle(fontSize: 20.sp, color: Color(0xFF143264)),
+              ),
+              const Icon(
+                Icons.warning_amber_rounded,
+                color: Colors.red,
+              ),
+            ],
           ),
         ),
       ),

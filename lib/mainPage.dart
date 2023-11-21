@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:growpuang/controller/language_controller.dart';
 import 'package:growpuang/controller/personal_contoller.dart';
 import 'package:growpuang/view/widget/appBar.dart';
+import 'package:growpuang/view/widget/end_dialog.dart';
 import 'package:growpuang/view/widget/graduate_dialog.dart';
 import 'package:growpuang/view/widget/navigateBar.dart';
 import 'controller/post_list_controller.dart';
@@ -19,85 +20,100 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: null,
-      body: Stack(
-        children: [
-          appBar(),
-          Positioned(
-            left: 10.w,
-            right: 10.w,
-            top: 250.h,
-            child: Center(
-              child: Column(
+    return WillPopScope(
+      onWillPop: () async {
+        // 여기에서 팝업을 표시하거나 확인 로직을 추가할 수 있습니다.
+        bool shouldClose = (await showExitPopup(context)) as bool;
+        return shouldClose;
+      },
+      child: Scaffold(
+        appBar: null,
+        body: Stack(
+          children: [
+            appBar(),
+            Positioned(
+              left: 10.w,
+              right: 10.w,
+              top: 250.h,
+              child: Center(
+                child: Column(
 
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Text(
-                      personalController.option1 +
-                          ' ' +
-                          personalController.option2,
-                      style: TextStyle(
-                        color: Color(0xFF143264),
-                        fontSize: 30.sp,
-                        fontFamily: 'YourFontFamily',
-                        fontWeight: FontWeight.bold,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Text(
+                        personalController.option1 +
+                            ' ' +
+                            personalController.option2,
+                        style: TextStyle(
+                          color: Color(0xFF143264),
+                          fontSize: 30.sp,
+                          fontFamily: 'YourFontFamily',
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(height: 10.h),
-                  Positioned(
-                    top: 40.h,
-                    child: Align(
-                      alignment: Alignment.topCenter,
-                      child: GestureDetector(
-                        onTap: () {
-                          showDialog(
-                              context: context,
-                              barrierDismissible: true,
-                              builder: (BuildContext context) {
-                                return GraduateDialog();
-                              });
-                          print('영신관 이미지를 눌렀습니다.');
-                        },
-                        child: Container(
-                          width: 270.w,
-                          height: 230.h,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage(
-                                  'assets/images/${personalController.pick_img}'),
-                              fit: BoxFit.fitHeight,
+                    SizedBox(height: 10.h),
+                    Positioned(
+                      top: 40.h,
+                      child: Align(
+                        alignment: Alignment.topCenter,
+                        child: GestureDetector(
+                          onTap: () {
+                            showDialog(
+                                context: context,
+                                barrierDismissible: true,
+                                builder: (BuildContext context) {
+                                  return GraduateDialog();
+                                });
+                            print('영신관 이미지를 눌렀습니다.');
+                          },
+                          child: Container(
+                            width: 270.w,
+                            height: 230.h,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage(
+                                    'assets/images/${personalController.pick_img}'),
+                                fit: BoxFit.fitHeight,
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ),
-                  ),
 
-                  SizedBox(height: 30.h),
-                  Table(
+                    SizedBox(height: 30.h),
+                    Table(
 
-                    defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-                    children: [
-                      buildTableRow( languageController.language == '한국어' ? '체력' : 'HP', personalController.hpScore, 30),
-                      buildTableRow(
-                          languageController.intellect, personalController.solveQuizList.length, 6),
-                      buildTableRow(
-                          languageController.activity, personalController.participateActList.length, 6),
-                    ],
-                  ),
-                ],
+                      defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+                      children: [
+                        buildTableRow( languageController.language == '한국어' ? '체력' : 'HP', personalController.hpScore, 30),
+                        buildTableRow(
+                            languageController.intellect, personalController.solveQuizList.length, 6),
+                        buildTableRow(
+                            languageController.activity, personalController.participateActList.length, 6),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          navigateBar(),
-        ],
+            navigateBar(),
+          ],
+        ),
       ),
     );
-  }
 
+  }
+  Future<Future> showExitPopup(BuildContext context) async {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return EndDialog();
+      },
+    );
+  }
   TableRow buildTableRow(String label, int value, int total) {
     return TableRow(
       children: [
@@ -159,4 +175,5 @@ class MainPage extends StatelessWidget {
       ),
     );
   }
+
 }
