@@ -47,7 +47,7 @@ class lastPage extends StatelessWidget {
                       question,
                       style: TextStyle(
                         color: Color(0xFF143264),
-                        fontSize: 40.sp,
+                        fontSize: 30.sp,
                         fontFamily: 'YourFontFamily',
                         fontWeight: FontWeight.bold,
                       ),
@@ -55,10 +55,10 @@ class lastPage extends StatelessWidget {
                     ),
 
                   ),
-                  SizedBox(height: 40.h), // 원하는 여백 크기로 조정
+                  SizedBox(height: 20.h), // 원하는 여백 크기로 조정
                   Container(
-                    width: 300.w, // 이미지 너비 조정
-                    height: 280.h,// 이미지 높이 조정
+                      width: 270.w, // 이미지 너비 조정
+                      height: 230.h,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage('assets/images/$pick_img'),
@@ -67,7 +67,7 @@ class lastPage extends StatelessWidget {
                     ),
                   ),
 
-                  SizedBox(height: 40.h),
+                  SizedBox(height: 20.h),
                   Text(
                     option1 +
                         ' ' +
@@ -75,7 +75,7 @@ class lastPage extends StatelessWidget {
                         (languageController.language == '한국어' ? '입니다' : ''),
                     style: TextStyle(
                       color: Color(0xFF143264),
-                      fontSize: 40.sp,
+                      fontSize: 30.sp,
                       fontFamily: 'YourFontFamily',
                       fontWeight: FontWeight.bold,
                     ),
@@ -113,7 +113,7 @@ class lastPage extends StatelessWidget {
                             'Next >',
                             style: TextStyle(
                               color: Color(0xFF143264),
-                              fontSize: 50.sp,
+                              fontSize: 30.sp,
                               fontFamily: 'YourFontFamily',
                               fontWeight: FontWeight.bold,
                             ),

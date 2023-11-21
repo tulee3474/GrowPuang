@@ -37,7 +37,7 @@ class SeventhPage extends StatelessWidget {
                 question,
                 style: TextStyle(
                   color: Color(0xFF143264),
-                  fontSize: 40.sp,
+                  fontSize: 30.sp,
                   fontFamily: 'YourFontFamily',
                   fontWeight: FontWeight.bold,
                 ),
@@ -95,7 +95,7 @@ class SeventhPage extends StatelessWidget {
                       option1,
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 30.sp,
+                        fontSize: 25.sp,
                         fontFamily: 'YourFontFamily',
                         fontWeight: FontWeight.bold,
                       ),
@@ -157,7 +157,7 @@ class SeventhPage extends StatelessWidget {
                       option2,
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 30.sp,
+                        fontSize: 25.sp,
                         fontFamily: 'YourFontFamily',
                         fontWeight: FontWeight.bold,
                       ),
