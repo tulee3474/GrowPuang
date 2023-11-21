@@ -78,7 +78,7 @@ class _NewPostPageState extends State<NewPostPage> {
                           child: Text(
                             languageController.communityNewPostAppBarText,
                             style: TextStyle(
-                                fontSize: 28.sp,
+                                fontSize: 22.sp,
                                 fontFamily: 'Inter',
                                 fontWeight: FontWeight.bold,
                                 color: whiteTextColor),
@@ -117,7 +117,7 @@ class _NewPostPageState extends State<NewPostPage> {
                                       child: Text(
                                         postListController.sortList[i],
                                         style: TextStyle(
-                                          fontSize: 20.sp,
+                                          fontSize: 18.sp,
                                           fontFamily: 'Inter',
                                           //fontWeight: FontWeight.bold,
                                           color: buttonTextColorList[i],
@@ -172,7 +172,7 @@ class _NewPostPageState extends State<NewPostPage> {
                             child: Text(
                               languageController.communityNewPostCompanyName,
                               style: TextStyle(
-                                fontSize: 20.sp,
+                                fontSize: 18.sp,
                                 fontFamily: 'Inter',
                                 color: communityMainColor,
                               ),
@@ -191,8 +191,8 @@ class _NewPostPageState extends State<NewPostPage> {
                                 controller: postTitleController,
                                 maxLines: 1,
                                 maxLength: languageController.language == "한국어"
-                                    ? 10
-                                    : 15,
+                                    ? 9
+                                    : 13,
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
                                     filled: true,
@@ -202,7 +202,7 @@ class _NewPostPageState extends State<NewPostPage> {
                                     floatingLabelBehavior:
                                         FloatingLabelBehavior.never,
                                     labelStyle: TextStyle(
-                                      fontSize: 16.sp,
+                                      fontSize: 12.sp,
                                       fontFamily: 'Inter',
                                       color: communityTextColor,
                                     ),
@@ -221,7 +221,7 @@ class _NewPostPageState extends State<NewPostPage> {
                             child: Text(
                               languageController.communityNewPostJobTitle,
                               style: TextStyle(
-                                fontSize: 20.sp,
+                                fontSize: 18.sp,
                                 fontFamily: 'Inter',
                                 color: communityMainColor,
                               ),
@@ -240,8 +240,8 @@ class _NewPostPageState extends State<NewPostPage> {
                                 controller: postTitleController2,
                                 maxLines: 1,
                                 maxLength: languageController.language == "한국어"
-                                    ? 10
-                                    : 15,
+                                    ? 9
+                                    : 13,
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
                                     filled: true,
@@ -251,7 +251,7 @@ class _NewPostPageState extends State<NewPostPage> {
                                     floatingLabelBehavior:
                                         FloatingLabelBehavior.never,
                                     labelStyle: TextStyle(
-                                      fontSize: 16.sp,
+                                      fontSize: 12.sp,
                                       fontFamily: 'Inter',
                                       color: communityTextColor,
                                     ),
@@ -281,7 +281,7 @@ class _NewPostPageState extends State<NewPostPage> {
                             labelText:
                                 languageController.communityNewPostContent,
                             labelStyle: TextStyle(
-                              fontSize: 20.sp,
+                              fontSize: 18.sp,
                               fontFamily: 'Inter',
                               //fontWeight: FontWeight.bold,
                               color: communityTextColor,
@@ -309,7 +309,7 @@ class _NewPostPageState extends State<NewPostPage> {
                             languageController.communityNewPostRegister,
                             style: TextStyle(
                               fontFamily: 'Inter',
-                              fontSize: 20.sp,
+                              fontSize: 18.sp,
                               color: whiteTextColor,
                             ),
                           ),
@@ -346,7 +346,7 @@ class _NewPostPageState extends State<NewPostPage> {
                                               letterSpacing: 1.w,
                                               fontFamily: 'Inter',
                                               fontWeight: FontWeight.w500,
-                                              fontSize: 20.sp),
+                                              fontSize: 18.sp),
                                         ),
                                       ),
                                     ),

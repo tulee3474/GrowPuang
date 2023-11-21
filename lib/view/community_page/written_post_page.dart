@@ -157,7 +157,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                           child: Text(
                             languageController.communityAppBarText,
                             style: TextStyle(
-                                fontSize: 28.sp,
+                                fontSize: 22.sp,
                                 fontFamily: 'Inter',
                                 fontWeight: FontWeight.bold,
                                 color: whiteTextColor),
@@ -169,7 +169,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                             languageController.communityAppBarSubText(
                                 personalController.communityResult),
                             style: TextStyle(
-                                fontSize: 20.sp,
+                                fontSize: 17.sp,
                                 fontFamily: 'Inter',
                                 color: whiteTextColor),
                           ),
@@ -200,8 +200,9 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                               Text(
                                 postListController.selectedSort,
                                 style: TextStyle(
-                                    fontSize: 25.sp,
+                                    fontSize: 20.sp,
                                     fontFamily: 'Inter',
+                                    fontWeight: FontWeight.w500,
                                     color: communityMainColor),
                               ),
                             ],
@@ -278,7 +279,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                               postController.post.sortOpt],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w500,
-                                            fontSize: 18.sp,
+                                            fontSize: 16.sp,
                                           ),
                                         ),
                                         SizedBox(
@@ -290,7 +291,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                             style: TextStyle(
                                               fontWeight: FontWeight.w500,
                                               //letterSpacing: 2.w,
-                                              fontSize: 22.sp,
+                                              fontSize: 18.sp,
                                             ),
                                           ),
                                         ),
@@ -311,7 +312,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                         languageController.anonymousAuthor,
                                         style: TextStyle(
                                           fontWeight: FontWeight.w500,
-                                          fontSize: 18.sp,
+                                          fontSize: 14.sp,
                                         ),
                                       ),
                                     ),
@@ -337,7 +338,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                         color: mainTextColor,
                                         letterSpacing: 1.w,
                                         fontFamily: 'Inter',
-                                        fontSize: 22.sp,
+                                        fontSize: 18.sp,
                                       ),
                                     ),
                                   ),
@@ -364,7 +365,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                         fontWeight: FontWeight.w300,
                                         color: mainTextColor,
                                         fontFamily: 'Inter',
-                                        fontSize: 16.sp,
+                                        fontSize: 13.sp,
                                       ),
                                     ),
                                     onPressed: () => postReport(),
@@ -381,7 +382,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                               fontWeight: FontWeight.w300,
                                               color: mainTextColor,
                                               fontFamily: 'Inter',
-                                              fontSize: 16.sp,
+                                              fontSize: 13.sp,
                                             ),
                                           ),
                                           onPressed: () => modifyContent(),
@@ -399,7 +400,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                               fontWeight: FontWeight.w300,
                                               color: mainTextColor,
                                               fontFamily: 'Inter',
-                                              fontSize: 16.sp,
+                                              fontSize: 13.sp,
                                             ),
                                           ),
                                           onPressed: () => deletePost(),
@@ -431,7 +432,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                             '${postController.post.commentList.length}',
                             style: TextStyle(
                               fontWeight: FontWeight.w500,
-                              fontSize: 26.sp,
+                              fontSize: 24.sp,
                             ),
                           ),
                           Container(
@@ -475,7 +476,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                                   letterSpacing: 1.w,
                                                   fontFamily: 'Inter',
                                                   fontWeight: FontWeight.w500,
-                                                  fontSize: 22.sp),
+                                                  fontSize: 20.sp),
                                             ),
                                           ),
                                         ),
@@ -503,7 +504,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                             '${postController.post.recommendList.length}',
                             style: TextStyle(
                               fontWeight: FontWeight.w500,
-                              fontSize: 26.sp,
+                              fontSize: 24.sp,
                             ),
                           ),
                         ],
@@ -542,7 +543,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                           color: mainTextColor,
                                           fontFamily: 'Inter',
                                           fontWeight: FontWeight.w500,
-                                          fontSize: 18.sp,
+                                          fontSize: 16.sp,
                                         ),
                                       ),
                                       if (postController
@@ -559,7 +560,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                                 fontWeight: FontWeight.w500,
                                                 color: mainTextColor,
                                                 fontFamily: 'Inter',
-                                                fontSize: 16.sp,
+                                                fontSize: 14.sp,
                                               ),
                                             ),
                                           ),
@@ -573,7 +574,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                       letterSpacing: 1.w,
                                       fontFamily: 'Inter',
                                       fontWeight: FontWeight.w500,
-                                      fontSize: 18.sp,
+                                      fontSize: 16.sp,
                                     ),
                                   ),
                                 ],
@@ -597,6 +598,12 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                             height: 60.h,
                             child: TextField(
                               controller: commentController,
+                              style: TextStyle(
+                                  color: mainTextColor,
+                                  letterSpacing: 1.w,
+                                  fontFamily: 'Inter',
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 18.sp),
                               decoration: InputDecoration(
                                 filled: true,
                                 fillColor: commmentBackGroundColor, // 배경 색상 설정
@@ -640,7 +647,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                                   letterSpacing: 1.w,
                                                   fontFamily: 'Inter',
                                                   fontWeight: FontWeight.w500,
-                                                  fontSize: 20.sp),
+                                                  fontSize: 18.sp),
                                             ),
                                           ),
                                         ),
@@ -681,7 +688,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                   letterSpacing: 1.w,
                                   fontFamily: 'Inter',
                                   fontWeight: FontWeight.w500,
-                                  fontSize: 18.sp,
+                                  fontSize: 15.sp,
                                 ),
                               ),
                             ),
@@ -717,7 +724,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                         style: TextStyle(
                           fontFamily: "Neo",
                           fontWeight: FontWeight.bold,
-                          fontSize: 22.sp,
+                          fontSize: 20.sp,
                         )),
                     SizedBox(height: 20.h),
                     Expanded(
@@ -732,7 +739,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                               style: TextStyle(
                                 fontFamily: "Inter",
                                 //fontWeight: FontWeight.bold,
-                                fontSize: 20.sp,
+                                fontSize: 18.sp,
                               ),
                             ),
                           ),
@@ -785,7 +792,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                                 letterSpacing: 1.w,
                                                 fontFamily: 'Inter',
                                                 fontWeight: FontWeight.w500,
-                                                fontSize: 22.sp),
+                                                fontSize: 20.sp),
                                           ),
                                         ),
                                       ),
@@ -799,7 +806,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                 languageController.postReport,
                                 style: TextStyle(
                                   fontFamily: "Inter",
-                                  fontSize: 20.sp,
+                                  fontSize: 18.sp,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -839,7 +846,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                         style: TextStyle(
                           fontFamily: "Inter",
                           fontWeight: FontWeight.bold,
-                          fontSize: 22.sp,
+                          fontSize: 20.sp,
                         )),
                     SizedBox(height: 20.h),
                     Expanded(
@@ -856,7 +863,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                               style: TextStyle(
                                 fontFamily: "Inter",
                                 //fontWeight: FontWeight.bold,
-                                fontSize: 18.sp,
+                                fontSize: 16.sp,
                               ),
                             ),
                           ),
@@ -903,7 +910,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                 style: TextStyle(
                                   fontFamily: "Inter",
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 20.sp,
+                                  fontSize: 18.sp,
                                 ),
                               ),
                             ),
@@ -939,14 +946,14 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                         style: TextStyle(
                           fontFamily: "Inter",
                           fontWeight: FontWeight.bold,
-                          fontSize: 22.sp,
+                          fontSize: 20.sp,
                         )),
                     SizedBox(height: 10.h),
                     Text(languageController.postDeleteConfirmation,
                         style: TextStyle(
                           fontFamily: "Inter",
                           //fontWeight: FontWeight.bold,
-                          fontSize: 18.sp,
+                          fontSize: 16.sp,
                         )),
                     SizedBox(height: 20.h),
                     Text(
@@ -955,7 +962,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                         style: TextStyle(
                           fontFamily: "Inter",
                           //fontWeight: FontWeight.bold,
-                          fontSize: 18.sp,
+                          fontSize: 16.sp,
                         )),
                     SizedBox(height: 40.h),
                     Row(
@@ -997,7 +1004,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                 style: TextStyle(
                                   fontFamily: "Inter",
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 20.sp,
+                                  fontSize: 18.sp,
                                 ),
                               ),
                             ),
@@ -1020,7 +1027,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                 style: TextStyle(
                                   fontFamily: "Inter",
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 20.sp,
+                                  fontSize: 18.sp,
                                 ),
                               ),
                             ),
@@ -1056,14 +1063,14 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                         style: TextStyle(
                           fontFamily: "Inter",
                           fontWeight: FontWeight.bold,
-                          fontSize: 22.sp,
+                          fontSize: 20.sp,
                         )),
                     SizedBox(height: 10.h),
                     Text(languageController.postDeleteConfirmation,
                         style: TextStyle(
                           fontFamily: "Inter",
                           //fontWeight: FontWeight.bold,
-                          fontSize: 18.sp,
+                          fontSize: 16.sp,
                         )),
                     SizedBox(height: 20.h),
                     // Text(
@@ -1128,7 +1135,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                 style: TextStyle(
                                   fontFamily: "Inter",
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 20.sp,
+                                  fontSize: 18.sp,
                                 ),
                               ),
                             ),
@@ -1151,7 +1158,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                 style: TextStyle(
                                   fontFamily: "Inter",
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 20.sp,
+                                  fontSize: 18.sp,
                                 ),
                               ),
                             ),

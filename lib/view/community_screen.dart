@@ -85,7 +85,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                           child: Text(
                             languageController.communityAppBarText,
                             style: TextStyle(
-                                fontSize: 28.sp,
+                                fontSize: 22.sp,
                                 fontFamily: 'Inter',
                                 fontWeight: FontWeight.bold,
                                 color: whiteTextColor),
@@ -97,7 +97,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                             languageController.communityAppBarSubText(
                                 personalController.communityResult),
                             style: TextStyle(
-                                fontSize: 20.sp,
+                                fontSize: 17.sp,
                                 fontFamily: 'Inter',
                                 color: whiteTextColor),
                           ),
@@ -134,7 +134,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                                     child: Text(
                                       value,
                                       style: TextStyle(
-                                          fontSize: 25.sp,
+                                          fontSize: 20.sp,
                                           fontFamily: 'Inter',
                                           color: communityMainColor),
                                     ),
@@ -259,7 +259,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                                                     style: TextStyle(
                                                       fontWeight:
                                                           FontWeight.w500,
-                                                      fontSize: 18.sp,
+                                                      fontSize: 16.sp,
                                                     ),
                                                   ),
                                                   SizedBox(
@@ -271,7 +271,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                                                       style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.w500,
-                                                        fontSize: 22.sp,
+                                                        fontSize: 18.sp,
                                                       ),
                                                     ),
                                                   ),
@@ -297,7 +297,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                                                     style: TextStyle(
                                                       fontWeight:
                                                           FontWeight.w400,
-                                                      fontSize: 26.sp,
+                                                      fontSize: 20.sp,
                                                     ),
                                                   ),
                                                   Container(
@@ -312,7 +312,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                                                     style: TextStyle(
                                                       fontWeight:
                                                           FontWeight.w400,
-                                                      fontSize: 26.sp,
+                                                      fontSize: 20.sp,
                                                     ),
                                                   ),
                                                 ],
@@ -323,7 +323,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                                                       .anonymousAuthor,
                                                   style: TextStyle(
                                                     fontWeight: FontWeight.w300,
-                                                    fontSize: 16.sp,
+                                                    fontSize: 13.sp,
                                                   ),
                                                 ),
                                               ),
