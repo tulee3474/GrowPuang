@@ -29,7 +29,7 @@ class SecondPage extends StatelessWidget {
                     : 'Which language would you like to proceed in?',
                 style: TextStyle(
                   color: Color(0xFF143264),
-                  fontSize: 40.sp,
+                  fontSize: 30.sp,
                   fontFamily: 'YourFontFamily',
                   fontWeight: FontWeight.bold,
                 ),

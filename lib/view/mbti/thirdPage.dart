@@ -28,7 +28,7 @@ class ThirdPage extends StatelessWidget {
                     : 'When I do something?',
                 style: TextStyle(
                   color: Color(0xFF143264),
-                  fontSize: 40.sp,
+                  fontSize: 30.sp,
                   fontFamily: 'YourFontFamily',
                   fontWeight: FontWeight.bold,
                 ),
@@ -83,7 +83,7 @@ class ThirdPage extends StatelessWidget {
                           : 'Think about what you will lose if you don\'t do this.',
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 30.sp,
+                        fontSize: 25.sp,
                         fontFamily: 'YourFontFamily',
                         fontWeight: FontWeight.bold,
                       ),
@@ -141,7 +141,7 @@ class ThirdPage extends StatelessWidget {
                           : 'Think about the reward you will receive when you accomplish this task.',
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 30.sp,
+                        fontSize: 25.sp,
                         fontFamily: 'YourFontFamily',
                         fontWeight: FontWeight.bold,
                       ),

@@ -3,10 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:growpuang/controller/language_controller.dart';
 import 'package:growpuang/controller/personal_contoller.dart';
-import 'package:growpuang/controller/post_list_controller.dart';
 import 'package:growpuang/view/widget/appBar.dart';
 import 'package:growpuang/view/widget/graduate_dialog.dart';
 import 'package:growpuang/view/widget/navigateBar.dart';
+import 'controller/post_list_controller.dart';
 
 class MainPage extends StatelessWidget {
   final languageController = Get.put(LanguageController());
@@ -24,13 +24,13 @@ class MainPage extends StatelessWidget {
       body: Stack(
         children: [
           appBar(),
-          // 자산 이미지 크기 및 배치 수정
           Positioned(
-            left: 0.w,
-            right: 0.w,
-            top: 250.h, // 원하는 위치로 조정
+            left: 10.w,
+            right: 10.w,
+            top: 250.h,
             child: Center(
               child: Column(
+
                 children: [
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16.0),
@@ -40,13 +40,13 @@ class MainPage extends StatelessWidget {
                           personalController.option2,
                       style: TextStyle(
                         color: Color(0xFF143264),
-                        fontSize: 40.sp,
+                        fontSize: 30.sp,
                         fontFamily: 'YourFontFamily',
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                  SizedBox(height: 20.h), // 원하는 여백 크기로 조정
+                  SizedBox(height: 10.h),
                   Positioned(
                     top: 40.h,
                     child: Align(
@@ -55,17 +55,15 @@ class MainPage extends StatelessWidget {
                         onTap: () {
                           showDialog(
                               context: context,
-                              barrierDismissible: true, // 바깥 영역 터치시 닫을지 여부
+                              barrierDismissible: true,
                               builder: (BuildContext context) {
                                 return GraduateDialog();
                               });
-                          // 영신관 이미지를 누를 때 수행할 작업을 정의하세요.
                           print('영신관 이미지를 눌렀습니다.');
-                          // 여기에서 다음 질문 또는 동작을 정의할 수 있습니다.
                         },
                         child: Container(
-                          width: 300.w, // 이미지 너비 조정
-                          height: 280.h, // 이미지 높이 조정
+                          width: 270.w,
+                          height: 230.h,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               image: AssetImage(
@@ -79,144 +77,16 @@ class MainPage extends StatelessWidget {
                   ),
 
                   SizedBox(height: 30.h),
-                  // 게이지 바 (기본-푸앙이 밑에 배치)
-                  Positioned(
-                    left: 20.w,
-                    right: 20.w,
-                    top: 650.h, // 기본-푸앙이 밑에 원하는 위치로 조정
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 70.0.w),
-                      // 좌우 여백을 조정
-                      child: Row(
-                        children: [
-                          Text(
-                            languageController.language == '한국어' ? '체력' : 'HP',
-                            style: TextStyle(
-                              color: Color(0xFF143264),
-                              fontSize: 25.sp,
-                              fontFamily: 'YourFontFamily',
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(width: 65.w), // 원하는 여백 크기로 조정
-                          Expanded(
-                            child: ClipRRect(
-                              borderRadius:
-                                  BorderRadius.circular(30.0), // 원하는 라운드값으로 조절
-                              child: LinearProgressIndicator(
-                                minHeight: 20.0.h,
-                                value: personalController
-                                    .hpScore/30, // 게이지 바의 값 (0.0에서 1.0 사이)
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                    Color(0xFF143264)), // 게이지 바 색상
-                              ),
-                            ),
-                          ),
-                          SizedBox(width: 30.w), // 원하는 여백 크기로 조정
-                          Text(
-                            '${personalController.hpScore} / 30', // 원하는 비율로 변경
-                            style: TextStyle(
-                              color: Color(0xFF143264),
-                              fontSize: 25.sp,
-                              fontFamily: 'YourFontFamily',
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  // 게이지 바 (기본-푸앙이 밑에 배치)
-                  Positioned(
-                    left: 20.w,
-                    right: 20.w,
-                    top: 650.h, // 기본-푸앙이 밑에 원하는 위치로 조정
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 70.0.w),
-                      // 좌우 여백을 조정
-                      child: Row(
-                        children: [
-                          Text(
-                            languageController.intellect,
-                            style: TextStyle(
-                              color: Color(0xFF143264),
-                              fontSize: 25.sp,
-                              fontFamily: 'YourFontFamily',
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(width: 20.w), // 원하는 여백 크기로 조정
-                          Expanded(
-                            child: ClipRRect(
-                              borderRadius:
-                              BorderRadius.circular(30.0), // 원하는 라운드값으로 조절
-                              child: LinearProgressIndicator(
-                                minHeight: 20.0.h,
-                                value: personalController.solveQuizList.length/6, // 게이지 바의 값 (0.0에서 1.0 사이)
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                    Color(0xFF143264)), // 게이지 바 색상
-                              ),
-                            ),
-                          ),
-                          SizedBox(width: 30.w), // 원하는 여백 크기로 조정
-                          Text(
-                            '${personalController.solveQuizList.length} / 6', // 원하는 비율로 변경
-                            style: TextStyle(
-                              color: Color(0xFF143264),
-                              fontSize: 25.sp,
-                              fontFamily: 'YourFontFamily',
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  // 게이지 바 (기본-푸앙이 밑에 배치)
-                  Positioned(
-                    left: 20.w,
-                    right: 20.w,
-                    top: 650.h, // 기본-푸앙이 밑에 원하는 위치로 조정
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 70.0.w),
-                      // 좌우 여백을 조정
-                      child: Row(
-                        children: [
-                          Text(
-                            languageController.activity,
-                            style: TextStyle(
-                              color: Color(0xFF143264),
-                              fontSize: 25.sp,
-                              fontFamily: 'YourFontFamily',
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(width: 20.w), // 원하는 여백 크기로 조정
-                          Expanded(
-                            child: ClipRRect(
-                              borderRadius:
-                              BorderRadius.circular(30.0), // 원하는 라운드값으로 조절
-                              child: LinearProgressIndicator(
-                                minHeight: 20.0.h,
-                                value: personalController.participateActList.length/6, // 게이지 바의 값 (0.0에서 1.0 사이)
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                    Color(0xFF143264)), // 게이지 바 색상
-                              ),
-                            ),
-                          ),
-                          SizedBox(width: 30.w), // 원하는 여백 크기로 조정
-                          Text(
-                            '${personalController.participateActList.length} / 6', // 원하는 비율로 변경
-                            style: TextStyle(
-                              color: Color(0xFF143264),
-                              fontSize: 25.sp,
-                              fontFamily: 'YourFontFamily',
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                  Table(
+
+                    defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+                    children: [
+                      buildTableRow( languageController.language == '한국어' ? '체력' : 'HP', personalController.hpScore, 30),
+                      buildTableRow(
+                          languageController.intellect, personalController.solveQuizList.length, 6),
+                      buildTableRow(
+                          languageController.activity, personalController.participateActList.length, 6),
+                    ],
                   ),
                 ],
               ),
@@ -224,6 +94,68 @@ class MainPage extends StatelessWidget {
           ),
           navigateBar(),
         ],
+      ),
+    );
+  }
+
+  TableRow buildTableRow(String label, int value, int total) {
+    return TableRow(
+      children: [
+        buildTableCell(label),
+        buildProgressBarTableCell(value, total),
+        buildTextTableCell('$value / $total'),
+      ],
+    );
+  }
+
+  TableCell buildTableCell(String label) {
+    return TableCell(
+      child: Container(
+        padding: EdgeInsets.all(8.0),
+        alignment: Alignment.center,
+        child: Text(
+          label,
+          style: TextStyle(
+            color: Color(0xFF143264),
+            fontSize: 20.sp,
+            fontFamily: 'YourFontFamily',
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    );
+  }
+
+  TableCell buildProgressBarTableCell(int value, int total) {
+    return TableCell(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal:0.0),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(30.0),
+          child: LinearProgressIndicator(
+            minHeight: 20.0.h,
+            value: value / total,
+            valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF143264)),
+          ),
+        ),
+      ),
+    );
+  }
+
+  TableCell buildTextTableCell(String text) {
+    return TableCell(
+      child: Container(
+        alignment: Alignment.center,
+        padding: EdgeInsets.all(8.0),
+        child: Text(
+          text,
+          style: TextStyle(
+            color: Color(0xFF143264),
+            fontSize: 20.sp,
+            fontFamily: 'YourFontFamily',
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
     );
   }
