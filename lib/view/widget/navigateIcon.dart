@@ -15,7 +15,7 @@ class NavigateIcon extends StatelessWidget {
       children: [
         Container(
           width: 130.w,
-          height: 70.h,
+          height: 60.h,
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/images/${iconImage}.png'),
@@ -27,7 +27,7 @@ class NavigateIcon extends StatelessWidget {
           iconName,
           style: TextStyle(
             color: Color(0xFF143264),
-            fontSize: 20.sp,
+            fontSize: 17.sp,
             fontFamily: 'YourFontFamily',
             fontWeight: FontWeight.bold,
           ),

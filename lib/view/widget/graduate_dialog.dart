@@ -28,7 +28,7 @@ class GraduateDialog extends StatelessWidget {
           children: [
             Text(
               languageController.gradDialog,
-              style: TextStyle(fontSize: 30.sp, fontWeight: FontWeight.w700),
+              style: TextStyle(fontSize: 25.sp, fontWeight: FontWeight.w700),
               textAlign: TextAlign.center,
             ),
             SizedBox(
@@ -56,7 +56,7 @@ class GraduateDialog extends StatelessWidget {
                       languageController.intellect +
                           " " +
                           personalController.solveQuizList.length.toString() + "/6",
-                      style: TextStyle(fontSize: 25.sp,
+                      style: TextStyle(fontSize: 20.sp,
                       color: (personalController.solveQuizList.length < 6) ? Colors.red : Color(0xFF143264)),
                     ),
                     Row(
@@ -82,7 +82,7 @@ class GraduateDialog extends StatelessWidget {
                           // 원하는 비율로 변경
                           style: TextStyle(
                             color: Color(0xFF143264),
-                            fontSize: 25.sp,
+                            fontSize: 20.sp,
                             fontFamily: 'YourFontFamily',
                           ),
                         ),
@@ -115,7 +115,7 @@ class GraduateDialog extends StatelessWidget {
                   children: [
                     Text(
                       languageController.activity,
-                      style: TextStyle(fontSize: 25.sp),
+                      style: TextStyle(fontSize: 20.sp),
                     ),
                     Row(
                       children: [
@@ -141,7 +141,7 @@ class GraduateDialog extends StatelessWidget {
                           // 원하는 비율로 변경
                           style: TextStyle(
                             color: Color(0xFF143264),
-                            fontSize: 25.sp,
+                            fontSize: 20.sp,
                             fontFamily: 'YourFontFamily',
                           ),
                         ),
@@ -174,7 +174,7 @@ class GraduateDialog extends StatelessWidget {
                   children: [
                     Text(
                       languageController.cv,
-                      style: TextStyle(fontSize: 25.sp),
+                      style: TextStyle(fontSize: 20.sp),
                     ),
                     Row(
                       children: [
@@ -191,7 +191,7 @@ class GraduateDialog extends StatelessWidget {
                         ),
                         Text((personalController.communityResult > 0)
                             ? languageController.done
-                            : languageController.notDone),
+                            : languageController.notDone, style: TextStyle(fontSize: 18.sp,),),
                       ],
                     ),
                     //게시글 >= 1 ? "완료' : "미완료"
@@ -202,19 +202,12 @@ class GraduateDialog extends StatelessWidget {
             SizedBox(
               height: 20.h,
             ),
-            Text(
-              languageController.askGradu,
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
             Container(
               child:
-                (personalController.solveQuizList.length<6) ? Text(languageController.alertGradu, style: TextStyle(fontSize: 25
+                (personalController.solveQuizList.length<6) ? Text(languageController.alertGradu, style: TextStyle(fontSize: 20
                     .sp, color: Colors.red,),)
                     : (personalController.communityResult > 0 ) ?
-              goGradu() : Text(languageController.alert2Gradu, style: TextStyle(fontSize: 25
+              goGradu() : Text(languageController.alert2Gradu, style: TextStyle(fontSize: 20
                     .sp, color: Colors.red,),)
             ),
           ],
@@ -233,38 +226,49 @@ class goGradu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        Column(
           children: [
-            TextButton(
-              onPressed: () {},
-              child: Text(languageController.answerNo),
+            Text(
+              languageController.askGradu,
+              textAlign: TextAlign.center,
             ),
-            TextButton(
-              onPressed: () {
-                String _endingPuang;
-                var _job = '';
-                if(personalController.participateActList.contains(4)){
-                  _endingPuang = "박사 푸앙";
-                  _job = languageController.drPuang;
-                } else if(personalController.intellectScore==30){
-                  _endingPuang = "소프트웨어엔지니어 푸앙";
-                  _job = languageController.swePuang;
-                } else if(personalController.participateActList.length >=4){
-                  _endingPuang = "솔루션아키텍트 푸앙";
-                  _job = languageController.saPuang;
-                } else{
-                  _endingPuang = "인프라개발자 푸앙";
-                  _job = languageController.idPuang;
-                }
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => GraduatedPuang(endingPuang: _endingPuang, job: _job,),
-                  ),
-                );
-              },
-              child: Text(languageController.answerYes),
+            SizedBox(
+              height: 10.h,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                TextButton(
+                  onPressed: () {},
+                  child: Text(languageController.answerNo),
+                ),
+                TextButton(
+                  onPressed: () {
+                    String _endingPuang;
+                    var _job = '';
+                    if(personalController.participateActList.contains(4)){
+                      _endingPuang = "박사 푸앙";
+                      _job = languageController.drPuang;
+                    } else if(personalController.intellectScore==30){
+                      _endingPuang = "소프트웨어엔지니어 푸앙";
+                      _job = languageController.swePuang;
+                    } else if(personalController.participateActList.length >=4){
+                      _endingPuang = "솔루션아키텍트 푸앙";
+                      _job = languageController.saPuang;
+                    } else{
+                      _endingPuang = "인프라개발자 푸앙";
+                      _job = languageController.idPuang;
+                    }
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => GraduatedPuang(endingPuang: _endingPuang, job: _job,),
+                      ),
+                    );
+                  },
+                  child: Text(languageController.answerYes),
+                ),
+              ],
             ),
           ],
         )

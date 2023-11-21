@@ -24,7 +24,7 @@ class navigateBar extends StatelessWidget {
       children: [
         Positioned(
         right: 38.w,
-        bottom: 50.h,
+        bottom: 55.h,
         child: Image.asset(
           'assets/images/받침대.png',
           width: 500.w,
@@ -39,10 +39,7 @@ class navigateBar extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Positioned(
-                left: 20.w,
-                right: 20.w,
-                bottom: 20.h,
+              Center(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -50,7 +47,10 @@ class navigateBar extends StatelessWidget {
                     InkWell(
                       onTap: () {
                         // 이미지 버튼 1을 탭했을 때 수행할 작업을 정의
+                        // 현재 화면을 스택에서 제거
+                        Navigator.of(context).pop();
                         Navigator.push(
+
                           context,
                           MaterialPageRoute(
                             // builder: (context) => TestKnowledgeMain(),
@@ -66,6 +66,9 @@ class navigateBar extends StatelessWidget {
                     // 이미지 버튼 2 (기존 UI 유지)
                     InkWell(
                       onTap: () {
+                        // 현재 화면을 스택에서 제거
+                        Navigator.of(context).pop();
+
                         // 이미지 버튼 2를 탭했을 때 수행할 작업을 정의
                         Navigator.push(
                           context,
@@ -108,6 +111,7 @@ class navigateBar extends StatelessWidget {
                     // 이미지 버튼 4 (기존 UI 유지)
                     InkWell(
                       onTap: () {
+
                         showDialog(
                             context: context,
                             barrierDismissible: true, // 바깥 영역 터치시 닫을지 여부

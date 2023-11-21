@@ -37,7 +37,7 @@ class QuizDialog extends StatelessWidget {
               (addScore > 0)
                   ? languageController.correct
                   : languageController.incorrect,
-              style: TextStyle(fontSize: 25.sp, color: Color(0xFF143264)),
+              style: TextStyle(fontSize: 20.sp, color: Color(0xFF143264)),
             ),
             SizedBox(
               height: 10.h,
@@ -45,7 +45,7 @@ class QuizDialog extends StatelessWidget {
             Text(
               "+${addScore}",
               style: TextStyle(
-                fontSize: 25.sp,
+                fontSize: 20.sp,
                 color: Color(0xFF143264),
               ),
             ),
@@ -55,7 +55,7 @@ class QuizDialog extends StatelessWidget {
             Text(
               "${languageController.nowScore} ${personalController.intellectScore}",
               style: TextStyle(
-                  fontSize: 25.sp,
+                  fontSize: 20.sp,
                   fontWeight: FontWeight.w700,
                   color: Color(0xFF143264)),
             ),
@@ -77,7 +77,7 @@ class QuizDialog extends StatelessWidget {
                   Text(
                     languageController.goHome,
                     style: TextStyle(
-                      fontSize: 25.sp,
+                      fontSize: 20.sp,
                       color: Color(0xFF143264),
                     ),
                   ),
