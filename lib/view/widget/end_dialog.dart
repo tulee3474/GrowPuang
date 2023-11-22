@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../controller/language_controller.dart';
@@ -32,7 +33,7 @@ class EndDialog extends StatelessWidget {
           ),
           TextButton(
             onPressed: () {
-              Navigator.of(context).pop(true); // 종료
+              SystemNavigator.pop();; // 종료
             },
             child: Text(languageController.answerYes),
           ),
