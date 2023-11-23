@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:growpuang/controller/post_list_controller.dart';
 import 'package:growpuang/view/mbti/firstPage.dart';
 import 'package:growpuang/view/widget/appBar.dart';
 import 'package:get/get.dart';
@@ -14,6 +15,7 @@ class GraduatedPuang extends StatelessWidget {
   GraduatedPuang({super.key, required this.endingPuang, required this.job});
 
   final personalController = Get.put(PersonalController());
+  final postListController = Get.put(PostListController());
   final languageController = Get.put(LanguageController());
 
   @override
@@ -45,7 +47,6 @@ class GraduatedPuang extends StatelessWidget {
                           fontFamily: 'YourFontFamily',
                         ),
                         textAlign: TextAlign.center,
-
                       ),
                       SizedBox(
                         height: 20.h,
@@ -56,7 +57,7 @@ class GraduatedPuang extends StatelessWidget {
                         fit: BoxFit.fitWidth,
                       ),
                       SizedBox(
-                        height:10.h,
+                        height: 10.h,
                       ),
                       Text(
                         job,
@@ -67,7 +68,9 @@ class GraduatedPuang extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 20.h,),
+                      SizedBox(
+                        height: 20.h,
+                      ),
                       Container(
                         child: GestureDetector(
                           onTap: () {
@@ -81,6 +84,7 @@ class GraduatedPuang extends StatelessWidget {
                             //점수 초기화
                             personalController.intellectScore = 0;
                             personalController.hpScore = 30;
+                            postListController.postList = [];
                             // personalController.progressValue=30;
                             // 현재 화면을 스택에서 제거
                             Navigator.of(context).pop();
@@ -104,7 +108,10 @@ class GraduatedPuang extends StatelessWidget {
                                     fontFamily: 'YourFontFamily',
                                   ),
                                 ),
-                                Icon(Icons.refresh, color: Color(0xFF143264),),
+                                Icon(
+                                  Icons.refresh,
+                                  color: Color(0xFF143264),
+                                ),
                               ]),
                         ),
                       )
