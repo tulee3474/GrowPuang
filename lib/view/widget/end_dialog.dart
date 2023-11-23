@@ -33,7 +33,7 @@ class EndDialog extends StatelessWidget {
           ),
           TextButton(
             onPressed: () {
-              SystemNavigator.pop();; // 종료
+              SystemNavigator.pop();// 종료
             },
             child: Text(languageController.answerYes),
           ),
