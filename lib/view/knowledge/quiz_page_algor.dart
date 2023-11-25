@@ -6,6 +6,7 @@ import 'package:growpuang/view/widget/navigateBar.dart';
 import 'package:growpuang/view/widget/quiz_error_dialog.dart';
 import '../../controller/language_controller.dart';
 import '../../controller/personal_contoller.dart';
+import '../../mainPage.dart';
 import '../widget/quiz_dialog.dart';
 
 class QuizPageAlgor extends StatefulWidget {
@@ -30,18 +31,6 @@ class _QuizPageAlgorState extends State<QuizPageAlgor> {
     },
     // 다른 퀴즈들 추가 가능
   ];
-
-  void _nextQuestion() {
-    setState(() {
-      showDialog(
-          context: context,
-          barrierDismissible: false, // 바깥 영역 터치시 닫을지 여부
-          builder: (BuildContext context) {
-            return QuizDialog(addScore: addScore,);
-          });
-      selectedAnswer = null;
-    });
-  }
 
   int _questionIndex = 0;
   @override
@@ -135,7 +124,27 @@ class _QuizPageAlgorState extends State<QuizPageAlgor> {
                             }else{
                               addScore = 0;
                             }
-                            _nextQuestion();
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MainPage(),
+                              ),
+                            );
+                            showDialog(
+                                context: context,
+                                barrierDismissible: true,
+                                // 바깥 영역 터치시 닫을지 여부
+                                builder: (BuildContext context) {
+                                  Future.delayed(
+                                    const Duration(seconds: 2),
+                                        () {
+                                      Navigator.of(context,
+                                          rootNavigator: true)
+                                          .pop();
+                                    },
+                                  );
+                                  return QuizDialog(addScore: addScore,);
+                                });
                           }
                         },
                         child: Text(
