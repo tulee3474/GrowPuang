@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import '../../controller/language_controller.dart';
 import '../../controller/personal_contoller.dart';
 import '../../mainPage.dart';
+import '../widget/end_dialog.dart';
 import '../widget/first_appBar.dart';
 
 class GraduatedPuang extends StatelessWidget {
@@ -23,7 +24,8 @@ class GraduatedPuang extends StatelessWidget {
     return WillPopScope(
       onWillPop: () async {
         //뒤로가기를 못하게 합니다
-        return false;
+        bool shouldClose = (await showExitPopup(context)) as bool;
+        return shouldClose;
       },
       child: Scaffold(
         appBar: null,
@@ -125,4 +127,14 @@ class GraduatedPuang extends StatelessWidget {
       ),
     );
   }
+  Future<Future> showExitPopup(BuildContext context) async {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return EndDialog();
+      },
+    );
+  }
 }
+
+

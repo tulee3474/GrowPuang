@@ -20,60 +20,37 @@ class ActDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        return false;
-      },
-      child: Dialog(
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(2.0))),
-        alignment: Alignment.center,
-        // insetPadding: EdgeInsets.fromLTRB(30.w, 100.h, 30.w, 200.h),
-        insetPadding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 300.h),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    return AlertDialog(
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(2.0))),
+      alignment: Alignment.center,
+      // insetPadding: EdgeInsets.fromLTRB(30.w, 100.h, 30.w, 200.h),
+      content: Container(
+        width: 400.w,
+        height: 150.h,
+        child: Center(
+          child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
               languageController.completeAct,
               style: TextStyle(
-                fontSize: 30.sp,
+                fontSize: 20.sp,
                 color: Color(0xFF143264),
               ),
             ),
-            // SizedBox(height: 10.h,),
+            SizedBox(height: 10.h,),
             Text(
               languageController.restHP +
-              personalController.hpScore.toString(),
+                  personalController.hpScore.toString(),
               style: TextStyle(
-                fontSize: 25.sp,
+                fontSize: 20.sp,
                 color: Color(0xFF143264),
               ),
             ),
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => MainPage(),
-                  ),
-                );
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.home),
-                  Text(
-                    languageController.goHome,
-                    style: TextStyle(
-                      fontSize: 25.sp,
-                      color: Color(0xFF143264),
-                    ),
-                  ),
-                ],
-              ),
-            )
           ],
+        ),
         ),
       ),
     );

@@ -35,10 +35,25 @@ class _ActivityPageMainState extends State<ActivityPageMain> {
   void _chooseAct() {
     //활동 참여하기 버튼을 누르면 실행됩니다. 실행이 완료되었다는 다이어로그를 띄웁니다.
     setState(() {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => MainPage(),
+        ),
+      );
       showDialog(
           context: context,
-          barrierDismissible: false, // 바깥 영역 터치시 닫을지 여부
+          barrierDismissible: true,
+          // 바깥 영역 터치시 닫을지 여부
           builder: (BuildContext context) {
+            Future.delayed(
+              Duration(seconds: 1),
+                  () {
+                Navigator.of(context,
+                    rootNavigator: true)
+                    .pop();
+              },
+            );
             return ActDialog();
           });
     });
@@ -185,7 +200,7 @@ class _ActivityPageMainState extends State<ActivityPageMain> {
                                   //선택한 활동이 없다면 안내 다이어로그를 띄웁니다
                                   showDialog(
                                       context: context,
-                                      barrierDismissible: false,
+                                      barrierDismissible: true,
                                       // 바깥 영역 터치시 닫을지 여부
                                       builder: (BuildContext context) {
                                         Future.delayed(
@@ -199,13 +214,33 @@ class _ActivityPageMainState extends State<ActivityPageMain> {
                                         return ActErrorDialog();
                                       });
                                 } else {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => MainPage(),
+                                    ),
+                                  );
                                   //참여한 활동리스트에 선택한 활동의 인덱스들을 넣습니다
                                   personalController.participateActList
                                       .addAll(selectedIdx);
                                   //남은 체력 계산
                                   personalController.hpScore = changeHp;
                                   selectedIdx = [];
-                                  _chooseAct();
+                                  showDialog(
+                                      context: context,
+                                      barrierDismissible: true,
+                                      // 바깥 영역 터치시 닫을지 여부
+                                      builder: (BuildContext context) {
+                                        Future.delayed(
+                                          Duration(seconds: 1),
+                                              () {
+                                            Navigator.of(context,
+                                                rootNavigator: true)
+                                                .pop();
+                                          },
+                                        );
+                                        return ActDialog();
+                                      });
                                 }
                               },
                               child: Text(
