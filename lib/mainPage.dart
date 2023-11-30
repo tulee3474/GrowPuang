@@ -7,6 +7,7 @@ import 'package:growpuang/view/widget/appBar.dart';
 import 'package:growpuang/view/widget/end_dialog.dart';
 import 'package:growpuang/view/widget/graduate_dialog.dart';
 import 'package:growpuang/view/widget/navigateBar.dart';
+import 'package:growpuang/view/yearalbum_page/yearalbum_page.dart';
 import 'controller/post_list_controller.dart';
 
 class MainPage extends StatelessWidget {
@@ -31,13 +32,45 @@ class MainPage extends StatelessWidget {
         body: Stack(
           children: [
             appBar(),
+            //졸업앨범
+            Positioned(
+              left: 430.w,
+              // right: 10.w,
+              top: 460.h,
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => yearalbumPage())
+                  );
+                },
+                child: Column(
+                  children: [
+                    Image.asset(
+                      'assets/images/yearbook.png',
+                      width: 80.w,
+                      // height: 70.h,
+                      fit: BoxFit.fitWidth,
+                    ),
+                    Text(
+                      languageController.yearBook,
+                      style: TextStyle(
+                        color: Color(0xFF143264),
+                        fontSize: 17.sp,
+                        fontFamily: 'YourFontFamily',
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
             Positioned(
               left: 10.w,
               right: 10.w,
               top: 250.h,
               child: Center(
                 child: Column(
-
                   children: [
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 16.0),
@@ -81,17 +114,19 @@ class MainPage extends StatelessWidget {
                         ),
                       ),
                     ),
-
                     SizedBox(height: 30.h),
                     Table(
-
-                      defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+                      defaultVerticalAlignment:
+                          TableCellVerticalAlignment.middle,
                       children: [
-                        buildTableRow( languageController.language == '한국어' ? '체력' : 'HP', personalController.hpScore, 30),
                         buildTableRow(
-                            languageController.intellect,  personalController.intellectScore, 30),
-                        buildTableRow(
-                            languageController.activity, personalController.participateActList.length, 6),
+                            languageController.language == '한국어' ? '체력' : 'HP',
+                            personalController.hpScore,
+                            30),
+                        buildTableRow(languageController.intellect,
+                            personalController.intellectScore, 30),
+                        buildTableRow(languageController.activity,
+                            personalController.participateActList.length, 6),
                       ],
                     ),
                   ],
@@ -103,8 +138,8 @@ class MainPage extends StatelessWidget {
         ),
       ),
     );
-
   }
+
   Future<Future> showExitPopup(BuildContext context) async {
     return showDialog(
       context: context,
@@ -113,6 +148,7 @@ class MainPage extends StatelessWidget {
       },
     );
   }
+
   TableRow buildTableRow(String label, int value, int total) {
     return TableRow(
       children: [
@@ -144,7 +180,7 @@ class MainPage extends StatelessWidget {
   TableCell buildProgressBarTableCell(int value, int total) {
     return TableCell(
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal:0.0),
+        padding: EdgeInsets.symmetric(horizontal: 0.0),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(30.0),
           child: LinearProgressIndicator(
@@ -174,5 +210,4 @@ class MainPage extends StatelessWidget {
       ),
     );
   }
-
 }
