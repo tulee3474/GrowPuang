@@ -16,6 +16,7 @@ class LanguageController extends GetxController {
   //예) languageController.knowledgeQuiz -> 이러면 아래의 get함수를 실행시키는 것임
 
   String get appBarText => _language.value == '한국어' ? '푸앙이 키우기' : 'Grow Puang';
+  String get yearBook => _language.value == '한국어' ? '졸업앨범' : 'Year Book';
 
   String get knowledgeQuiz =>
       _language.value == '한국어' ? '전공 퀴즈' : 'Knowledge Quiz';

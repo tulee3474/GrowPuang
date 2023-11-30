@@ -134,7 +134,6 @@ class _QuizPageSweState extends State<QuizPageSwe> {
                             }else{
                               addScore = 0;
                             }
-
                             Navigator.push(
                               context,
                               MaterialPageRoute(

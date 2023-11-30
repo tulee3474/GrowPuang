@@ -8,6 +8,7 @@ import 'package:growpuang/controller/personal_contoller.dart';
 import 'package:growpuang/model/get_device_unique_id.dart';
 import 'package:growpuang/styles.dart';
 import 'package:growpuang/view/home_screen.dart';
+import 'package:growpuang/view/login/login_page.dart';
 import 'package:growpuang/view/mbti/firstPage.dart';
 
 Future<void> main() async {
@@ -51,7 +52,8 @@ class MyApp extends StatelessWidget {
             },
           ),
         ),
-        home: const firstPage(title: 'Flutter Demo Home Page'),
+        home: LogInPage(),
+        // const firstPage(title: 'Flutter Demo Home Page'),
         //getPages: pageRoutingController.makeNewTravelPageList,
       ),
     );
