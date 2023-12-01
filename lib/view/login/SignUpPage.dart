@@ -3,6 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:growpuang/view/login/LoginPage.dart';
 import 'package:growpuang/view/mbti/firstPage.dart';
 import 'package:growpuang/view/widget/appBar_login.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 import '../widget/end_dialog.dart';
 
@@ -16,23 +19,24 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _emailController = new TextEditingController();
   final TextEditingController _passwordController = new TextEditingController();
+  final TextEditingController _usernameController = new TextEditingController();
+  final _authentication = FirebaseAuth.instance;
+  final _formKey = GlobalKey<FormState>();
+  bool saving = false;
+  String email ='';
+  String password ='';
+  String userName = '';
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      //뒤로가기 종료 방지
-      onWillPop: () async {
-        // 뒤로가기를 누르면 팝업이 뜹니다
-        bool shouldClose = (await showExitPopup(context)) as bool;
-        return shouldClose;
-      },
+    return ModalProgressHUD(
+      inAsyncCall: saving,
       child: Scaffold(
         appBar: null,
         resizeToAvoidBottomInset: false,
         body: Stack(
           children: [
             Container(
-              //로그인 화면 이미지
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/images/로그인화면.png'),
@@ -44,113 +48,147 @@ class _SignUpPageState extends State<SignUpPage> {
               top: 150.h,
               left: 10,
               child: Container(
-                //로그인단
                 width: 500.w,
-                // height: 350.h,
                 margin: EdgeInsets.fromLTRB(20.w, 280.h, 20.w, 250.h),
                 padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: 20.h),
                 color: Colors.white.withOpacity(0.5),
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        //로그인 회원가입 글씨 버튼
-                        InkWell(
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => const LogInPage()));
+                              },
+                              child: Text(
+                                "Log In",
+                                style: TextStyle(
+                                  fontSize: 20.sp,
+                                  color: Color(0xFFB7B7B7),
+                                  fontFamily: 'YourFontFamily',
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              )),
+                          SizedBox(
+                            width: 10.w,
+                          ),
+                          InkWell(
                             onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const LogInPage()));
+
                             },
                             child: Text(
-                              "Log In",
+                              "Sign up",
                               style: TextStyle(
-                                //기선택 설정
                                 fontSize: 20.sp,
-                                color: Color(0xFFB7B7B7),
+                                color: Color(0xFF314C07),
                                 fontFamily: 'YourFontFamily',
-                                fontWeight: FontWeight.w300,
+                                fontWeight: FontWeight.w700,
                               ),
-                            )),
-                        SizedBox(
-                          width: 10.w,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      TextFormField(
+                        controller: _emailController,
+                        onChanged: (value){
+                          email = value;
+                        },
+                        decoration: const InputDecoration(
+                          border: InputBorder.none,
+                          fillColor: Colors.white,
+                          filled: true,
+                          hintText: "email",
                         ),
-                        InkWell(
-                          onTap: () {
-
+                      ),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      TextFormField(
+                        controller: _passwordController,
+                        onChanged: (value){
+                          password = value;
+                        },
+                        obscureText: true,
+                        decoration: const InputDecoration(
+                          border: InputBorder.none,
+                          fillColor: Colors.white,
+                          filled: true,
+                          hintText: "password",
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      TextFormField(
+                        controller: _usernameController,
+                        onChanged: (value){
+                          userName = value;
+                        },
+                        decoration: const InputDecoration(
+                          border: InputBorder.none,
+                          fillColor: Colors.white,
+                          filled: true,
+                          hintText: "UserName",
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      SizedBox(
+                        width: 500.w,
+                        child: ElevatedButton(
+                          onPressed: () async{
+                            try{
+                              setState(() {
+                                saving = true;
+                              });
+                              final newUser = await _authentication.createUserWithEmailAndPassword(
+                                  email: email, password: password);
+                              await FirebaseFirestore.instance.collection('user').doc(newUser.user!.uid).set(
+                                  {
+                                    'userName' : userName,
+                                    'email' : email,
+                                  });
+                              if(newUser.user !=null){
+                                _formKey.currentState!.reset();
+                                if(!mounted) return;
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>const LogInPage()));
+                                setState(() {
+                                  saving = false;
+                                });
+                              }
+                            }catch (e){
+                              print(e);
+                            }
                           },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: const Color(0xFF99C958),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(3)),
+                            elevation: 3,
+                            shadowColor: Colors.black,
+                          ),
                           child: Text(
-                            "Sign up",
+                            "Sign Up",
                             style: TextStyle(
-                              //미선택 설정
                               fontSize: 20.sp,
-                              color: Color(0xFF314C07),
+                              color: const Color(0xFF314C07),
                               fontFamily: 'YourFontFamily',
-                              fontWeight: FontWeight.w700,
+                              fontWeight: FontWeight.normal,
                             ),
                           ),
                         ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    TextFormField(
-                      //이메일
-                      controller: _emailController,
-                      decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        fillColor: Colors.white,
-                        filled: true,
-                        hintText: "email",
                       ),
-                    ),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    TextFormField(
-                      //비밀번호
-                      controller: _passwordController,
-                      obscureText: true,
-                      decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        fillColor: Colors.white,
-                        filled: true,
-                        hintText: "password",
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    SizedBox(
-                      width: 500.w,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const firstPage(
-                                      title: 'Flutter Demo Home Page')));
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF99C958),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(3)),
-                          elevation: 3,
-                          shadowColor: Colors.black,
-                        ),
-                        child: Text(
-                          "Sign in",
-                          style: TextStyle(
-                            fontSize: 20.sp,
-                            color: const Color(0xFF314C07),
-                            fontFamily: 'YourFontFamily',
-                            fontWeight: FontWeight.normal,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
