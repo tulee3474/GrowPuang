@@ -28,7 +28,7 @@ class yearalbumPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Class of Puang",
+                  languageController.yearBook,
                   style: TextStyle(
                     color: Color(0xFF143264),
                     fontSize: 25.sp,
