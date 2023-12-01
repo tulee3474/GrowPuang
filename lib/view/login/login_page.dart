@@ -57,7 +57,7 @@ class _LogInPageState extends State<LogInPage> {
                         InkWell(
                             onTap: () {},
                             child: Text(
-                              "Sign up",
+                              "Sign in",
                               style: TextStyle(
                                 //기선택 설정
                                 fontSize: 20.sp,
