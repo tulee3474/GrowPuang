@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:growpuang/view/login/LoginPage.dart';
 import 'package:growpuang/view/mbti/firstPage.dart';
 import 'package:growpuang/view/widget/appBar_login.dart';
 
 import '../widget/end_dialog.dart';
 
-class LogInPage extends StatefulWidget {
-  const LogInPage({super.key});
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
 
   @override
-  State<LogInPage> createState() => _LogInPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _LogInPageState extends State<LogInPage> {
+class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _emailController = new TextEditingController();
   final TextEditingController _passwordController = new TextEditingController();
 
@@ -55,13 +56,18 @@ class _LogInPageState extends State<LogInPage> {
                       children: [
                         //로그인 회원가입 글씨 버튼
                         InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const LogInPage()));
+                            },
                             child: Text(
-                              "Sign up",
+                              "Log In",
                               style: TextStyle(
                                 //기선택 설정
                                 fontSize: 20.sp,
-                                color: Color(0xFF314C07),
+                                color: Color(0xFFB7B7B7),
                                 fontFamily: 'YourFontFamily',
                                 fontWeight: FontWeight.w300,
                               ),
@@ -70,13 +76,15 @@ class _LogInPageState extends State<LogInPage> {
                           width: 10.w,
                         ),
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+
+                          },
                           child: Text(
                             "Sign up",
                             style: TextStyle(
                               //미선택 설정
                               fontSize: 20.sp,
-                              color: Color(0xFFB7B7B7),
+                              color: Color(0xFF314C07),
                               fontFamily: 'YourFontFamily',
                               fontWeight: FontWeight.w700,
                             ),

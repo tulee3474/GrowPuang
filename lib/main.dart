@@ -8,7 +8,7 @@ import 'package:growpuang/controller/personal_contoller.dart';
 import 'package:growpuang/model/get_device_unique_id.dart';
 import 'package:growpuang/styles.dart';
 import 'package:growpuang/view/home_screen.dart';
-import 'package:growpuang/view/login/login_page.dart';
+import 'package:growpuang/view/login/LoginPage.dart';
 import 'package:growpuang/view/mbti/firstPage.dart';
 
 Future<void> main() async {
