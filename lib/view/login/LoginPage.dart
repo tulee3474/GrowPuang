@@ -108,6 +108,7 @@ class _LogInPageState extends State<LogInPage> {
                     TextFormField(
                       //비밀번호
                       controller: _passwordController,
+                      obscureText: true,
                       decoration: const InputDecoration(
                         border: InputBorder.none,
                         fillColor: Colors.white,
