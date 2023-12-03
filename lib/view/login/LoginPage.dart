@@ -156,6 +156,7 @@ class _LogInPageState extends State<LogInPage> {
                               // Successfully logged in
                               _emailController.clear();
                               _passwordController.clear();
+                              // ignore: use_build_context_synchronously
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -168,12 +169,13 @@ class _LogInPageState extends State<LogInPage> {
                           } catch (e) {
                             print(e);
                             // 로그인 실패 시 알림 창 표시
+                            // ignore: use_build_context_synchronously
                             showDialog(
                               context: context,
                               builder: (BuildContext context) {
                                 return AlertDialog(
                                   title: Text("로그인 실패 : Login failed "),
-                                  content: Text(
+                                  content: const Text(
                                       "사용자 정보가 일치하지 않습니다.\nUser information does not match."),
                                   actions: [
                                     TextButton(
