@@ -23,8 +23,8 @@ class _SignUpPageState extends State<SignUpPage> {
   final _authentication = FirebaseAuth.instance;
   final _formKey = GlobalKey<FormState>();
   bool saving = false;
-  String email ='';
-  String password ='';
+  String email = '';
+  String password = '';
   String userName = '';
 
   @override
@@ -59,28 +59,27 @@ class _SignUpPageState extends State<SignUpPage> {
                       Row(
                         children: [
                           InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => const LogInPage()));
-                              },
-                              child: Text(
-                                "Log In",
-                                style: TextStyle(
-                                  fontSize: 20.sp,
-                                  color: Color(0xFFB7B7B7),
-                                  fontFamily: 'YourFontFamily',
-                                  fontWeight: FontWeight.w300,
-                                ),
-                              )),
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const LogInPage()));
+                            },
+                            child: Text(
+                              "Log In",
+                              style: TextStyle(
+                                fontSize: 20.sp,
+                                color: Color(0xFFB7B7B7),
+                                fontFamily: 'YourFontFamily',
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                          ),
                           SizedBox(
                             width: 10.w,
                           ),
                           InkWell(
-                            onTap: () {
-
-                            },
+                            onTap: () {},
                             child: Text(
                               "Sign up",
                               style: TextStyle(
@@ -98,7 +97,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                       TextFormField(
                         controller: _emailController,
-                        onChanged: (value){
+                        onChanged: (value) {
                           email = value;
                         },
                         decoration: const InputDecoration(
@@ -113,7 +112,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                       TextFormField(
                         controller: _passwordController,
-                        onChanged: (value){
+                        onChanged: (value) {
                           password = value;
                         },
                         obscureText: true,
@@ -129,7 +128,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                       TextFormField(
                         controller: _usernameController,
-                        onChanged: (value){
+                        onChanged: (value) {
                           userName = value;
                         },
                         decoration: const InputDecoration(
@@ -145,27 +144,66 @@ class _SignUpPageState extends State<SignUpPage> {
                       SizedBox(
                         width: 500.w,
                         child: ElevatedButton(
-                          onPressed: () async{
-                            try{
+                          onPressed: () async {
+                            try {
                               setState(() {
                                 saving = true;
                               });
-                              final newUser = await _authentication.createUserWithEmailAndPassword(
-                                  email: email, password: password);
-                              await FirebaseFirestore.instance.collection('user').doc(newUser.user!.uid).set(
-                                  {
-                                    'userName' : userName,
-                                    'email' : email,
-                                  });
-                              if(newUser.user !=null){
-                                _formKey.currentState!.reset();
-                                if(!mounted) return;
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>const LogInPage()));
-                                setState(() {
-                                  saving = false;
+
+                              // Check if the email already exists
+                              bool emailExists = await isEmailExists(email);
+
+                              if (emailExists) {
+                                // Email already exists, show alert dialog
+                                // ignore: use_build_context_synchronously
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: const Text("회원가입 실패\nSign-up failed"),
+                                      content: const Text("이미 등록된 이메일입니다.\nThis email is already registered"),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                            setState(() {
+                                              saving = !emailExists;
+                                            });
+                                          },
+                                          child: Text("확인"),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              } else {
+                                // Email doesn't exist, proceed with registration
+                                final newUser = await _authentication
+                                    .createUserWithEmailAndPassword(
+                                  email: email,
+                                  password: password,
+                                );
+                                await FirebaseFirestore.instance
+                                    .collection('user')
+                                    .doc(newUser.user!.uid)
+                                    .set({
+                                  'userName': userName,
+                                  'email': email,
                                 });
+                                if (newUser.user != null) {
+                                  _formKey.currentState!.reset();
+                                  if (!mounted) return;
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                          const LogInPage()));
+                                  setState(() {
+                                    saving = false;
+                                  });
+                                }
                               }
-                            }catch (e){
+                            } catch (e) {
                               print(e);
                             }
                           },
@@ -196,6 +234,16 @@ class _SignUpPageState extends State<SignUpPage> {
         ),
       ),
     );
+  }
+
+  Future<bool> isEmailExists(String email) async {
+    // Check if the email already exists in Firestore
+    QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+        .collection('user')
+        .where('email', isEqualTo: email)
+        .get();
+
+    return querySnapshot.docs.isNotEmpty;
   }
 
   Future<Future> showExitPopup(BuildContext context) async {
