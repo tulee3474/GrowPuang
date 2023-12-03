@@ -319,8 +319,8 @@ class _CommunityScreenState extends State<CommunityScreen> {
                                               ),
                                               Container(
                                                 child: Text(
-                                                  languageController
-                                                      .anonymousAuthor,
+                                                  postListController
+                                                      .postList[i].postWriter,
                                                   style: TextStyle(
                                                     fontWeight: FontWeight.w300,
                                                     fontSize: 13.sp,

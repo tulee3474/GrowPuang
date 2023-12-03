@@ -24,8 +24,8 @@ Future<void> main() async {
     projectId: "GrowPuang",
   )); // Firebase 초기화
 
-  final personalController = Get.put(PersonalController());
-  personalController.userId = await getMobileId(); //모델 id 저장
+  //final personalController = Get.put(PersonalController());
+  //personalController.userId = await getMobileId(); //모델 id 저장
 
   //runApp(HomeScreen());
   runApp(const MyApp());

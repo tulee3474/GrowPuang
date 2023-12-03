@@ -7,12 +7,14 @@ import 'package:growpuang/controller/personal_contoller.dart';
 //Write하는 부분
 
 //Community
-void fb_add_post(postTitle, postNum, postWriter, postContent, sortOpt) {
+void fb_add_post(
+    postTitle, postNum, postWriter, postContent, postWriterUserId, sortOpt) {
   //합쳐쓰기
   FirebaseFirestore.instance.collection("커뮤니티").doc('$postNum').set({
     'postTitle': postTitle,
     'postNum': postNum,
     'postWriter': postWriter,
+    'postWriterUserId': postWriterUserId,
     'commentList': [], //첫 작성이니까
     'commentWriterList': [], //첫 작성이니까
     'recommendList': [], //첫 작성이니까
@@ -52,12 +54,14 @@ fb_delete_post(postNum, posts) {
   }, SetOptions(merge: true));
 }
 
-void fb_add_comment(postNum, comment, commentWriterList) {
+void fb_add_comment(
+    postNum, comment, commentWriterList, commentWriterUserIdList) {
   FirebaseFirestore.instance.collection("커뮤니티").doc('$postNum').update({
     "commentList": FieldValue.arrayUnion([comment]),
   });
   FirebaseFirestore.instance.collection("커뮤니티").doc('$postNum').set({
     'commentWriterList': commentWriterList,
+    'commentWriterUserIdList': commentWriterUserIdList,
   }, SetOptions(merge: true));
   // 아래 방법은 중복 토큰이 저장 안됨. 할 수 없이 리스트 전체를 저장함
   // FirebaseFirestore.instance.collection("커뮤니티").doc(postTitle).update({
@@ -67,7 +71,8 @@ void fb_add_comment(postNum, comment, commentWriterList) {
   print("파이어베이스 업로드 완료");
 }
 
-fb_delete_comment(postNum, commentList, commentWriterList) {
+fb_delete_comment(
+    postNum, commentList, commentWriterList, commentWriterUserIdList) {
   //commentList, commentWriterList를 둘 다 덮어쓰기 하는 방법으로
   FirebaseFirestore.instance.collection("커뮤니티").doc('$postNum').set({
     'commentList': commentList,
@@ -75,6 +80,7 @@ fb_delete_comment(postNum, commentList, commentWriterList) {
 
   FirebaseFirestore.instance.collection("커뮤니티").doc('$postNum').set({
     'commentWriterList': commentWriterList,
+    'commentWriterUserIdList': commentWriterUserIdList,
   }, SetOptions(merge: true));
 }
 
@@ -112,6 +118,14 @@ fb_delete_recommend(postNum, recommendList, recommendNum) {
 class ReadController extends GetxController {
   final db = FirebaseFirestore.instance;
 
+  Future<String> fb_read_userName(token) async {
+    var data = (await db.collection("user").doc(token).get());
+
+    String userName = data.data()!['userName'] as String;
+
+    return userName;
+  }
+
   //Community
   Future<List> fb_read_all_post() async {
     //커뮤니티 게시글 확인을 위함
@@ -125,7 +139,7 @@ class ReadController extends GetxController {
     for (int i = 0; i < postNumList.length; i++) {
       Post read_data = await fb_read_one_post(postNumList[i]);
       data.add(read_data);
-      if (read_data.postWriter == personalController.userId) {
+      if (read_data.postWriterUserId == personalController.userId) {
         personalController.communityResult += 1;
       }
     }
@@ -149,6 +163,7 @@ class ReadController extends GetxController {
     String postTitle = data.data()!['postTitle'] as String;
     int postNum = data.data()!['postNum'] as int;
     String postWriter = data.data()!['postWriter'] as String;
+    String postWriterUserId = data.data()!['postWriterUserId'] as String;
     int recommendNum = data.data()!['recommendNum'] as int;
     String postContent = data.data()!['postContent'] as String;
     int sortOpt = data.data()!['sortOpt'] as int;
@@ -165,6 +180,12 @@ class ReadController extends GetxController {
     for (int i = 0; i < commentWriterList2.length; i++) {
       commentWriterList.add(commentWriterList2[i] as String);
     }
+    List<dynamic> commentWriterUserIdList2 =
+        data.data()!['commentWriterUserIdList'];
+    List<String> commentWriterUserIdList = [];
+    for (int i = 0; i < commentWriterUserIdList2.length; i++) {
+      commentWriterUserIdList.add(commentWriterUserIdList2[i] as String);
+    }
 
     List<dynamic> recommendList2 = data.data()!['recommendList'];
     List<String> recommendList = [];
@@ -172,8 +193,18 @@ class ReadController extends GetxController {
       recommendList.add(recommendList2[i] as String);
     }
 
-    Post postData = Post(postTitle, postNum, postWriter, commentList,
-        commentWriterList, recommendList, recommendNum, postContent, sortOpt);
+    Post postData = Post(
+        postTitle,
+        postNum,
+        postWriter,
+        postWriterUserId,
+        commentList,
+        commentWriterList,
+        commentWriterUserIdList,
+        recommendList,
+        recommendNum,
+        postContent,
+        sortOpt);
 
     return postData;
   }
