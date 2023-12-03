@@ -2,7 +2,7 @@ import 'package:growpuang/class/post.dart';
 import 'package:get/get.dart';
 
 class PostController extends GetxController {
-  Rx<Post> _post = Post('', 0, '', [], [], [], 0, '', 1).obs;
+  Rx<Post> _post = Post('', 0, '', '', [], [], [], [], 0, '', 1).obs;
   Rx<int> _index = 0.obs;
   RxList<String> _countedCommentWriterList = <String>[].obs;
   RxList<String> _threeDotsCommendList = <String>["새로고침", "신고"].obs;

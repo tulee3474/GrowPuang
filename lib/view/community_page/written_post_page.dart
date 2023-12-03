@@ -14,7 +14,7 @@ import 'package:get/get.dart';
 import 'package:growpuang/view/widget/appBar.dart';
 
 class WrittenPostPage extends StatefulWidget {
-  Post post = Post('', 0, '', [], [], [], 0, '', 1);
+  Post post = Post('', 0, '', '', [], [], [], [], 0, '', 1);
   int index = 0;
 
   WrittenPostPage(this.post, this.index);
@@ -37,9 +37,9 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
 
     for (int i = 0; i < postController.post.commentWriterList.length; i++) {
       if (!postController.countedCommentWriterList
-          .contains(postController.post.commentWriterList[i])) {
+          .contains(postController.post.commentWriterUserIdList[i])) {
         postController.countedCommentWriterList
-            .add(postController.post.commentWriterList[i]);
+            .add(postController.post.commentWriterUserIdList[i]);
       }
     }
   }
@@ -50,7 +50,8 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
     postController.index = widget.index;
 
     //만약 작성자가 게시글을 보고있는 경우, 수정이랑 삭제도 보여져야함'
-    if (postController.post.postWriter == personalController.userId as String) {
+    if (postController.post.postWriterUserId ==
+        personalController.userId as String) {
       postController.threeDotsCommendList = [
         languageController.communityWrittenPostRefresh,
         languageController.communityWrittenPostReport,
@@ -309,7 +310,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                       margin:
                                           EdgeInsets.fromLTRB(0, 0, 12.h, 0),
                                       child: Text(
-                                        languageController.anonymousAuthor,
+                                        postController.post.postWriter,
                                         style: TextStyle(
                                           fontWeight: FontWeight.w500,
                                           fontSize: 14.sp,
@@ -371,7 +372,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                     onPressed: () => postReport(),
                                   ),
                                 ),
-                                postController.post.postWriter ==
+                                postController.post.postWriterUserId ==
                                         personalController.userId as String
                                     ? Container(
                                         child: TextButton(
@@ -389,7 +390,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                         ),
                                       )
                                     : SizedBox(),
-                                postController.post.postWriter ==
+                                postController.post.postWriterUserId ==
                                         personalController.userId as String
                                     ? Container(
                                         child: TextButton(
@@ -538,7 +539,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "${languageController.anonymous} ${postController.countedCommentWriterList.indexOf(postController.post.commentWriterList[i]) + 1}",
+                                        "${postController.post.commentWriterList[i]} ${postController.countedCommentWriterList.indexOf(postController.post.commentWriterUserIdList[i]) + 1}",
                                         style: TextStyle(
                                           color: mainTextColor,
                                           fontFamily: 'Inter',
@@ -546,8 +547,8 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                           fontSize: 16.sp,
                                         ),
                                       ),
-                                      if (postController
-                                              .post.commentWriterList[i] ==
+                                      if (postController.post
+                                              .commentWriterUserIdList[i] ==
                                           personalController.userId as String)
                                         Container(
                                           height: 32.h,
@@ -656,16 +657,20 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                   );
                                 } else {
                                   setState(() {
-                                    postController.post.commentWriterList.add(
-                                        personalController.userId as String);
+                                    postController.post.commentWriterUserIdList
+                                        .add(personalController.userId
+                                            as String);
                                     postController.post.commentList
                                         .add(commentController.text);
+                                    postController.post.commentWriterList.add(
+                                        personalController.userName as String);
 
                                     fb_add_comment(
                                         postController.post.postNum,
                                         postController.post.commentList.last,
+                                        postController.post.commentWriterList,
                                         postController.post
-                                            .commentWriterList); // 댓글 추가 - 게시글 제목, 댓글 내용, 댓글 작성자 리스트
+                                            .commentWriterUserIdList); // 댓글 추가 - 게시글 제목, 댓글 내용, 댓글 작성자 리스트
 
                                     commentController.text = '';
 
@@ -1091,14 +1096,17 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                 setState(() {
                                   postController.post.commentWriterList
                                       .removeAt(commentIndex);
+                                  postController.post.commentWriterUserIdList
+                                      .removeAt(commentIndex);
                                   postController.post.commentList
                                       .removeAt(commentIndex);
 
                                   fb_delete_comment(
                                       postController.post.postNum,
                                       postController.post.commentList,
+                                      postController.post.commentWriterList,
                                       postController.post
-                                          .commentWriterList); // 댓글 추가 - 게시글 제목, 댓글 내용, 댓글 작성자 리스트
+                                          .commentWriterUserIdList); // 댓글 추가 - 게시글 제목, 댓글 내용, 댓글 작성자 리스트
 
                                   //checkCountedCommentWriterList 업데이트
                                   checkCountedCommentWriterList();

@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:growpuang/controller/personal_contoller.dart';
 import 'package:growpuang/view/mbti/firstPage.dart';
 import 'package:growpuang/view/widget/appBar_login.dart';
 import 'package:growpuang/view/login/SignUpPage.dart';
 import '../widget/end_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:growpuang/model/firebase_read_write.dart';
 
 class LogInPage extends StatefulWidget {
   const LogInPage({super.key});
@@ -17,6 +20,7 @@ class LogInPage extends StatefulWidget {
 class _LogInPageState extends State<LogInPage> {
   final TextEditingController _emailController = new TextEditingController();
   final TextEditingController _passwordController = new TextEditingController();
+  final personalController = Get.put(PersonalController());
   bool saving = false;
   final _authentication = FirebaseAuth.instance;
   String email = '';
@@ -129,12 +133,26 @@ class _LogInPageState extends State<LogInPage> {
                             setState(() {
                               saving = true;
                             });
-                            final currentUser =
-                            await _authentication.signInWithEmailAndPassword(
+                            final currentUser = await _authentication
+                                .signInWithEmailAndPassword(
                               email: email,
                               password: password,
                             );
                             if (currentUser.user != null) {
+                              //231203 태운 추가 - Token 저장 + userName읽어오기
+                              String? token =
+                                  await currentUser.user?.getIdToken();
+                              var read = ReadController();
+
+                              token = FirebaseAuth.instance.currentUser?.uid;
+                              print(token!);
+                              print("!@31");
+
+                              personalController.userId = token;
+                              personalController.userName =
+                                  await read.fb_read_userName(token);
+
+                              print("!@31");
                               // Successfully logged in
                               _emailController.clear();
                               _passwordController.clear();
@@ -155,7 +173,8 @@ class _LogInPageState extends State<LogInPage> {
                               builder: (BuildContext context) {
                                 return AlertDialog(
                                   title: Text("로그인 실패 : Login failed "),
-                                  content: Text("사용자 정보가 일치하지 않습니다.\nUser information does not match."),
+                                  content: Text(
+                                      "사용자 정보가 일치하지 않습니다.\nUser information does not match."),
                                   actions: [
                                     TextButton(
                                       onPressed: () {

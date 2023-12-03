@@ -361,7 +361,9 @@ class _NewPostPageState extends State<NewPostPage> {
                                         postTitleController2.text,
                                     postListController.postList.last.postNum +
                                         1,
+                                    personalController.userName,
                                     personalController.userId,
+                                    [],
                                     [],
                                     [],
                                     [],
@@ -374,8 +376,9 @@ class _NewPostPageState extends State<NewPostPage> {
                                         postTitleController2.text,
                                     postListController
                                         .postList.last.postNum, //이미 넣었으니깐.
-                                    personalController.userId,
+                                    postListController.postList,
                                     postContentController.text,
+                                    personalController.userName,
                                     _sortOpt); // 게시글 추가 - 게시글 제목, 게시글 넘버, 작성자, 게시글 내용
                               });
 

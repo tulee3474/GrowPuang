@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 
 class PersonalController extends GetxController {
   RxString _userId = ''.obs; //user Id 저장
+  RxString _userName = ''.obs; //user Name 저장
 
   RxString _option1 = '모범적인'.obs; //mbti 결과 저장
   RxString _option2 = '푸앙이'.obs; //mbti 결과 저장
@@ -23,7 +24,7 @@ class PersonalController extends GetxController {
   double get progressValue => _progressValue.value;
 
   set progressValue(double value) {
-    _progressValue.value = hpScore/30;
+    _progressValue.value = hpScore / 30;
   }
 
   RxList<bool> _knowledgeQuizResultList = <bool>[].obs; //전공 퀴즈 결과 저장
@@ -37,6 +38,12 @@ class PersonalController extends GetxController {
 
   set userId(String value) {
     _userId.value = value;
+  }
+
+  String get userName => _userName.value;
+
+  set userName(String value) {
+    _userName.value = value;
   }
 
   String get option1 => _option1.value;
@@ -62,7 +69,6 @@ class PersonalController extends GetxController {
   set intellectProgressValue(double value) {
     _intellectProgressValue.value = value;
   }
-
 
   int get intellectScore => _intellectScore.value;
 
