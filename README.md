@@ -7,16 +7,11 @@ Mobile App Development Term project - Team1
 ```bash
 # install dependencies
 $ flutter pub get
-
-# serve with hot reload at localhost:3000
 $ flutter pub upgrade
-
-# build for production and launch server
 $ flutter pub outdated
-$ npm run start
 
-# generate static project
-$ npm run generate
+# To run the application on an emulator or connected device
+$ flutter run
 ```
 
 ## Getting Started
