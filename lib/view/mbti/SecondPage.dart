@@ -5,7 +5,8 @@ import 'package:growpuang/view/widget/MbtiDiamond.dart';
 
 import '../../controller/language_controller.dart';
 import '../widget/FirstAppBar.dart';
-import 'thirdPage.dart';
+import '../widget/MbtiBackground.dart';
+import 'ThirdPage.dart';
 
 class SecondPage extends StatelessWidget {
   final languageController = Get.put(LanguageController());
@@ -15,21 +16,12 @@ class SecondPage extends StatelessWidget {
       appBar: null,
       body: Stack(
         children: [
-          _buildFirstAppBar(),
-          _buildMbtiDiamond(),
+          const MbtiBackground(),
           _buildTextSection(),
           _buildLanguageSelectionRow(context),
         ],
       ),
     );
-  }
-
-  Widget _buildFirstAppBar() {
-    return FirstAppBar();
-  }
-
-  Widget _buildMbtiDiamond() {
-    return MbtiDiamond();
   }
 
   Widget _buildTextSection() {
