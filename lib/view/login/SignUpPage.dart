@@ -33,204 +33,201 @@ class _SignUpPageState extends State<SignUpPage> {
       inAsyncCall: saving,
       child: Scaffold(
         appBar: null,
-        resizeToAvoidBottomInset: false,
-        body: Stack(
-          children: [
-            Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/로그인화면.png'),
-                  fit: BoxFit.cover,
-                ),
+        // resizeToAvoidBottomInset: false,
+        body: SingleChildScrollView(
+          child: Container(
+            width: double.infinity,
+            // height: double.infinity,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/로그인화면.png'),
+                fit: BoxFit.cover,
               ),
             ),
-            Positioned(
-              top: 150.h,
-              left: 10,
-              child: Container(
-                width: 500.w,
-                margin: EdgeInsets.fromLTRB(20.w, 280.h, 20.w, 250.h),
-                padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: 20.h),
-                color: Colors.white.withOpacity(0.5),
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const LogInPage()));
-                            },
-                            child: Text(
-                              "Log In",
-                              style: TextStyle(
-                                fontSize: 20.sp,
-                                color: Color(0xFFB7B7B7),
-                                fontFamily: 'YourFontFamily',
-                                fontWeight: FontWeight.w300,
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 10.w,
-                          ),
-                          InkWell(
-                            onTap: () {},
-                            child: Text(
-                              "Sign up",
-                              style: TextStyle(
-                                fontSize: 20.sp,
-                                color: Color(0xFF314C07),
-                                fontFamily: 'YourFontFamily',
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      TextFormField(
-                        controller: _emailController,
-                        onChanged: (value) {
-                          email = value;
-                        },
-                        decoration: const InputDecoration(
-                          border: InputBorder.none,
-                          fillColor: Colors.white,
-                          filled: true,
-                          hintText: "email",
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      TextFormField(
-                        controller: _passwordController,
-                        onChanged: (value) {
-                          password = value;
-                        },
-                        obscureText: true,
-                        decoration: const InputDecoration(
-                          border: InputBorder.none,
-                          fillColor: Colors.white,
-                          filled: true,
-                          hintText: "password",
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      TextFormField(
-                        controller: _usernameController,
-                        onChanged: (value) {
-                          userName = value;
-                        },
-                        decoration: const InputDecoration(
-                          border: InputBorder.none,
-                          fillColor: Colors.white,
-                          filled: true,
-                          hintText: "UserName",
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      SizedBox(
-                        width: 500.w,
-                        child: ElevatedButton(
-                          onPressed: () async {
-                            try {
-                              setState(() {
-                                saving = true;
-                              });
-
-                              // Check if the email already exists
-                              bool emailExists = await isEmailExists(email);
-
-                              if (emailExists) {
-                                // Email already exists, show alert dialog
-                                // ignore: use_build_context_synchronously
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      title: const Text("회원가입 실패\nSign-up failed"),
-                                      content: const Text("이미 등록된 이메일입니다.\nThis email is already registered"),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () {
-                                            Navigator.of(context).pop();
-                                            setState(() {
-                                              saving = !emailExists;
-                                            });
-                                          },
-                                          child: Text("확인"),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                );
-                              } else {
-                                // Email doesn't exist, proceed with registration
-                                final newUser = await _authentication
-                                    .createUserWithEmailAndPassword(
-                                  email: email,
-                                  password: password,
-                                );
-                                await FirebaseFirestore.instance
-                                    .collection('user')
-                                    .doc(newUser.user!.uid)
-                                    .set({
-                                  'userName': userName,
-                                  'email': email,
-                                });
-                                if (newUser.user != null) {
-                                  _formKey.currentState!.reset();
-                                  if (!mounted) return;
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                          const LogInPage()));
-                                  setState(() {
-                                    saving = false;
-                                  });
-                                }
-                              }
-                            } catch (e) {
-                              print(e);
-                            }
+            child: Container(
+              margin: EdgeInsets.fromLTRB(20.w, 380.h, 20.w, 190.h),
+              padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: 20.h),
+              color: Colors.white.withOpacity(0.5),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const LogInPage()));
                           },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFF99C958),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(3)),
-                            elevation: 3,
-                            shadowColor: Colors.black,
-                          ),
                           child: Text(
-                            "Sign Up",
+                            "Log In",
                             style: TextStyle(
                               fontSize: 20.sp,
-                              color: const Color(0xFF314C07),
+                              color: Color(0xFFB7B7B7),
                               fontFamily: 'YourFontFamily',
-                              fontWeight: FontWeight.normal,
+                              fontWeight: FontWeight.w300,
                             ),
                           ),
                         ),
+                        SizedBox(
+                          width: 10.w,
+                        ),
+                        InkWell(
+                          onTap: () {},
+                          child: Text(
+                            "Sign up",
+                            style: TextStyle(
+                              fontSize: 20.sp,
+                              color: Color(0xFF314C07),
+                              fontFamily: 'YourFontFamily',
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    TextFormField(
+                      controller: _emailController,
+                      onChanged: (value) {
+                        email = value;
+                      },
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        fillColor: Colors.white,
+                        filled: true,
+                        hintText: "email",
                       ),
-                    ],
-                  ),
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    TextFormField(
+                      controller: _passwordController,
+                      onChanged: (value) {
+                        password = value;
+                      },
+                      obscureText: true,
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        fillColor: Colors.white,
+                        filled: true,
+                        hintText: "password",
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    TextFormField(
+                      controller: _usernameController,
+                      onChanged: (value) {
+                        userName = value;
+                      },
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        fillColor: Colors.white,
+                        filled: true,
+                        hintText: "UserName",
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    SizedBox(
+                      width: 500.w,
+                      child: ElevatedButton(
+                        onPressed: () async {
+                          try {
+                            setState(() {
+                              saving = true;
+                            });
+
+                            // Check if the email already exists
+                            bool emailExists = await isEmailExists(email);
+
+                            if (emailExists) {
+                              // Email already exists, show alert dialog
+                              // ignore: use_build_context_synchronously
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title:
+                                        const Text("회원가입 실패\nSign-up failed"),
+                                    content: const Text(
+                                        "이미 등록된 이메일입니다.\nThis email is already registered"),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                          setState(() {
+                                            saving = !emailExists;
+                                          });
+                                        },
+                                        child: Text("확인"),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            } else {
+                              // Email doesn't exist, proceed with registration
+                              final newUser = await _authentication
+                                  .createUserWithEmailAndPassword(
+                                email: email,
+                                password: password,
+                              );
+                              await FirebaseFirestore.instance
+                                  .collection('user')
+                                  .doc(newUser.user!.uid)
+                                  .set({
+                                'userName': userName,
+                                'email': email,
+                              });
+                              if (newUser.user != null) {
+                                _formKey.currentState!.reset();
+                                if (!mounted) return;
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const LogInPage()));
+                                setState(() {
+                                  saving = false;
+                                });
+                              }
+                            }
+                          } catch (e) {
+                            print(e);
+                          }
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF99C958),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(3)),
+                          elevation: 3,
+                          shadowColor: Colors.black,
+                        ),
+                        child: Text(
+                          "Sign Up",
+                          style: TextStyle(
+                            fontSize: 20.sp,
+                            color: const Color(0xFF314C07),
+                            fontFamily: 'YourFontFamily',
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
-          ],
+          ),
         ),
       ),
     );
