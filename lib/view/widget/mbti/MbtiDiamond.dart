@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
-class mbti_diamond extends StatelessWidget {
+class MbtiDiamond extends StatelessWidget {
   bool goUp = false;
 
-  mbti_diamond({super.key}){
+  MbtiDiamond({super.key}){
     toggleNormal();
   }
 
-  mbti_diamond.goUp({super.key}){
+  MbtiDiamond.goUp({super.key}){
     toggleGoUp();
   }
 

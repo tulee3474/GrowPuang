@@ -49,7 +49,7 @@ dependencies:
     flutter_spinkit: ^5.2.0
     device_info: ^2.0.3
     device_info_plus: ^9.1.0
-    flutter_native_splash: ^1.2.0
+    flutter_native_splash: ^2.3.6
     modal_progress_hud_nsn: ^0.4.0
     email_validator: ^2.0.1
 
@@ -64,7 +64,7 @@ dev_dependencies:
     # rules and activating additional ones.
     flutter_lints: ^3.0.1
 
-    flutter_launcher_icons: ^0.11.0
+    flutter_launcher_icons: ^0.13.1
 
 # The following section is specific to Flutter packages.
 flutter:
