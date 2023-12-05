@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:growpuang/controller/post_list_controller.dart';
-import 'package:growpuang/view/mbti/firstPage.dart';
+import 'package:growpuang/view/mbti/FirstPage.dart';
 import 'package:get/get.dart';
 import '../../controller/language_controller.dart';
 import '../../controller/personal_contoller.dart';
 import '../widget/end_dialog.dart';
-import '../widget/first_appBar.dart';
+import '../widget/FirstAppBar.dart';
 
 class GraduatedPuang extends StatelessWidget {
   final String endingPuang;
@@ -29,7 +29,7 @@ class GraduatedPuang extends StatelessWidget {
         appBar: null,
         body: Stack(
           children: [
-            firstappBar(),
+            FirstAppBar(),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Center(
@@ -90,7 +90,7 @@ class GraduatedPuang extends StatelessWidget {
                           Navigator.of(context).pushAndRemoveUntil(
                             MaterialPageRoute(
                               builder: (context) =>
-                                  const firstPage(title: 'Flutter Demo Home Page'),
+                                  const FirstPage(title: 'Flutter Demo Home Page'),
                               //NewScreen()은 새로운 시작화면입니다. 여기에 원하는 화면 위젯을 넣으세요.
                             ),
                             (Route<dynamic> route) => false,

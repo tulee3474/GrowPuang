@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:growpuang/view/widget/mbti_diamond.dart';
-import '../widget/first_appBar.dart';
+import 'package:growpuang/view/widget/MbtiDiamond.dart';
+import '../widget/FirstAppBar.dart';
 import 'lastPage.dart';
 import 'package:get/get.dart';
 import 'package:growpuang/controller/language_controller.dart';
@@ -25,8 +25,8 @@ class SeventhPage extends StatelessWidget {
       appBar: null,
       body: Stack(
         children: [
-          firstappBar(),
-          mbti_diamond.goUp(),
+          FirstAppBar(),
+          MbtiDiamond.goUp(),
           // 질문 텍스트
           Center(
             child: Padding(

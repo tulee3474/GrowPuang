@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:growpuang/controller/personal_contoller.dart';
-import 'package:growpuang/view/mbti/firstPage.dart';
+import 'package:growpuang/view/mbti/FirstPage.dart';
 import 'package:growpuang/view/login/SignUpPage.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -244,7 +244,7 @@ class _LogInPageState extends State<LogInPage> {
             context,
             MaterialPageRoute(
               builder: (context) =>
-              const firstPage(
+              const FirstPage(
                 title: 'Flutter Demo Home Page',
               ),
             ),

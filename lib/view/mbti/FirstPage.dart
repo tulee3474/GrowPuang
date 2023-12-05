@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:growpuang/view/widget/mbti_diamond.dart';
+import 'package:growpuang/view/widget/MbtiDiamond.dart';
 
-import '../widget/first_appBar.dart';
-import 'secondPage.dart';
+import '../widget/FirstAppBar.dart';
+import 'SecondPage.dart';
 
 String selectedLanguage = '한국어';
 
-class firstPage extends StatelessWidget {
-  const firstPage({super.key, required this.title});
+class FirstPage extends StatelessWidget {
+  const FirstPage({super.key, required this.title});
 
   final String title;
 
@@ -18,8 +18,8 @@ class firstPage extends StatelessWidget {
       appBar: null,
       body: Stack(
         children: [
-          firstappBar(),
-          mbti_diamond(),
+          const FirstAppBar(),
+          MbtiDiamond(),
           Positioned(
             left: 192.w,
             top: 640.h,

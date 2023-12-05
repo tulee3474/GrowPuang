@@ -5,7 +5,7 @@ import 'package:growpuang/controller/language_controller.dart';
 import 'package:growpuang/controller/personal_contoller.dart';
 import 'package:growpuang/mainPage.dart';
 
-import '../widget/first_appBar.dart';
+import '../widget/FirstAppBar.dart';
 
 class lastPage extends StatelessWidget {
   final languageController = Get.put(LanguageController());
@@ -28,7 +28,7 @@ class lastPage extends StatelessWidget {
       appBar: null,
       body: Stack(
         children: [
-          firstappBar(),
+          FirstAppBar(),
           // 자산 이미지 크기 및 배치 수정
           Positioned(
             left: 0.w,

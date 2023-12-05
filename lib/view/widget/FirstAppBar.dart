@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class firstappBar extends StatelessWidget {
-  const firstappBar({super.key});
+class FirstAppBar extends StatelessWidget {
+  const FirstAppBar({super.key});
 
   @override
 
