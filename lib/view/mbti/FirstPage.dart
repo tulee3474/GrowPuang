@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:growpuang/view/widget/MbtiDiamond.dart';
-
-import '../widget/FirstAppBar.dart';
+import '../widget/mbti/MbtiBackground.dart';
 import 'SecondPage.dart';
-import '../widget/MbtiBackground.dart';
 
 String selectedLanguage = '한국어';
 

@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import '../../controller/language_controller.dart';
 import '../../controller/personal_contoller.dart';
 import '../widget/end_dialog.dart';
-import '../widget/FirstAppBar.dart';
+import '../widget/mbti/FirstAppBar.dart';
 
 class GraduatedPuang extends StatelessWidget {
   final String endingPuang;

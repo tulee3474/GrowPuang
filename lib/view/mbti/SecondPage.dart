@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:growpuang/view/widget/MbtiDiamond.dart';
 
 import '../../controller/language_controller.dart';
-import '../widget/FirstAppBar.dart';
-import '../widget/MbtiBackground.dart';
+import '../widget/mbti/MbtiBackground.dart';
 import 'ThirdPage.dart';
 
 class SecondPage extends StatelessWidget {

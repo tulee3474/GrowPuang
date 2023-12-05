@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:growpuang/controller/language_controller.dart';
-import 'package:growpuang/view/widget/MbtiDiamond.dart';
-import '../widget/FirstAppBar.dart';
+import 'package:growpuang/view/widget/mbti/MbtiDiamond.dart';
+import '../widget/mbti/FirstAppBar.dart';
 import 'lastPage.dart';
 
 class FifthPage extends StatelessWidget {

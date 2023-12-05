@@ -5,7 +5,7 @@ import 'package:growpuang/controller/language_controller.dart';
 import 'package:growpuang/controller/personal_contoller.dart';
 import 'package:growpuang/mainPage.dart';
 
-import '../widget/FirstAppBar.dart';
+import '../widget/mbti/FirstAppBar.dart';
 
 class lastPage extends StatelessWidget {
   final languageController = Get.put(LanguageController());
