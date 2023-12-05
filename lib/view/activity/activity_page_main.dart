@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:growpuang/styles.dart';
 import 'package:growpuang/view/widget/appBar.dart';
 import 'package:get/get.dart';
 import 'package:growpuang/view/widget/navigateBar.dart';
@@ -12,7 +11,7 @@ import '../widget/act_dialog.dart';
 import '../widget/act_error_dialog.dart';
 
 class ActivityPageMain extends StatefulWidget {
-  ActivityPageMain({super.key});
+  const ActivityPageMain({super.key});
 
   @override
   State<ActivityPageMain> createState() => _ActivityPageMainState();
@@ -29,35 +28,9 @@ class _ActivityPageMainState extends State<ActivityPageMain> {
   @override
   void initState() {
     super.initState();
-    changeHp = personalController.hpScore ?? 0;
+    changeHp = personalController.hpScore;
   }
 
-  void _chooseAct() {
-    //활동 참여하기 버튼을 누르면 실행됩니다. 실행이 완료되었다는 다이어로그를 띄웁니다.
-    setState(() {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => MainPage(),
-        ),
-      );
-      showDialog(
-          context: context,
-          barrierDismissible: true,
-          // 바깥 영역 터치시 닫을지 여부
-          builder: (BuildContext context) {
-            Future.delayed(
-              Duration(seconds: 1),
-                  () {
-                Navigator.of(context,
-                    rootNavigator: true)
-                    .pop();
-              },
-            );
-            return ActDialog();
-          });
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +66,7 @@ class _ActivityPageMainState extends State<ActivityPageMain> {
                         Text(
                           languageController.actInfo,
                           style: TextStyle(
-                            color: Color(0xFF143264),
+                            color: const Color(0xFF143264),
                             fontSize: 20.sp,
                             fontFamily: 'YourFontFamily',
                             fontWeight: FontWeight.w700,
@@ -114,7 +87,7 @@ class _ActivityPageMainState extends State<ActivityPageMain> {
                               return Container(
                                 alignment: Alignment.center,
                                 color: Colors.white.withOpacity(0.5),
-                                child: Container(
+                                child: SizedBox(
                                   width: 200.w,
                                   child: Text(
                                     languageController.activityList[index],
@@ -150,16 +123,16 @@ class _ActivityPageMainState extends State<ActivityPageMain> {
                                 child: Container(
                                   alignment: Alignment.center,
                                   color: selectedStates[index]
-                                      ? Color(0xFF143264)
-                                      : Color(0xFF6CBEE2),
-                                  child: Container(
+                                      ? const Color(0xFF143264)
+                                      : const Color(0xFF6CBEE2),
+                                  child: SizedBox(
                                     width: 200.w,
                                     child: Text(
                                       languageController.activityList[index],
                                       style: TextStyle(
                                         color: selectedStates[index]
                                             ? Colors.white
-                                            : Color(0xFF143264),
+                                            : const Color(0xFF143264),
                                         fontSize: 18.sp, //버튼 텍스트
                                         // fontFamily: 'YourFontFamily',
                                         // fontWeight: FontWeight.w300,
@@ -185,9 +158,9 @@ class _ActivityPageMainState extends State<ActivityPageMain> {
                                 );
                               },
                               child: Text(
-                                "< " + languageController.goHome,
+                                "< ${languageController.goHome}",
                                 style: TextStyle(
-                                  color: Color(0xFF143264),
+                                  color: const Color(0xFF143264),
                                   fontSize: 18.sp,
                                   fontFamily: 'YourFontFamily',
                                 ),
@@ -196,7 +169,7 @@ class _ActivityPageMainState extends State<ActivityPageMain> {
                             //참여하기버튼 이벤트
                             TextButton(
                               onPressed: () {
-                                if (selectedIdx.length == 0) {
+                                if (selectedIdx.isEmpty) {
                                   //선택한 활동이 없다면 안내 다이어로그를 띄웁니다
                                   showDialog(
                                       context: context,
@@ -204,7 +177,7 @@ class _ActivityPageMainState extends State<ActivityPageMain> {
                                       // 바깥 영역 터치시 닫을지 여부
                                       builder: (BuildContext context) {
                                         Future.delayed(
-                                          Duration(seconds: 1),
+                                          const Duration(seconds: 1),
                                               () {
                                             Navigator.of(context,
                                                 rootNavigator: true)
@@ -232,7 +205,7 @@ class _ActivityPageMainState extends State<ActivityPageMain> {
                                       // 바깥 영역 터치시 닫을지 여부
                                       builder: (BuildContext context) {
                                         Future.delayed(
-                                          Duration(seconds: 1),
+                                          const Duration(seconds: 1),
                                               () {
                                             Navigator.of(context,
                                                 rootNavigator: true)
@@ -246,7 +219,7 @@ class _ActivityPageMainState extends State<ActivityPageMain> {
                               child: Text(
                                 languageController.takePart,
                                 style: TextStyle(
-                                  color: Color(0xFF143264),
+                                  color: const Color(0xFF143264),
                                   fontSize: 18.sp,
                                   fontFamily: 'YourFontFamily',
                                 ),
@@ -271,7 +244,7 @@ class _ActivityPageMainState extends State<ActivityPageMain> {
                   Text(
                     languageController.hpAfterAct,
                     style: TextStyle(
-                      color: Color(0xFF143264),
+                      color: const Color(0xFF143264),
                       fontSize: 20.sp,
                       fontFamily: 'YourFontFamily',
                     ),
@@ -279,7 +252,7 @@ class _ActivityPageMainState extends State<ActivityPageMain> {
                   SizedBox(
                     width: 20.w,
                   ),
-                  Container(
+                  SizedBox(
                     width: 200.w,
                     child: ClipRRect(
                       borderRadius:
@@ -288,7 +261,7 @@ class _ActivityPageMainState extends State<ActivityPageMain> {
                         minHeight: 20.0.h,
                         value: changeHp / 30,
                         // 게이지 바의 값 (0.0에서 1.0 사이)
-                        valueColor: AlwaysStoppedAnimation<Color>(
+                        valueColor: const AlwaysStoppedAnimation<Color>(
                           Color(0xFF143264),
                         ), // 게이지 바 색상
                       ),
@@ -299,7 +272,7 @@ class _ActivityPageMainState extends State<ActivityPageMain> {
                     '$changeHp/30',
                     // 원하는 비율로 변경
                     style: TextStyle(
-                      color: Color(0xFF143264),
+                      color: const Color(0xFF143264),
                       fontSize: 20.sp,
                       fontFamily: 'YourFontFamily',
                     ),
