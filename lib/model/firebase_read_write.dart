@@ -17,6 +17,7 @@ void fb_add_post(
     'postWriterUserId': postWriterUserId,
     'commentList': [], //첫 작성이니까
     'commentWriterList': [], //첫 작성이니까
+    'commentWriterUserIdList': [], //첫 작성이니까
     'recommendList': [], //첫 작성이니까
     'recommendNum': 0,
     'postContent': postContent,
