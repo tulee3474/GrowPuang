@@ -88,7 +88,6 @@ List<ButtonConfig> buttonConfigs = [
 
 void switchButtonConfig(int index, int type) {
   if (type == 1) {
-  if (type == 1) {
     buttonConfigs[index] = ButtonConfig(primary1, communityMainColor);
   } else if (type == 0) {
     buttonConfigs[index] = ButtonConfig(mainBackgroundColor, communityTextColor);
