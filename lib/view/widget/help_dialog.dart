@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 
 import '../../controller/language_controller.dart';
 import '../../controller/personal_contoller.dart';
-import '../ending/graduated_puang.dart';
 
 class HelpDialog extends StatelessWidget {
   HelpDialog({super.key});
@@ -48,7 +47,7 @@ class HelpDialog extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Container(
+                  SizedBox(
                     width: 70.w,
                     height: 70.h,
                     child: Image.asset(
@@ -59,7 +58,7 @@ class HelpDialog extends StatelessWidget {
                     ),
                   ),
                   SizedBox(width: 20.w,),
-                  Container(
+                  SizedBox(
                       width: 380.w,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,7 +72,7 @@ class HelpDialog extends StatelessWidget {
               SizedBox(height: 15.h,),
               Row( //활동지수 안내
                 children: [
-                  Container(
+                  SizedBox(
                     width: 70.w,
                     height: 70.h,
                     child: Image.asset(
@@ -93,7 +92,7 @@ class HelpDialog extends StatelessWidget {
                         languageController.activity,
                         style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w700),
                       ),
-                      Container(
+                      SizedBox(
                           width: 380.w,
                           child: Text(languageController.actDes))
                     ],
@@ -103,7 +102,7 @@ class HelpDialog extends StatelessWidget {
               SizedBox(height: 15.h,),
               Row(
                 children: [
-                  Container(
+                  SizedBox(
                     width: 70.w,
                     height: 70.h,
                     child: Image.asset(
@@ -123,7 +122,7 @@ class HelpDialog extends StatelessWidget {
                         languageController.community,
                         style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w700),
                       ),
-                      Container(
+                      SizedBox(
                         width: 330.w,
                         child: Text(languageController.cvDes),
                       )
@@ -145,7 +144,7 @@ class HelpDialog extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(languageController.young,style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w700),),
-                      Container(
+                      SizedBox(
                           width: 275.w,
                           child: Text(languageController.youngDes))
                     ],

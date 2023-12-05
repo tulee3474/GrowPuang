@@ -54,7 +54,7 @@ class navigateBar extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                             // builder: (context) => TestKnowledgeMain(),
-                            builder: (context) => QuizPageMain(),
+                            builder: (context) => const QuizPageMain(),
                           ),
                         );
                       },
@@ -74,7 +74,7 @@ class navigateBar extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                             // builder: (context) => TestKnowledgeMain(),
-                            builder: (context) => ActivityPageMain(),
+                            builder: (context) => const ActivityPageMain(),
                           ),
                         );
                       },
@@ -89,8 +89,7 @@ class navigateBar extends StatelessWidget {
                         //기다리는 동안 로딩창 띄우기
                         loadingDialog(context);
                         //posts가 비어있을때(첫 호출때만 데이터 로딩)
-                        print(postListController.postList);
-                        if (postListController.postList.length == 0) {
+                        if (postListController.postList.isEmpty) {
                           await postListController.readPostData();
                         }
                         //화면 이동 전, 로딩 다이어로그 pop!
@@ -98,10 +97,9 @@ class navigateBar extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => CommunityScreen(),
+                            builder: (context) => const CommunityScreen(),
                           ),
                         );
-                        print('커뮤니티 페이지로 넘어 갑니다');
                       },
                       child: NavigateIcon(
                         iconImage: "자소서_icon",

@@ -8,7 +8,7 @@ class NavigateIcon extends StatelessWidget {
   final String iconImage;
   var iconName;
 
-  NavigateIcon({required this.iconImage, required this.iconName});
+  NavigateIcon({super.key, required this.iconImage, required this.iconName});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -18,7 +18,7 @@ class NavigateIcon extends StatelessWidget {
           height: 60.h,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/images/${iconImage}.png'),
+              image: AssetImage('assets/images/$iconImage.png'),
               fit: BoxFit.fitHeight,
             ),
           ),
@@ -26,7 +26,7 @@ class NavigateIcon extends StatelessWidget {
         Text(
           iconName,
           style: TextStyle(
-            color: Color(0xFF143264),
+            color: const Color(0xFF143264),
             fontSize: 17.sp,
             fontFamily: 'YourFontFamily',
             fontWeight: FontWeight.bold,

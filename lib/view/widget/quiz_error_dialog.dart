@@ -15,7 +15,7 @@ class QuizErrorDialog extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(2.0))),
       alignment: Alignment.center,
       // insetPadding: EdgeInsets.fromLTRB(30.w, 100.h, 30.w, 200.h),
-      content: Container(
+      content: SizedBox(
         width: 400.w,
         height: 70.h,
         child: Center(
@@ -31,7 +31,7 @@ class QuizErrorDialog extends StatelessWidget {
               ),
               Text(
                 languageController.answerInfo,
-                style: TextStyle(fontSize: 20.sp, color: Color(0xFF143264)),
+                style: TextStyle(fontSize: 20.sp, color: const Color(0xFF143264)),
               ),
               const Icon(
                 Icons.warning_amber_rounded,

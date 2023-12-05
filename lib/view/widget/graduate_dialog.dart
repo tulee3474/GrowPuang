@@ -36,7 +36,7 @@ class GraduateDialog extends StatelessWidget {
             ),
             Row(
               children: [
-                Container(
+                SizedBox(
                   width: 70.w,
                   height: 70.h,
                   child: Image.asset(
@@ -53,15 +53,13 @@ class GraduateDialog extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      languageController.major +
-                          " " +
-                          personalController.solveQuizList.length.toString() + "/6",
+                      "${languageController.major} ${personalController.solveQuizList.length}/6",
                       style: TextStyle(fontSize: 20.sp,
-                      color: (personalController.solveQuizList.length < 6) ? Colors.red : Color(0xFF143264)),
+                      color: (personalController.solveQuizList.length < 6) ? Colors.red : const Color(0xFF143264)),
                     ),
                     Row(
                       children: [
-                        Container(
+                        SizedBox(
                           width: 200.w,
                           child: ClipRRect(
                             borderRadius:
@@ -70,7 +68,7 @@ class GraduateDialog extends StatelessWidget {
                               minHeight: 15.0.h,
                               value: personalController.intellectScore / 30,
                               // 게이지 바의 값 (0.0에서 1.0 사이)
-                              valueColor: AlwaysStoppedAnimation<Color>(
+                              valueColor: const AlwaysStoppedAnimation<Color>(
                                 Color(0xFF143264),
                               ), // 게이지 바 색상
                             ),
@@ -81,7 +79,7 @@ class GraduateDialog extends StatelessWidget {
                           '${personalController.intellectScore}/30',
                           // 원하는 비율로 변경
                           style: TextStyle(
-                            color: Color(0xFF143264),
+                            color: const Color(0xFF143264),
                             fontSize: 20.sp,
                             fontFamily: 'YourFontFamily',
                           ),
@@ -97,7 +95,7 @@ class GraduateDialog extends StatelessWidget {
             ),
             Row(
               children: [
-                Container(
+                SizedBox(
                   width: 70.w,
                   height: 70.h,
                   child: Image.asset(
@@ -119,7 +117,7 @@ class GraduateDialog extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        Container(
+                        SizedBox(
                           width: 200.w,
                           child: ClipRRect(
                             borderRadius:
@@ -129,7 +127,7 @@ class GraduateDialog extends StatelessWidget {
                               value:
                                   personalController.participateActList.length/6,
                               // 게이지 바의 값 (0.0에서 1.0 사이)
-                              valueColor: AlwaysStoppedAnimation<Color>(
+                              valueColor: const AlwaysStoppedAnimation<Color>(
                                 Color(0xFF143264),
                               ), // 게이지 바 색상
                             ),
@@ -140,7 +138,7 @@ class GraduateDialog extends StatelessWidget {
                           '${personalController.participateActList.length}/6',
                           // 원하는 비율로 변경
                           style: TextStyle(
-                            color: Color(0xFF143264),
+                            color: const Color(0xFF143264),
                             fontSize: 20.sp,
                             fontFamily: 'YourFontFamily',
                           ),
@@ -156,7 +154,7 @@ class GraduateDialog extends StatelessWidget {
             ),
             Row(
               children: [
-                Container(
+                SizedBox(
                   width: 70.w,
                   height: 70.h,
                   child: Image.asset(
@@ -244,25 +242,25 @@ class goGradu extends StatelessWidget {
                 ),
                 TextButton(
                   onPressed: () {
-                    String _endingPuang;
-                    var _job = '';
+                    String endingPuang;
+                    var job = '';
                     if(personalController.participateActList.contains(4)){
-                      _endingPuang = "박사 푸앙";
-                      _job = languageController.drPuang;
+                      endingPuang = "박사 푸앙";
+                      job = languageController.drPuang;
                     } else if(personalController.intellectScore==30){
-                      _endingPuang = "소프트웨어엔지니어 푸앙";
-                      _job = languageController.swePuang;
+                      endingPuang = "소프트웨어엔지니어 푸앙";
+                      job = languageController.swePuang;
                     } else if(personalController.participateActList.length >=4){
-                      _endingPuang = "솔루션아키텍트 푸앙";
-                      _job = languageController.saPuang;
+                      endingPuang = "솔루션아키텍트 푸앙";
+                      job = languageController.saPuang;
                     } else{
-                      _endingPuang = "인프라개발자 푸앙";
-                      _job = languageController.idPuang;
+                      endingPuang = "인프라개발자 푸앙";
+                      job = languageController.idPuang;
                     }
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => GraduatedPuang(endingPuang: _endingPuang, job: _job,),
+                        builder: (context) => GraduatedPuang(endingPuang: endingPuang, job: job,),
                       ),
                     );
                   },

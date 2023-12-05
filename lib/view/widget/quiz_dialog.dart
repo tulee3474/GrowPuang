@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:growpuang/mainPage.dart';
 
 import '../../controller/language_controller.dart';
 import '../../controller/personal_contoller.dart';
-import '../ending/graduated_puang.dart';
 
 class QuizDialog extends StatelessWidget {
   int addScore;
@@ -22,7 +20,7 @@ class QuizDialog extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(2.0))),
       alignment: Alignment.center,
       // insetPadding: EdgeInsets.fromLTRB(30.w, 100.h, 30.w, 200.h),
-      content: Container(
+      content: SizedBox(
         width: 400.w,
         height: 150.h,
         child: Center(
@@ -34,16 +32,16 @@ class QuizDialog extends StatelessWidget {
                 (addScore > 0)
                     ? languageController.correct
                     : languageController.incorrect,
-                style: TextStyle(fontSize: 20.sp, color: Color(0xFF143264)),
+                style: TextStyle(fontSize: 20.sp, color: const Color(0xFF143264)),
               ),
               SizedBox(
                 height: 10.h,
               ),
               Text(
-                "+${addScore}",
+                "+$addScore",
                 style: TextStyle(
                   fontSize: 20.sp,
-                  color: Color(0xFF143264),
+                  color: const Color(0xFF143264),
                 ),
               ),
               SizedBox(
@@ -54,7 +52,7 @@ class QuizDialog extends StatelessWidget {
                 style: TextStyle(
                     fontSize: 20.sp,
                     fontWeight: FontWeight.w700,
-                    color: Color(0xFF143264)),
+                    color: const Color(0xFF143264)),
               ),
             ],
           ),

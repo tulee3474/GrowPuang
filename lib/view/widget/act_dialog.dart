@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:growpuang/mainPage.dart';
 
 import '../../controller/language_controller.dart';
 import '../../controller/personal_contoller.dart';
-import '../ending/graduated_puang.dart';
 
 class ActDialog extends StatelessWidget {
   // int activities;
@@ -25,7 +23,7 @@ class ActDialog extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(2.0))),
       alignment: Alignment.center,
       // insetPadding: EdgeInsets.fromLTRB(30.w, 100.h, 30.w, 200.h),
-      content: Container(
+      content: SizedBox(
         width: 400.w,
         height: 150.h,
         child: Center(
@@ -37,7 +35,7 @@ class ActDialog extends StatelessWidget {
               languageController.completeAct,
               style: TextStyle(
                 fontSize: 20.sp,
-                color: Color(0xFF143264),
+                color: const Color(0xFF143264),
               ),
             ),
             SizedBox(height: 10.h,),
@@ -46,7 +44,7 @@ class ActDialog extends StatelessWidget {
                   personalController.hpScore.toString(),
               style: TextStyle(
                 fontSize: 20.sp,
-                color: Color(0xFF143264),
+                color: const Color(0xFF143264),
               ),
             ),
           ],

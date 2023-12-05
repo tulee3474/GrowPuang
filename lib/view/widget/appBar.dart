@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'graduate_dialog.dart';
 
 class appBar extends StatelessWidget {
+  const appBar({super.key});
+
   @override
 
   Widget build(BuildContext context) {
@@ -37,7 +39,6 @@ class appBar extends StatelessWidget {
                       return GraduateDialog();
                     });
                 // 영신관 이미지를 누를 때 수행할 작업을 정의하세요.
-                print('영신관 이미지를 눌렀습니다.');
                 // 여기에서 다음 질문 또는 동작을 정의할 수 있습니다.
               },
               child: Container(

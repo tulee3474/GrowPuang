@@ -5,11 +5,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class mbti_diamond extends StatelessWidget {
   bool goUp = false;
 
-  mbti_diamond(){
+  mbti_diamond({super.key}){
     toggleNormal();
   }
 
-  mbti_diamond.goUp(){
+  mbti_diamond.goUp({super.key}){
     toggleGoUp();
   }
 
@@ -23,11 +23,13 @@ class mbti_diamond extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return goUp ? WidgetGoUp() : WidgetNormal();
+    return goUp ? const WidgetGoUp() : const WidgetNormal();
   }
 }
 
 class WidgetNormal extends StatelessWidget {
+  const WidgetNormal({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -46,6 +48,8 @@ class WidgetNormal extends StatelessWidget {
 }
 
 class WidgetGoUp extends StatelessWidget {
+  const WidgetGoUp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return // 자산 이미지 크기 및 배치 수정
