@@ -13,7 +13,7 @@ import 'package:growpuang/view/community_page/written_post_page.dart';
 import 'package:growpuang/view/widget/appBar.dart';
 
 class CommunityScreen extends StatefulWidget {
-  const CommunityScreen({Key? key}) : super(key: key);
+  const CommunityScreen({super.key});
 
   @override
   State<CommunityScreen> createState() => _CommunityScreenState();
@@ -53,8 +53,6 @@ class _CommunityScreenState extends State<CommunityScreen> {
       }
     }
     lineEndOptList[0] = postListController.postList.length - 1;
-    print(lineStartOptList);
-    print(lineEndOptList);
 
     postListController.initSortOpt();
     super.initState();
@@ -65,7 +63,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          appBar(),
+          const appBar(),
           SingleChildScrollView(
             child: Column(
               children: [
@@ -118,7 +116,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                           padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                           child: Row(
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.menu,
                                 color: communityMainColor,
                               ),
@@ -151,32 +149,30 @@ class _CommunityScreenState extends State<CommunityScreen> {
                             ],
                           ),
                         ),
-                        Container(
-                          child: TextButton(
-                            onPressed: () async {
-                              //기다리는 동안 로딩창 띄우기
-                              loadingDialog(context);
+                        TextButton(
+                          onPressed: () async {
+                            //기다리는 동안 로딩창 띄우기
+                            loadingDialog(context);
 
-                              await postListController.readPostData();
+                            await postListController.readPostData();
 
-                              //화면 이동 전, 로딩 다이어로그 pop!
-                              Navigator.of(context, rootNavigator: true).pop();
+                            //화면 이동 전, 로딩 다이어로그 pop!
+                            Navigator.of(context, rootNavigator: true).pop();
 
-                              //새로고침을 위하여 기존 화면 스택을 날리고 다시 시작함
-                              Navigator.pushNamedAndRemoveUntil(
-                                  context, '/', (_) => false);
-                              Navigator.pushReplacement(
+                            //새로고침을 위하여 기존 화면 스택을 날리고 다시 시작함
+                            Navigator.pushNamedAndRemoveUntil(
+                                context, '/', (_) => false);
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MainPage()),
+                            );
+                            Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => MainPage()),
-                              );
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => CommunityScreen()));
-                            },
-                            child: Icon(Icons.refresh_rounded),
-                          ),
+                                    builder: (context) => const CommunityScreen()));
+                          },
+                          child: const Icon(Icons.refresh_rounded),
                         ),
                       ],
                     ),
@@ -267,7 +263,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                                                   ),
                                                   Expanded(
                                                     child: Text(
-                                                      '${postListController.postList[i].postTitle}',
+                                                      postListController.postList[i].postTitle,
                                                       style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.w500,
@@ -289,7 +285,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                                                     margin: EdgeInsets.fromLTRB(
                                                         0, 0, 2.w, 0),
                                                     height: 32.h,
-                                                    child: Icon(Icons
+                                                    child: const Icon(Icons
                                                         .chat_bubble_outline),
                                                   ),
                                                   Text(
@@ -304,7 +300,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                                                     margin: EdgeInsets.fromLTRB(
                                                         8.w, 0, 2.w, 0),
                                                     height: 32.h,
-                                                    child: Icon(Icons
+                                                    child: const Icon(Icons
                                                         .thumb_up_alt_outlined),
                                                   ),
                                                   Text(
@@ -317,14 +313,12 @@ class _CommunityScreenState extends State<CommunityScreen> {
                                                   ),
                                                 ],
                                               ),
-                                              Container(
-                                                child: Text(
-                                                  postListController
-                                                      .postList[i].postWriter,
-                                                  style: TextStyle(
-                                                    fontWeight: FontWeight.w300,
-                                                    fontSize: 13.sp,
-                                                  ),
+                                              Text(
+                                                postListController
+                                                    .postList[i].postWriter,
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.w300,
+                                                  fontSize: 13.sp,
                                                 ),
                                               ),
                                             ],
@@ -333,8 +327,6 @@ class _CommunityScreenState extends State<CommunityScreen> {
                                       ),
                                     ),
                                     onTap: () {
-                                      print(postListController.postList.length);
-                                      print(i);
 
                                       Navigator.push(
                                         context,
@@ -369,10 +361,6 @@ class _CommunityScreenState extends State<CommunityScreen> {
                 fit: BoxFit.fill,
                 child: FloatingActionButton(
                   backgroundColor: communityMainColor,
-                  child: Icon(
-                    Icons.home,
-                    color: whiteTextColor,
-                  ),
                   elevation: 5,
                   onPressed: () {
                     //새로고침을 위하여 기존 화면 스택을 날리고 다시 시작함
@@ -383,6 +371,10 @@ class _CommunityScreenState extends State<CommunityScreen> {
                       MaterialPageRoute(builder: (context) => MainPage()),
                     );
                   },
+                  child: const Icon(
+                    Icons.home,
+                    color: whiteTextColor,
+                  ),
                 ),
               ),
             ),
@@ -392,19 +384,19 @@ class _CommunityScreenState extends State<CommunityScreen> {
                 fit: BoxFit.fill,
                 child: FloatingActionButton(
                   backgroundColor: communityMainColor,
-                  child: Icon(
-                    Icons.border_color,
-                    color: whiteTextColor,
-                  ),
                   elevation: 5,
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => NewPostPage(),
+                        builder: (context) => const NewPostPage(),
                       ),
                     );
                   },
+                  child: const Icon(
+                    Icons.border_color,
+                    color: whiteTextColor,
+                  ),
                 ),
               ),
             ),

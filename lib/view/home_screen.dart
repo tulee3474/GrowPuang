@@ -9,6 +9,8 @@ import 'package:growpuang/model/loading_dialog.dart';
 import 'package:growpuang/view/community_screen.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -26,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.all(8.0),
           child: Text(
             languageController.appBarText,
-            style: TextStyle(fontSize: 18),
+            style: const TextStyle(fontSize: 18),
           ),
         ),
       ),
@@ -34,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
-            Spacer(),
+            const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -42,7 +44,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     IconButton(
                       onPressed: () {
-                        print("전공 퀴즈");
                         //전공 퀴즈 페이지 들어가서 세팅 - 페이지 안에서 직접 세팅하는 것이 맞을 것이라고 판단하였음
                         personalController.knowledgeQuizResultList = [
                           true,
@@ -76,7 +77,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     IconButton(
                       onPressed: () {
-                        print("참여 활동");
                         //참여활동 페이지 들어가서 세팅 - 페이지 안에서 직접 세팅하는 것이 맞을 것이라고 판단하였음
 
                       },
@@ -107,8 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         loadingDialog(context);
 
                         //posts가 비어있을때(첫 호출때만 데이터 로딩)
-                        print(postListController.postList);
-                        if (postListController.postList.length == 0) {
+                        if (postListController.postList.isEmpty) {
                           await postListController.readPostData();
                         }
 
@@ -118,11 +117,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => CommunityScreen(),
+                            builder: (context) => const CommunityScreen(),
                           ),
                         );
 
-                        print('커뮤니티 페이지로 넘어 갑니다');
                       },
                       icon: Image.asset(
                         'assets/사교지수.png',
@@ -150,7 +148,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     IconButton(
                       onPressed: () {
-                        print("도움말");
                         // TODO 다이어로그 띄워서 도움말 표시
                       },
                       icon: Image.asset(
@@ -187,9 +184,8 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 foo() async {
-  FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  print("asd");
-  await _firestore.collection("cars").doc("123456789").set({
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+  await firestore.collection("cars").doc("123456789").set({
     "brand": "Genesis",
     "name": "G70",
     "price": 5000,
