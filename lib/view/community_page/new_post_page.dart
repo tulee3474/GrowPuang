@@ -1,6 +1,4 @@
-import 'dart:ffi';
 
-import 'package:flutter/services.dart';
 import 'package:growpuang/controller/language_controller.dart';
 import 'package:growpuang/controller/post_list_controller.dart';
 import 'package:growpuang/controller/personal_contoller.dart';
@@ -10,13 +8,12 @@ import 'package:flutter/material.dart';
 import 'package:growpuang/class/post.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:growpuang/styles.dart';
 import 'package:growpuang/view/community_screen.dart';
 import 'package:growpuang/view/widget/appBar.dart';
 
 class NewPostPage extends StatefulWidget {
-  NewPostPage();
+  const NewPostPage({super.key});
 
   @override
   _NewPostPageState createState() => _NewPostPageState();
@@ -98,68 +95,66 @@ class _NewPostPageState extends State<NewPostPage> {
                       SizedBox(
                         height: 10.h,
                       ),
-                      Container(
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SizedBox(
-                                width: 30.w,
-                              ),
-                              for (int i = 1;
-                                  i < postListController.sortList.length;
-                                  i++)
-                                Row(
-                                  children: [
-                                    TextButton(
-                                      // ignore: sort_child_properties_last
-                                      child: Text(
-                                        postListController.sortList[i],
-                                        style: TextStyle(
-                                          fontSize: 18.sp,
-                                          fontFamily: 'Inter',
-                                          //fontWeight: FontWeight.bold,
-                                          color: buttonTextColorList[i],
-                                        ),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              width: 30.w,
+                            ),
+                            for (int i = 1;
+                                i < postListController.sortList.length;
+                                i++)
+                              Row(
+                                children: [
+                                  TextButton(
+                                    // ignore: sort_child_properties_last
+                                    child: Text(
+                                      postListController.sortList[i],
+                                      style: TextStyle(
+                                        fontSize: 18.sp,
+                                        fontFamily: 'Inter',
+                                        //fontWeight: FontWeight.bold,
+                                        color: buttonTextColorList[i],
                                       ),
-                                      style: TextButton.styleFrom(
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(5.0),
-                                          ),
-                                          backgroundColor: buttonColorList[i]),
-                                      onPressed: () {
-                                        setState(
-                                          () {
-                                            //버튼 색 변환
-                                            for (int b = 0;
-                                                b <
-                                                    postListController
-                                                        .sortList.length;
-                                                b++) {
-                                              if (b != i) {
-                                                switchButtonColor(b, 0);
-                                                switchButtonTextColor(b, 0);
-                                              } else {
-                                                switchButtonColor(b, 1);
-                                                switchButtonTextColor(b, 1);
-                                              }
-                                            }
-
-                                            //_sortOpt 선택
-                                            _sortOpt = i;
-                                          },
-                                        );
-                                      },
                                     ),
-                                    SizedBox(
-                                      width: 20.w,
-                                    )
-                                  ],
-                                ),
-                            ],
-                          ),
+                                    style: TextButton.styleFrom(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(5.0),
+                                        ),
+                                        backgroundColor: buttonColorList[i]),
+                                    onPressed: () {
+                                      setState(
+                                        () {
+                                          //버튼 색 변환
+                                          for (int b = 0;
+                                              b <
+                                                  postListController
+                                                      .sortList.length;
+                                              b++) {
+                                            if (b != i) {
+                                              switchButtonColor(b, 0);
+                                              switchButtonTextColor(b, 0);
+                                            } else {
+                                              switchButtonColor(b, 1);
+                                              switchButtonTextColor(b, 1);
+                                            }
+                                          }
+
+                                          //_sortOpt 선택
+                                          _sortOpt = i;
+                                        },
+                                      );
+                                    },
+                                  ),
+                                  SizedBox(
+                                    width: 20.w,
+                                  )
+                                ],
+                              ),
+                          ],
                         ),
                       ),
                       SizedBox(height: 12.h),
@@ -269,7 +264,7 @@ class _NewPostPageState extends State<NewPostPage> {
                         ),
                         child: TextField(
                           controller: postContentController,
-                          textAlignVertical: TextAlignVertical(y: -1.0),
+                          textAlignVertical: const TextAlignVertical(y: -1.0),
                           maxLines: 6,
                           maxLength: 200,
                           decoration: InputDecoration(
@@ -301,18 +296,10 @@ class _NewPostPageState extends State<NewPostPage> {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(16.0),
-                      child: Container(
+                      child: SizedBox(
                         width: 140.w,
                         height: 40.h,
                         child: TextButton(
-                          child: Text(
-                            languageController.communityNewPostRegister,
-                            style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 18.sp,
-                              color: whiteTextColor,
-                            ),
-                          ),
                           style: TextButton.styleFrom(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(5.0),
@@ -327,7 +314,7 @@ class _NewPostPageState extends State<NewPostPage> {
                                 context: context,
                                 builder: (BuildContext context) {
                                   Future.delayed(
-                                    Duration(seconds: 1),
+                                    const Duration(seconds: 1),
                                     () {
                                       Navigator.of(context, rootNavigator: true)
                                           .pop();
@@ -356,9 +343,7 @@ class _NewPostPageState extends State<NewPostPage> {
                             } else {
                               setState(() {
                                 postListController.postList.add(Post(
-                                    postTitleController.text +
-                                        ' | ' +
-                                        postTitleController2.text,
+                                    '${postTitleController.text} | ${postTitleController2.text}',
                                     postListController.postList.last.postNum +
                                         1,
                                     personalController.userName,
@@ -371,9 +356,7 @@ class _NewPostPageState extends State<NewPostPage> {
                                     postContentController.text,
                                     _sortOpt));
                                 fb_add_post(
-                                    postTitleController.text +
-                                        ' | ' +
-                                        postTitleController2.text,
+                                    '${postTitleController.text} | ${postTitleController2.text}',
                                     postListController
                                         .postList.last.postNum, //이미 넣었으니깐.
                                     postListController.postList,
@@ -400,9 +383,17 @@ class _NewPostPageState extends State<NewPostPage> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => CommunityScreen()));
+                                      builder: (context) => const CommunityScreen()));
                             }
                           },
+                          child: Text(
+                            languageController.communityNewPostRegister,
+                            style: TextStyle(
+                              fontFamily: 'Inter',
+                              fontSize: 18.sp,
+                              color: whiteTextColor,
+                            ),
+                          ),
                         ),
                       ),
                     ),
