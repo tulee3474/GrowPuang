@@ -15,8 +15,8 @@ class MainPage extends StatelessWidget {
   final personalController = Get.put(PersonalController());
 
   MainPage({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -41,13 +41,11 @@ class MainPage extends StatelessWidget {
                 child: Column(
                   children: [
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: Text(
-                        personalController.option1 +
-                            ' ' +
-                            personalController.option2,
+                        '${personalController.option1} ${personalController.option2}',
                         style: TextStyle(
-                          color: Color(0xFF143264),
+                          color: const Color(0xFF143264),
                           fontSize: 30.sp,
                           fontFamily: 'YourFontFamily',
                           fontWeight: FontWeight.bold,
@@ -130,12 +128,12 @@ class MainPage extends StatelessWidget {
   TableCell buildTableCell(String label) {
     return TableCell(
       child: Container(
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         alignment: Alignment.center,
         child: Text(
           label,
           style: TextStyle(
-            color: Color(0xFF143264),
+            color: const Color(0xFF143264),
             fontSize: 20.sp,
             fontFamily: 'YourFontFamily',
             fontWeight: FontWeight.bold,
@@ -148,13 +146,13 @@ class MainPage extends StatelessWidget {
   TableCell buildProgressBarTableCell(int value, int total) {
     return TableCell(
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 0.0),
+        padding: const EdgeInsets.symmetric(horizontal: 0.0),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(30.0),
           child: LinearProgressIndicator(
             minHeight: 20.0.h,
             value: value / total,
-            valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF143264)),
+            valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFF143264)),
           ),
         ),
       ),
@@ -165,11 +163,11 @@ class MainPage extends StatelessWidget {
     return TableCell(
       child: Container(
         alignment: Alignment.center,
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         child: Text(
           text,
           style: TextStyle(
-            color: Color(0xFF143264),
+            color: const Color(0xFF143264),
             fontSize: 20.sp,
             fontFamily: 'YourFontFamily',
             fontWeight: FontWeight.bold,

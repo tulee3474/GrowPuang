@@ -32,7 +32,7 @@ class SubmitErrorDialog extends StatelessWidget {
               ),
               Text(
                 languageController.submitError,
-                style: TextStyle(fontSize: 20.sp, color: Color(0xFF143264)),
+                style: TextStyle(fontSize: 20.sp, color: const Color(0xFF143264)),
               ),
               const Icon(
                 Icons.warning_amber_rounded,

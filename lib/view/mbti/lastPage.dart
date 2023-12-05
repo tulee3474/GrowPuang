@@ -4,9 +4,6 @@ import 'package:get/get.dart';
 import 'package:growpuang/controller/language_controller.dart';
 import 'package:growpuang/controller/personal_contoller.dart';
 import 'package:growpuang/mainPage.dart';
-import 'package:get/get.dart';
-import 'package:growpuang/controller/language_controller.dart';
-import 'package:growpuang/view/widget/appBar.dart';
 
 import '../widget/first_appBar.dart';
 
@@ -19,12 +16,11 @@ class lastPage extends StatelessWidget {
   final String pick_img;
 
   lastPage(
-      {Key? key,
+      {super.key,
       required this.question,
       required this.pick_img,
       required this.option1,
-      required this.option2})
-      : super(key: key);
+      required this.option2});
 
   @override
   Widget build(BuildContext context) {
@@ -42,11 +38,11 @@ class lastPage extends StatelessWidget {
               child: Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Text(
                       question,
                       style: TextStyle(
-                        color: Color(0xFF143264),
+                        color: const Color(0xFF143264),
                         fontSize: 30.sp,
                         fontFamily: 'YourFontFamily',
                         fontWeight: FontWeight.bold,
@@ -69,12 +65,9 @@ class lastPage extends StatelessWidget {
 
                   SizedBox(height: 20.h),
                   Text(
-                    option1 +
-                        ' ' +
-                        option2 +
-                        (languageController.language == '한국어' ? '입니다' : ''),
+                    '$option1 $option2${languageController.language == '한국어' ? '입니다' : ''}',
                     style: TextStyle(
-                      color: Color(0xFF143264),
+                      color: const Color(0xFF143264),
                       fontSize: 30.sp,
                       fontFamily: 'YourFontFamily',
                       fontWeight: FontWeight.bold,
@@ -112,7 +105,7 @@ class lastPage extends StatelessWidget {
                           child: Text(
                             'Next >',
                             style: TextStyle(
-                              color: Color(0xFF143264),
+                              color: const Color(0xFF143264),
                               fontSize: 30.sp,
                               fontFamily: 'YourFontFamily',
                               fontWeight: FontWeight.bold,

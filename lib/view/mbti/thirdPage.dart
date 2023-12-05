@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:growpuang/view/widget/appBar.dart';
 import 'package:growpuang/view/widget/mbti_diamond.dart';
 import '../widget/first_appBar.dart';
 import 'fourthPage.dart';
@@ -27,7 +26,7 @@ class ThirdPage extends StatelessWidget {
                     ? '나는 어떤일을 할 때?'
                     : 'When I do something?',
                 style: TextStyle(
-                  color: Color(0xFF143264),
+                  color: const Color(0xFF143264),
                   fontSize: 30.sp,
                   fontFamily: 'YourFontFamily',
                   fontWeight: FontWeight.bold,
@@ -63,14 +62,14 @@ class ThirdPage extends StatelessWidget {
                 width: double.infinity,
                 height: 130.h,
                 decoration: BoxDecoration(
-                  color: Color(0xFF143264),
+                  color: const Color(0xFF143264),
                   borderRadius: BorderRadius.circular(15),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey.withOpacity(0.5),
                       spreadRadius: 2,
                       blurRadius: 5,
-                      offset: Offset(0, 3),
+                      offset: const Offset(0, 3),
                     ),
                   ],
                 ),
@@ -121,14 +120,14 @@ class ThirdPage extends StatelessWidget {
                 width: double.infinity,
                 height: 130.h,
                 decoration: BoxDecoration(
-                  color: Color(0xFF143264),
+                  color: const Color(0xFF143264),
                   borderRadius: BorderRadius.circular(15),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey.withOpacity(0.5),
                       spreadRadius: 2,
                       blurRadius: 5,
-                      offset: Offset(0, 3),
+                      offset: const Offset(0, 3),
                     ),
                   ],
                 ),

@@ -3,9 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:growpuang/controller/personal_contoller.dart';
 import 'package:growpuang/view/mbti/firstPage.dart';
-import 'package:growpuang/view/widget/appBar_login.dart';
 import 'package:growpuang/view/login/SignUpPage.dart';
-import '../widget/end_dialog.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -58,7 +56,7 @@ class _LogInPageState extends State<LogInPage> {
                             "Log In",
                             style: TextStyle(
                               fontSize: 20.sp,
-                              color: Color(0xFF314C07),
+                              color: const Color(0xFF314C07),
                               fontFamily: 'YourFontFamily',
                               fontWeight: FontWeight.w300,
                             ),
@@ -80,7 +78,7 @@ class _LogInPageState extends State<LogInPage> {
                             "Sign up",
                             style: TextStyle(
                               fontSize: 20.sp,
-                              color: Color(0xFFB7B7B7),
+                              color: const Color(0xFFB7B7B7),
                               fontFamily: 'YourFontFamily',
                               fontWeight: FontWeight.w700,
                             ),
@@ -134,14 +132,14 @@ class _LogInPageState extends State<LogInPage> {
                               context: context,
                               builder: (BuildContext context) {
                                 return AlertDialog(
-                                  title: Text("입력 오류 : Input Error"),
-                                  content: Text("아이디 또는 비밀번호를 입력하세요.\nPlease enter your ID or password."),
+                                  title: const Text("입력 오류 : Input Error"),
+                                  content: const Text("아이디 또는 비밀번호를 입력하세요.\nPlease enter your ID or password."),
                                   actions: [
                                     TextButton(
                                       onPressed: () {
                                         Navigator.of(context).pop();
                                       },
-                                      child: Text("확인"),
+                                      child: const Text("확인"),
                                     ),
                                   ],
                                 );
@@ -153,14 +151,14 @@ class _LogInPageState extends State<LogInPage> {
                               context: context,
                               builder: (BuildContext context) {
                                 return AlertDialog(
-                                  title: Text("입력 오류 : Input Error"),
-                                  content: Text("올바른 이메일 형식이 아닙니다.\nPlease enter a valid email address."),
+                                  title: const Text("입력 오류 : Input Error"),
+                                  content: const Text("올바른 이메일 형식이 아닙니다.\nPlease enter a valid email address."),
                                   actions: [
                                     TextButton(
                                       onPressed: () {
                                         Navigator.of(context).pop();
                                       },
-                                      child: Text("확인"),
+                                      child: const Text("확인"),
                                     ),
                                   ],
                                 );
@@ -181,13 +179,10 @@ class _LogInPageState extends State<LogInPage> {
                                 var read = ReadController();
 
                                 token = FirebaseAuth.instance.currentUser?.uid;
-                                print(token!);
-                                print("!@31");
 
-                                personalController.userId = token;
+                                personalController.userId = token!;
                                 personalController.userName = await read.fb_read_userName(token);
 
-                                print("!@31");
                                 // Successfully logged in
                                 _emailController.clear();
                                 _passwordController.clear();
@@ -202,14 +197,13 @@ class _LogInPageState extends State<LogInPage> {
                                 );
                               }
                             } catch (e) {
-                              print(e);
                               // 로그인 실패 시 알림 창 표시
                               // ignore: use_build_context_synchronously
                               showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
                                   return AlertDialog(
-                                    title: Text("로그인 실패 : Login failed "),
+                                    title: const Text("로그인 실패 : Login failed "),
                                     content: const Text(
                                         "사용자 정보가 일치하지 않습니다.\nUser information does not match."),
                                     actions: [
@@ -217,7 +211,7 @@ class _LogInPageState extends State<LogInPage> {
                                         onPressed: () {
                                           Navigator.of(context).pop();
                                         },
-                                        child: Text("확인"),
+                                        child: const Text("확인"),
                                       ),
                                     ],
                                   );

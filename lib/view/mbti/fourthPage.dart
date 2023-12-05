@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:growpuang/controller/language_controller.dart';
-import 'package:growpuang/view/widget/appBar.dart';
 import 'package:growpuang/view/widget/mbti_diamond.dart';
 import '../widget/first_appBar.dart';
 import 'fifthPage.dart';
@@ -16,11 +15,10 @@ class FourthPage extends StatelessWidget {
   final String option2;
 
   FourthPage(
-      {Key? key,
+      {super.key,
       required this.question,
       required this.option1,
-      required this.option2})
-      : super(key: key);
+      required this.option2});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +35,7 @@ class FourthPage extends StatelessWidget {
               child: Text(
                 question,
                 style: TextStyle(
-                  color: Color(0xFF143264),
+                  color: const Color(0xFF143264),
                   fontSize: 30.sp,
                   fontFamily: 'YourFontFamily',
                   fontWeight: FontWeight.bold,
@@ -54,7 +52,6 @@ class FourthPage extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 // Option 1 버튼을 눌렀을 때 수행할 작업을 정의하세요.
-                print('Option 1을 선택했습니다.');
                 // 여기에서 다음 질문 또는 동작을 정의할 수 있습니다.
                 Navigator.push(
                   context,
@@ -78,14 +75,14 @@ class FourthPage extends StatelessWidget {
                 width: double.infinity,
                 height: 130.h,
                 decoration: BoxDecoration(
-                  color: Color(0xFF143264),
+                  color: const Color(0xFF143264),
                   borderRadius: BorderRadius.circular(15),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey.withOpacity(0.5),
                       spreadRadius: 2,
                       blurRadius: 5,
-                      offset: Offset(0, 3),
+                      offset: const Offset(0, 3),
                     ),
                   ],
                 ),
@@ -115,7 +112,6 @@ class FourthPage extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 // Option 2 버튼을 눌렀을 때 수행할 작업을 정의하세요.
-                print('Option 2를 선택했습니다.');
 
                 // 여기에서 다음 질문 또는 동작을 정의할 수 있습니다.
                 Navigator.push(
@@ -139,14 +135,14 @@ class FourthPage extends StatelessWidget {
                 width: double.infinity,
                 height: 130.h,
                 decoration: BoxDecoration(
-                  color: Color(0xFF143264),
+                  color: const Color(0xFF143264),
                   borderRadius: BorderRadius.circular(15),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey.withOpacity(0.5),
                       spreadRadius: 2,
                       blurRadius: 5,
-                      offset: Offset(0, 3),
+                      offset: const Offset(0, 3),
                     ),
                   ],
                 ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:growpuang/view/widget/appBar.dart';
 import 'package:growpuang/view/widget/mbti_diamond.dart';
 
 import '../widget/first_appBar.dart';
@@ -9,7 +8,7 @@ import 'secondPage.dart';
 String selectedLanguage = '한국어';
 
 class firstPage extends StatelessWidget {
-  const firstPage({Key? key, required this.title}) : super(key: key);
+  const firstPage({super.key, required this.title});
 
   final String title;
 
@@ -45,7 +44,7 @@ class firstPage extends StatelessWidget {
                     child: Text(
                       'Start >',
                       style: TextStyle(
-                        color: Color(0xFF143264),
+                        color: const Color(0xFF143264),
                         fontSize: 40.sp,
                         fontFamily: 'YourFontFamily',
                         fontWeight: FontWeight.bold,

@@ -17,7 +17,7 @@ import 'package:get/get.dart';
 import '../../mainPage.dart';
 
 class QuizPageMain extends StatefulWidget {
-  QuizPageMain({super.key});
+  const QuizPageMain({super.key});
 
   @override
   State<QuizPageMain> createState() => _QuizPageMainState();
@@ -63,7 +63,7 @@ class _QuizPageMainState extends State<QuizPageMain> {
     });
   }
 
-  int _quizIndex = 0;
+  final int _quizIndex = 0;
   int selectedIndex = 7;
 
   @override
@@ -102,7 +102,7 @@ class _QuizPageMainState extends State<QuizPageMain> {
                           // questions[_questionIndex]['questionText'] as String,
                           style: TextStyle(
                             fontSize: 20.sp,
-                            color: Color(0xFF143264),
+                            color: const Color(0xFF143264),
                             fontFamily: 'YourFontFamily',
                             fontWeight: FontWeight.w700,
                           ),
@@ -128,7 +128,7 @@ class _QuizPageMainState extends State<QuizPageMain> {
                                 return Container(
                                   alignment: Alignment.center,
                                   color: Colors.white.withOpacity(0.5),
-                                  child: Container(
+                                  child: SizedBox(
                                     width: 200.w,
                                     child: Text(
                                       answer['text'] as String,
@@ -161,9 +161,9 @@ class _QuizPageMainState extends State<QuizPageMain> {
                                   child: Container(
                                     alignment: Alignment.center,
                                     color: selectedQuiz == answer['text']
-                                        ? Color(0xFF143264)
+                                        ? const Color(0xFF143264)
                                         : Colors.white,
-                                    child: Container(
+                                    child: SizedBox(
                                       width: 200.w,
                                       child: Text(
                                         answer['text'] as String,
@@ -171,7 +171,7 @@ class _QuizPageMainState extends State<QuizPageMain> {
                                           fontSize: 18.sp,
                                           color: selectedQuiz == answer['text']
                                               ? Colors.white
-                                              : Color(0xFF143264),
+                                              : const Color(0xFF143264),
                                           // fontWeight: FontWeight.w300,
                                           // fontFamily: 'YourFontFamily',
                                         ),
@@ -197,9 +197,9 @@ class _QuizPageMainState extends State<QuizPageMain> {
                                 );
                               },
                               child: Text(
-                                "< " + languageController.goHome,
+                                "< ${languageController.goHome}",
                                 style: TextStyle(
-                                  color: Color(0xFF143264),
+                                  color: const Color(0xFF143264),
                                   fontSize: 18.sp,
                                   fontFamily: 'YourFontFamily',
                                 ),
@@ -214,7 +214,7 @@ class _QuizPageMainState extends State<QuizPageMain> {
                                       barrierDismissible: true, // 바깥 영역 터치시 닫을지 여부
                                       builder: (BuildContext context) {
                                         Future.delayed(
-                                          Duration(seconds: 1),
+                                          const Duration(seconds: 1),
                                               () {
                                             Navigator.of(context,
                                                 rootNavigator: true)
@@ -230,7 +230,7 @@ class _QuizPageMainState extends State<QuizPageMain> {
                               child: Text(
                                 languageController.takeSub,
                                 style: TextStyle(
-                                  color: Color(0xFF143264),
+                                  color: const Color(0xFF143264),
                                   fontSize: 18.sp,
                                   fontFamily: 'YourFontFamily',
                                 ),
@@ -255,7 +255,7 @@ class _QuizPageMainState extends State<QuizPageMain> {
                   Text(
                     languageController.intellect,
                     style: TextStyle(
-                      color: Color(0xFF143264),
+                      color: const Color(0xFF143264),
                       fontSize: 20.sp,
                       fontFamily: 'YourFontFamily',
                     ),
@@ -263,7 +263,7 @@ class _QuizPageMainState extends State<QuizPageMain> {
                   SizedBox(
                     width: 20.w,
                   ),
-                  Container(
+                  SizedBox(
                     width: 200.w,
                     child: ClipRRect(
                       borderRadius:
@@ -272,7 +272,7 @@ class _QuizPageMainState extends State<QuizPageMain> {
                         minHeight: 20.0.h,
                         value: personalController.intellectScore / 30,
                         // 게이지 바의 값 (0.0에서 1.0 사이)
-                        valueColor: AlwaysStoppedAnimation<Color>(
+                        valueColor: const AlwaysStoppedAnimation<Color>(
                           Color(0xFF143264),
                         ), // 게이지 바 색상
                       ),
@@ -283,7 +283,7 @@ class _QuizPageMainState extends State<QuizPageMain> {
                     '${personalController.intellectScore}/30',
                     // 원하는 비율로 변경
                     style: TextStyle(
-                      color: Color(0xFF143264),
+                      color: const Color(0xFF143264),
                       fontSize: 20.sp,
                       fontFamily: 'YourFontFamily',
                     ),

@@ -18,7 +18,7 @@ class QuizPagePl extends StatefulWidget {
 }
 
 class _QuizPagePlState extends State<QuizPagePl> {
-  String? selectedAnswer = null;
+  String? selectedAnswer;
   late int addScore;
   late List<Map<String, Object>> questions = [
     {
@@ -32,7 +32,7 @@ class _QuizPagePlState extends State<QuizPagePl> {
     // 다른 퀴즈들 추가 가능
   ];
 
-  int _questionIndex = 0;
+  final int _questionIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +55,7 @@ class _QuizPagePlState extends State<QuizPagePl> {
                       questions[_questionIndex]['questionText'] as String,
                       style: TextStyle(
                           fontSize: 20.sp,
-                          color: Color(0xFF143264),
+                          color: const Color(0xFF143264),
                           fontWeight: FontWeight.w700),
                       textAlign: TextAlign.center,
                     ),
@@ -74,23 +74,23 @@ class _QuizPagePlState extends State<QuizPagePl> {
                           });
                         },
                         child: Container(
-                          padding: EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(10.0),
                           margin: EdgeInsets.symmetric(
                               vertical: 5.h, horizontal: 10.h),
                           color: selectedAnswer == answer['text']
-                              ? Color(0xFF143264)
+                              ? const Color(0xFF143264)
                               : Colors.white,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              SizedBox(width: 10.0),
+                              const SizedBox(width: 10.0),
                               Text(
                                 answer['text'] as String,
                                 style: TextStyle(
                                     fontSize: 18.sp,
                                     color: selectedAnswer == answer['text']
                                         ? Colors.white
-                                        : Color(0xFF143264)),
+                                        : const Color(0xFF143264)),
                               ),
                             ],
                           ),
@@ -109,7 +109,7 @@ class _QuizPagePlState extends State<QuizPagePl> {
                                 barrierDismissible: true, // 바깥 영역 터치시 닫을지 여부
                                 builder: (BuildContext context) {
                                   Future.delayed(
-                                    Duration(seconds: 1),
+                                    const Duration(seconds: 1),
                                     () {
                                       Navigator.of(context, rootNavigator: true)
                                           .pop();
@@ -155,7 +155,7 @@ class _QuizPagePlState extends State<QuizPagePl> {
                         child: Text(
                           widget.languageController.submit,
                           style: TextStyle(
-                            color: Color(0xFF143264),
+                            color: const Color(0xFF143264),
                             fontSize: 20.sp,
                             fontFamily: 'YourFontFamily',
                           ),

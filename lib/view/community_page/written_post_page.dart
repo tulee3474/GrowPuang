@@ -17,7 +17,7 @@ class WrittenPostPage extends StatefulWidget {
   Post post = Post('', 0, '', '', [], [], [], [], 0, '', 1);
   int index = 0;
 
-  WrittenPostPage(this.post, this.index);
+  WrittenPostPage(this.post, this.index, {super.key});
 
   @override
   _WrittenPostPageState createState() => _WrittenPostPageState();
@@ -51,7 +51,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
 
     //만약 작성자가 게시글을 보고있는 경우, 수정이랑 삭제도 보여져야함'
     if (postController.post.postWriterUserId ==
-        personalController.userId as String) {
+        personalController.userId) {
       postController.threeDotsCommendList = [
         languageController.communityWrittenPostRefresh,
         languageController.communityWrittenPostReport,
@@ -139,7 +139,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
           appBar(),
           SingleChildScrollView(
             scrollDirection: Axis.vertical,
-            physics: AlwaysScrollableScrollPhysics(),
+            physics: const AlwaysScrollableScrollPhysics(),
             child: Column(
               children: [
                 Container(
@@ -191,7 +191,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                           padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                           child: Row(
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.menu,
                                 color: communityMainColor,
                               ),
@@ -209,46 +209,43 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                             ],
                           ),
                         ),
-                        Container(
-                          child: TextButton(
-                            onPressed: () async {
-                              //기다리는 동안 로딩창 띄우기
-                              loadingDialog(context);
+                        TextButton(
+                          onPressed: () async {
+                            //기다리는 동안 로딩창 띄우기
+                            loadingDialog(context);
 
-                              await postListController.readOnePostData(
-                                  postController.index,
-                                  postController.post.postNum);
+                            await postListController.readOnePostData(
+                                postController.index,
+                                postController.post.postNum);
 
-                              print("새로고침");
 
-                              //화면 이동 전, 로딩 다이어로그 pop!
-                              Navigator.of(context, rootNavigator: true).pop();
+                            //화면 이동 전, 로딩 다이어로그 pop!
+                            Navigator.of(context, rootNavigator: true).pop();
 
-                              //새로고침을 위하여 기존 화면 스택을 날리고 다시 시작함
-                              Navigator.pushNamedAndRemoveUntil(
-                                  context, '/', (_) => false);
-                              Navigator.pushReplacement(
+                            //새로고침을 위하여 기존 화면 스택을 날리고 다시 시작함
+                            Navigator.pushNamedAndRemoveUntil(
+                                context, '/', (_) => false);
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MainPage()),
+                            );
+
+                            Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => MainPage()),
-                              );
+                                    builder: (context) => const CommunityScreen()));
 
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => CommunityScreen()));
-
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => WrittenPostPage(
-                                      postController.post,
-                                      postController.index),
-                                ),
-                              );
-                            },
-                            child: Icon(Icons.refresh_rounded),
-                          ),
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => WrittenPostPage(
+                                    postController.post,
+                                    postController.index),
+                              ),
+                            );
+                          },
+                          child: const Icon(Icons.refresh_rounded),
                         ),
                       ],
                     ),
@@ -288,7 +285,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                         ),
                                         Expanded(
                                           child: Text(
-                                            '${postController.post.postTitle}',
+                                            postController.post.postTitle,
                                             style: TextStyle(
                                               fontWeight: FontWeight.w500,
                                               //letterSpacing: 2.w,
@@ -357,57 +354,51 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                Container(
-                                  child: TextButton(
-                                    child: Text(
-                                      languageController
-                                          .communityWrittenPostReport,
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w300,
-                                        color: mainTextColor,
-                                        fontFamily: 'Inter',
-                                        fontSize: 13.sp,
-                                      ),
+                                TextButton(
+                                  child: Text(
+                                    languageController
+                                        .communityWrittenPostReport,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w300,
+                                      color: mainTextColor,
+                                      fontFamily: 'Inter',
+                                      fontSize: 13.sp,
                                     ),
-                                    onPressed: () => postReport(),
                                   ),
+                                  onPressed: () => postReport(),
                                 ),
                                 postController.post.postWriterUserId ==
-                                        personalController.userId as String
-                                    ? Container(
-                                        child: TextButton(
-                                          child: Text(
-                                            languageController
-                                                .communityWrittenPostEdit,
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.w300,
-                                              color: mainTextColor,
-                                              fontFamily: 'Inter',
-                                              fontSize: 13.sp,
-                                            ),
-                                          ),
-                                          onPressed: () => modifyContent(),
+                                        personalController.userId
+                                    ? TextButton(
+                                      child: Text(
+                                        languageController
+                                            .communityWrittenPostEdit,
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w300,
+                                          color: mainTextColor,
+                                          fontFamily: 'Inter',
+                                          fontSize: 13.sp,
                                         ),
-                                      )
-                                    : SizedBox(),
+                                      ),
+                                      onPressed: () => modifyContent(),
+                                    )
+                                    : const SizedBox(),
                                 postController.post.postWriterUserId ==
-                                        personalController.userId as String
-                                    ? Container(
-                                        child: TextButton(
-                                          child: Text(
-                                            languageController
-                                                .communityWrittenPostDelete,
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.w300,
-                                              color: mainTextColor,
-                                              fontFamily: 'Inter',
-                                              fontSize: 13.sp,
-                                            ),
-                                          ),
-                                          onPressed: () => deletePost(),
+                                        personalController.userId
+                                    ? TextButton(
+                                      child: Text(
+                                        languageController
+                                            .communityWrittenPostDelete,
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w300,
+                                          color: mainTextColor,
+                                          fontFamily: 'Inter',
+                                          fontSize: 13.sp,
                                         ),
-                                      )
-                                    : SizedBox(),
+                                      ),
+                                      onPressed: () => deletePost(),
+                                    )
+                                    : const SizedBox(),
                               ],
                             ),
                           ),
@@ -427,7 +418,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                           Container(
                             margin: EdgeInsets.fromLTRB(0, 0, 2.w, 0),
                             height: 32.h,
-                            child: Icon(Icons.chat_bubble_outline),
+                            child: const Icon(Icons.chat_bubble_outline),
                           ),
                           Text(
                             '${postController.post.commentList.length}',
@@ -441,7 +432,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                             height: 32.h,
                             margin: EdgeInsets.fromLTRB(0, 0, 0, 10.h),
                             child: IconButton(
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.thumb_up_alt_outlined,
                                 color: mainTextColor,
                               ),
@@ -452,12 +443,12 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                               ),
                               onPressed: () {
                                 if (postController.post.recommendList.contains(
-                                    personalController.userId as String)) {
+                                    personalController.userId)) {
                                   showDialog(
                                     context: context,
                                     builder: (BuildContext context) {
                                       Future.delayed(
-                                        Duration(seconds: 1),
+                                        const Duration(seconds: 1),
                                         () {
                                           Navigator.of(context,
                                                   rootNavigator: true)
@@ -489,12 +480,12 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                     () {
                                       fb_add_recommend(
                                           postController.post.postNum,
-                                          personalController.userId as String,
+                                          personalController.userId,
                                           postController.post
                                               .recommendNum); // 좋아요 추가 - 게시글 제목, 누른사람, 기존 좋아요 개수
                                       postController.post.recommendNum++;
                                       postController.post.recommendList.add(
-                                          personalController.userId as String);
+                                          personalController.userId);
                                     },
                                   );
                                 }
@@ -549,8 +540,8 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                       ),
                                       if (postController.post
                                               .commentWriterUserIdList[i] ==
-                                          personalController.userId as String)
-                                        Container(
+                                          personalController.userId)
+                                        SizedBox(
                                           height: 32.h,
                                           child: TextButton(
                                             onPressed: () => deleteComment(i),
@@ -583,7 +574,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                             );
                           }),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                       ],
@@ -595,7 +586,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                       padding: const EdgeInsets.all(8.0),
                       child: Stack(
                         children: [
-                          Container(
+                          SizedBox(
                             height: 60.h,
                             child: TextField(
                               controller: commentController,
@@ -611,7 +602,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                 hintText: languageController.commentPlaceholder,
                                 border: OutlineInputBorder(
                                   borderSide:
-                                      BorderSide(color: mainBackgroundColor),
+                                      const BorderSide(color: mainBackgroundColor),
                                   borderRadius:
                                       BorderRadius.circular(12.0), // 둥근 테두리 설정
                                 ),
@@ -628,7 +619,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                     context: context,
                                     builder: (BuildContext context) {
                                       Future.delayed(
-                                        Duration(seconds: 1),
+                                        const Duration(seconds: 1),
                                         () {
                                           Navigator.of(context,
                                                   rootNavigator: true)
@@ -658,12 +649,11 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                 } else {
                                   setState(() {
                                     postController.post.commentWriterUserIdList
-                                        .add(personalController.userId
-                                            as String);
+                                        .add(personalController.userId);
                                     postController.post.commentList
                                         .add(commentController.text);
                                     postController.post.commentWriterList.add(
-                                        personalController.userName as String);
+                                        personalController.userName);
 
                                     fb_add_comment(
                                         postController.post.postNum,
@@ -733,19 +723,17 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                         )),
                     SizedBox(height: 20.h),
                     Expanded(
-                      child: Container(
-                        child: TextField(
-                          controller: reportController,
-                          maxLines: 3,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            label: Text(
-                              languageController.reportReasonPlaceholder,
-                              style: TextStyle(
-                                fontFamily: "Inter",
-                                //fontWeight: FontWeight.bold,
-                                fontSize: 18.sp,
-                              ),
+                      child: TextField(
+                        controller: reportController,
+                        maxLines: 3,
+                        decoration: InputDecoration(
+                          border: const OutlineInputBorder(),
+                          label: Text(
+                            languageController.reportReasonPlaceholder,
+                            style: TextStyle(
+                              fontFamily: "Inter",
+                              //fontWeight: FontWeight.bold,
+                              fontSize: 18.sp,
                             ),
                           ),
                         ),
@@ -777,7 +765,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                   context: context,
                                   builder: (BuildContext context) {
                                     Future.delayed(
-                                      Duration(seconds: 1),
+                                      const Duration(seconds: 1),
                                       () {
                                         Navigator.of(context,
                                                 rootNavigator: true)
@@ -846,7 +834,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                 width: 500.w,
                 child: Column(
                   children: [
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Text(languageController.postEdit,
                         style: TextStyle(
                           fontFamily: "Inter",
@@ -855,14 +843,14 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                         )),
                     SizedBox(height: 20.h),
                     Expanded(
-                      child: Container(
+                      child: SizedBox(
                         height: 200.h,
                         child: TextField(
                           controller: contentController,
                           maxLines: 6,
                           maxLength: 200,
                           decoration: InputDecoration(
-                            border: OutlineInputBorder(),
+                            border: const OutlineInputBorder(),
                             label: Text(
                               languageController.postEditContentPlaceholder,
                               style: TextStyle(
@@ -1001,7 +989,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => CommunityScreen()),
+                                      builder: (context) => const CommunityScreen()),
                                 );
                               },
                               child: Text(
@@ -1127,7 +1115,7 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => CommunityScreen()),
+                                      builder: (context) => const CommunityScreen()),
                                 );
                                 Navigator.push(
                                   context,

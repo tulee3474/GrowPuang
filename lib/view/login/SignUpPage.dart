@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:growpuang/view/login/LoginPage.dart';
-import 'package:growpuang/view/mbti/firstPage.dart';
-import 'package:growpuang/view/widget/appBar_login.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -11,7 +9,7 @@ import 'package:email_validator/email_validator.dart';
 import '../widget/end_dialog.dart';
 
 class SignUpPage extends StatefulWidget {
-  const SignUpPage({Key? key}) : super(key: key);
+  const SignUpPage({super.key});
 
   @override
   State<SignUpPage> createState() => _SignUpPageState();
@@ -66,7 +64,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               "Log In",
                               style: TextStyle(
                                 fontSize: 20.sp,
-                                color: Color(0xFFB7B7B7),
+                                color: const Color(0xFFB7B7B7),
                                 fontFamily: 'YourFontFamily',
                                 fontWeight: FontWeight.w300,
                               ),
@@ -81,7 +79,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               "Sign up",
                               style: TextStyle(
                                 fontSize: 20.sp,
-                                color: Color(0xFF314C07),
+                                color: const Color(0xFF314C07),
                                 fontFamily: 'YourFontFamily',
                                 fontWeight: FontWeight.w700,
                               ),
@@ -159,7 +157,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                         onPressed: () {
                                           Navigator.of(context).pop();
                                         },
-                                        child: Text("확인"),
+                                        child: const Text("확인"),
                                       ),
                                     ],
                                   );
@@ -179,7 +177,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                         onPressed: () {
                                           Navigator.of(context).pop();
                                         },
-                                        child: Text("확인"),
+                                        child: const Text("확인"),
                                       ),
                                     ],
                                   );
@@ -213,7 +211,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                                 saving = !emailExists;
                                               });
                                             },
-                                            child: Text("확인"),
+                                            child: const Text("확인"),
                                           ),
                                         ],
                                       );
