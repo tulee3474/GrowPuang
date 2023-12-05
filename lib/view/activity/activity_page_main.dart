@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:growpuang/controller/language_controller.dart';
 import 'package:growpuang/controller/personal_contoller.dart';
-import 'package:growpuang/view/widget/act_dialog.dart';
-import 'package:growpuang/view/widget/act_error_dialog.dart';
+import 'package:growpuang/view/widget/activity/act_dialog.dart';
+import 'package:growpuang/view/widget/activity/act_error_dialog.dart';
 import 'package:growpuang/view/widget/appBar.dart';
 import 'package:growpuang/view/widget/navigateBar.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'graduate_dialog.dart';
+import 'ending/graduate_dialog.dart';
 
 class appBar extends StatelessWidget {
   const appBar({super.key});
