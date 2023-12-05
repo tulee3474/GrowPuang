@@ -74,4 +74,4 @@ flutter test
 ### Speciality
 
 - check if you have a assets/config/.env file well
-
+- this project is only developed for android platform
