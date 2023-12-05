@@ -1,15 +1,11 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:growpuang/controller/personal_contoller.dart';
-import 'package:growpuang/model/get_device_unique_id.dart';
 import 'package:growpuang/styles.dart';
-import 'package:growpuang/view/home_screen.dart';
 import 'package:growpuang/view/login/LoginPage.dart';
-import 'package:growpuang/view/mbti/firstPage.dart';
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized(); // 추가
@@ -39,7 +35,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     ScreenUtil.init(context); //스크린유틸 초기화
     return ScreenUtilInit(
-      designSize: Size(570, 907),
+      designSize: const Size(570, 907),
       builder: (BuildContext context, child) => GetMaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
@@ -48,11 +44,11 @@ class MyApp extends StatelessWidget {
           pageTransitionsTheme: PageTransitionsTheme(
             builders: {
               for (var platform in TargetPlatform.values)
-                platform: NoTransitionsBuilder(),
+                platform: const NoTransitionsBuilder(),
             },
           ),
         ),
-        home: LogInPage(),
+        home: const LogInPage(),
         // const firstPage(title: 'Flutter Demo Home Page'),
         //getPages: pageRoutingController.makeNewTravelPageList,
       ),

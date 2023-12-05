@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -62,10 +61,7 @@ ThemeData lightColorTheme = ThemeData(
   fontFamily: 'NanumSquareNeo',
   brightness: Brightness.light,
   textTheme: lightTextTheme,
-  backgroundColor: mainBackgroundColor,
-  bottomAppBarColor: mainBackgroundColor,
   scaffoldBackgroundColor: mainBackgroundColor,
-  primarySwatch: generateMaterialColor(color: mainColor),
   appBarTheme: const AppBarTheme(
     color: mainBackgroundColor,
     systemOverlayStyle: SystemUiOverlayStyle(
@@ -73,7 +69,7 @@ ThemeData lightColorTheme = ThemeData(
       statusBarIconBrightness: Brightness.dark,
       statusBarBrightness: Brightness.light,
     ),
-  ),
+  ), bottomAppBarTheme: const BottomAppBarTheme(color: mainBackgroundColor), colorScheme: ColorScheme.fromSwatch(primarySwatch: generateMaterialColor(color: mainColor)).copyWith(background: mainBackgroundColor),
 );
 
 List<Color> buttonColorList = [
