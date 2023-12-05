@@ -10,7 +10,7 @@ import '../widget/mbti/FirstAppBar.dart';
 
 class GraduatedPuang extends StatelessWidget {
   final String endingPuang;
-  var job;
+  final dynamic job;
   GraduatedPuang({super.key, required this.endingPuang, required this.job});
 
   final personalController = Get.put(PersonalController());
@@ -20,115 +20,131 @@ class GraduatedPuang extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () async {
-        //뒤로가기를 못하게 합니다
-        bool shouldClose = (await showExitPopup(context)) as bool;
-        return shouldClose;
-      },
+      onWillPop: () async => await showExitPopup(context),
       child: Scaffold(
         appBar: null,
         body: Stack(
           children: [
-            FirstAppBar(),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Center(
-                child: SizedBox(
-                  width: 500.w,
-                  // height: 400.h,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        languageController.ending, //엔딩멘트
-                        style: TextStyle(
-                          color: const Color(0xFF143264),
-                          fontSize: 25.sp,
-                          fontFamily: 'YourFontFamily',
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      Image.asset(
-                        'assets/images/$endingPuang.png',
-                        width: 250.w,
-                        fit: BoxFit.fitWidth,
-                      ),
-                      SizedBox(
-                        height: 10.h,
-                      ),
-                      Text(
-                        job,
-                        style: TextStyle(
-                          color: const Color(0xFF143264),
-                          fontSize: 25.sp,
-                          fontFamily: 'YourFontFamily',
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          //값들 초기화
-                          //활동 리스트 초기화
-                          personalController.participateActList = [];
-                          //게시글 개수 초기화
-                          personalController.communityResult = 0;
-                          //푼 문제 초기화
-                          personalController.solveQuizList = [];
-                          //점수 초기화
-                          personalController.intellectScore = 0;
-                          personalController.hpScore = 30;
-                          postListController.postList = [];
-                          // personalController.progressValue=30;
-                          // 현재 화면을 스택에서 제거
-                          Navigator.of(context).pop();
-                          Navigator.of(context).pushAndRemoveUntil(
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  const FirstPage(title: 'Flutter Demo Home Page'),
-                              //NewScreen()은 새로운 시작화면입니다. 여기에 원하는 화면 위젯을 넣으세요.
-                            ),
-                            (Route<dynamic> route) => false,
-                          );
-                        },
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                languageController.restart,
-                                style: TextStyle(
-                                  color: const Color(0xFF143264),
-                                  fontSize: 20.sp,
-                                  fontFamily: 'YourFontFamily',
-                                ),
-                              ),
-                              const Icon(
-                                Icons.refresh,
-                                color: Color(0xFF143264),
-                              ),
-                            ]),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ),
+            const FirstAppBar(),
+            buildContent(context),
           ],
         ),
       ),
     );
   }
-  Future<Future> showExitPopup(BuildContext context) async {
-    return showDialog(
+
+  Future<bool> showExitPopup(BuildContext context) async {
+    return await showDialog(
       context: context,
-      builder: (BuildContext context) {
-        return EndDialog();
-      },
+      builder: (BuildContext context) => EndDialog(),
+    ) ?? false;
+  }
+
+  Widget buildContent(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Center(
+        child: SizedBox(
+          width: 500.w,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              buildEndingText(),
+              SizedBox(
+                height: 20.h,
+              ),
+              buildEndingImage(),
+              SizedBox(
+                height: 10.h,
+              ),
+              buildJobText(),
+              SizedBox(
+                height: 20.h,
+              ),
+              buildRestartButton(context),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Text buildEndingText() {
+    return Text(
+      languageController.ending,
+      style: TextStyle(
+        color: const Color(0xFF143264),
+        fontSize: 25.sp,
+        fontFamily: 'YourFontFamily',
+      ),
+      textAlign: TextAlign.center,
+    );
+  }
+
+  Image buildEndingImage() {
+    return Image.asset(
+      'assets/images/$endingPuang.png',
+      width: 250.w,
+      fit: BoxFit.fitWidth,
+    );
+  }
+
+  Text buildJobText() {
+    return Text(
+      job.toString(),
+      style: TextStyle(
+        color: const Color(0xFF143264),
+        fontSize: 25.sp,
+        fontFamily: 'YourFontFamily',
+        fontWeight: FontWeight.bold,
+      ),
+    );
+  }
+
+  GestureDetector buildRestartButton(BuildContext context) {
+    return GestureDetector(
+      onTap: () => restartApp(context),
+      child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              languageController.restart,
+              style: TextStyle(
+                color: const Color(0xFF143264),
+                fontSize: 20.sp,
+                fontFamily: 'YourFontFamily',
+              ),
+            ),
+            const Icon(
+              Icons.refresh,
+              color: Color(0xFF143264),
+            ),
+          ]),
+    );
+  }
+
+  void restartApp(BuildContext context) {
+    //값들 초기화
+    //활동 리스트 초기화
+    personalController.participateActList = [];
+    //게시글 개수 초기화
+    personalController.communityResult = 0;
+    //푼 문제 초기화
+    personalController.solveQuizList = [];
+    //점수 초기화
+    personalController.intellectScore = 0;
+    personalController.hpScore = 30;
+    postListController.postList = [];
+    // personalController.progressValue=30;
+    // 현재 화면을 스택에서 제거
+    Navigator.of(context).pop();
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(
+        builder: (context) =>
+        const FirstPage(title: 'Flutter Demo Home Page'),
+        //NewScreen()은 새로운 시작화면입니다. 여기에 원하는 화면 위젯을 넣으세요.
+      ),
+          (Route<dynamic> route) => false,
     );
   }
 }
