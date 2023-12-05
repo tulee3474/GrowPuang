@@ -72,7 +72,7 @@ class _LogInPageState extends State<LogInPage> {
           SizedBox(height: 20.h),
           _buildPasswordTextField(),
           SizedBox(height: 20.h),
-          _buildSignInButton(),
+          _buildLogInButton(),
         ],
       ),
     );
@@ -138,13 +138,13 @@ class _LogInPageState extends State<LogInPage> {
     );
   }
 
-  Widget _buildSignInButton() {
+  Widget _buildLogInButton() {
     return SizedBox(
       width: 500.w,
       child: ElevatedButton(
         onPressed: () async {
           // Call the authentication function here
-          _handleSignIn();
+          _handleLogIn();
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: const Color(0xFF99C958),
@@ -155,7 +155,7 @@ class _LogInPageState extends State<LogInPage> {
           shadowColor: Colors.black,
         ),
         child: Text(
-          "Sign in",
+          "Log in",
           style: TextStyle(
             fontSize: 20.sp,
             color: const Color(0xFF314C07),
@@ -167,7 +167,7 @@ class _LogInPageState extends State<LogInPage> {
     );
   }
 
-  void _handleSignIn() async {
+  void _handleLogIn() async {
     // 입력값이 비어 있는지 확인
     if (_emailController.text
         .trim()
