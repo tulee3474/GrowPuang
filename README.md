@@ -32,7 +32,7 @@ $ git clone https://github.com/tulee3474/GrowPuang.git
 2. Navigate to the project directory:
 
 ```
-cd your-flutter-project
+cd GrowPuang
 ```
 
 3. Install dependencies:
