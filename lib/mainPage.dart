@@ -30,9 +30,7 @@ class MainPage extends StatelessWidget {
         appBar: null,
         body: Stack(
           children: [
-            appBar(),
-
-
+            const appBar(),
             Positioned(
               left: 10.w,
               right: 10.w,
@@ -58,14 +56,7 @@ class MainPage extends StatelessWidget {
                       child: Align(
                         alignment: Alignment.topCenter,
                         child: GestureDetector(
-                          onTap: () {
-                            showDialog(
-                                context: context,
-                                barrierDismissible: true,
-                                builder: (BuildContext context) {
-                                  return GraduateDialog();
-                                });
-                          },
+                          onTap: () => showGraduateDialog(context),
                           child: Container(
                             width: 270.w,
                             height: 230.h,
@@ -111,6 +102,16 @@ class MainPage extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return EndDialog();
+      },
+    );
+  }
+
+  void showGraduateDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext context) {
+        return GraduateDialog();
       },
     );
   }
