@@ -359,9 +359,9 @@ class _NewPostPageState extends State<NewPostPage> {
                                     '${postTitleController.text} | ${postTitleController2.text}',
                                     postListController
                                         .postList.last.postNum, //이미 넣었으니깐.
-                                    postListController.postList,
-                                    postContentController.text,
                                     personalController.userName,
+                                    postContentController.text,
+                                    personalController.userId,
                                     _sortOpt); // 게시글 추가 - 게시글 제목, 게시글 넘버, 작성자, 게시글 내용
                               });
 
