@@ -34,8 +34,8 @@ class _SignUpPageState extends State<SignUpPage> {
       child: Scaffold(
         appBar: null,
         // resizeToAvoidBottomInset: false,
-        body: SingleChildScrollView(
-          child: Container(
+        body: Stack(
+          children:[ Container(
             width: double.infinity,
             // height: double.infinity,
             decoration: const BoxDecoration(
@@ -45,7 +45,7 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
             ),
             child: Container(
-              margin: EdgeInsets.fromLTRB(20.w, 380.h, 20.w, 190.h),
+              margin: EdgeInsets.fromLTRB(20.w, 380.h, 20.w, 130.h),
               padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: 20.h),
               color: Colors.white.withOpacity(0.5),
               child: Form(
@@ -227,7 +227,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
             ),
-          ),
+          ),]
         ),
       ),
     );

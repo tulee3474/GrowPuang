@@ -45,7 +45,7 @@ class _LogInPageState extends State<LogInPage> {
                 ),
               ),
               child: Container(
-                margin: EdgeInsets.fromLTRB(20.w, 380.h, 20.w, 230.h),
+                margin: EdgeInsets.fromLTRB(20.w, 380.h, 20.w, 210.h),
                 padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: 20.h),
                 color: Colors.white.withOpacity(0.5),
                 child: Column(
