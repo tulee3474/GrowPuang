@@ -13,12 +13,12 @@ class lastPage extends StatelessWidget {
   final String question;
   final String option1;
   final String option2;
-  final String pick_img;
+  final String pickImg;
 
   lastPage(
       {super.key,
       required this.question,
-      required this.pick_img,
+      required this.pickImg,
       required this.option1,
       required this.option2});
 
@@ -37,84 +37,13 @@ class lastPage extends StatelessWidget {
             child: Center(
               child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Text(
-                      question,
-                      style: TextStyle(
-                        color: const Color(0xFF143264),
-                        fontSize: 30.sp,
-                        fontFamily: 'YourFontFamily',
-                        fontWeight: FontWeight.bold,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-
-                  ),
-                  SizedBox(height: 20.h), // 원하는 여백 크기로 조정
-                  Container(
-                      width: 270.w, // 이미지 너비 조정
-                      height: 230.h,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/$pick_img'),
-                        fit: BoxFit.fitHeight,
-                      ),
-                    ),
-                  ),
-
+                  _buildText(question, 30.sp, FontWeight.bold),
                   SizedBox(height: 20.h),
-                  Text(
-                    '$option1 $option2${languageController.language == '한국어' ? '입니다' : ''}',
-                    style: TextStyle(
-                      color: const Color(0xFF143264),
-                      fontSize: 30.sp,
-                      fontFamily: 'YourFontFamily',
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+                  _buildImage('assets/images/$pickImg', 270.w, 230.h),
                   SizedBox(height: 20.h),
-                  GestureDetector(
-                    onTap: () {
-                      //여기서 controller에 할당하게 수정
-                      personalController.option1 = option1;
-                      personalController.option2 = option2;
-                      personalController.pick_img = pick_img;
-                      languageController.language = languageController.language;
-
-                      // 현재 화면을 스택에서 제거
-                      Navigator.of(context).pop();
-
-                      Navigator.of(context).pushAndRemoveUntil(
-                        MaterialPageRoute(
-                          builder: (context) => MainPage(),
-                          //NewScreen()은 새로운 시작화면입니다. 여기에 원하는 화면 위젯을 넣으세요.
-                        ),
-                        (Route<dynamic> route) => false,
-                      );
-                    },
-                    child: Align(
-                      alignment: Alignment.topCenter,
-                      child: Container(
-                        width: 200.w,
-                        decoration: const BoxDecoration(
-                          color: Colors.transparent,
-                          border: null,
-                        ),
-                        child: Center(
-                          child: Text(
-                            'Next >',
-                            style: TextStyle(
-                              color: const Color(0xFF143264),
-                              fontSize: 30.sp,
-                              fontFamily: 'YourFontFamily',
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                  _buildText('$option1 $option2${_getLanguageSuffix()}',
+                      30.sp, FontWeight.bold),
+                  SizedBox(height: 20.h),
                 ],
               ),
             ),
@@ -123,4 +52,84 @@ class lastPage extends StatelessWidget {
       ),
     );
   }
+
+
+  Widget _buildText(String text, double fontSize, FontWeight fontWeight) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: Text(
+        text,
+        style: TextStyle(
+          color: const Color(0xFF143264),
+          fontSize: fontSize,
+          fontFamily: 'YourFontFamily',
+          fontWeight: fontWeight,
+        ),
+        textAlign: TextAlign.center,
+      ),
+    );
+  }
+
+  Widget _buildImage(String imagePath, double width, double height) {
+    return Container(
+      width: width,
+      height: height,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(imagePath),
+          fit: BoxFit.fitHeight,
+        ),
+      ),
+    );
+  }
+
+  String _getLanguageSuffix() {
+    return languageController.language == '한국어' ? '입니다' : '';
+  }
+
+  Widget _buildNextButton(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        _updateControllersAndNavigate(context);
+      },
+      child: Align(
+        alignment: Alignment.topCenter,
+        child: Container(
+          width: 200.w,
+          decoration: const BoxDecoration(
+            color: Colors.transparent,
+            border: null,
+          ),
+          child: Center(
+            child: Text(
+              'Next >',
+              style: TextStyle(
+                color: const Color(0xFF143264),
+                fontSize: 30.sp,
+                fontFamily: 'YourFontFamily',
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _updateControllersAndNavigate(BuildContext context) {
+    personalController.option1 = option1;
+    personalController.option2 = option2;
+    personalController.pick_img = pickImg;
+    languageController.language = languageController.language;
+
+    Navigator.of(context).pop();
+
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(
+        builder: (context) => MainPage(),
+      ),
+          (Route<dynamic> route) => false,
+    );
+  }
+
 }

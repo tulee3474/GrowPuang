@@ -34,13 +34,9 @@ class FourthPage extends StatelessWidget {
           buildTitle(question),
           // 버튼 1 - Option 1
           OptionButton(
-            onTap: () => navigateToPage(context,
-              lastPage(
-                question: getQuestionText('당신이 졸업시킬 푸앙이는', 'The Puang you will graduate from is'),
-                option1: getOptionText('호기심 많은', 'curious'),
-                option2: getOptionText('푸앙이', 'puang'),
-                pick_img: '호기심-푸앙.png',
-              ),
+            onTap: () => navigateToLastPage(context,
+                getOptionText('호기심 많은', 'curious'),
+                '호기심-푸앙.png'
             ),
             topPosition: 570.h,
             buttonText: option1,

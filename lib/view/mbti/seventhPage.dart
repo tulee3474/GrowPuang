@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:growpuang/view/widget/mbti/MbtiDiamond.dart';
 import '../widget/mbti/CommonAppBar.dart';
-import '../widget/mbti/FirstAppBar.dart';
+import '../widget/mbti/OptionButton.dart';
+import '../widget/mbti/OptionFunction.dart';
 import 'lastPage.dart';
 import 'package:get/get.dart';
 import 'package:growpuang/controller/language_controller.dart';
@@ -28,141 +28,24 @@ class SeventhPage extends StatelessWidget {
         children: [
           const CommonAppBar(),
           // 질문 텍스트
-          Center(
-            child: Padding(
-              padding: EdgeInsets.only(top: 130.h),
-              child: Text(
-                question,
-                style: TextStyle(
-                  color: const Color(0xFF143264),
-                  fontSize: 30.sp,
-                  fontFamily: 'YourFontFamily',
-                  fontWeight: FontWeight.bold,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-          ),
+          buildTitle(question),
           // 버튼 1 - Option 1
-          Positioned(
-            left: 50.w,
-            right: 50.w,
-            top: 570.h,
-            child: GestureDetector(
-              onTap: () {
-                // Option 1 버튼을 눌렀을 때 수행할 작업을 정의하세요.
-                // 여기에서 다음 질문 또는 동작을 정의할 수 있습니다.
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => lastPage(
-                      question: languageController.language == '한국어'
-                          ? '당신이 졸업시킬 푸앙이는'
-                          : 'The Puang you will graduate from is',
-                      option1: languageController.language == '한국어'
-                          ? '활발한'
-                          : 'active',
-                      option2: languageController.language == '한국어'
-                          ? '푸앙이'
-                          : 'puang',
-                      pick_img: '활발한-푸앙.png',
-                    ),
-                  ),
-                );
-              },
-              child: Container(
-                width: double.infinity,
-                height: 130.h,
-                decoration: BoxDecoration(
-                  color: const Color(0xFF143264),
-                  borderRadius: BorderRadius.circular(15),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 2,
-                      blurRadius: 5,
-                      offset: const Offset(0, 3),
-                    ),
-                  ],
-                ),
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Text(
-                      option1,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 25.sp,
-                        fontFamily: 'YourFontFamily',
-                        fontWeight: FontWeight.bold,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ),
-              ),
+          OptionButton(
+            onTap: () => navigateToLastPage(context,
+                getOptionText('활발한', 'active'),
+                '활발한-푸앙.png'
             ),
+            topPosition: 570.h,
+            buttonText: option1,
           ),
           // 버튼 2 - Option 2
-          Positioned(
-            left: 50.w,
-            right: 50.w,
-            top: 740.h,
-            child: GestureDetector(
-              onTap: () {
-                // Option 2 버튼을 눌렀을 때 수행할 작업을 정의하세요.
-
-                // 여기에서 다음 질문 또는 동작을 정의할 수 있습니다.
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => lastPage(
-                      question: languageController.language == '한국어'
-                          ? '당신이 졸업시킬 푸앙이는'
-                          : 'The Puang you will graduate from is',
-                      option1: languageController.language == '한국어'
-                          ? '주도적인'
-                          : 'leading',
-                      option2: languageController.language == '한국어'
-                          ? '푸앙이'
-                          : 'puang',
-                      pick_img: '주도적인-푸앙.png',
-                    ),
-                  ),
-                );
-              },
-              child: Container(
-                width: double.infinity,
-                height: 130.h,
-                decoration: BoxDecoration(
-                  color: const Color(0xFF143264),
-                  borderRadius: BorderRadius.circular(15),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 2,
-                      blurRadius: 5,
-                      offset: const Offset(0, 3),
-                    ),
-                  ],
-                ),
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Text(
-                      option2,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 25.sp,
-                        fontFamily: 'YourFontFamily',
-                        fontWeight: FontWeight.bold,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ),
-              ),
+          OptionButton(
+            onTap: () => navigateToLastPage(context,
+                getOptionText('주도적인', 'leading'),
+                '주도적인-푸앙.png'
             ),
+            topPosition: 740.h,
+            buttonText: option2,
           ),
         ],
       ),

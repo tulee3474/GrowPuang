@@ -33,26 +33,18 @@ class FifthPage extends StatelessWidget {
           buildTitle(question),
           // 버튼 1 - Option 1
           OptionButton(
-            onTap: () => navigateToPage(context,
-              lastPage(
-                question: getQuestionText('당신이 졸업시킬 푸앙이는', 'The Puang you will graduate from is'),
-                option1: getOptionText('모범적인', 'exemplary'),
-                option2: getOptionText('푸앙이', 'puang'),
-                pick_img: '모범-푸앙.png',
-              ),
+            onTap: () => navigateToLastPage(context,
+                getOptionText('모범적인', 'exemplary'),
+                '모범-푸앙.png'
             ),
             topPosition: 570.h,
             buttonText: option1,
           ),
           // 버튼 2 - Option 2
           OptionButton(
-            onTap: () => navigateToPage(context,
-              lastPage(
-                question: getQuestionText('당신이 졸업시킬 푸앙이는', 'The Puang you will graduate from is'),
-                option1: getOptionText('너드한', 'nerd'),
-                option2: getOptionText('푸앙이', 'puang'),
-                pick_img: '너드한-푸앙.png',
-              ),
+            onTap: () => navigateToLastPage(context,
+                getOptionText('너드한', 'nerd'),
+                '너드한-푸앙.png'
             ),
             topPosition: 740.h,
             buttonText: option2,
