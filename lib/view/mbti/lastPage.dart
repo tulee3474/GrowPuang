@@ -28,7 +28,7 @@ class lastPage extends StatelessWidget {
       appBar: null,
       body: Stack(
         children: [
-          FirstAppBar(),
+          const FirstAppBar(),
           // 자산 이미지 크기 및 배치 수정
           Positioned(
             left: 0.w,

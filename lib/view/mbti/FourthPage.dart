@@ -6,17 +6,18 @@ import 'package:growpuang/view/widget/mbti/MbtiDiamond.dart';
 import '../widget/mbti/CommonAppBar.dart';
 import '../widget/mbti/FirstAppBar.dart';
 import '../widget/mbti/OptionFunction.dart';
+import 'fifthPage.dart';
 import 'lastPage.dart';
 import 'package:growpuang/view/widget/mbti/OptionButton.dart';
 
-class FifthPage extends StatelessWidget {
+class FourthPage extends StatelessWidget {
   final languageController = Get.put(LanguageController());
 
   final String question;
   final String option1;
   final String option2;
 
-  FifthPage(
+  FourthPage(
       {super.key,
       required this.question,
       required this.option1,
@@ -36,9 +37,9 @@ class FifthPage extends StatelessWidget {
             onTap: () => navigateToPage(context,
               lastPage(
                 question: getQuestionText('당신이 졸업시킬 푸앙이는', 'The Puang you will graduate from is'),
-                option1: getOptionText('모범적인', 'exemplary'),
+                option1: getOptionText('호기심 많은', 'curious'),
                 option2: getOptionText('푸앙이', 'puang'),
-                pick_img: '모범-푸앙.png',
+                pick_img: '호기심-푸앙.png',
               ),
             ),
             topPosition: 570.h,
@@ -47,11 +48,10 @@ class FifthPage extends StatelessWidget {
           // 버튼 2 - Option 2
           OptionButton(
             onTap: () => navigateToPage(context,
-              lastPage(
-                question: getQuestionText('당신이 졸업시킬 푸앙이는', 'The Puang you will graduate from is'),
-                option1: getOptionText('너드한', 'nerd'),
-                option2: getOptionText('푸앙이', 'puang'),
-                pick_img: '너드한-푸앙.png',
+              FifthPage(
+                question: getQuestionText('음악을 들을 때 중요한 것은?', 'What is important when listening to music?'),
+                option1: getOptionText('멜로디', 'melody'),
+                option2: getOptionText('가사', 'lyrics'),
               ),
             ),
             topPosition: 740.h,

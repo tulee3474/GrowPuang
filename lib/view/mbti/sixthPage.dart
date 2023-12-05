@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:growpuang/view/widget/mbti/MbtiDiamond.dart';
+import '../widget/mbti/CommonAppBar.dart';
 import '../widget/mbti/FirstAppBar.dart';
 import 'seventhPage.dart';
 import 'eigthPage.dart';
@@ -26,8 +27,7 @@ class SixthPage extends StatelessWidget {
       appBar: null,
       body: Stack(
         children: [
-          FirstAppBar(),
-          MbtiDiamond.goUp(),
+          const CommonAppBar(),
           // 질문 텍스트
           Center(
             child: Padding(
