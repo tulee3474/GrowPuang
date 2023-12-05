@@ -9,6 +9,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:growpuang/model/firebase_read_write.dart';
 
+import '../widget/login/LoginPageWidget.dart';
+
 class LogInPage extends StatefulWidget {
   const LogInPage({super.key});
 
@@ -34,27 +36,10 @@ class _LogInPageState extends State<LogInPage> {
         resizeToAvoidBottomInset: false,
         body: Stack(
           children: [
-            _buildBackgroundImage(),
+            buildBackgroundImage(210.h),
             _buildLoginForm(),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildBackgroundImage() {
-    return Container(
-      width: double.infinity,
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage('assets/images/로그인화면.png'),
-          fit: BoxFit.cover,
-        ),
-      ),
-      child: Container(
-        margin: EdgeInsets.fromLTRB(20.w, 380.h, 20.w, 210.h),
-        padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: 20.h),
-        color: Colors.white.withOpacity(0.5),
       ),
     );
   }

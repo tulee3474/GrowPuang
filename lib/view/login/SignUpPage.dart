@@ -7,6 +7,7 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:email_validator/email_validator.dart';
 
 import '../widget/end_dialog.dart';
+import '../widget/login/LoginPageWidget.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -35,27 +36,10 @@ class _SignUpPageState extends State<SignUpPage> {
         resizeToAvoidBottomInset: false,
         body: Stack(
           children: [
-            _buildBackgroundImage(),
+            buildBackgroundImage(130.h),
             _buildSignUpForm(),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildBackgroundImage() {
-    return Container(
-      width: double.infinity,
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage('assets/images/로그인화면.png'),
-          fit: BoxFit.cover,
-        ),
-      ),
-      child: Container(
-        margin: EdgeInsets.fromLTRB(20.w, 380.h, 20.w, 130.h),
-        padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: 20.h),
-        color: Colors.white.withOpacity(0.5),
       ),
     );
   }
