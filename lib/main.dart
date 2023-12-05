@@ -8,24 +8,25 @@ import 'package:growpuang/view/login/LoginPage.dart';
 
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized(); // 추가
-  await dotenv.load(fileName: 'assets/config/.env'); // 추가
+  await initializeApp();
+  runApp(const MyApp());
+}
 
-  await Firebase.initializeApp(
-      // Replace with actual values
-      options: FirebaseOptions(
+FirebaseOptions getFirebaseOptions() {
+  return FirebaseOptions( // Replace with actual values
     apiKey: "${dotenv.env['API_KEY']}",
     appId: "${dotenv.env['APP_ID']}",
     messagingSenderId: "515663394442",
     projectId: "GrowPuang",
-  )); // Firebase 초기화
-
-  //final personalController = Get.put(PersonalController());
-  //personalController.userId = await getMobileId(); //모델 id 저장
-
-  //runApp(HomeScreen());
-  runApp(const MyApp());
+  ); // Firebase 초기화
 }
+
+Future<void> initializeApp() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: 'assets/config/.env');
+  await Firebase.initializeApp(options: getFirebaseOptions());
+}
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

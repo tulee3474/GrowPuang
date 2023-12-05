@@ -72,31 +72,25 @@ ThemeData lightColorTheme = ThemeData(
   ), bottomAppBarTheme: const BottomAppBarTheme(color: mainBackgroundColor), colorScheme: ColorScheme.fromSwatch(primarySwatch: generateMaterialColor(color: mainColor)).copyWith(background: mainBackgroundColor),
 );
 
-List<Color> buttonColorList = [
-  mainBackgroundColor,
-  mainBackgroundColor,
-  mainBackgroundColor,
-  mainBackgroundColor,
-];
-List<Color> buttonTextColorList = [
-  communityTextColor,
-  communityTextColor,
-  communityTextColor,
-  communityTextColor,
+class ButtonConfig {
+  final Color backgroundColor;
+  final Color textColor;
+
+  ButtonConfig(this.backgroundColor, this.textColor);
+}
+
+List<ButtonConfig> buttonConfigs = [
+  ButtonConfig(mainBackgroundColor, communityTextColor),
+  ButtonConfig(mainBackgroundColor, communityTextColor),
+  ButtonConfig(mainBackgroundColor, communityTextColor),
+  ButtonConfig(mainBackgroundColor, communityTextColor),
 ];
 
-void switchButtonColor(int index, int type) {
+void switchButtonConfig(int index, int type) {
   if (type == 1) {
-    buttonColorList[index] = primary1;
+    buttonConfigs[index] = ButtonConfig(primary1, communityMainColor);
   } else if (type == 0) {
-    buttonColorList[index] = mainBackgroundColor;
+    buttonConfigs[index] = ButtonConfig(mainBackgroundColor, communityTextColor);
   }
 }
 
-void switchButtonTextColor(int index, int type) {
-  if (type == 1) {
-    buttonTextColorList[index] = communityMainColor;
-  } else if (type == 0) {
-    buttonTextColorList[index] = communityTextColor;
-  }
-}
