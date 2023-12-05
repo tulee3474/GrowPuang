@@ -5,7 +5,7 @@ import 'package:growpuang/controller/language_controller.dart';
 import 'package:growpuang/controller/personal_contoller.dart';
 import 'package:growpuang/view/widget/appBar.dart';
 import 'package:growpuang/view/widget/end_dialog.dart';
-import 'package:growpuang/view/widget/graduate_dialog.dart';
+import 'package:growpuang/view/widget/ending/graduate_dialog.dart';
 import 'package:growpuang/view/widget/navigateBar.dart';
 import 'controller/post_list_controller.dart';
 

@@ -136,7 +136,6 @@ class HelpDialog extends StatelessWidget {
                 children: [
                   Image.asset(
                     'assets/images/영신관2.png',
-                    // width: 50.w,
                     height: 50.h,
                     fit: BoxFit.fitHeight,),
                   SizedBox(width: 10.w,),

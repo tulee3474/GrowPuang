@@ -3,11 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:growpuang/view/widget/appBar.dart';
 import 'package:get/get.dart';
 import 'package:growpuang/view/widget/navigateBar.dart';
-import 'package:growpuang/view/widget/quiz_error_dialog.dart';
+import 'package:growpuang/view/widget/knowledge/quiz_error_dialog.dart';
 import '../../controller/language_controller.dart';
 import '../../controller/personal_contoller.dart';
 import '../../mainPage.dart';
-import '../widget/quiz_dialog.dart';
+import 'package:growpuang/view/widget/knowledge/quiz_dialog.dart';
 
 class QuizPageAlgor extends StatefulWidget {
   final personalController = Get.put(PersonalController());

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../../controller/language_controller.dart';
 
-class QuizErrorDialog extends StatelessWidget {
-  QuizErrorDialog({super.key});
+import '../../../controller/language_controller.dart';
+
+class ActErrorDialog extends StatelessWidget {
+  ActErrorDialog({super.key});
 
   final languageController = Get.put(LanguageController());
 
@@ -30,7 +31,7 @@ class QuizErrorDialog extends StatelessWidget {
                 width: 5.w,
               ),
               Text(
-                languageController.answerInfo,
+                languageController.activityError,
                 style: TextStyle(fontSize: 20.sp, color: const Color(0xFF143264)),
               ),
               const Icon(

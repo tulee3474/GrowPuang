@@ -74,69 +74,9 @@ class _WrittenPostPageState extends State<WrittenPostPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // floatingActionButton: SizedBox(
-      //   width: 100.w,
-      //   child: FittedBox(
-      //     fit: BoxFit.fill,
-      //     child: FloatingActionButton(
-      //       backgroundColor: communityMainColor,
-      //       child: Icon(
-      //         Icons.thumb_up_alt_outlined,
-      //         color: whiteTextColor,
-      //       ),
-      //       elevation: 5,
-      //       onPressed: () {
-      //         if (postController.post.recommendList
-      //             .contains(personalController.userId as String)) {
-      //           showDialog(
-      //             context: context,
-      //             builder: (BuildContext context) {
-      //               Future.delayed(
-      //                 Duration(seconds: 1),
-      //                 () {
-      //                   Navigator.of(context, rootNavigator: true).pop();
-      //                 },
-      //               );
-      //               return AlertDialog(
-      //                 content: SizedBox(
-      //                   width: 400.w,
-      //                   height: 120.h,
-      //                   child: Center(
-      //                     child: Text(
-      //                       languageController.communityAlreadyLikedMessage,
-      //                       style: TextStyle(
-      //                           color: mainTextColor,
-      //                           letterSpacing: 2.w,
-      //                           fontFamily: 'Inter',
-      //                           fontWeight: FontWeight.w500,
-      //                           fontSize: 22.sp),
-      //                     ),
-      //                   ),
-      //                 ),
-      //               );
-      //             },
-      //           );
-      //         } else {
-      //           setState(
-      //             () {
-      //               fb_add_recommend(
-      //                   postController.post.postNum,
-      //                   personalController.userId as String,
-      //                   postController.post
-      //                       .recommendNum); // 좋아요 추가 - 게시글 제목, 누른사람, 기존 좋아요 개수
-      //               postController.post.recommendNum++;
-      //               postController.post.recommendList
-      //                   .add(personalController.userId as String);
-      //             },
-      //           );
-      //         }
-      //       },
-      //     ),
-      //   ),
-      // ),
       body: Stack(
         children: [
-          appBar(),
+          const appBar(),
           SingleChildScrollView(
             scrollDirection: Axis.vertical,
             physics: const AlwaysScrollableScrollPhysics(),

@@ -6,8 +6,8 @@ import 'package:growpuang/view/widget/navigateBar.dart';
 import '../../controller/language_controller.dart';
 import '../../controller/personal_contoller.dart';
 import '../../mainPage.dart';
-import '../widget/quiz_dialog.dart';
-import '../widget/quiz_error_dialog.dart';
+import 'package:growpuang/view/widget/knowledge/quiz_dialog.dart';
+import '../widget/knowledge/quiz_error_dialog.dart';
 
 class QuizPageSwe extends StatefulWidget {
   final personalController = Get.put(PersonalController());
