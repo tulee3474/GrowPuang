@@ -25,7 +25,7 @@ class EighthPage extends StatelessWidget {
       appBar: null,
       body: Stack(
         children: [
-          firstappBar(),
+          const firstappBar(),
           mbti_diamond.goUp(),
           // 질문 텍스트
           Center(
@@ -44,128 +44,78 @@ class EighthPage extends StatelessWidget {
             ),
           ),
           // 버튼 1 - Option 1
-          Positioned(
-            left: 50.w,
-            right: 50.w,
-            top: 570.h,
-            child: GestureDetector(
-              onTap: () {
-                // Option 1 버튼을 눌렀을 때 수행할 작업을 정의하세요.
-                // 여기에서 다음 질문 또는 동작을 정의할 수 있습니다.
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => lastPage(
-                      question: languageController.language == '한국어'
-                          ? '당신이 졸업시킬 푸앙이는'
-                          : 'The Puang you will graduate from is',
-                      option1: languageController.language == '한국어'
-                          ? '주도적인'
-                          : 'leading',
-                      option2: languageController.language == '한국어'
-                          ? '푸앙이'
-                          : 'puang',
-                      pick_img: '주도적인-푸앙.png',
-                    ),
-                  ),
-                );
-              },
-              child: Container(
-                width: double.infinity,
-                height: 130.h,
-                decoration: BoxDecoration(
-                  color: const Color(0xFF143264),
-                  borderRadius: BorderRadius.circular(15),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 2,
-                      blurRadius: 5,
-                      offset: const Offset(0, 3),
-                    ),
-                  ],
-                ),
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Text(
-                      option1,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 25.sp,
-                        fontFamily: 'YourFontFamily',
-                        fontWeight: FontWeight.bold,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
+          _buildOptionButton(context, 570, option1,
+              languageController.language == '한국어'
+              ? '주도적인'
+              : 'leading', '주도적인-푸앙.png'),
           // 버튼 2 - Option 2
-          Positioned(
-            left: 50.w,
-            right: 50.w,
-            top: 740.h,
-            child: GestureDetector(
-              onTap: () {
-                // Option 2 버튼을 눌렀을 때 수행할 작업을 정의하세요.
-
-                // 여기에서 다음 질문 또는 동작을 정의할 수 있습니다.
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => lastPage(
-                      question: languageController.language == '한국어'
-                          ? '당신이 졸업시킬 푸앙이는'
-                          : 'The Puang you will graduate from is',
-                      option1: languageController.language == '한국어'
-                          ? '지휘적인'
-                          : 'commanding',
-                      option2: languageController.language == '한국어'
-                          ? '푸앙이'
-                          : 'puang',
-                      pick_img: '지적인-푸앙.png',
-                    ),
-                  ),
-                );
-              },
-              child: Container(
-                width: double.infinity,
-                height: 130.h,
-                decoration: BoxDecoration(
-                  color: const Color(0xFF143264),
-                  borderRadius: BorderRadius.circular(15),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 2,
-                      blurRadius: 5,
-                      offset: const Offset(0, 3),
-                    ),
-                  ],
-                ),
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Text(
-                      option2,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 25.sp,
-                        fontFamily: 'YourFontFamily',
-                        fontWeight: FontWeight.bold,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
+          _buildOptionButton(context, 740, option2,
+              languageController.language == '한국어'
+                  ? '지휘적인'
+                  : 'commanding', '지적인-푸앙.png'),
         ],
       ),
     );
   }
+
+  void _navigateToLastPage(BuildContext context, String optionText, String pickImage) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => lastPage(
+          question: languageController.language == '한국어'
+              ? '당신이 졸업시킬 푸앙이는'
+              : 'The Puang you will graduate from is',
+          option1: optionText,
+          option2: languageController.language == '한국어' ? '푸앙이' : 'puang',
+          pick_img: pickImage,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildOptionButton(BuildContext context, double topPosition, String optionNumber, String optionText, String pickImage) {
+    return Positioned(
+      left: 50.w,
+      right: 50.w,
+      top: topPosition.h,
+      child: GestureDetector(
+        onTap: () {
+          _navigateToLastPage(context, optionText, pickImage);
+        },
+        child: Container(
+          width: double.infinity,
+          height: 130.h,
+          decoration: BoxDecoration(
+            color: const Color(0xFF143264),
+            borderRadius: BorderRadius.circular(15),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 2,
+                blurRadius: 5,
+                offset: const Offset(0, 3),
+              ),
+            ],
+          ),
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Text(
+                optionNumber,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 25.sp,
+                  fontFamily: 'YourFontFamily',
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
 }
