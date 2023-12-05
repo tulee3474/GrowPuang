@@ -24,29 +24,22 @@ class _NewPostPageState extends State<NewPostPage> {
   final personalController = Get.put(PersonalController());
   final languageController = Get.put(LanguageController());
 
-  TextEditingController postTitleController = TextEditingController();
-  TextEditingController postTitleController2 = TextEditingController();
-  //TextEditingController postWriterController = TextEditingController();
-  TextEditingController postContentController = TextEditingController();
+  late TextEditingController postTitleController;
+  late TextEditingController postTitleController2;
+  late TextEditingController postContentController;
 
   int _sortOpt = 1;
 
   @override
   initState() {
-    for (int b = 0; b < postListController.sortList.length; b++) {
-      if (b != 1) {
-        switchButtonColor(b, 0);
-        switchButtonTextColor(b, 0);
-      } else {
-        switchButtonColor(b, 1);
-        switchButtonTextColor(b, 1);
-      }
-    }
-
     super.initState();
     postTitleController = TextEditingController();
     postTitleController2 = TextEditingController();
     postContentController = TextEditingController();
+
+    for (int b = 0; b < postListController.sortList.length; b++) {
+      switchButtonConfig(b, b == 1 ? 1 : 0);
+    }
   }
 
   @override
@@ -54,7 +47,7 @@ class _NewPostPageState extends State<NewPostPage> {
     return Scaffold(
       body: Stack(
         children: [
-          appBar(),
+          const appBar(),
           SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Column(
@@ -116,7 +109,8 @@ class _NewPostPageState extends State<NewPostPage> {
                                         fontSize: 18.sp,
                                         fontFamily: 'Inter',
                                         //fontWeight: FontWeight.bold,
-                                        color: buttonTextColorList[i],
+                                        color: buttonConfigs[i].textColor,
+                                        //buttonTextColorList[i],
                                       ),
                                     ),
                                     style: TextButton.styleFrom(
@@ -124,7 +118,8 @@ class _NewPostPageState extends State<NewPostPage> {
                                           borderRadius:
                                               BorderRadius.circular(5.0),
                                         ),
-                                        backgroundColor: buttonColorList[i]),
+                                        backgroundColor: buttonConfigs[i].backgroundColor),
+                                        //buttonColorList[i]),
                                     onPressed: () {
                                       setState(
                                         () {
@@ -135,11 +130,9 @@ class _NewPostPageState extends State<NewPostPage> {
                                                       .sortList.length;
                                               b++) {
                                             if (b != i) {
-                                              switchButtonColor(b, 0);
-                                              switchButtonTextColor(b, 0);
+                                              switchButtonConfig(b, 0);
                                             } else {
-                                              switchButtonColor(b, 1);
-                                              switchButtonTextColor(b, 1);
+                                              switchButtonConfig(b, 1);
                                             }
                                           }
 
@@ -315,7 +308,7 @@ class _NewPostPageState extends State<NewPostPage> {
                                 builder: (BuildContext context) {
                                   Future.delayed(
                                     const Duration(seconds: 1),
-                                    () {
+                                        () {
                                       Navigator.of(context, rootNavigator: true)
                                           .pop();
                                     },
@@ -369,8 +362,6 @@ class _NewPostPageState extends State<NewPostPage> {
 
                               //커뮤니티 들어가기 - 글 하나 쓸 때마다 +1점
                               personalController.communityResult += 1;
-                              print(
-                                  '커뮤니티 점수 : ${personalController.communityResult}');
 
                               //새로고침을 위하여 기존 화면 스택을 날리고 다시 시작함
                               Navigator.pushNamedAndRemoveUntil(
@@ -407,3 +398,6 @@ class _NewPostPageState extends State<NewPostPage> {
     );
   }
 }
+
+
+
