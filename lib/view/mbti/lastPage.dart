@@ -44,6 +44,7 @@ class lastPage extends StatelessWidget {
                   _buildText('$option1 $option2${_getLanguageSuffix()}',
                       30.sp, FontWeight.bold),
                   SizedBox(height: 20.h),
+                  _buildNextButton(context),
                 ],
               ),
             ),
