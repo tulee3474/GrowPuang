@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:growpuang/view/login/LoginPage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -246,17 +247,16 @@ class _SignUpPageState extends State<SignUpPage> {
       });
 
       // Check if the email already exists
-      bool emailExists =
-      await isEmailExists(email);
+      bool emailExists = await isEmailExists(email);
 
       if (emailExists) {
         // Email already exists, show alert dialog
+        // ignore: use_build_context_synchronously
         showDialog(
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
-              title: const Text(
-                  "회원가입 실패\nSign-up failed"),
+              title: const Text("회원가입 실패\nSign-up failed"),
               content: const Text(
                   "이미 등록된 이메일입니다.\nThis email is already registered"),
               actions: [
@@ -264,7 +264,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   onPressed: () {
                     Navigator.of(context).pop();
                     setState(() {
-                      saving = !emailExists;
+                      saving = false; // Update the state when dismissing the dialog
                     });
                   },
                   child: const Text("확인"),
@@ -275,12 +275,11 @@ class _SignUpPageState extends State<SignUpPage> {
         );
       } else {
         // Email doesn't exist, proceed with registration
-        final newUser =
-        await _authentication
-            .createUserWithEmailAndPassword(
+        final newUser = await _authentication.createUserWithEmailAndPassword(
           email: email,
           password: password,
         );
+
         await FirebaseFirestore.instance
             .collection('user')
             .doc(newUser.user!.uid)
@@ -288,25 +287,47 @@ class _SignUpPageState extends State<SignUpPage> {
           'userName': userName,
           'email': email,
         });
+
         if (newUser.user != null) {
-          _formKey.currentState!.reset();
-          if (!mounted) return;
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) =>
-              const LogInPage(),
-            ),
+          // Registration successful, show success alert
+          // ignore: use_build_context_synchronously
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: const Text("회원가입 성공\nSign-up successful"),
+                content: const Text("회원가입이 성공적으로 완료되었습니다."),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      setState(() {
+                        saving = false; // Update the state when dismissing the dialog
+                      });
+                      // Navigate to the login page
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LogInPage(),
+                        ),
+                      );
+                    },
+                    child: const Text("확인"),
+                  ),
+                ],
+              );
+            },
           );
-          setState(() {
-            saving = false;
-          });
         }
       }
     } catch (e) {
       print(e);
+      setState(() {
+        saving = false;
+      });
     }
   }
+
 
   Future<bool> _onWillPop() async {
     return (await showDialog(
@@ -320,7 +341,9 @@ class _SignUpPageState extends State<SignUpPage> {
             child: Text('No'),
           ),
           TextButton(
-            onPressed: () => Navigator.of(context).pop(true),
+            onPressed: () {
+              SystemNavigator.pop();
+              },
             child: Text('Yes'),
           ),
         ],
