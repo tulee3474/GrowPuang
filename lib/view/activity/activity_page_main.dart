@@ -281,7 +281,7 @@ class _ActivityPageMainState extends State<ActivityPageMain> {
   }
 
   _displayHPAfterActivity() {
-    return Stack(
+    return Row(
       children: [
         SizedBox(
           width: 200.w,

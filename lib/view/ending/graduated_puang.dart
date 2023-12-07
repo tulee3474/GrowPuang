@@ -103,7 +103,7 @@ class GraduatedPuang extends StatelessWidget {
 
   GestureDetector buildRestartButton(BuildContext context) {
     return GestureDetector(
-      onTap: () => restartApp(context),
+      onTap: () => restartApp(context,false),
       child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -123,7 +123,8 @@ class GraduatedPuang extends StatelessWidget {
     );
   }
 
-  void restartApp(BuildContext context) {
+  void restartApp(BuildContext context, isLogout) {
+
     //값들 초기화
     //활동 리스트 초기화
     personalController.participateActList = [];

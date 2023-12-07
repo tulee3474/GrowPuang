@@ -35,6 +35,7 @@ class goGradu extends StatelessWidget {
                 TextButton(
                   onPressed: () {
                     String endingPuang;
+                    Navigator.of(context).pop();
                     var job = '';
                     if(personalController.participateActList.contains(4)){
                       endingPuang = "박사 푸앙";
