@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:growpuang/controller/personal_contoller.dart';
@@ -270,7 +271,9 @@ class _LogInPageState extends State<LogInPage> {
             child: Text('No'),
           ),
           TextButton(
-            onPressed: () => Navigator.of(context).pop(true),
+            onPressed: () {
+              SystemNavigator.pop();
+            },
             child: Text('Yes'),
           ),
         ],
