@@ -84,7 +84,7 @@ class _QuizPageCsState extends State<QuizPageCs> {
                                   fontSize: 18.sp,
                                   color: selectedAnswer == answer['text']
                                       ? Colors.white
-                                      : Colors.black,
+                                      : Color(0xFF143264),
                                 ),
                               ),
                             ],
