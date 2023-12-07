@@ -40,6 +40,7 @@ class GraduateDialog extends StatelessWidget {
               personalController.solveQuizList.length,
               personalController.intellectScore,
               30,
+              false,
             ),
             SizedBox(
               height: 20.h,
@@ -50,6 +51,7 @@ class GraduateDialog extends StatelessWidget {
               personalController.participateActList.length,
               personalController.participateActList.length,
               6,
+              true,
             ),
             SizedBox(
               height: 20.h,
@@ -78,6 +80,7 @@ class GraduateDialog extends StatelessWidget {
       int listLength,
       int value,
       int maxValue,
+      bool isact,
       ) {
     return Row(
       children: [
@@ -99,7 +102,9 @@ class GraduateDialog extends StatelessWidget {
               '$title $listLength/6',
               style: TextStyle(
                 fontSize: 20.sp,
-                color: (listLength < 6) ? Colors.red : const Color(0xFF143264),
+                color: isact ? Color(0xFF143264)
+                    : (listLength < 6) ? Colors.red
+                    : const Color(0xFF143264),
               ),
             ),
             Row(
