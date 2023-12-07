@@ -10,7 +10,7 @@ import '../widget/end_dialog.dart';
 import '../widget/login/LoginPageWidget.dart';
 
 class SignUpPage extends StatefulWidget {
-  const SignUpPage({super.key});
+  const SignUpPage({Key? key}) : super(key: key);
 
   @override
   State<SignUpPage> createState() => _SignUpPageState();
@@ -29,16 +29,19 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   Widget build(BuildContext context) {
-    return ModalProgressHUD(
-      inAsyncCall: saving,
-      child: Scaffold(
-        appBar: null,
-        resizeToAvoidBottomInset: false,
-        body: Stack(
-          children: [
-            buildBackgroundImage(130.h),
-            _buildSignUpForm(),
-          ],
+    return WillPopScope(
+      onWillPop: _onWillPop,
+      child: ModalProgressHUD(
+        inAsyncCall: saving,
+        child: Scaffold(
+          appBar: null,
+          resizeToAvoidBottomInset: false,
+          body: Stack(
+            children: [
+              buildBackgroundImage(130.h),
+              _buildSignUpForm(),
+            ],
+          ),
         ),
       ),
     );
@@ -236,15 +239,6 @@ class _SignUpPageState extends State<SignUpPage> {
     return querySnapshot.docs.isNotEmpty;
   }
 
-  Future<Future> showExitPopup(BuildContext context) async {
-    return showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return EndDialog();
-      },
-    );
-  }
-
   Future<void> _registerUser() async {
     try {
       setState(() {
@@ -253,7 +247,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
       // Check if the email already exists
       bool emailExists =
-          await isEmailExists(email);
+      await isEmailExists(email);
 
       if (emailExists) {
         // Email already exists, show alert dialog
@@ -282,7 +276,7 @@ class _SignUpPageState extends State<SignUpPage> {
       } else {
         // Email doesn't exist, proceed with registration
         final newUser =
-            await _authentication
+        await _authentication
             .createUserWithEmailAndPassword(
           email: email,
           password: password,
@@ -314,4 +308,24 @@ class _SignUpPageState extends State<SignUpPage> {
     }
   }
 
+  Future<bool> _onWillPop() async {
+    return (await showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Close App'),
+        content: Text('정말로 게임을 종료하시겠습니까?'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: Text('No'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            child: Text('Yes'),
+          ),
+        ],
+      ),
+    )) ??
+        false;
+  }
 }
