@@ -4,18 +4,16 @@ import 'package:get/get.dart';
 import 'package:growpuang/controller/personal_contoller.dart';
 import 'package:growpuang/view/mbti/FirstPage.dart';
 import 'package:growpuang/view/login/SignUpPage.dart';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:growpuang/model/firebase_read_write.dart';
-
 import '../widget/login/LoginPageWidget.dart';
 
 class LogInPage extends StatefulWidget {
-  const LogInPage({super.key});
+  const LogInPage({Key? key}) : super(key: key);
 
   @override
-  State<LogInPage> createState() => _LogInPageState();
+  _LogInPageState createState() => _LogInPageState();
 }
 
 class _LogInPageState extends State<LogInPage> {
@@ -29,16 +27,19 @@ class _LogInPageState extends State<LogInPage> {
 
   @override
   Widget build(BuildContext context) {
-    return ModalProgressHUD(
-      inAsyncCall: saving,
-      child: Scaffold(
-        appBar: null,
-        resizeToAvoidBottomInset: false,
-        body: Stack(
-          children: [
-            buildBackgroundImage(210.h),
-            _buildLoginForm(),
-          ],
+    return WillPopScope(
+      onWillPop: _onWillPop,
+      child: ModalProgressHUD(
+        inAsyncCall: saving,
+        child: Scaffold(
+          appBar: null,
+          resizeToAvoidBottomInset: false,
+          body: Stack(
+            children: [
+              buildBackgroundImage(210.h),
+              _buildLoginForm(),
+            ],
+          ),
         ),
       ),
     );
@@ -154,12 +155,8 @@ class _LogInPageState extends State<LogInPage> {
 
   void _handleLogIn() async {
     // 입력값이 비어 있는지 확인
-    if (_emailController.text
-        .trim()
-        .isEmpty ||
-        _passwordController.text
-            .trim()
-            .isEmpty) {
+    if (_emailController.text.trim().isEmpty ||
+        _passwordController.text.trim().isEmpty) {
       // 아이디 또는 비밀번호가 비어있는 경우
       showDialog(
         context: context,
@@ -204,15 +201,13 @@ class _LogInPageState extends State<LogInPage> {
         setState(() {
           saving = true;
         });
-        final currentUser = await _authentication
-            .signInWithEmailAndPassword(
+        final currentUser = await _authentication.signInWithEmailAndPassword(
           email: email,
           password: password,
         );
         if (currentUser.user != null) {
           // 로그인 성공 시의 처리
-          String? token = await currentUser.user
-              ?.getIdToken();
+          String? token = await currentUser.user?.getIdToken();
           var read = ReadController();
 
           token = FirebaseAuth.instance.currentUser?.uid;
@@ -228,8 +223,7 @@ class _LogInPageState extends State<LogInPage> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) =>
-              const FirstPage(
+              builder: (context) => const FirstPage(
                 title: 'Flutter Demo Home Page',
               ),
             ),
@@ -264,5 +258,24 @@ class _LogInPageState extends State<LogInPage> {
     }
   }
 
-
+  Future<bool> _onWillPop() async {
+    return (await showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Close App'),
+        content: Text('정말로 앱을 종료하시겠습니까?'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: Text('No'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            child: Text('Yes'),
+          ),
+        ],
+      ),
+    )) ??
+        false;
+  }
 }
