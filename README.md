@@ -6,12 +6,12 @@ Mobile App Development Term project - Team1
 
 ```bash
 # install dependencies
-$ flutter pub get
-$ flutter pub upgrade
-$ flutter pub outdated
+flutter pub get
+flutter pub upgrade
+flutter pub outdated
 
 # To run the application on an emulator or connected device
-$ flutter run
+flutter run
 ```
 
 ## Getting Started
@@ -26,7 +26,7 @@ $ flutter run
 1. Clone the repository:
 
 ```
-$ git clone https://github.com/tulee3474/GrowPuang.git
+git clone https://github.com/tulee3474/GrowPuang.git
 ```
 
 2. Navigate to the project directory:
